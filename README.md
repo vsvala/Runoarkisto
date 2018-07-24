@@ -1,4 +1,4 @@
-# Runoarkisto
+# Runoarkisto -Tietokantasovellus harjoitustyö
 
  Helsingin yliopiston Tietokantasovellus (4 op) kurssilla (kesä-2018) harjoitustyönä tehty tietokantaa käyttävä web-sovellus. 
  Toteutus: PostgreSQL tietokanta , Python, Flask. 
@@ -27,5 +27,5 @@ Jos aika riittää runoihin on tarkoitus liittää like/tykkäys toiminto, jollo
 
 
 (mahdollisesti myös)
-*runojen tykkäys toiminto
-*suosituimpien runojen haku
+- Runojen tykkäys toiminto
+- Suosituimpien runojen haku ja järjestäminen
