@@ -11,7 +11,7 @@ Tavallinen kirjautunut käyttäjä voi hakea runoja kannasta ja ehdottaa uusien 
 
 Järjestelmän ylläpitäjä voi listä järjestelmään runoja itse ja hyväksyä ehdotettuja. Lisääminen voi tapahtua esimerkiksi syöttämällä tiedot lomakkeeseen tai lukemalla runo esimerkiksi tekstitiedostosta. Järjestelmän ylläpitäjä voi antaa myös tavallisille käyttäjille ylläpito-oikeudet, jolloin tämä voi lisätä runoja itse.
 
-Jos aika riittää runoihin on tarkoitus liittää like/tykkäys toiminto, jolloin ruonille voi antaa äänensä ja runoista voi hakea suosituimpia eli eniten ääniä saaneita.
+Jos aika riittää runoihin on tarkoitus liittää like/tykkäys toiminto, jolloin runoille voi antaa äänensä ja runoista voi hakea suosituimpia eli eniten ääniä saaneita.
 
 ## Toimintoja:
 
