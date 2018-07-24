@@ -13,17 +13,17 @@ Järjestelmän ylläpitäjä voi listä järjestelmään runoja itse ja hyväksy
 
 Jos aika riittää runoihin on tarkoitus liittää like/tykkäys toiminto, jolloin ruonille voi antaa äänensä ja runoista voi hakea suosituimpia eli eniten ääniä saaneita.
 
-Toimintoja:
+## Toimintoja:
 
-Kirjautuminen
-Runon haku nimen tai kategorioiden perusteella
-Runojen luku/selailu
-Runon lisäys lomakkeella
-Runon sisäänluku tiedostosta
-Runon poisto(vain Admin)
-Uuden runon ehdottaminen / ehdotuksen hyväksyminen
-Käyttäjätunnuksen luominen
-Käyttäjätietojen muutos ja tilin poisto(Vain Admin)
+- Kirjautuminen
+- Runon haku nimen tai kategorioiden perusteella
+- Runojen luku/selailu
+- Runon lisäys lomakkeella
+- Runon sisäänluku tiedostosta
+- Runon poisto(vain Admin)
+- Uuden runon ehdottaminen / ehdotuksen hyväksyminen
+- Käyttäjätunnuksen luominen
+- Käyttäjätietojen muutos ja tilin poisto(Vain Admin)
 
 
 (mahdollisesti myös)
