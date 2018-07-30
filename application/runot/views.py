@@ -4,7 +4,7 @@ from application.runot.models import Runo
 
 @app.route("/runot/", methods=["GET"])
 def runot_index():
-    return render_template("runot/list.html", runot =Runo.query.all())
+    return render_template("runot/list.html", runot = Runo.query.all())
 
 @app.route("/runot/uusi/")
 def runot_form():
@@ -13,8 +13,8 @@ def runot_form():
 @app.route("/runot/", methods=["POST"])
 def runot_create():
 
-  t =Runo(request.form.get("name"))
-
+  t = Runo(request.form.get("name"), request.form.get("sisalto"), request.form.get("runoilija"))
+ 
   db.session().add(t)
   db.session().commit()
 
