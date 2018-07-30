@@ -7,5 +7,4 @@
 - Kirjautunut käyttäjä voi ehdottaa runoja lisättäväksi arkistoon
 - Ylläpitäjä voi hyväksyä kirjautuneen käyttäjän runon lisättäväksi
 - Ylläpitäjä voi itse lisätä runoja tietokantaan haettaviksi.
-- Ylläpitäjä voi muokata runoja, jotta mahdollisia virheitä voitaisiin korjata
-- Ylläpitäjä voi poistaa runoja
+- Ylläpitäjä voi muokata ja poistaa runoja, jotta mahdollisia virheitä voitaisiin korjata
