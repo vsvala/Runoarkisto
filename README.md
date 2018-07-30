@@ -29,3 +29,7 @@ Jos aika riittää runoihin on tarkoitus liittää like/tykkäys toiminto, jollo
 (mahdollisesti myös)
 - Runojen tykkäys toiminto
 - Suosituimpien runojen haku ja järjestäminen
+
+
+## Tietokantakaaviohahmotelma
+
