@@ -13,7 +13,7 @@ Järjestelmän ylläpitäjä voi listä järjestelmään runoja itse ja hyväksy
 
 Jos aika riittää runoihin on tarkoitus liittää like/tykkäys toiminto, jolloin runoille voi antaa äänensä ja runoista voi hakea suosituimpia eli eniten ääniä saaneita.
 
-## Toimintoja:
+## Toimintoja
 
 - Kirjautuminen
 - Runon haku nimen tai kategorioiden perusteella
@@ -29,3 +29,10 @@ Jos aika riittää runoihin on tarkoitus liittää like/tykkäys toiminto, jollo
 (mahdollisesti myös)
 - Runojen tykkäys toiminto
 - Suosituimpien runojen haku ja järjestäminen
+
+
+## Dokumentaatio
+- [Alustava tietokantakaavio](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/Runo_db_kaavio.png)
+- [User storyt](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/user_story.png)
+
+
