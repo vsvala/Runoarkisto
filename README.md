@@ -13,7 +13,7 @@ Järjestelmän ylläpitäjä voi listä järjestelmään runoja itse ja hyväksy
 
 Jos aika riittää runoihin on tarkoitus liittää like/tykkäys toiminto, jolloin runoille voi antaa äänensä ja runoista voi hakea suosituimpia eli eniten ääniä saaneita.
 
-## Toimintoja:
+## Toimintoja
 
 - Kirjautuminen
 - Runon haku nimen tai kategorioiden perusteella
