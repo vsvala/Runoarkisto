@@ -31,5 +31,8 @@ Jos aika riittää runoihin on tarkoitus liittää like/tykkäys toiminto, jollo
 - Suosituimpien runojen haku ja järjestäminen
 
 
-## Tietokantakaaviohahmotelma
+## Dokumentaatio
+- [Alustava tietokantakaavio](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/Runo_db_kaavio.png)
+- [User storyt](https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/vaatimusm%C3%A4%C3%A4rittely.md)
+
 
