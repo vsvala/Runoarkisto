@@ -1,15 +1,27 @@
 {% extends "layout.html" %}
 
 {% block body %}
-  <table>
+  <table> 
     <tr>
-      <th>Runot:</th>
+      <h2>Kaiki runot: </h2><td>
     </tr>
     {% for runo in runot %}
     <tr>
-      <td>{{ runo.name }}</td>
-
+      <td><h3>{{ runo.name }}</h3></td>
     </tr>
+
+    <tr>
+      <td>{{ runo.sisalto }}</td> 
+    </tr>
+    
+    <tr>
+      <td>{{ runo.runoilija }}</td>
+     </tr>  
+
+   <tr>
+      <td> <a href= "{{ url_for('runot_uppdateForm', runo_id=runo.id)}}"><button>muokkaa</button></a> </td>
+    </tr>
+
     {% endfor %}
   </table>
 {% endblock %}   

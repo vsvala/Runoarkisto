@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+  
+{% block body %}
+<h1>Muokkaa runoa</h1>
+<form method="POST" action="{{ url_for('runot_uppdate', runo_id = t.id) }}">
+Otsikko:
+  <input type="text" name="name"/>
+  <div>
+ Sisältö:   
+ <!-- <br> <input type="text" name="sisalto"/> -->
+    <textarea name="sisalto" rows="15" cols="40"></textarea>
+ </div>
+<div>
+Runoilija:
+  <input type="text" name="runoilija"/>
+</div> 
+  <input type="submit" value="Lisää uusi runo"/>
+
+</form>
+{% endblock %}
