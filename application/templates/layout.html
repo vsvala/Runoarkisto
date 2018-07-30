@@ -6,6 +6,12 @@
     </head>
 
     <body>
+        <ul>
+            <li><a href="{{ url_for('runot_index') }}">Listaa runot</a></li>
+            <li><a href="{{ url_for('runot_form') }}">Lisää runo</a></li>
+            <li><a href="/">Etusivu</a></li>
+        </ul>
+
       {% block body %}
       <p>
 	Tähän tuodaan sisältö muualta.

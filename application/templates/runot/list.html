@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <table>
+    <tr>
+      <th>Runot:</th>
+    </tr>
+    {% for runo in runot %}
+    <tr>
+      <td>{{ runo.name }}</td>
+
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}   

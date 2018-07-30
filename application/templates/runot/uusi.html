@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+  
+{% block body %}
+<h1>Lisää runo</h1>
+<form method="POST" action="{{ url_for('runot_create') }}">
+Otsikko:
+  <input type="text" name="name"/>
+  <!-- <div>
+ Sisältö:
+  <input type="text" name="sisalto"/>
+</div>
+<div>
+Runoilija:
+  <input type="text" name="runoilija"/>
+</div> -->
+  <input type="submit" value="Lisää uusi runo"/>
+
+</form>
+{% endblock %}
