@@ -37,7 +37,7 @@ Jos aika riittää runoihin on tarkoitus liittää like/tykkäys toiminto, jollo
 
 (mahdollisesti myös)
 * Runojen tykkäys/äänestys toiminto
-* Suosituimpien runojen haku ja järjestäminen
+* Suosituimpien runojen haku top10 ja järjestäminen
 
 
 ## Dokumentaatio
