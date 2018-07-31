@@ -15,21 +15,30 @@ Jos aika riittää runoihin on tarkoitus liittää like/tykkäys toiminto, jollo
 
 ## Toimintoja
 
-- Kirjautuminen
 - Runon haku nimen tai kategorioiden perusteella
 - Runojen luku/selailu
-- Runon lisäys lomakkeella
+- Runon lisäys ja muokkaus lomakkeella
 - Runon sisäänluku tiedostosta
 - Runon poisto(vain Admin)
-- Uuden runon ehdottaminen / ehdotuksen hyväksyminen
-- Käyttäjätunnuksen luominen
-- Käyttäjätietojen muutos ja tilin poisto(Vain Admin)
+- Uuden runon  ehdottaminen / ehdotuksen hyväksyminen
+- Uuden kategorian lisäys ja poisto (Admin)
+- Uuden kategorian ehdottaminen / ehdotuksen hyväksyminen
+- Käyttäjätunnuksen luominen/rekisteröityminen
+- Kirjautuminen
+- Käyttäjätietojen muutos ja tilin poisto(vain Admin)
+- Rekisteröityjen käyttäjien listaaminen ja haku
+
+- Yhteenvetokyselyt tietokannasta:
+    - Kuinka monta runoa ja mitkä runot tietty käyttäjä on lisännyt?
+    - Kuinka monta runoa on kussakin kategoriassa?
+    * Kunkin kategorian suosituin runo
+    - ?
 
 
 (mahdollisesti myös)
-- Runojen tykkäys toiminto
-- Suosituimpien runojen haku ja järjestäminen
-
+* Runojen tykkäys/äänestys toiminto
+* Suosituimpien runojen haku ja järjestäminen
+* Kunkin kategorian suosituin runo
 
 ## Dokumentaatio
 - [Alustava tietokantakaavio](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/Runo_db_kaavio.png)
