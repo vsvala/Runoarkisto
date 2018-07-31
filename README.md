@@ -31,14 +31,14 @@ Jos aika riittää runoihin on tarkoitus liittää like/tykkäys toiminto, jollo
 - Yhteenvetokyselyt tietokannasta:
     - Kuinka monta runoa ja mitkä runot tietty käyttäjä on lisännyt?
     - Kuinka monta runoa on kussakin kategoriassa?
-    * Kunkin kategorian suosituin runo
+   (* Kunkin kategorian suosituin runo?)
     - ?
 
 
 (mahdollisesti myös)
 * Runojen tykkäys/äänestys toiminto
 * Suosituimpien runojen haku ja järjestäminen
-* Kunkin kategorian suosituin runo
+
 
 ## Dokumentaatio
 - [Alustava tietokantakaavio](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/Runo_db_kaavio.png)
