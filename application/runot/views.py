@@ -39,6 +39,16 @@ def runot_uppdate(runo_id):
     return redirect(url_for("runot_index"))
 
 
+@app.route("/runot/<runo_id>/delete/", methods=["POST"])
+def runot_delete(runo_id):
+
+    t = Runo.query.get(runo_id)
+    db.session().delete(t)
+    db.session().commit()
+
+    return redirect(url_for("runot_index"))
+
+
 
 @app.route("/runot/", methods=["POST"])
 def runot_create():
