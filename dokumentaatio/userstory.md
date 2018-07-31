@@ -11,7 +11,7 @@ Kaikki käyttäjät:
 Kirjautunut käyttäjä:
 
 - Kirjautunut käyttäjä voi ehdottaa runoja lisättäväksi arkistoon, jotta arkistossa olisi enemmän valinnan varaa
-- Kirjautunut käyttäjä voi muokata ehdottamaansa runoa, jos typojen varalta.
+- Kirjautunut käyttäjä voi muokata ehdottamaansa runoa, typojen varalta.
 - Kirjautunut käyttäjä voi ehdottaa runolle uusia kategorioita , jos runo ei sovi valmiisiin.
 - Kirjautunut käyttäjä voi äänestää runoa, jotta saadaan tietoon suosituimmat runot
 
