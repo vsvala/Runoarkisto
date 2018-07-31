@@ -31,7 +31,7 @@ Jos aika riittää runoihin on tarkoitus liittää like/tykkäys toiminto, jollo
 - Yhteenvetokyselyt tietokannasta:
     - Kuinka monta runoa ja mitkä runot tietty käyttäjä on lisännyt?
     - Kuinka monta runoa on kussakin kategoriassa?
-   (* Kunkin kategorian suosituin runo?)
+    * (Kunkin kategorian suosituin runo?)
     - ?
 
 
