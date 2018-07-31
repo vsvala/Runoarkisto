@@ -1,10 +1,25 @@
 ## Käyttötapaukset
 
-- Käyttäjä voi lukea lisättyjä runoja
-- Käyttäjä voi hakea runoja runoa nimen perusteella, jotta hän löytäisi haluamansa runon
-- Käyttäjä voi hakea runoja eri kategorioiden eli aihepiirien mukaan, jotta hän löytää tiettyyn tilanteeseen sopivan runon.
-- Käyttäjä voi kirjautua sivustolle, jotta hän saisi lisää toiminnallisuuksia käyttöönsä
+Kaikki käyttäjät:
+
+- Kukatahansa käyttäjä voi  listata ja lukea lisättyjä runoja.
+- Kukatahansa käyttäjä voi hakea runoja niiden nimen perusteella, jotta runo löytyisi nopeammin.
+- Kukatahana käyttäjä voi hakea runoja eri kategorioiden eli aihepiirien mukaan, jotta hän löytää tiettyyn tilanteeseen sopivan runon.
+- Kukatahana käyttäjä voi listata suosituimmat runot.
+- Kukatahansa käyttäjä voi rekisteröityä sivustolle, jotta hän voi kirjautua  ja  saisi lisää toiminnallisuuksia käyttöönsä
+
+Kirjautunut käyttäjä:
+
 - Kirjautunut käyttäjä voi ehdottaa runoja lisättäväksi arkistoon, jotta arkistossa olisi enemmän valinnan varaa
-- Ylläpitäjä voi hyväksyä kirjautuneen käyttäjän runon lisättäväksi
-- Ylläpitäjä voi itse lisätä runoja tietokantaan haettaviksi.
-- Ylläpitäjä voi muokata ja poistaa runoja, jotta mahdollisia virheitä voitaisiin korjata ja ei haluttuja runoja poistaa
+- Kirjautunut käyttäjä voi muokata ehdottamaansa runoa, jos typojen varalta.
+- Kirjautunut käyttäjä voi ehdottaa runolle uusia kategorioita , jos runo ei sovi valmiisiin.
+- Kirjautunut käyttäjä voi äänestää runoa, jotta saadaan tietoon suosituimmat runot
+
+
+Ylläpitäjä:
+
+- Ylläpitäjä voi hyväksyä kirjautuneen käyttäjän ehdottaman runon tai kategorian lisättäväksi
+- Ylläpitäjä voi itse lisätä runoja ja uusia kategorioita tietokantaan haettaviksi.
+- Ylläpitäjä voi lisätä muokata ja poistaa runoja ja kategorioita, jotta mahdollisia virheitä voitaisiin korjata ja ei haluttuja runoja poistaa
+- Ylläpitäjä voi lisätä, muokata ja poistaa tykkäys toimintoja virhetilanteiden varalta
+-Ylläpitäjä voi hallinnoia, lisätä ja poistaa rekisteröityneen käyttäjän esim. väärinkäytösten varalta.
