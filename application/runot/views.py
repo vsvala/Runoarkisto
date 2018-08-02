@@ -57,6 +57,10 @@ def runot_create():
 
    form = RunoForm(request.form)
 
+   if not form.validate():
+        return render_template("runot/uusi.html", form = form)
+
+
    t = Runo(form.name.data, form.sisalto.data, form.runoilija.data)
  
    db.session().add(t)
