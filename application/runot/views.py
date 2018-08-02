@@ -1,6 +1,7 @@
 from application import app, db
 from flask import render_template, request, redirect, url_for
 from application.runot.models import Runo
+from application.runot.forms import RunoForm
 
 # @app.route("/runot/<runo_id>/", methods=["GET"])
 # def runot_naytayks(runo_id):
@@ -11,11 +12,12 @@ from application.runot.models import Runo
 @app.route("/runot/", methods=["GET"])
 def runot_index():
     return render_template("runot/list.html", runot = Runo.query.all())
-
+    
 
 @app.route("/runot/uusi/")
 def runot_form():
-    return render_template("runot/uusi.html")
+    return render_template("runot/uusi.html", form = RunoForm())
+    #return render_template("runot/uusi.html")
 
 
 @app.route("/runot/<runo_id>/", methods=["GET"])
@@ -53,13 +55,13 @@ def runot_delete(runo_id):
 @app.route("/runot/", methods=["POST"])
 def runot_create():
 
-  t = Runo(request.form.get("name"), request.form.get("sisalto"), request.form.get("runoilija"))
- 
-  db.session().add(t)
-  db.session().commit()
+   form = RunoForm(request.form)
 
-  #return "hello world!"
-    
-  return redirect(url_for("runot_index"))
+   t = Runo(form.name.data, form.sisalto.data, form.runoilija.data)
+ 
+   db.session().add(t)
+   db.session().commit()
+
+   return redirect(url_for("runot_index"))
 
   

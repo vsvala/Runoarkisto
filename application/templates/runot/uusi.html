@@ -3,13 +3,67 @@
 {% block body %}
 <h1>Lisää runo</h1>
 <form method="POST" action="{{ url_for('runot_create') }}">
-Otsikko:
-  <input type="text" name="name"/>
+   
+  <table>
+        <tr>
+    <td>
+      {{ form.name.label }}
+    </td>
+    <td>
+      {{ form.name }} 
+    </td>
+  </tr>
+  <td>
+      <ul>
+        {% for error in form.name.errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+    </td>
+    <tr>
+    <td>
+        {{ form.sisalto.label }}
+      </td>
+      <td>
+          {{ form.sisalto }}  
+        </td>
+        <tr>
+            <td>
+                <ul>
+                  {% for error in form.name.errors %}
+                  <li>{{ error }}</li>
+                  {% endfor %}
+                </ul>
+              </td>
+            <tr>
+                <td>
+                    {{ form.runoilija.label }}
+                  </td>
+                  <td>
+                      {{ form.runoilija }}  
+                    </td>
+            </tr>
+            <td>
+                <ul>
+                  {% for error in form.name.errors %}
+                  <li>{{ error }}</li>
+                  {% endfor %}
+                </ul>
+              </td>
 
+    <tr>
+    <td colspan="2">
+      <input type="submit" value="Lisää uusi runo"/>
+    </td>
+        </tr>
+    </form>
+
+
+
+  <!-- Otsikko:
+  <input type="text" name="name"/>
  <div>
  Sisältö:
-
-  <!-- <br> <input type="text" name="sisalto"/> -->
   <textarea name="sisalto" rows="15" cols="40"></textarea>
 </div>
 <div>
@@ -17,6 +71,5 @@ Runoilija:
   <input type="text" name="runoilija"/>
 </div> 
   <input type="submit" value="Lisää uusi runo"/>
-
-</form>
+</form> -->
 {% endblock %}
