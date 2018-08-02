@@ -1,8 +1,8 @@
 {% extends "layout.html" %}
   
 {% block body %}
-<h1>Lisää runo</h1>
-<form method="POST" action="{{ url_for('runot_create') }}">
+<h1>Rekisteröidy käyttäjäksi</h1>
+<form method="POST" action="{{ url_for('users_create') }}">
    
   <table>
         <tr>
@@ -22,30 +22,30 @@
     </td>
     <tr>
     <td>
-        {{ form.sisalto.label }}
+        {{ form.username.label }}
       </td>
       <td>
-          {{ form.sisalto }}  
+          {{ form.username }}  
         </td>
         <tr>
             <td>
                 <ul>
-                  {% for error in form.sisalto.errors %}
+                  {% for error in form.username.errors %}
                   <li>{{ error }}</li>
                   {% endfor %}
                 </ul>
               </td>
             <tr>
                 <td>
-                    {{ form.runoilija.label }}
+                    {{ form.password.label }}
                   </td>
                   <td>
-                      {{ form.runoilija }}  
+                      {{ form.password }}  
                     </td>
             </tr>
             <td>
                 <ul>
-                  {% for error in form.runoilija.errors %}
+                  {% for error in form.password.errors %}
                   <li>{{ error }}</li>
                   {% endfor %}
                 </ul>
@@ -53,7 +53,7 @@
 
     <tr>
     <td colspan="2">
-      <input type="submit" value="Lisää uusi runo"/>
+      <input type="submit" value="Lisää uusi käyttäjä"/>
     </td>
         </tr>
     </form>
