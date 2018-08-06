@@ -3,18 +3,66 @@
 {% block body %}
 <h1>Muokkaa runoa</h1>
 <form method="POST" action="{{ url_for('runot_uppdate', runo_id = t.id) }}">
-Otsikko:
-  <input type="text" name="name"/>
-  <div>
- Sisältö:   
- <!-- <br> <input type="text" name="sisalto"/> -->
-    <textarea name="sisalto" rows="15" cols="40"></textarea>
- </div>
-<div>
-Runoilija:
-  <input type="text" name="runoilija"/>
-</div> 
-  <input type="submit" value="Lisää uusi runo"/>
+    
+    <table>
+        <tr>
+    <td>
+      {{ form.name.label }}
+    </td>
+    <td>
+      {{ form.name }}
+    </td>
+    <td>
+      <ul>
+        {% for error in form.name.errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+    </td>
+        </tr>
 
-</form>
+
+
+    <tr>
+    <td>
+        {{ form.sisalto.label }}
+      </td>
+      <td>
+          {{ form.sisalto }}  
+        </td>
+      </tr>
+           
+      <td>
+         <ul>
+            {% for error in form.sisalto.errors %}
+             <li>{{ error }}</li>
+              {% endfor %}
+             </ul>
+            </td>
+
+
+
+    <tr>
+       <td>
+         {{ form.runoilija.label }}
+            </td>
+              <td>
+               {{ form.runoilija }}  
+             </td>
+    </tr>
+
+            <td>
+                <ul>
+                  {% for error in form.runoilija.errors %}
+                  <li>{{ error }}</li>
+                  {% endfor %}
+                </ul>
+            </td>
+    <tr>
+    <td colspan="2">
+      <input type="submit" value="Muokkaa"/>
+    </td>
+   </tr>
+  </form>
+
 {% endblock %}

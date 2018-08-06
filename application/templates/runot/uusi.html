@@ -4,22 +4,25 @@
 <h1>Lisää runo</h1>
 <form method="POST" action="{{ url_for('runot_create') }}">
    
-  <table>
+    <table>
         <tr>
     <td>
       {{ form.name.label }}
     </td>
     <td>
-      {{ form.name }} 
+      {{ form.name }}
     </td>
-  </tr>
-  <td>
+    <td>
       <ul>
         {% for error in form.name.errors %}
         <li>{{ error }}</li>
         {% endfor %}
       </ul>
     </td>
+        </tr>
+
+
+
     <tr>
     <td>
         {{ form.sisalto.label }}
@@ -27,35 +30,40 @@
       <td>
           {{ form.sisalto }}  
         </td>
-        <tr>
-            <td>
-                <ul>
-                  {% for error in form.sisalto.errors %}
-                  <li>{{ error }}</li>
-                  {% endfor %}
-                </ul>
-              </td>
-            <tr>
-                <td>
-                    {{ form.runoilija.label }}
-                  </td>
-                  <td>
-                      {{ form.runoilija }}  
-                    </td>
-            </tr>
+      </tr>
+           
+      <td>
+         <ul>
+            {% for error in form.sisalto.errors %}
+             <li>{{ error }}</li>
+              {% endfor %}
+             </ul>
+            </td>
+
+
+
+    <tr>
+       <td>
+         {{ form.runoilija.label }}
+            </td>
+              <td>
+               {{ form.runoilija }}  
+             </td>
+    </tr>
+
             <td>
                 <ul>
                   {% for error in form.runoilija.errors %}
                   <li>{{ error }}</li>
                   {% endfor %}
                 </ul>
-              </td>
+            </td>
 
     <tr>
     <td colspan="2">
       <input type="submit" value="Lisää uusi runo"/>
     </td>
-        </tr>
-    </form>
+   </tr>
+  </form>
 
 {% endblock %}

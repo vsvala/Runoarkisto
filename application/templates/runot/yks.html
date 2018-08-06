@@ -1,17 +1,16 @@
-<!-- {% extends "layout.html" %}
+{% extends "layout.html" %}
 
 {% block body %}
   <table>
     <tr>
       <th>Runot:</th>
     </tr>
-    {% for runo in runot %}
+    {{t.id}}
     <tr>
-      <td><li><a href="{{ url_for('runot_naytayks', runo_id=runo.id)}}">{{ runo.name }}</a></li> </td>
+      <td><li><a href="{{ url_for('runot_naytayks', runo_id=t.id)}}">{{ t.name }}</a></li> </td>
       <td>
-       <a href= "{{ url_for('runot_uppdateForm', runo_id=runo.id)}}"><button>muokkaa</button></a>
+       <a href= "{{ url_for('runot_uppdateForm', runo_id=t.id)}}"><button>muokkaa</button></a>
        </td>
     </tr>
-    {% endfor %}
   </table>
-{% endblock %}    -->
+{% endblock %}  

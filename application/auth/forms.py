@@ -11,5 +11,6 @@ class UserForm(FlaskForm):
     username = StringField("username", [validators.Length(min=2)])
     password = StringField("password", [validators.Length(min=2)])
   
+  
     class Meta:
         csrf = False
