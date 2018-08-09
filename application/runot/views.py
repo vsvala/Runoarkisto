@@ -5,12 +5,12 @@ from flask_login import login_required, current_user
 from application.runot.models import Runo
 from application.runot.forms import RunoForm
 
-@app.route("/runot/<runo_id>/", methods=["GET"])
-def runot_naytayks(runo_id):
+@app.route("/runot/one/<runo_id>/", methods=["GET"])
+def runot_showOne(runo_id):
     t = Runo.query.get(runo_id)
     print(t)
    
-    return render_template("runot/yks.html",  t=t)
+    return render_template("runot/one.html",  t=t)
 
 
 @app.route("/runot/", methods=["GET"])

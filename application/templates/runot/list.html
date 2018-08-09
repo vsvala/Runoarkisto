@@ -1,35 +1,15 @@
 {% extends "layout.html" %}
 
 {% block body %}
-  <table> 
-    <tr>
-      <h2>Kaiki runot: </h2><td>
-    </tr>
+
+      <h2>Kaikki runot: </h2>
+
     {% for runo in runot %}
-    <tr>
-      <td><h3>{{ runo.name }}</h3></td>
-    </tr>
-
-    <tr>
-      <td>{{ runo.sisalto }}</td> 
-    </tr>
+    <ul>
+    <li><a href="{{ url_for('runot_showOne', runo_id=runo.id) }}"><h3>{{ runo.name }}</h3></a></li>
     
-    <tr>
-      <td>{{ runo.runoilija }}</td>
-     </tr>  
-
-   <tr>
-      <td> <a href= "{{ url_for('runot_uppdateForm', runo_id=runo.id)}}"><button>muokkaa</button></a> </td> 
-      <!-- "{{ url_for('runot_uppdateForm', runo_id=runo.id)}}"> -->
-  
-    </tr>
-    <tr>
-        <td>
-            <form method="POST" action="{{ url_for('runot_delete', runo_id=runo.id)}}">
-                <input type="submit" value="poista runo" />
-            </form>
-        </td>
-    </tr>
+  </ul>
     {% endfor %}
-  </table>
-{% endblock %}   
+{% endblock %}  
+
+<!-- <td><a href="{{ url_for('runot_showOne', runo_id=runo.id) }}"><h3>{{ runo.name }}<button> näytä koko runo </button></h3></a></td> -->
