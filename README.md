@@ -46,5 +46,5 @@ Jos aika riittää runoihin on tarkoitus liittää like/tykkäys toiminto, jollo
 
 ## Kirjautuminen
 
-- Usernme: testusername
+- Username: testusername
 - password: testpassword
