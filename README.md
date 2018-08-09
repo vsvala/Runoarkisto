@@ -44,4 +44,7 @@ Jos aika riittää runoihin on tarkoitus liittää like/tykkäys toiminto, jollo
 - [Alustava tietokantakaavio](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/Runo_db_kaavio.png)
 - [User storyt](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/userstory.md)
 
+## Kirjautuminen
 
+- Usernme: testusername
+- password: testpassword
