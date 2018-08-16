@@ -2,7 +2,26 @@
 
 {% block body %}
 <h1>Runoarkisto</h1>
-<p>
+<p class="lead">Runoarkistosta voit hakea eri tarpeisiin runoja ja aforismejä .<br>Voit myös kartuttaa arkistoa lisäämällä runoa muiden iloksi.</p>
+<br>
+<h2>Päivän runo:</h2>
+<p class="lead">
   Tähän arvotaan aina eri runo kun ehdin toiminnon tehdä :)
 </p>
+
+<!-- {% if how_many is defined %}
+<p class="lead">
+  Ketkä käyttäjät on lisänneet runoja:
+</p>
+
+<ul>
+  {% for user in how_many %}
+  <li>
+    {{user.id}} {{user.name}}
+  </li>
+{% endfor %}
+</ul>
+
+{% endif %} -->
+
 {% endblock %}

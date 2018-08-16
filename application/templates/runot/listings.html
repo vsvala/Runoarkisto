@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+  
+      <a href="{{ url_for('loggedu_poems') }}"><h2>kirjautuneen käyttäjän runot: </h2></a></li>
+
+      {% if loggedUsers_poems is defined %}
+       <p class="lead">
+         Montako runoa tietty käyttäjä on lisännyt:
+       </p>
+       
+       <ul>
+         {% for runo in loggedUsers_poems %}
+         <li>
+           {{runo.id}} {{runo.name}}
+         </li>
+         {% endfor %}
+       </ul>
+    {% endif %} 
+
+  
+    <a href="{{ url_for('find_runo') }}"><h2>hae runoa nimellä: </h2></a></li>
+
+    {% if loggedUsers_poems is defined %}
+     <p class="lead">
+       Hakemasi runo:
+     </p>
+     
+     <ul>
+       {% for runo in loggedUsers_poems %}
+       <li>
+         {{runo.id}} {{runo.name}}
+       </li>
+       {% endfor %}
+     </ul>
+  {% endif %} 
+
+
+
+    <a href="{{ url_for('users_withPoems') }}"><h2>Runon lisänneet käyttäjät: </h2></a></li>
+
+   {% if how_many is defined %}
+    <p class="lead">
+      Ketkä käyttäjät on lisänneet runoja:
+    </p>
+    
+    <ul>
+      {% for user in how_many %}
+      <li>
+        {{user.id}} {{user.name}}
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    
+
+     
+{% endblock %}  
+

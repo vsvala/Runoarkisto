@@ -3,9 +3,9 @@
 {% block body %}
 
   <table>
-    <tr>
-      <th><h1>Runo:</h1></th>
-    </tr>
+       <!--<tr>
+    <th><h1>Runo:</h1></th> 
+    </tr> -->
     <tr>
       <td><h3>{{ t.name }}</h3></td>
     </tr>
@@ -22,9 +22,17 @@
      <td></td> 
 
      <tr>
+        <td>-{{ t.category }}</td>
+       </tr> 
+
+     <tr>
       <td> <a href= "{{ url_for('runot_uppdateForm', runo_id=t.id)}}"><button>muokkaa runoa</button></a> </td> 
   
     </tr>
+    <tr>
+        <td> <a href= "{{ url_for('category_create') }}"><button>lisää runolle kategoria</button></a> </td> 
+    
+      </tr>
     <tr>
         <td>
             <form method="POST" action="{{ url_for('runot_delete', runo_id=t.id)}}">
@@ -33,15 +41,5 @@
         </td>
     </tr>
 
-
-
-
-    <!-- {{t.id}}
-    <tr>
-      <td><li><a href="{{ url_for('runot_showOne', runo_id=t.id) }}">{{ t.name }}</a></li> </td>
-      <td>
-       <a href= "{{ url_for('runot_uppdateForm', runo_id=t.id)}}"><button>muokkaa</button></a>
-       </td>
-    </tr> -->
   </table>
 {% endblock %}  

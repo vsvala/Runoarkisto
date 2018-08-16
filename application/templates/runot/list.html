@@ -3,13 +3,16 @@
 {% block body %}
 
       <h2>Kaikki runot: </h2>
+      <br>
 
     {% for runo in runot %}
     <ul>
-    <li><a href="{{ url_for('runot_showOne', runo_id=runo.id) }}"><h3>{{ runo.name }}</h3></a></li>
+    <li><a href="{{ url_for('runot_showOne', runo_id=runo.id) }}"><h4>{{ runo.name }}</h4></a></li>
     
-  </ul>
+    </ul>
     {% endfor %}
+
+
+    
 {% endblock %}  
 
-<!-- <td><a href="{{ url_for('runot_showOne', runo_id=runo.id) }}"><h3>{{ runo.name }}<button> näytä koko runo </button></h3></a></td> -->

@@ -2,7 +2,7 @@
   
 {% block body %}
 <h1>Lisää runo</h1>
-<form method="POST" action="{{ url_for('runot_create') }}">
+<form method="POST" action="{{ url_for('runot_create', c_id=c_id) }}">
    
     <table>
         <tr>
@@ -56,11 +56,12 @@
                 </ul>
             </td>
 
+       
     <tr>
     <td colspan="2">
       <input type="submit" value="Lisää uusi runo"/>
     </td>
-   </tr>
+   </tr> 
   </form>
 
-{% endblock %}
+  {% endblock %}

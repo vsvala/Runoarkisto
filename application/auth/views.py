@@ -8,9 +8,12 @@ from application.auth.forms import LoginForm
 from application.auth.forms import UserForm
 
 
+# Rekisteröitymislomakkeen luonti sekä lähetys
 @app.route("/auth/newuser", methods=["GET", "POST"])
 def users_create():
+
     form = UserForm(request.form)
+
     if request.method == "GET":
         return render_template("auth/newuser.html", form=form)
 
@@ -22,9 +25,9 @@ def users_create():
     t = User(name=form.name.data, username=form.username.data,
              password=form.password.data)
 
-    if User.query.filter_by(username=form.username.data):
-        # return render_template("auth/newuser.html", form = form)
-        return redirect(url_for("users_create", form=UserForm()))
+    # if User.query.filter_by(username=form.username.data): #huom ei toimi jos user on tyhjä...
+   
+    #     return redirect(url_for("users_create", form=UserForm()))
 
     db.session().add(t)
     db.session().commit()
@@ -32,11 +35,12 @@ def users_create():
     return redirect(url_for("auth_login"))
 
 
-@app.route("/auth/newuser", methods=["GET"])
-def user_form():
-    return render_template("/auth/newuser.html", form=UserForm())
+# @app.route("/auth/newuser", methods=["GET"])
+# def user_form():
+#     return render_template("/auth/newuser.html", form=UserForm())
 
 
+# Kirjautumislomakkeen haku, sekä lähetys
 @app.route("/auth/login", methods=["GET", "POST"])
 def auth_login():
     if request.method == "GET":
@@ -49,13 +53,13 @@ def auth_login():
         username=form.username.data, password=form.password.data).first()
     if not user:
         return render_template("auth/loginform.html", form=form,
-                               error="No such username or password")
+                               error="Tuntematon käyttäjänimi tai salasana")
 
     print("Käyttäjä " + user.name + " tunnistettiin")
     login_user(user)
     return redirect(url_for("index"))
 
-
+# Uloskirjaus
 @app.route("/auth/logout")
 def auth_logout():
     logout_user()

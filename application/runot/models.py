@@ -1,20 +1,49 @@
 from application import db
+from application.models import Base
+from application.category import models
+from flask_login import current_user
+from sqlalchemy.sql import text
 
-class Runo(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
-    date_modified = db.Column(db.DateTime, default=db.func.current_timestamp(),
-    onupdate=db.func.current_timestamp())
+# Määritetään mallit tietokantataululle.
 
+categories = db.Table('categories',
+        db.Column('runo_id', db.Integer, 
+        db.ForeignKey('runo.id'), primary_key=True ),
+        db.Column('category_id', 
+        db.Integer, db.ForeignKey('category.id'), primary_key=True)
+    
+)
+
+class Runo(Base):
 
     name = db.Column(db.String(144), nullable=False) 
     sisalto = db.Column(db.String(2000), nullable=False) 
     runoilija = db.Column(db.String(100), nullable=False) 
 
-    account_id = db.Column(db.Integer, db.ForeignKey('account.id'),
-                           nullable=False)
+   # Liitetään käytäjälle runo
+    account_id = db.Column(db.Integer, db.ForeignKey('account.id'),nullable=False)
 
-def __init__(self, name, sisalto, runoilija): 
+
+    # Määritellään many to many riippuvuussuhde  kategorioiden kanssa. 
+    categories = db.relationship('Category', secondary=categories, lazy='subquery',
+        backref=db.backref('runot', lazy=True))   
+
+
+    def __init__(self, name, sisalto, runoilija): 
        self.name = name
        self.sisalto= sisalto
        self.runoilija = runoilija
+       
+    @staticmethod
+    def find_loggedUsers_poems():
+
+        stmt = text("SELECT runo.name, runo.id FROM Runo"
+                    " WHERE account_id=:cid").params(cid=current_user.id)
+
+        res = db.engine.execute(stmt)
+  
+        response = []
+        for row in res:
+            response.append({"id":row[0], "name":row[1]})
+
+        return response
