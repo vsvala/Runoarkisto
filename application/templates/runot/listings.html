@@ -3,12 +3,9 @@
 {% block body %}
 
   
-      <a href="{{ url_for('loggedu_poems') }}"><h2>kirjautuneen käyttäjän runot: </h2></a></li>
+      <a href="{{ url_for('loggedu_poems') }}"><h4>kirjautuneen käyttäjän runot: </h4></a></li>
 
       {% if loggedUsers_poems is defined %}
-       <p class="lead">
-         Montako runoa tietty käyttäjä on lisännyt:
-       </p>
        
        <ul>
          {% for runo in loggedUsers_poems %}
@@ -20,8 +17,9 @@
     {% endif %} 
 
   
-    <a href="{{ url_for('find_runo') }}"><h2>hae runoa nimellä: </h2></a></li>
-
+  <!-- <a href="{{ url_for('category_create') }}"><h2>montako käyttäjää: </h2></a></li>
+ 
+  
     {% if loggedUsers_poems is defined %}
      <p class="lead">
        Hakemasi runo:
@@ -34,16 +32,16 @@
        </li>
        {% endfor %}
      </ul>
-  {% endif %} 
+  {% endif %}  -->
 
 
 
-    <a href="{{ url_for('users_withPoems') }}"><h2>Runon lisänneet käyttäjät: </h2></a></li>
+    <a href="{{ url_for('users_withPoems') }}"><h4>Runon lisänneet käyttäjät: </h4></a></li>
 
    {% if how_many is defined %}
-    <p class="lead">
+    <!-- <p class="lead">
       Ketkä käyttäjät on lisänneet runoja:
-    </p>
+    </p> -->
     
     <ul>
       {% for user in how_many %}
@@ -53,8 +51,5 @@
       {% endfor %}
     </ul>
     {% endif %}
-    
 
-     
-{% endblock %}  
-
+{% endblock %} 

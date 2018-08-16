@@ -36,10 +36,25 @@ class User(Base):
                     " LEFT JOIN Runo ON Runo.account_id = Account.id"
                     " GROUP BY Account.id"
                     " HAVING COUNT(Runo.id) > 0")
+
         res = db.engine.execute(stmt)
   
         response = []
         for row in res:
             response.append({"id":row[0], "name":row[1]})
+
+        return response
+
+    @staticmethod
+    def how_many_users():
+        stmt = text("SELECT Account.id, COUNT(*) AS howmany FROM Account"
+                    " LEFT JOIN Runo ON Runo.account_id = Account.id"
+                    " GROUP BY Account.id")               
+
+        res = db.engine.execute(stmt)
+  
+        response = []
+        for row in res:
+            response.append({"howmany":row[0]})
 
         return response

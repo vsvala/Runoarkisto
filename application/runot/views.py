@@ -96,17 +96,39 @@ def runot_delete(runo_id):
 
     return redirect(url_for("runot_index"))
 
+#hakee käyttäjät jotka ovat lisänneet runoja
 @app.route("/runot/listings/a")
 @login_required
 def users_withPoems():
      return render_template("runot/listings.html", how_many=User.find_users_with_poem())
- 
+
+#hakee kirjautuneen käyttäjä runot
 @app.route("/runot/listings/b")
 @login_required
 def loggedu_poems():
     return render_template("runot/listings.html", loggedUsers_poems =Runo.find_loggedUsers_poems())
 
-@app.route("/runot/listings/c")
-@login_required
-def find_runo():
-    return render_template("runot/listings.html", count_users=User.find_count_users())
+#työnalla
+#lasketaan montako runoa tietokannasta löytyy
+# @app.route("/runot/listings/c")
+# @login_required
+# def count_runo():
+#     return render_template("runot/listings.html", find_poem=User.search_poem())
+
+# #haetaan annettua runoa
+# @app.route("/runot/listings/<runo_id>", methods=["GET", "POST"])
+# @login_required
+# def find_runo(runo_id):
+
+#     t = Runo.query.get(runo_id)
+    
+#     form = FindForm(request.form) # Täytetään lomake tietokannasta löytyvillä runon tiedoilla
+
+#     return render_template("runot/muokkaa.html", t=t, form=form)
+    
+#     runo = Runo.query.filter_by(name='otsikko').first()
+#     print("KÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄK",runo)
+  
+
+#     return render_template("runot/listings.html", runo=runo)
+

@@ -6,7 +6,7 @@ from sqlalchemy.sql import text
 
 # Määritetään mallit tietokantataululle.
 
-categories = db.Table('categories',
+categories_c = db.Table('categories',
         db.Column('runo_id', db.Integer, 
         db.ForeignKey('runo.id'), primary_key=True ),
         db.Column('category_id', 
@@ -25,7 +25,7 @@ class Runo(Base):
 
 
     # Määritellään many to many riippuvuussuhde  kategorioiden kanssa. 
-    categories = db.relationship('Category', secondary=categories, lazy='subquery',
+    categories = db.relationship('Category', secondary=categories_c, lazy='subquery',
         backref=db.backref('runot', lazy=True))   
 
 
@@ -47,3 +47,17 @@ class Runo(Base):
             response.append({"id":row[0], "name":row[1]})
 
         return response
+
+    # @staticmethod
+    # def search_poem():
+
+    #     stmt = text("SELECT runo.name, runo.id FROM Runo"
+    #                 " WHERE account_id=:cid").params(cid=current_user.id)
+
+    #     res = db.engine.execute(stmt)
+  
+    #     response = []
+    #     for row in res:
+    #         response.append({"id":row[0], "name":row[1]})
+
+    #     return response
