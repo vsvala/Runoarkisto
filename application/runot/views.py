@@ -108,6 +108,15 @@ def users_withPoems():
 def loggedu_poems():
     return render_template("runot/listings.html", loggedUsers_poems =Runo.find_loggedUsers_poems())
 
+@app.route("/runot/listings/c")
+@login_required
+def find_runot_by_category():
+    return render_template("runot/listings.html", runot_by_category =Runo.find_runot_by_category())
+
+
+
+
+
 #työnalla
 #lasketaan montako runoa tietokannasta löytyy
 # @app.route("/runot/listings/c")

@@ -52,4 +52,22 @@
     </ul>
     {% endif %}
 
+
+
+    <a href="{{ url_for('find_runot_by_category') }}"><h4>Runot jotka kuuluvat tiettyyn kategoriaan: </h4></a></li>
+
+   {% if runot_by_category is defined %}
+    <!-- <p class="lead">
+      Ketkä käyttäjät on lisänneet runoja:
+    </p> -->
+    
+    <ul>
+      {% for runo in runot_by_category %}
+      <li>
+        {{runo.id}} {{runo.name}}
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
 {% endblock %} 

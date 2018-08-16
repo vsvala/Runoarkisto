@@ -48,6 +48,21 @@ class Runo(Base):
 
         return response
 
+
+    @staticmethod
+    def find_runot_by_category():
+        #vaihda joulu tilalle myöhemmin käyttäjältä kysytty kategoria...
+        stmt = text("SELECT DISTINCT runo.id, runo.name FROM category, categories, Runo" 
+                    " WHERE (Runo.id=categories.runo_id AND categories.category_id=category.id AND category.aihe='joulu')")
+
+        res = db.engine.execute(stmt)
+  
+        response = []
+        for row in res:
+            response.append({"id":row[0], "name":row[1]})
+
+        return response
+
     # @staticmethod
     # def search_poem():
 

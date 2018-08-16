@@ -5,6 +5,8 @@ from flask_login import login_required, current_user
 from application.category.models import Category
 from application.category.forms import  CategoryForm
 
+from application.runot.models import Runo
+
 #yksitttäisen kategorian haku ja näyttö
 @app.route("/category/one/<category_id>/", methods=["GET"])
 def category_showOne(category_id):
@@ -51,6 +53,47 @@ def category_create():
     print("kääääääääääääääääääääääääääääääääk",c_id)
     
     return redirect(url_for("runot_create", c_id=c_id ))
+
+
+
+#lisäkategorioiden lisääminen
+@app.route("/category/other/<runo_id>/", methods=["GET","POST"])
+#@login_required
+def category_other(runo_id):
+
+    runo = Runo.query.get(runo_id)
+
+    form = CategoryForm(request.form)
+
+    if form.validate_on_submit():
+         print(form.aihe.data)
+                          # else:
+                          #     print(form.errors)
+                         # return render_template("category/addCategory.html", form=form)
+
+    if request.method == "GET":
+        return render_template("category/other.html", form=form, runo=runo)
+
+    form = CategoryForm(request.form)
+    category = Category(aihe=form.aihe.data)
+
+    db.session().add(category)
+    db.session().commit()
+    
+    runo=Runo.query.get(runo_id)
+    runo.categories.append(category)
+    db.session().commit()
+
+    #jos kategoriaan j liittyy runo...liitetään uuteen(tee metodi) ja näytetäään runot
+
+    categ = Category.query.filter_by(aihe=form.aihe.data).first()
+    if not categ :
+        return render_template("category/other.html", form=form, r_id=r.id,
+                               error="Ei kategoriaa määriteltynä")
+    c_id=categ.id
+    print("kääääääääääääääääääääääääääääääääk",c_id)
+    
+    return redirect(url_for("category_index", c_id=c_id ))
 
 
 #kategorian muokkaus lomakkeen haku
@@ -138,7 +181,8 @@ def category_delete(category_id):
 #                              #while len(list)> 0:
 #                                      #c.aihe = list.pop(0)     
 #         c.aihe = item
-#                                 #viite?? c.category.id=runo.id
+#                                   #viite?? c.category.id=runo.id
+                                    #item.id=runo.id
 
 #         db.session().add(c)
 #         db.session().commit()
