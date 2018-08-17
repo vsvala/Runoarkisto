@@ -22,10 +22,6 @@
      <td></td> 
 
      <tr>
-        <td>-{{ t.category }}</td>
-       </tr> 
-
-     <tr>
       <td> <a href= "{{ url_for('runot_uppdateForm', runo_id=t.id)}}"><button>muokkaa runoa</button></a> </td> 
   
     </tr>
@@ -42,4 +38,23 @@
     </tr>
 
   </table>
+
+ <a href= "{{ url_for('find_categories', runo_id=t.id) }}"><p>runon kategoriat</p></a>
+   
+
+ {% if category_by is defined %}
+ <!-- <p class="lead">
+  runon kategoriat:
+   </p> 
+    -->
+ <ul>
+    {% for category in category_by %}
+    <li>
+      {{category.id}} {{category.aihe}}
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+
 {% endblock %}  

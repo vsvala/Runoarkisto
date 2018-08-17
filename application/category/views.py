@@ -9,6 +9,7 @@ from application.runot.models import Runo
 
 #yksitttäisen kategorian haku ja näyttö
 @app.route("/category/one/<category_id>/", methods=["GET"])
+#@login_required
 def category_showOne(category_id):
     cate = Category.query.get(category_id)
     print(cate)
@@ -16,6 +17,7 @@ def category_showOne(category_id):
 
 #kategorioiden listaus
 @app.route("/category/", methods=["GET"])
+#@login_required
 def category_index():
     return render_template("category/list.html", category=Category.query.all())
 
@@ -96,6 +98,7 @@ def category_other(runo_id):
     return redirect(url_for("category_index", c_id=c_id ))
 
 
+#updatessa vielä säädettävää/tarviiko ko. toimintoa
 #kategorian muokkaus lomakkeen haku
 @app.route("/category/<category_id>/", methods=["GET"])
 @login_required
@@ -122,7 +125,7 @@ def category_uppdate(category_id):
                          # return render_template("category/addCategory.html", form=form)
 
     if request.method == "GET":
-        return render_template("category/addCategory.html", form=form)
+        return render_template("category/other.html", form=form)
 
     form = CategoryForm(request.form)
     cate.aihe = form.aihe.data
@@ -133,11 +136,11 @@ def category_uppdate(category_id):
     categ = Category.query.filter_by(
     aihe=form.aihe.data).first()
     if not categ :
-        return render_template("category/addCategory.html", form=form,
+        return render_template("category/oher.html", form=form,
                                error="Ei kategoriaa määriteltynä")
     c_id=categ.id
     print("kääääääääääääääääääääääääääääääääk",c_id)
-    return redirect(url_for("category_create", c_id=c_id ))
+    return redirect(url_for("category_index", c_id=c_id ))
 
 
 
@@ -153,8 +156,8 @@ def category_delete(category_id):
 
     return redirect(url_for("category_index"))
 
-
-# #uuden kategorian luominen
+#TYön alla...
+# #uuden kategorian luominen  multiple checkbox
 # @app.route("/category/new", methods=["GET","POST"])
 # #@login_required
 # def category_create():
@@ -177,7 +180,10 @@ def category_delete(category_id):
 #     list = form.aihe.data
 #     print(list)
 
-#     for item in list:
+#     for aihe in list:
+
+
+
 #                              #while len(list)> 0:
 #                                      #c.aihe = list.pop(0)     
 #         c.aihe = item
@@ -191,3 +197,17 @@ def category_delete(category_id):
 #         print('tööt',d)
 
 #     return redirect(url_for("category_index"))
+
+
+
+# form = CategoryForm(request.form)
+    
+#     list = form.aihe.data
+#     for aihe in list:
+#     category = Category(aihe)
+
+#     db.session().add(category)
+#     db.session().commit()
+    
+#     runo=Runo.query.get(runo_id)
+#     runo.categories.append(category)

@@ -8,6 +8,8 @@ from application.auth.forms import LoginForm
 from application.auth.forms import UserForm
 
 
+#käyttäjään lisäämättä vielä täys CRUD
+
 # Rekisteröitymislomakkeen luonti sekä lähetys
 @app.route("/auth/newuser", methods=["GET", "POST"])
 def users_create():

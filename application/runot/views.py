@@ -14,7 +14,7 @@ from application.category.models import Category
 def runot_showOne(runo_id):
     t = Runo.query.get(runo_id)
     print(t)
-    return render_template("runot/one.html",  t=t)
+    return render_template("runot/one.html", t=t)
 
 #runojen listaus
 @app.route("/runot/", methods=["GET"])
@@ -112,6 +112,13 @@ def loggedu_poems():
 @login_required
 def find_runot_by_category():
     return render_template("runot/listings.html", runot_by_category =Runo.find_runot_by_category())
+
+@app.route("/runot/one/<runo_id>/2",methods=["GET"])
+@login_required
+def find_categories(runo_id):
+    t = Runo.query.get(runo_id)
+    return render_template("runot/one.html", category_by =Category.find_categories_by(), t=t)
+
 
 
 

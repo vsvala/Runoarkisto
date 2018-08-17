@@ -14,7 +14,8 @@
     <form method="POST" action="{{ url_for('category_delete', category_id=cate.id)}}">
       <input type="submit" value="poista kategoria" />
             </form>
-    <a href= "{{ url_for('category_uppdate', category_id=cate.id)}}"><button>muokkaa kategoriaa</button></a>
+    <!--Mieti vielä Tarviiko tätä???
+       <a href= "{{ url_for('category_uppdate', category_id=cate.id)}}"><button>muokkaa kategoriaa</button></a> -->
   
     {% endfor %}
 {% endblock %}  
