@@ -6,9 +6,10 @@ from sqlalchemy.sql import text
 class User(Base):
     __tablename__ = "account"
 
-    name = db.Column(db.String(144), nullable=False)
-    username = db.Column(db.String(144), nullable=False, unique=True)
-    password = db.Column(db.String(144), nullable=False)
+    name = db.Column(db.String(100), nullable=False)
+    username = db.Column(db.String(20), nullable=False, unique=True)
+    password = db.Column(db.String(20), nullable=False)
+    role = db.Column(db.String(10), nullable=False)
 
     runo = db.relationship("Runo", backref='account', lazy=True)
   
@@ -17,6 +18,7 @@ class User(Base):
         self.name = name
         self.username = username
         self.password = password
+        self.role="USER"
   
     def get_id(self):
         return self.id

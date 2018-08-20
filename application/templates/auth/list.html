@@ -1,0 +1,39 @@
+{% extends "layout.html" %} {% block body %}
+
+<h2>Käyttäjien hallinta: </h2>
+<br>
+
+<table>
+    <tr>
+        <th>nimi</th>
+        <th>käyttäjänimi</th>
+        <th>salasana</th>
+        <th>rooli</th>
+    </tr>
+
+    {% for user in users %}
+    <tr>
+        <td>{{ user.name }}</td>
+        <td>{{ user.username }}</td>
+        <td> {{ user.password }}</td>
+        <td>{{ user.role }}</td>
+
+        <td>
+            <form method="POST" action="{{ url_for('auth_delete', auth_id=user.id)}}">
+                <input type="submit" value="poista" />
+            </form>
+        </td>
+
+        <td>
+            <form method="POST" action="{{ url_for('auth_uppdateForm', auth_id=user.id)}}">
+                <input type="submit" value="muokkaa" />
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
+
+
+<!-- lisää yksittäisen käyttäjän näyttö muookaus formiin...?
+    <li><a href="{{ url_for('auth_showOne', auth_id=user.id) }}"><p>nimi:  {{ user.name }} |  käytäjänimi: {{ user.username }}  |  salasana: {{ user.password }}</p></a></li> -->

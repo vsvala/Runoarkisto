@@ -1,0 +1,53 @@
+{% extends "layout.html" %} {% block body %}
+
+<h3>Etsi runoa arkistosta:</h3>
+<br>
+<br>
+<form method="POST" action="{{ url_for('find_runo')}}">
+    <table>
+        <tr>
+            <td>
+                {{ form.name.label }}
+            </td>
+            <td>
+                {{ form.name }}
+            </td>
+        </tr>
+        <td>
+                {{ form.category.label }}
+            </td>
+            <td>
+                {{ form.category }}
+            </td>
+        </tr>
+        <td>
+            <ul>
+                {% for error in form.name.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </td>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Etsi" />
+            </td>
+        </tr>
+</form>
+
+{% if runo is defined %}
+
+<h4>{{runo.name}}</h4>
+<p>
+    <i>{{ runo.sisalto }}</i>
+</p>
+<p>
+    {{runo.runoilija}}
+</p>
+</br>
+</br>
+
+{% endif %} 
+
+<p>{{ name_error }}</p>
+
+{% endblock %}

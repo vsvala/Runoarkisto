@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import PasswordField, StringField, validators, ValidationError
   
-from application.auth.models import User #pitäiskö olla Account
+from application.auth.models import User 
 
 # Lomake siäänkirjautumiseen
 class LoginForm(FlaskForm):

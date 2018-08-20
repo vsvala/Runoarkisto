@@ -37,8 +37,6 @@
              </ul>
             </td>
 
-
-
     <tr>
        <td>
          {{ form.runoilija.label }}
@@ -47,21 +45,25 @@
                {{ form.runoilija }}  
              </td>
     </tr>
-
             <td>
                 <ul>
                   {% for error in form.runoilija.errors %}
                   <li>{{ error }}</li>
                   {% endfor %}
+                  {% if name_error %}
+                    <li>{{ name_error }}</li>
+                  {% endif %}
                 </ul>
             </td>
-
-       
-    <tr>
     <td colspan="2">
       <input type="submit" value="Lisää uusi runo"/>
     </td>
    </tr> 
   </form>
+</table>
+</br>
+  <h4> <a href="{{ url_for('load_index') }} ">voit myös ladata runon tekstitiedostosta</a>
+  </h4> 
+
 
   {% endblock %}

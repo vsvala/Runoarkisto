@@ -16,7 +16,7 @@ categories_c = db.Table('categories',
 
 class Runo(Base):
 
-    name = db.Column(db.String(144), nullable=False) 
+    name = db.Column(db.String(144), nullable=False, unique=True) 
     sisalto = db.Column(db.String(2000), nullable=False) 
     runoilija = db.Column(db.String(100), nullable=False) 
 
@@ -37,14 +37,14 @@ class Runo(Base):
     @staticmethod
     def find_loggedUsers_poems():
 
-        stmt = text("SELECT runo.name, runo.id FROM Runo"
+        stmt = text("SELECT runo.name, runo.id, runo.sisalto, runo.name FROM Runo"
                     " WHERE account_id=:cid").params(cid=current_user.id)
 
         res = db.engine.execute(stmt)
   
         response = []
         for row in res:
-            response.append({"id":row[0], "name":row[1]})
+            response.append({"id":row[0], "name":row[1], "sisalto":row[2], "runoilija":row[3]})
 
         return response
 

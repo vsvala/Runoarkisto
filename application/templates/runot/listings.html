@@ -3,16 +3,23 @@
 {% block body %}
 
   
-      <a href="{{ url_for('loggedu_poems') }}"><h4>kirjautuneen käyttäjän runot: </h4></a></li>
+      <a href="{{ url_for('loggedu_poems') }}"><h4>kirjautuneen käyttäjän lisäämät runot: </h4></a></li>
 
       {% if loggedUsers_poems is defined %}
        
        <ul>
-         {% for runo in loggedUsers_poems %}
-         <li>
-           {{runo.id}} {{runo.name}}
-         </li>
-         {% endfor %}
+        {% for runo in loggedUsers_poems %}
+            <li>
+             <h5>{{runo.id}} {{runo.name}}</h5>
+            <p>
+                {{runo.sisalto}}
+            </p>
+            <p>
+                {{runo.runoilija}}
+            </p>
+            </li>
+
+        {% endfor %}
        </ul>
     {% endif %} 
 
@@ -71,7 +78,7 @@
 
 
 <!-- Tähän pitää lisätä hakumeodi, nyt on väärä -->
-    <a href="{{ url_for('users_withPoems') }}"><h4>Kaikki käyttäjät: </h4></a></li>
+    <!-- <a href="{{ url_for('users_withPoems') }}"><h4>Kaikki käyttäjät: </h4></a></li>
 
     {% if how_many is defined %}
  
@@ -84,4 +91,4 @@
      </ul>
      {% endif %}
 
-{% endblock %} 
+{% endblock %}  -->

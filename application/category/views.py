@@ -156,7 +156,7 @@ def category_delete(category_id):
 
     return redirect(url_for("category_index"))
 
-#TYön alla...
+#TYön
 # #uuden kategorian luominen  multiple checkbox
 # @app.route("/category/new", methods=["GET","POST"])
 # #@login_required
@@ -211,3 +211,4 @@ def category_delete(category_id):
     
 #     runo=Runo.query.get(runo_id)
 #     runo.categories.append(category)
+#     db.session().commit()

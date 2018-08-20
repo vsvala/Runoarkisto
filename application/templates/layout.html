@@ -20,30 +20,42 @@
 
             <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav mr-auto">
-
      <!-- Navigointilinkit-->
                       <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('runot_index') }} ">runot</a>
                       </li>
                       <li class="nav-item">
+                          <a class="nav-link" href="{{ url_for('find_index') }} ">etsi</a>
+                        </li>
+                        {% if current_user.is_authenticated %}
+                      <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('category_create') }} ">lisää runo</a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link" href="{{ url_for('loggedu_poems') }} ">listaa</a>
+                          <a class="nav-link" href="{{ url_for('loggedu_poems') }} ">lisäämäsi runot</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('category_index') }} ">kategoriat</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('save_index') }} ">tallenna</a>
+                      </li>
+                      {% endif %}
+                      {% if current_user.role=="ADMIN" %}
+                      <li class="nav-item">
+                          <a class="nav-link" style="color:rgb(216, 89, 89)" href="{{ url_for('auth_index') }} ">käyttäjät</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('category_index') }} ">kategoriat</a>
-                          </li>
+                        {% endif %}
                     </ul>
                     <div class="form-inline mt-2 mt-md-0">
     <!-- Kirjautumisenhallinta -->                 
                     {% if current_user.is_authenticated %}
                      <p style="color:rgb(119, 118, 118)">
-                      Kirjautunut nimellä {{ current_user.name }}. <a href="{{ url_for('auth_logout') }}">Kirjaudu ulos</a>
+                      Kirjautunut nimellä {{ current_user.name }}, rooli: {{ current_user.role }}  <a href="{{ url_for('auth_logout') }}">Kirjaudu ulos</a>
                     </p>
                      {% else %}
                     <a class="nav-link"  href="{{ url_for('users_create') }}">Rekisteröidy</a>
-                    <a  class="nav-link" href="{{ url_for('auth_login') }}">Kirjaudu </a>
+                    <a class="nav-link" href="{{ url_for('auth_login') }}">Kirjaudu </a>
                     {% endif %}
                  
               </div>
