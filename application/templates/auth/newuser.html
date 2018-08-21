@@ -1,61 +1,100 @@
-{% extends "layout.html" %}
+{% extends "layout.html" %} {% block body %}
+<h3>Rekisteröidy käyttäjäksi</h3>
+
+</br>
+<form action="{{ url_for('users_create') }}" method="POST" role="form">
+  {{ form.UserForm }}
+  <div class="form-group row">
+    <label for="name" class="col-sm-2 col-form-label">nimi:</label>
+    <div class="col-5">
+      <input type="text" class="form-control" id="name" name="name" placeholder="nimi">
+    </div>
+  </div>
+  <ul>
+    {% for error in form.name.errors %}
+    <li>{{ error }}</li>
+    {% endfor %}
+  </ul>
+  <div class="form-group row">
+    <label for="username" class="col-sm-2 col-form-label">käyttäjänimi:</label>
+    <div class="col-5">
+      <input type="text" class="form-control" id="username" name="username" placeholder="käyttäjänimi">
+    </div>
+  </div>
+  <ul>
+    {% for error in form.username.errors %}
+    <li>{{ error }}</li>
+    {% endfor %}
+  </ul>
+  <div class="form-group row">
+    <label for="password" class="col-sm-2 col-form-label">salasana:</label>
+    <div class="col-5">
+      <input type="password" class="form-control" id="password" name="password" placeholder="salasana">
+    </div>
+  </div>
+  <ul>
+    {% for error in form.password.errors %}
+    <li>{{ error }}</li>
+    {% endfor %}
+  </ul>
+  </div>
+  <button type="submit" class="btn btn-primary">Rekisteröidy</button>
+</form>
+
+
+
+<!-- <form method="POST" action="{{ url_for('users_create') }}" role="form">
+    {{ form.RunoForm }}
+  <div class="form-group row">
+    <label for="name" class="col-sm-1 col-form-label">nimi</label>
+    <div class="col-5">
+      <input type="text" class="form-control" placeholder= "nimi">
+    </div>
   
-{% block body %}
-<h1>Rekisteröidy käyttäjäksi</h1>
-<form method="POST" action="{{ url_for('users_create') }}">
-   
-  <table>
-        <tr>
-    <td>
-      {{ form.name.label }}
-    </td>
-    <td>
-      {{ form.name }} 
-    </td>
-  </tr>
-  <td>
-      <ul>
-        {% for error in form.name.errors %}
-        <li>{{ error }}</li>
-        {% endfor %}
-      </ul>
-    </td>
-    <tr>
-    <td>
-        {{ form.username.label }}
-      </td>
-      <td>
-          {{ form.username }}  
+  </div>
+  <ul>
+      {% for error in form.name.errors %}
+      <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+
+  <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-1 col-form-label"> {{ form.username.label }}</label>
+      <div class="col-sm-5">
+        <input type="password" class="form-control" id="inputPassword3" placeholder="salasana">
+      </div>
+    </div>
+
+          {{ form.name }}
+        {{ form.username }}
+    
+          <ul>
+            {% for error in form.username.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
         </td>
         <tr>
-            <td>
-                <ul>
-                  {% for error in form.username.errors %}
-                  <li>{{ error }}</li>
-                  {% endfor %}
-                </ul>
-              </td>
-            <tr>
-                <td>
-                    {{ form.password.label }}
-                  </td>
-                  <td>
-                      {{ form.password }}  
-                    </td>
-            </tr>
-            <td>
-                <ul>
-                  {% for error in form.password.errors %}
-                  <li>{{ error }}</li>
-                  {% endfor %}
-                </ul>
-              </td>
-
-    <tr>
-    <td colspan="2">
-      <input type="submit" value="lisää"/>
-    </td>
+          <td>
+            {{ form.password.label }}
+          </td>
+          <td>
+            {{ form.password }}
+          </td>
         </tr>
-    </form>
+        <td>
+          <ul>
+            {% for error in form.password.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        </td>
+
+        <tr>
+          <td colspan="2">
+            <button type="submit" class="btn btn-primary">rekisteröidy</button>
+          </td>
+        </tr>
+</form> -->
 
 {% endblock %}
