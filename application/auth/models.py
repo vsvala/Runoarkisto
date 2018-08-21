@@ -14,11 +14,11 @@ class User(Base):
     runo = db.relationship("Runo", backref='account', lazy=True)
   
 
-    def __init__(self, name, username, password):
+    def __init__(self, name, username, password, role):
         self.name = name
         self.username = username
         self.password = password
-        self.role="USER"
+        self.role=role   
   
     def get_id(self):
         return self.id
@@ -60,3 +60,6 @@ class User(Base):
             response.append({"howmany":row[0]})
 
         return response
+
+#voisko tässä/initissä luoda tyhjän databasin käynnistäessä automaattisesti ADMiN userin, jos ei ole olemassa
+

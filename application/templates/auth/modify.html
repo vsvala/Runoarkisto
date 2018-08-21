@@ -1,0 +1,74 @@
+{% extends "layout.html" %} {% block body %}
+<h2>Muokkaa käyttäjää</h2>
+<form method="POST" action="{{ url_for('auth_uppdate', auth_id=user.id) }}">
+
+    <table>
+        <tr>
+            <td>
+                {{ form.name.label }}
+            </td>
+            <td>
+                {{ form.name }}
+            </td>
+        </tr>
+        <td>
+            <ul>
+                {% for error in form.name.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </td>
+        <tr>
+            <td>
+                {{ form.username.label }}
+            </td>
+            <td>
+                {{ form.username }}
+            </td>
+            <tr>
+                <td>
+                    <ul>
+                        {% for error in form.username.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                <tr>
+                    <td>
+                        {{ form.password.label }}
+                    </td>
+                    <td>
+                        {{ form.password }}
+                    </td>
+                </tr>
+                <td>
+                    <ul>
+                        {% for error in form.password.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                <tr>
+                    <td>
+                        {{ form.role.label }}
+                    </td>
+                    <td>
+                        {{ form.role }}
+                    </td>
+                </tr>
+                <td>
+                    <ul>
+                        {% for error in form.role.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="muokkaa" />
+                    </td>
+                </tr>
+</form>
+
+{% endblock %}

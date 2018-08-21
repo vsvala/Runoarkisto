@@ -1,60 +1,65 @@
-{% extends "layout.html" %}
+{% extends "layout.html" %} {% block body %}
 
-{% block body %}
-
-  <table>
-       <!--<tr>
+<table>
+  <!--<tr>
     <th><h1>Runo:</h1></th> 
     </tr> -->
-    <tr>
-      <td><h3>{{ t.name }}</h3></td>
-    </tr>
+  <tr>
+    <td>
+      <h3>{{ t.name }}</h3>
+    </td>
+  </tr>
 
-    <tr>
+  <tr>
+    <td>
+      <i>{{ t.sisalto }}</i>
+    </td>
+  </tr>
 
-      <td> <i>{{ t.sisalto }}</i> </td> 
-    </tr>
-    
-    <td></td> 
-    <tr>
-      <td>-{{ t.runoilija }}</td>
-     </tr>  
-     <td></td> 
+  <tr>
+    <td>-{{ t.runoilija }}</td>
+  </tr>
 
-     <tr>
-      <td> <a href= "{{ url_for('runot_uppdateForm', runo_id=t.id)}}"><button>muokkaa runoa</button></a> </td> 
-  
-    </tr>
-    <tr>
-        <td> <a href= "{{ url_for('category_other', runo_id=t.id) }}"><button>lisää runolle kategoria</button></a> </td> 
-    
-      </tr>
-    <tr>
-        <td>
-            <form method="POST" action="{{ url_for('runot_delete', runo_id=t.id)}}">
-                <input type="submit" value="poista runo" />
-            </form>
-        </td>
-    </tr>
 
-  </table>
+  {% if current_user.role=="ADMIN" %}
+  <tr>
+    <td>
+      <a href="{{ url_for('runot_uppdateForm', runo_id=t.id)}}">
+        <button>muokkaa runoa</button>
+      </a>
+    </td>
 
- <a href= "{{ url_for('find_categories', runo_id=t.id) }}"><p>runon kategoriat</p></a>
-   
+    <td>
+      <a href="{{ url_for('category_other', runo_id=t.id) }}">
+        <button>lisää runolle kategoria</button>
+      </a>
+    </td>
 
- {% if category_by is defined %}
- <!-- <p class="lead">
+    <td>
+      <form method="POST" action="{{ url_for('runot_delete', runo_id=t.id)}}">
+        <input type="submit" value="poista runo" />
+      </form>
+    </td>
+  </tr>
+  {% endif %}
+
+</table>
+
+<a href="{{ url_for('find_categories', runo_id=t.id) }}">
+  <p>runon kategoriat</p>
+</a>
+
+
+{% if category_by is defined %}
+<!-- <p class="lead">
   runon kategoriat:
    </p> 
     -->
- <ul>
-    {% for category in category_by %}
-    <li>
-      {{category.id}} {{category.aihe}}
-    </li>
-    {% endfor %}
-  </ul>
-  {% endif %}
-
-
-{% endblock %}  
+<ul>
+  {% for category in category_by %}
+  <li>
+    {{category.id}} {{category.aihe}}
+  </li>
+  {% endfor %}
+</ul>
+{% endif %} {% endblock %}

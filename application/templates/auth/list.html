@@ -19,21 +19,59 @@
         <td>{{ user.role }}</td>
 
         <td>
-            <form method="POST" action="{{ url_for('auth_delete', auth_id=user.id)}}">
-                <input type="submit" value="poista" />
-            </form>
+            <a href="{{ url_for('auth_uppdateForm', auth_id=user.id)}}">
+                <button>muokkaa</button>
+            </a>
+        </td>
+        <td>
+            <a href="{{ url_for('auth_delete', auth_id=user.id)}}">
+                <button>poista</button>
+                <!--TODO Nyt käyttäjä voidaan poistaa vain jos hänellä on runoja...????
+                tsekataan onko käyttäjällä runoja..jos on.siirretään viite poistettujen käyttäjien runot..user role mutetaan poistetuksi???.... -->
+            </a>
         </td>
 
-        <td>
-            <form method="POST" action="{{ url_for('auth_uppdateForm', auth_id=user.id)}}">
-                <input type="submit" value="muokkaa" />
-            </form>
-        </td>
     </tr>
     {% endfor %}
 </table>
+</br>
+<a href="{{ url_for('users_withPoems') }}">
+    <h4>Katso ketkä käyttäjät ovat lisänneet runoja ja mitä runoja kullakin käyttäjällä on </h4>
+</a>
+<!--TODOO lisää hakulistaan taulukko mitä runoa kullakin on
+käyttäjä id, käyttäjä runojen nimet alalistana -->
+</li>
+
+{% if how_many is defined %}
+
+<ul>
+    {% for user in how_many %}
+    <li>
+        {{user.id}} {{user.name}}
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<!-- <a href="{{ url_for('category_create') }}"><h2>montako käyttäjää: </h2></a></li>
+    {% if loggedUsers_poems is defined %}
+     <p class="lead">
+       Hakemasi runo:
+     </p>
+     
+     <ul>
+       {% for runo in loggedUsers_poems %}
+       <li>
+         {{runo.id}} {{runo.name}}
+       </li>
+       {% endfor %}
+     </ul>
+  {% endif %}  -->
+
+
 {% endblock %}
 
 
 <!-- lisää yksittäisen käyttäjän näyttö muookaus formiin...?
+    tietyn käyttäjän haku????
     <li><a href="{{ url_for('auth_showOne', auth_id=user.id) }}"><p>nimi:  {{ user.name }} |  käytäjänimi: {{ user.username }}  |  salasana: {{ user.password }}</p></a></li> -->

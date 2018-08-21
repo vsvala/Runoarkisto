@@ -1,6 +1,6 @@
 {% extends "layout.html" %} {% block body %}
 
-<h3>Etsi runoa arkistosta:</h3>
+<h3>Etsi runoa arkistosta nimen, kategorian tai molempien perusteella</h3>
 <br>
 <br>
 <form method="POST" action="{{ url_for('find_runo')}}">
@@ -14,11 +14,11 @@
             </td>
         </tr>
         <td>
-                {{ form.category.label }}
-            </td>
-            <td>
-                {{ form.category }}
-            </td>
+            {{ form.category.label }}
+        </td>
+        <td>
+            {{ form.category }}
+        </td>
         </tr>
         <td>
             <ul>
@@ -35,7 +35,7 @@
 </form>
 
 {% if runo is defined %}
-
+<h4>Etsimäsi runo</h4>
 <h4>{{runo.name}}</h4>
 <p>
     <i>{{ runo.sisalto }}</i>
@@ -46,7 +46,24 @@
 </br>
 </br>
 
-{% endif %} 
+{% endif %} {% if runot_by_category is defined %}
+<h4>Runot jotka kuuluvat hakemaasi kategoriaan </h4>
+<p class="lead">
+</p>
+
+<ul>
+    {% for runo in runot_by_category %}
+    <li>
+        <h4>{{runo.id}} {{runo.name}}</h4> <p> <i>{{runo.sisalto}}</i></p><p>{{runo.runoilija}}</p>
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+
+
+<p>{{ category_error }}</p>
 
 <p>{{ name_error }}</p>
 

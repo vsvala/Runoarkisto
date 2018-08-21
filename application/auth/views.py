@@ -1,10 +1,9 @@
-from application import app, db
+from application import app, db, login_required
 from flask import render_template, request, redirect, url_for
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user
 
 from application.auth.models import User
-from application.auth.forms import LoginForm, UserForm
-
+from application.auth.forms import LoginForm, UserForm, UppdateForm
 
 # Rekisteröitymislomakkeen luonti sekä lähetys
 @app.route("/auth/newuser", methods=["GET", "POST"])
@@ -21,11 +20,8 @@ def users_create():
         return render_template("auth/newuser.html", form=form)
 
     t = User(name=form.name.data, username=form.username.data,
-             password=form.password.data, role="USER")
+             password=form.password.data, role="USER")#, role="USER"
 
-    # if User.query.filter_by(username=form.username.data): #huom ei toimi jos user on tyhjä...
-   
-    #     return redirect(url_for("users_create", form=UserForm()))
 
     db.session().add(t)
     db.session().commit()
@@ -76,39 +72,41 @@ def auth_index():
     return render_template("auth/list.html", users=User.query.all())
 
 #käyttäjän muokkaus lomakkeen haku
-@app.route("/auth/<auth_id>/", methods=["GET"])
-@login_required
+@app.route("/auth/modify/<auth_id>/", methods=["GET"])
+@login_required(role="ADMIN")
 def auth_uppdateForm(auth_id):
 
     user = User.query.get(auth_id)
-    form = UserForm(obj=user) # Täytetään lomake tietokannasta löytyvillä runon tiedoilla
-
-    return render_template("auth/newuser.html", user=user, form=form)
+    form = UppdateForm()
+    #form = UppdateForm(obj=user) # Täytetään lomake tietokannasta löytyvillä käyttäjän tiedoilla
+    
+    return render_template("auth/modify.html", user=user, form=form)
 
  #käyttäjän muokkaus
-@app.route("/auth/<auth_id>/", methods=["POST"])
-@login_required
+@app.route("/auth/modify/<auth_id>/", methods=["GET","POST"])
+@login_required(role="ADMIN")
 def auth_uppdate(auth_id):
 
     user = User.query.get(auth_id)
 
-    form = UserForm(request.form)
+    form = UppdateForm(request.form)
 
-    if not form.validate():
-         return render_template("auth/newuser.html", user=user, form=form)
+    # if not form.validate():
+    #      return render_template("auth/modify.html", user=user, form=form)
 
     user.name=form.name.data
-    user.username=form.usernameo.data
+    user.username=form.username.data
     user.password=form.password.data
     user.password=form.password.data
+    user.role=form.role.data
 
     db.session().commit()
 
     return redirect(url_for("auth_index"))
 
-#käyttäjän poisto
+#käyttäjän poisto???yhteyksien poito tai käyttäjälle nimike poistettu käyttäjä...?
 @app.route("/auth/<auth_id>/delete/", methods=["GET", "POST"])
-@login_required
+@login_required(role="ADMIN")
 def auth_delete(auth_id):
 
     user = User.query.get(auth_id)
@@ -116,3 +114,11 @@ def auth_delete(auth_id):
     db.session().commit()
 
     return redirect(url_for("auth_index"))
+
+#hakee käyttäjät jotka ovat lisänneet runoja
+@app.route("/auth/list/")
+@login_required() #(role="ADMIN")
+def users_withPoems():
+     return render_template("auth/list.html", how_many=User.find_users_with_poem(), users=User.query.all())
+
+

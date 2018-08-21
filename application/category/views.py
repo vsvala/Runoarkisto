@@ -22,9 +22,9 @@ def category_index():
     return render_template("category/list.html", category=Category.query.all())
 
 
-#uuden kategorian luominen
+#kategorian luominen
 @app.route("/category/new", methods=["GET","POST"])
-#@login_required
+@login_required
 def category_create():
 
     form = CategoryForm(request.form)
@@ -60,7 +60,7 @@ def category_create():
 
 #lisäkategorioiden lisääminen
 @app.route("/category/other/<runo_id>/", methods=["GET","POST"])
-#@login_required
+@login_required
 def category_other(runo_id):
 
     runo = Runo.query.get(runo_id)
@@ -88,14 +88,14 @@ def category_other(runo_id):
 
     #jos kategoriaan j liittyy runo...liitetään uuteen(tee metodi) ja näytetäään runot
 
-    categ = Category.query.filter_by(aihe=form.aihe.data).first()
-    if not categ :
-        return render_template("category/other.html", form=form, r_id=r.id,
-                               error="Ei kategoriaa määriteltynä")
-    c_id=categ.id
-    print("kääääääääääääääääääääääääääääääääk",c_id)
+    # categ = Category.query.filter_by(aihe=form.aihe.data).first()
+    # if not categ :
+    #     return render_template("category/other.html", form=form, runo_id=runo.id,
+    #                            error="Ei kategoriaa määriteltynä")
+    # c_id=categ.id
+    # print("kääääääääääääääääääääääääääääääääk",c_id)
     
-    return redirect(url_for("category_index", c_id=c_id ))
+    return redirect(url_for("runot_showOne", runo_id=runo.id ))
 
 
 #updatessa vielä säädettävää/tarviiko ko. toimintoa
@@ -141,8 +141,6 @@ def category_uppdate(category_id):
     c_id=categ.id
     print("kääääääääääääääääääääääääääääääääk",c_id)
     return redirect(url_for("category_index", c_id=c_id ))
-
-
 
 
 #kategorian poisto

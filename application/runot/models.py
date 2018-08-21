@@ -10,9 +10,7 @@ categories_c = db.Table('categories',
         db.Column('runo_id', db.Integer, 
         db.ForeignKey('runo.id'), primary_key=True ),
         db.Column('category_id', 
-        db.Integer, db.ForeignKey('category.id'), primary_key=True)
-    
-)
+        db.Integer, db.ForeignKey('category.id'), primary_key=True))
 
 class Runo(Base):
 
@@ -33,11 +31,12 @@ class Runo(Base):
        self.name = name
        self.sisalto= sisalto
        self.runoilija = runoilija
-       
+
+  
     @staticmethod
     def find_loggedUsers_poems():
 
-        stmt = text("SELECT runo.name, runo.id, runo.sisalto, runo.name FROM Runo"
+        stmt = text("SELECT runo.name, runo.id, runo.sisalto, runo.runoilija FROM Runo"
                     " WHERE account_id=:cid").params(cid=current_user.id)
 
         res = db.engine.execute(stmt)
@@ -50,16 +49,16 @@ class Runo(Base):
 
 
     @staticmethod
-    def find_runot_by_category():
-        #vaihda joulu tilalle myöhemmin käyttäjältä kysytty kategoria...
-        stmt = text("SELECT DISTINCT runo.id, runo.name FROM category, categories, Runo" 
-                    " WHERE (Runo.id=categories.runo_id AND categories.category_id=category.id AND category.aihe='joulu')")
+    def find_runot_by_category(category):
+       
+        stmt = text("SELECT DISTINCT runo.id, runo.name, runo.sisalto, runo.runoilija FROM category, categories, Runo" 
+                    " WHERE (Runo.id=categories.runo_id AND categories.category_id=category.id AND category.aihe=:categ)").params(categ=category)
 
         res = db.engine.execute(stmt)
   
         response = []
         for row in res:
-            response.append({"id":row[0], "name":row[1]})
+            response.append({"id":row[0], "name":row[1], "sisalto":row[2], "runoilija":row[3]})
 
         return response
 

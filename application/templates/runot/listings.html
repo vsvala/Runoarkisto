@@ -1,94 +1,44 @@
-{% extends "layout.html" %}
-
-{% block body %}
-
-  
-      <a href="{{ url_for('loggedu_poems') }}"><h4>kirjautuneen käyttäjän lisäämät runot: </h4></a></li>
-
-      {% if loggedUsers_poems is defined %}
-       
-       <ul>
-        {% for runo in loggedUsers_poems %}
-            <li>
-             <h5>{{runo.id}} {{runo.name}}</h5>
-            <p>
-                {{runo.sisalto}}
-            </p>
-            <p>
-                {{runo.runoilija}}
-            </p>
-            </li>
-
-        {% endfor %}
-       </ul>
-    {% endif %} 
-
-  
-  <!-- <a href="{{ url_for('category_create') }}"><h2>montako käyttäjää: </h2></a></li>
- 
-  
-    {% if loggedUsers_poems is defined %}
-     <p class="lead">
-       Hakemasi runo:
-     </p>
-     
-     <ul>
-       {% for runo in loggedUsers_poems %}
-       <li>
-         {{runo.id}} {{runo.name}}
-       </li>
-       {% endfor %}
-     </ul>
-  {% endif %}  -->
+{% extends "layout.html" %} {% block body %}
 
 
-    <a href="{{ url_for('find_runot_by_category') }}"><h4>Runot jotka kuuluvat tiettyyn kategoriaan: </h4></a></li>
+<h4>kirjautuneen käyttäjän lisäämät runot </h4>
+<!-- <a href="{{ url_for('loggedu_poems') }}"><h4>kirjautuneen käyttäjän lisäämät runot </h4></a> -->
+</br>
+{% if loggedUsers_poems is defined %}
 
-   {% if runot_by_category is defined %}
-  <p class="lead">
-  (nyt  hakee joulukategoriaa, lisää toiminta joka kysyy kategorian käyttäjältä:)
-    </p> 
-    
-    <ul>
-      {% for runo in runot_by_category %}
-      <li>
-        {{runo.id}} {{runo.name}}
-      </li>
-      {% endfor %}
-    </ul>
-    {% endif %}
+<ul>
+    {% for runo in loggedUsers_poems %}
+    <li>
+        <h5>{{runo.id}} {{runo.name}}</h5>
+        <p>
+            {{runo.sisalto}}
+        </p>
+        <p>
+            {{runo.runoilija}}
+        </p>
+    </li>
+    <table>
+        <tr>
+            <td>
+                <a href="{{ url_for('runot_uppdateForm', runo_id=runo.id)}}">
+                    <button>muokkaa runoa</button>
+                </a>
+            </td>
 
+            <td>
+                <a href="{{ url_for('category_other', runo_id=runo.id) }}">
+                    <button>lisää runolle kategoria</button>
+                </a>
+            </td>
 
-
-    <a href="{{ url_for('users_withPoems') }}"><h4>Runon lisänneet käyttäjät: </h4></a></li>
-
-   {% if how_many is defined %}
-    <!-- <p class="lead">
-      Ketkä käyttäjät on lisänneet runoja:
-    </p> -->
-    
-    <ul>
-      {% for user in how_many %}
-      <li>
-        {{user.id}} {{user.name}}
-      </li>
-      {% endfor %}
-    </ul>
-    {% endif %}
-
-
-<!-- Tähän pitää lisätä hakumeodi, nyt on väärä -->
-    <!-- <a href="{{ url_for('users_withPoems') }}"><h4>Kaikki käyttäjät: </h4></a></li>
-
-    {% if how_many is defined %}
- 
-     <ul>
-       {% for user in how_many %}
-       <li>
-       Metodi kesken/työn alla.... {{user.id}} {{user.name}}
-       </li>
-       {% endfor %}
-     </ul>
-     {% endif %}
-
-{% endblock %}  -->
+            <td>
+                <form method="POST" action="{{ url_for('runot_delete', runo_id=runo.id)}}">
+                    <input type="submit" value="poista runo" />
+                </form>
+            </td>
+        </tr>
+    </table>
+</br>
+    {% endfor %}
+</ul>
+{% endif %} {% endblock %}
