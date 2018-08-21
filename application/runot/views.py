@@ -72,27 +72,27 @@ def runot_create(c_id):
 @login_required()
 def runot_uppdateForm(runo_id):
 
-    t = Runo.query.get(runo_id)
-    form = RunoForm(obj=t) # Täytetään lomake tietokannasta löytyvillä runon tiedoilla
+    runo = Runo.query.get(runo_id)
+    form = RunoForm(obj=runo) # Täytetään lomake tietokannasta löytyvillä runon tiedoilla
 
-    return render_template("runot/muokkaa.html", t=t, form=form)
+    return render_template("runot/muokkaa.html", runo=runo, form=form)
 
 #runon muokkaus
 @app.route("/runot/<runo_id>/", methods=["POST"])
 @login_required()
 def runot_uppdate(runo_id):
 
-    t = Runo.query.get(runo_id)
+    runo = Runo.query.get(runo_id)
 
     form = RunoForm(request.form)
 
     if not form.validate():
-        return render_template("runot/muokkaa.html", t=t, form=form)
+        return render_template("runot/muokkaa.html", runo_id=runo.id, form=form)
 
-    t.name=form.name.data
-    t.sisalto=form.sisalto.data
-    t.runoilija=form.runoilija.data
-    t.account_id = current_user.id
+    runo.name=form.name.data
+    runo.sisalto=form.sisalto.data
+    runo.runoilija=form.runoilija.data
+    runo.account_id = current_user.id
 
     db.session().commit()
 

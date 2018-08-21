@@ -36,7 +36,7 @@ class Runo(Base):
     @staticmethod
     def find_loggedUsers_poems():
 
-        stmt = text("SELECT runo.name, runo.id, runo.sisalto, runo.runoilija FROM Runo"
+        stmt = text("SELECT runo.id, runo.name, runo.sisalto, runo.runoilija FROM Runo"
                     " WHERE account_id=:cid").params(cid=current_user.id)
 
         res = db.engine.execute(stmt)
