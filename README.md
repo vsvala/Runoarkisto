@@ -36,6 +36,14 @@ Jos aika riittää runoihin on tarkoitus liittää like/tykkäys toiminto, jollo
 - Rekisteröityjen käyttäjien listaaminen ja haku
 
 - Yhteenvetokyselyt tietokannasta:
+    -Käyttäjät jotka ovat lisänneet runoja
+    -Kirjautuneen käyttäjän runojen haku
+    -Valitun runon kaikkien kategorioiden haku
+    -Runon haku otsikon mukaan
+    -Runonojen haku kategorian mukaan
+    
+    todo
+    -Runojen haku valitun käyttäjän mukaan 
     - Kuinka monta runoa ja mitkä runot tietty käyttäjä on lisännyt?
     - Kuinka monta runoa on kussakin kategoriassa?
     * (Kunkin kategorian suosituin runo?)
@@ -51,4 +59,4 @@ Jos aika riittää runoihin on tarkoitus liittää like/tykkäys toiminto, jollo
 - [Alustava tietokantakaavio](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/Runo_db_kaavio.png)
 - [User storyt](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/userstory.md)
 - [Asennusohje](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/asennusohje.md)
-
+- [Käyttöohje](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/käyttöohje.md)
