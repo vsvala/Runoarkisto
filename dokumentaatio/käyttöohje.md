@@ -45,7 +45,7 @@ Voit etsiä runoja runoarkistosta nimen tai kategorian perusteella painamalla "r
 
 Voit kirjata uuden runon järjestelmään painamalla "Lisää runo" linkkiä navigaatiopalkissa. Syötä avautuvaan lomakkeeseen pyydetyt tiedot, korjaa tarvittaessa virheilmoitusten ilmoittamat virheet syötteissä. Lisätty runo näkyy aukeavassa listaus sivussa.
 
-## *Kirjautuneen käyttäjän runojen listaus, muokkaus, poisto ja kategorioiden lisäys *
+## *Kirjautuneen käyttäjän runojen listaus, muokkaus, poisto ja kategorioiden lisäys*
 
 Voit listata lisäämäsi runot näkyville painamalla "lisäämäsi runot" linkkiä navigaatiopalkissa. "muokkaa runoa, poista runo, lisää runollle kategoria" nappien kautta voit suorittaa kyseiset toiminnot. Runon muokkausnappi avaa esitäytetyn muokkauslomakkeen valitsemastasi yksittäisestä runosta.Lomakkeen lähetysnapin painallus näyttää muokkaamasi runon.  Kategorian lisäysnappi avaa lomakkeen kategorian lisäykseen. Lomakkeen lähetys näyttää runon ja sen kategoriat(kesken). Poisto nappi poistaa runon olemastasi näkymästä.
 
