@@ -4,12 +4,12 @@
  - Toteutus: Herokun PostgreSQL tietokanta , Python, SQLAlchemy,  Flask sovelluskehys, WTForms kirjasto lomakkeiden luomisessa ja validoionnissa,  Bootstrap-kirjasto ulkoasun tyylittelyssä.
  - Julkaisu: verkossa Heroku-pilvipalvelussa: https://tsoha-python-runoarkisto.herokuapp.com/
  - Pääkäyttäjän ja käyttäjän kirjautuminen:
-  - **admin**
-      - Username: hello
-      - Password: world
- - **User**
-      - Username: test
-      - Password: test     
+   - **admin**
+       - Username: hello
+       - Password: world
+  - **User**
+       - Username: test
+       - Password: test     
  
 Runoarkistoon on tarkoitus kerätä kirjautuneilta käyttäjiltä elämän erilaisiin tilanteisiin sopivia
 runoja ja aforismeja. Arkistosta voi eri aihepiirien eli kategorioiden avulla hakea haluaamaansa runoa, joka sopisi esimerkiksi syntymäpäiväkorttiin, häihin, ristäisiin, tupaantuliaisiin, joulukorttiin. Sama runo voi kuulua useaan eri kategoriaan ja yhdessä kategoriassa voi olla useita runoja. Kategorioita voi tarvittaessa myös lisätä.
