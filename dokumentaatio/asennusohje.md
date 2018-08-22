@@ -31,7 +31,7 @@ $ brew install sqlite3
 
 3. **Navigoi komentorivin kautta kansioon, johon purit projektin pakkauksen**
 
-4. **Luo Pythonin virtuaaliympäristö ja ota se käyttöön seuraavilla komennoilla**
+4. **Luo Pythonin virtuaaliympäristö ja aktivoi se käyttöön seuraavilla komennoilla**
 ```
 $ python3 -m venv venv
 $ source venv/bin/activate
@@ -116,6 +116,7 @@ $ git push heroku master
 - Asennetaan sovellukseen PostgreSQL-tietokannanhallintajärjestelmän käyttöön tarvittava ajuri psycopg2.
 - Luodaan uusi versio requirements.txt-tiedostosta, jota Heroku käyttää riippuvuuksien lataamiseen ja lisätään tämän jälkeen muutetut tiedostot versionhallintaan
 - Lisätään sovelluksen käyttöön tieto siitä, että sovellus on Herokussa luomalla Herokuun ympäristömuuttuja HEROKU.
+- Lisätään Herokuun tietokanta.
 
 ```
 $ pip install psycopg      
