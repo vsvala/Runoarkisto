@@ -61,7 +61,7 @@ $ python3 run.py
 
 ### Git kloonaus
 
-1. **Kopioi [Github](https://github.com/Dforssi/dyykkimestarit) -sivulta Clone or download painikkeen takaa löytyvä linkki**
+1. **Kopioi [Github](https://github.com/vsvala/Runoarkisto) -sivulta Clone or download painikkeen takaa löytyvä linkki**
 
 2. **Navigoi komentorivillä haluamaasi kansioon, johon projektin kloonikansio tulee**
 
