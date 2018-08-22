@@ -4,10 +4,10 @@
  - Toteutus: Herokun PostgreSQL tietokanta , Python, SQLAlchemy,  Flask sovelluskehys, WTForms kirjasto lomakkeiden luomisessa ja validoionnissa,  Bootstrap-kirjasto ulkoasun tyylittelyssä.
  - Julkaisu: verkossa Heroku-pilvipalvelussa: https://tsoha-python-runoarkisto.herokuapp.com/
  - Pääkäyttäjän ja käyttäjän kirjautuminen:
-  -**admin**
+  - **admin**
       - Username: hello
       - Password: world
- -**User**
+ - **User**
       - Username: test
       - Password: test     
  
