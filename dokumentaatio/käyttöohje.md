@@ -7,10 +7,10 @@ Tähän ohjeeseen on kirjattu käyttöohjeita sovelluksen eri toiminnallisuuksil
 
 Sovelluksen sivuston osia on suojattu salasanalla, jotta ulkopuoliset eivät pääse käsiksi sen kaikkiin toiminnallisuuksiin. Sovellukseen on määritelty pääkäyttäjän ja tavallisen käyttäjän tilit, jotka ovat sovelluksen testikäytön kannalta olennaisia. Nämä tilit ovat:
 
-         | Käyttäjätunnus   | Salasana   |
-         | ---------------- | ---------- |
-admin    | hello            | world      |
-user     | test             | test       |
+        | käyttäjärooli  | Käyttäjätunnus   | Salasana   |
+        | ------------   | ---------------- | ---------- |
+        | admin          | hello            | world      |
+        | user           | test             | test       |
 
 Sovellukseen on mahdollista luoda uusia user käyttäjätilejä rekisteröintilomakkeen kautta. Kirjautumalla admin tunnuksella on myös mahdollista antaa tavalliselle käyttäjälle admin oikeudet. Kirjautumaton käyttäjä ohjataan kirjautumissivulle joko Kirjaudu -linkistä tai jos hän yrittää navigoida suojatuille sovelluksen sivuille.
 
