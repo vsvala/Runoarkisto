@@ -21,7 +21,8 @@ class UploadForm(FlaskForm):
 class RunoForm(FlaskForm):
     name = StringField("otsikko", [validators.Length(min=2, max=144)])
     sisalto = TextAreaField("sisalto", [validators.Length(min=2, max=2000)]) 
-    runoilija = StringField("runoilija", [validators.Length(min=2,max=144)]) 
+    runoilija = StringField("runoilija", [validators.Length(min=2,max=144)])
+    aihe = StringField("kategoria", [validators.Length(min=2, max=144)]) 
 
 
     class Meta:

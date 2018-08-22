@@ -29,7 +29,7 @@
                         </li>
                         {% if current_user.is_authenticated %}
                       <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('category_create') }} ">lisää runo</a>
+                        <a class="nav-link" href="{{ url_for('runot_createform') }} ">lisää runo</a>
                       </li>
                       <li class="nav-item">
                           <a class="nav-link" href="{{ url_for('loggedu_poems') }} ">lisäämäsi runot</a>
@@ -64,7 +64,6 @@
           </nav>
 
           <main role="main" class="container">
-
            
                 <!-- 
                 Tämä kaikissa näkyvää tekstiä...tarviiko??  kuva? 

@@ -17,14 +17,14 @@ class LoginForm(FlaskForm):
 
 # Lomake jolla luodaan uusi käyttäjä
 class UserForm(FlaskForm):
-    name = StringField("nimi", [validators.Length(min=2)])
-    username = StringField("käyttäjänimi", [validators.Length(min=2)])
-    password = PasswordField("salasana", [validators.Length(min=2)])
+    name = StringField("nimi", [validators.Length(min=2, max=144, message= "syötteen täytyy olla 2-144 merkin väliltä" )])
+    username = StringField("käyttäjänimi", [validators.Length(min=2, max=144, message= "syötteen täytyy olla 2-144 merkin väliltä")])
+    password = PasswordField("salasana", [validators.Length(min=2, max=144, message= "syötteen täytyy olla 2-144 merkin väliltä")])
 
 # Tarkistaa, ettei käyttäjänimi ole jo käytössä
     def validate_username(self, field):
         if User.query.filter_by(username=field.data).first():
-            raise ValidationError("Käyttäjätunnus on jo käytössä")
+            raise ValidationError("Käyttäjänimi on jo käytössä")
 
     class Meta:
         csrf = False

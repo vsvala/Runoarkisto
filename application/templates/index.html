@@ -1,27 +1,20 @@
 {% extends "layout.html" %}
 
 {% block body %}
+
+<img src="https://openclipart.org/download/264056/Cyberscooty-Floral-Border-Extended-16-Isolated.svg" alt="rose" style="width:550px;height:150px;" >
+
+
 <h1>Runoarkisto</h1>
-<p class="lead">Runoarkistosta voit hakea eri tarpeisiin runoja ja aforismejä .<br>Voit myös kartuttaa arkistoa lisäämällä runoa muiden iloksi.</p>
+
+
+<p class="lead">Runoarkistosta voit hakea eri tarpeisiin runoja ja aforismejä .<br>Voit myös kartuttaa arkistoa lisäämällä runoja sisäänkirjautuneena.</p>
+
 <br>
-<h2>Päivän runo:</h2>
-<p class="lead">
-  Tähän arvotaan aina eri runo kun ehdin toiminnon tehdä :)
+<p class="lead" style="font-style: italic; color: rgb(144, 141, 141)" >
+    "Yksi ihminen ei voi muuttaa koko maailmaa,
+    mutta yksi ihminen voi muuttaa yhden ihmisen koko maailman."
 </p>
 
-<!--
-  työn alla
-  <p class="lead">
-  Ketkä käyttäjät on lisänneet runoja:
-</p>
-
-<ul>
-  {% for runo in runot %}
-  <li>
-    {{runo.id}} {{runo.name}}
-  </li>
-{% endfor %}
-</ul>
- -->
 
 {% endblock %}

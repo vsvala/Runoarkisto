@@ -30,42 +30,51 @@ def runot_index():
 
 
 # luomislomakkeen näyttö alkuun ja runon luominen
-@app.route("/runot/uusi/<c_id>/", methods=["GET","POST"])
+@app.route("/runot/form/", methods=["GET"])
 @login_required()
-def runot_create(c_id):
+def runot_createform():
 
     if request.method == "GET":
-         return render_template("runot/uusi.html", form= RunoForm(), c_id=c_id)
+         return render_template("runot/uusi.html", form= RunoForm())
     
-    #Validoinnin tarkastus
-    form = RunoForm(request.form)
-    # if not form.validate(): 
-    #     print("eiiiiiiiiiiiiiiiiiiiiiiiiivalidoinuuuuuuuuuuuu")  
-    #     return render_template("runot/uusi.html", form=form, c_id=c_id)
-    #     print("jatkuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuko")  
 
-    # form = RunoForm(request.form)
-    print("jos")
-    runo= Runo.query.filter_by(name=form.name.data).first()
-    print("kun")
-    if runo:
-        print("TÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ", runo)
-        return render_template("runot/uusi.html", form=form, c_id=c_id, name_error="Saman niminen runo on jo arkistossaaa!")
- 
- 
+#kategoria ja runo olion luominen lomaketiedoista, tallennustietokantaan ja liitokset
+@app.route("/runot/uusi/create/", methods=["GET","POST"])
+@login_required()
+def runot_create():
+
     form = RunoForm(request.form)
- 
+
+    #lomakkeen validointi
+    if form.validate_on_submit():
+         print(form.aihe.data)
+    else:
+        print(form.errors)
+        return render_template("runot/uusi.html", form=form)
+
+    #kategoria olion luonti ja lisäys kantaan
+    category = Category(aihe=form.aihe.data)
+
+    db.session().add(category)
+    db.session().commit()
+
+    # runo-olio t:n luonti lomakesyötteestä
     t = Runo(name=form.name.data, sisalto=form.sisalto.data,runoilija=form.runoilija.data)
 
-    t.account_id = current_user.id
+    #validoidaan samannimiset tietokannasta jos löytyy render lomake uusiks ja error
+    runo= Runo.query.filter_by(name=t.name).first()
+    if runo:
+        return render_template("runot/uusi.html", form=form, name_error= "Samanniminen runo on jo arkistossaaa!")
 
-    category=Category.query.get(c_id)
-    t.categories.append(category)
+    # luodaan monesta moneen iitokset runon ja kategorian välilleja talletetaan runo kantaan
+    t.account_id = current_user.id
+    t.categories.append(category) 
 
     db.session().add(t)
     db.session().commit()
 
     return redirect(url_for("runot_index"))
+
 
 #runon muokkaus lomakkeen haku
 @app.route("/runot/<runo_id>", methods=["GET"])

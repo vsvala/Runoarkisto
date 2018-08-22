@@ -1,66 +1,85 @@
-{% extends "layout.html" %}
-  
-{% block body %}
+{% extends "layout.html" %} {% block body %}
 <h1>Lisää runo</h1>
-<form method="POST" action="{{ url_for('runot_create', c_id=c_id) }}">
-   
-    <table>
-        <tr>
-    <td>
-      {{ form.name.label }}
-    </td>
-    <td>
-      {{ form.name }}
-    </td>
+<form method="POST" action="{{ url_for('runot_create') }}">
+
+  <table>
+    <tr>
+      <td>
+        {{ form.name.label }}
+      </td>
+      <td>
+        {{ form.name }}
+      </td>
+    </tr>
+      <td>
+        <ul>
+          {% for error in form.name.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+          <p>{{ name_error }}</p>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        {{ form.sisalto.label }}
+      </td>
+      <td>
+        {{ form.sisalto }}
+      </td>
+    </tr>
+
     <td>
       <ul>
-        {% for error in form.name.errors %}
+        {% for error in form.sisalto.errors %}
         <li>{{ error }}</li>
         {% endfor %}
       </ul>
     </td>
-        </tr>
+
     <tr>
-    <td>
-        {{ form.sisalto.label }}
+      <td>
+        {{ form.runoilija.label }}
       </td>
       <td>
-          {{ form.sisalto }}  
-        </td>
-      </tr>
-           
-      <td>
-         <ul>
-            {% for error in form.sisalto.errors %}
-             <li>{{ error }}</li>
-              {% endfor %}
-             </ul>
-            </td>
-
-    <tr>
-       <td>
-         {{ form.runoilija.label }}
-            </td>
-              <td>
-               {{ form.runoilija }}  
-             </td>
+        {{ form.runoilija }}
+      </td>
     </tr>
-            <td>
-                <ul>
-                  {% for error in form.runoilija.errors %}
-                  <li>{{ error }}</li>
-                  {% endfor %}
-                </ul>
-            </td>
-    <td colspan="2">
-      <input type="submit" value="Lisää uusi runo"/>
+    <td>
+      <ul>
+        {% for error in form.runoilija.errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
     </td>
-   </tr> 
-  </form>
+    <tr>
+      <td>
+        {{ form.aihe.label }}
+      </td>
+      <td>
+        {{ form.aihe }}
+      </td>
+    </tr>
+    <td>
+      <ul>
+        {% for error in form.aihe.errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+    </td>
+    </table>
+  </br>
+    <td colspan="2">
+      <input type="submit" value="Lisää uusi runo" />
+    </td>
+    </tr>
+</form>
 </table>
-<p>{{ name_error }}</p>
-</br>
-<h4> <a href="{{ url_for('load_index') }} ">voit myös ladata runon tekstitiedostosta</a>
-</h4> 
 
-  {% endblock %}
+
+<!--TODO </br>
+<h4>
+  <a href="{{ url_for('load_index') }} ">voit myös ladata runon tekstitiedostosta</a>
+</h4> -->
+
+{% endblock %}

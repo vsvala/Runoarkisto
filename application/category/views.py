@@ -5,6 +5,7 @@ from flask_login import login_required, current_user
 from application.category.models import Category
 from application.category.forms import  CategoryForm
 
+from application.runot.forms import RunoForm
 from application.runot.models import Runo
 
 #yksitttäisen kategorian haku ja näyttö
@@ -20,42 +21,6 @@ def category_showOne(category_id):
 #@login_required
 def category_index():
     return render_template("category/list.html", category=Category.query.all())
-
-
-#kategorian luominen
-@app.route("/category/new", methods=["GET","POST"])
-@login_required
-def category_create():
-
-    form = CategoryForm(request.form)
-
-    if form.validate_on_submit():
-         print(form.aihe.data)
-                          # else:
-                          #     print(form.errors)
-                         # return render_template("category/addCategory.html", form=form)
-
-    if request.method == "GET":
-        return render_template("category/addCategory.html", form=form)
-
-    form = CategoryForm(request.form)
-    category = Category(aihe=form.aihe.data)
-
-    db.session().add(category)
-    db.session().commit()
-    
-    #jos kategoriaan j liittyy runo...liitetään uuteen(tee metodi) ja näytetäään runot
-
-    categ = Category.query.filter_by(
-    aihe=form.aihe.data).first()
-    if not categ :
-        return render_template("category/addCategory.html", form=form,
-                               error="Ei kategoriaa määriteltynä")
-    c_id=categ.id
-    print("kääääääääääääääääääääääääääääääääk",c_id)
-    
-    return redirect(url_for("runot_create", c_id=c_id ))
-
 
 
 #lisäkategorioiden lisääminen
