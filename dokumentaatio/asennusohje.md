@@ -112,9 +112,15 @@ $ git push heroku master
 7. **Projekti pyörii nyt Herokussa**
 
 8. **Viritä seuraavaksi Herokun PostgreSQL tietokanta, jotta sovelluksen tieto tallentuu myös Herokussa**
+
+- Asennetaan sovellukseen PostgreSQL-tietokannanhallintajärjestelmän käyttöön tarvittava ajuri psycopg2.
+- Luodaan uusi versio requirements.txt-tiedostosta, jota Heroku käyttää riippuvuuksien lataamiseen ja lisätään tämän jälkeen muutetut tiedostot versionhallintaan
+- Lisätään sovelluksen käyttöön tieto siitä, että sovellus on Herokussa luomalla Herokuun ympäristömuuttuja HEROKU.
+
 ```
+$ pip install psycopg      
+$ pip freeze | grep -v pkg-resources > requirements.txt
 $ heroku config:set HEROKU=1
 $ heroku addons:add heroku-postgresql:hobby-dev
 ```
-
 9. **Sovelluksella on nyt toimiva PostgreSQL -tietokanta Herokun palvelimella**
