@@ -16,11 +16,11 @@ $ sudo apt-get install sqlite3
 $ brew install python3
 $ brew install sqlite3
 ```
-1. Mikäli lataat sovelluksen ZIP pakkauksena, on sinulla oltava pakkausten purkamiseen soveltuva ohjelma, esimerkiksi 7zip.
+- Mikäli lataat sovelluksen ZIP pakkauksena, on sinulla oltava pakkausten purkamiseen soveltuva ohjelma, esimerkiksi 7zip.
 
-2. Projekti on jaoteltu useisiin kansioihin ja tiedostoihin, joiden selaaminen kansiosta tai komentoriviltä voi olla hankalaa. Suosittelen käyttämään jonkinlaista IDE ohjelmistoa, esimerkiksi ilmaista Visual Studio Codea, jossa on hyvä Python tuki ja mukiinmenevä integroitu git käyttöliittymä.
+- Projekti on jaoteltu useisiin kansioihin ja tiedostoihin, joiden selaaminen kansiosta tai komentoriviltä voi olla hankalaa. Suosittelen käyttämään jonkinlaista IDE ohjelmistoa, esimerkiksi ilmaista Visual Studio Codea, jossa on hyvä Python tuki ja mukiinmenevä integroitu git käyttöliittymä.
 
-4. (Mikäli haluat kloonata projektin, on koneellasi oltava asennettuna myös Git)
+- (Mikäli haluat kloonata projektin, on koneellasi oltava asennettuna myös Git)
 
 
 ### Asennus step-by-step pakatun tiedoston kautta
