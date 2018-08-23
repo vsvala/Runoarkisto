@@ -23,7 +23,7 @@ class Runo(Base):
 
 
     # Määritellään many to many riippuvuussuhde  kategorioiden kanssa. 
-    categories = db.relationship('Category', secondary=categories_c, lazy='subquery',
+    categories = db.relationship('Category', secondary=categories_c, lazy='subquery', cascade="all, delete-orphan", single_parent=True,
         backref=db.backref('runot', lazy=True))   
 
 

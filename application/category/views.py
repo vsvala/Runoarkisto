@@ -21,8 +21,8 @@ def category_showOne(category_id):
 #@login_required
 def category_index():
     return render_template("category/list.html", category=Category.query.all())
-
-#lisäkategorioiden lisääminen
+    
+#kategorioiden lisääminen
 @app.route("/category/other/<runo_id>/", methods=["GET","POST"])
 @login_required
 def category_other(runo_id):
@@ -59,32 +59,48 @@ def category_other(runo_id):
     # c_id=categ.id
     # print("kääääääääääääääääääääääääääääääääk",c_id)
     
-    return redirect(url_for("runot_showOne", runo_id=runo.id ))
+    return redirect(url_for("runot_showOne_logged", runo_id=runo.id ))
 
-#tietyn runon kategorian poisto
+""" #tietyn runon kategorian poisto
 @app.route("/category/delete/<category_id>/", methods=["GET", "POST"])
 @login_required
-def runo_category_delete(category_id):
+def runo_category_delete(category_id, runo):
 
     c = Category.query.get(category_id)
     db.session().delete(c)
     db.session().commit()
 
     #return redirect(url_for("loggedu_poems"))
-    return redirect(url_for("runot_showOne", runo_id=runo.id ))
+    return redirect(url_for("runot_showOne", runo_id=runo.id )) """
 
 #kategorian poisto
-@app.route("/category/<category_id>/delete/", methods=["GET", "POST"])
+@app.route("/category/delete/<runo_id>/<category_id>/", methods=["GET", "POST"])
 @login_required
-def category_delete(category_id):
+def category_delete( runo_id, category_id,):
     
-    #etsi runonn kategoria
+    #etsi id:tä vastaava runo-olio
+    runo = Runo.query.get(runo_id)
+    #etsi id:tä vastaava kategoriaolio
+    c = Category.query.get(category_id)
+    db.session().delete(c)
+    db.session().commit()
 
+    return redirect(url_for("runot_showOne_logged", runo_id=runo.id))
+#kategorian poisto
+@app.route("/category/delete/<category_id>/", methods=["GET", "POST"])
+@login_required
+def category_list_delete(category_id,):
+    
+    #etsi id:tä vastaava runo-olio
+    #etsi id:tä vastaava kategoriaolio
     c = Category.query.get(category_id)
     db.session().delete(c)
     db.session().commit()
 
     return redirect(url_for("category_index"))
+
+
+
 
 #TYön
 # #uuden kategorian luominen  multiple checkbox

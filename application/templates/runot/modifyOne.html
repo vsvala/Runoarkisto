@@ -35,12 +35,12 @@
         <button type="submit" class="btn btn-primary">muokkaa runoa</button>
       </a>
     </td>
- 
+
     <td>
       <form method="POST" action="{{ url_for('runot_one_delete', runo_id=runo.id)}}">
         <button type="submit" class="btn btn-danger">poista runo</button>
       </form>
-    </td> 
+    </td>
   </tr>
 
 
@@ -54,22 +54,24 @@
   <li>
     {{category.id}} {{category.aihe}}
   </li>
+ 
+  <a href="{{ url_for('category_delete', category_id=category.id, runo_id=runo.id)}}">
+      <button type="submit" class="btn btn-danger">poista kategoria</button>
+  </a>
   {% endfor %}
 </ul>
-{% endif %} 
+{% endif %}
 
 <table>
-    <td>
-      <a href="{{ url_for('category_other', runo_id=runo.id) }}">
-        <button>lisää runolle kategoria</button>
-      </a>
-    </td>
-    <td>
-      <!-- #TODO tähän oikea metodi -->
-      <a href="{{ url_for('category_other', runo_id=runo.id)}}">
-        <button>poista kategoria</button>
-      </a>
-    </td>
-  {% endif %}
-
-{% endblock %}
+  <td>
+    <a href="{{ url_for('category_other', runo_id=runo.id) }}">
+      <button type="submit" class="btn btn-primary">lisää runolle kategoria</button>
+    </a>
+  </td>
+  <td>
+    <!-- #TODO tähän oikea metodi -->
+    <a href="{{ url_for('category_other', runo_id=runo.id)}}">
+      <button>poista kaikki kategoriat</button>
+    </a>
+  </td>
+  {% endif %} {% endblock %}

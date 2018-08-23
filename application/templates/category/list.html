@@ -7,17 +7,16 @@
 
     {% for cate in category %}
     <ul>
-    <li><h4>{{ cate.aihe }}{{ cate.id }}</h4></li>
+    <li><h4>{{ cate.aihe }} {{ cate.id }}</h4></li>
     
     </ul>
   
-    <form method="POST" action="{{ url_for('category_delete', category_id=cate.id)}}">
+    <form method="POST" action="{{ url_for('category_list_delete', category_id=cate.id)}}">
       <input type="submit" value="poista kategoria" />
             </form>
-    <!--Mieti vielä Tarviiko tätä???
+  <!-- Mieti vielä Tarviiko tätä???
       Entä näyttäsikö tässäkin mihin runoihin kategoria aina liittyy..
-       <a href= "{{ url_for('category_uppdate', category_id=cate.id)}}"><button>muokkaa kategoriaa</button></a> -->
-  
+   -->
     {% endfor %}
 
 

@@ -1,6 +1,6 @@
 {% extends "layout.html" %} {% block body %}
 
-<h3>Valitse mihin kategorioihin runosi kuuluu:</h3>
+<h3>Lisää kategoria:</h3>
 <br>
 <br>
 <form method="POST" action="{{ url_for('category_other', runo_id=runo.id) }}">
@@ -24,7 +24,7 @@
 
         <tr>
             <td colspan="2">
-                <input type="submit" value="Valitse" />
+                    <button type="submit" class="btn btn-success">lisää</button>
             </td>
         </tr>
 </form>
