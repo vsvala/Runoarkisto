@@ -56,8 +56,17 @@ $ pip install -r requirements.txt
 ```
 $ python3 run.py
 ```
+8. **Lisää admin käyttäjä tietokantaan**
 
-8. **Navigoi osoitteeseen http://127.0.0.1:5000 jossa voit käyttää sovellusta lokaalissa verkkoympäristössä**
+Sovellus luo tietokantataulut automaattisesti käynnistäessa. Luodaksesi pääkäyttäjän tilin, navigoi sovellus/applications kansioon. Käynnistä sqlite3 ja luo pääkäyttäjä seuraavilla käskyillä:
+```
+$ sqlite3 runot.db     
+INSERT INTO account (name, username, password, role) VALUES ('hello world', 'hello','world', 'ADMIN');
+.quit
+```
+Navikoi takaisin sovelluskansioon ja käynnistä sovellus kohdan 7 mukaan
+
+9. **Navigoi osoitteeseen http://127.0.0.1:5000 jossa voit käyttää sovellusta lokaalissa verkkoympäristössä**
 
 ### Git kloonaus
 
