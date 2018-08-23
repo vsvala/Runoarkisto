@@ -85,5 +85,6 @@ def load_user(user_id):
 # Luodaan lopulta tarvittavat tietokantataulut
 try: 
     db.create_all()
+
 except:
     pass

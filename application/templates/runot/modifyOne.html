@@ -11,11 +11,42 @@
   -{{ runo.runoilija }}
 </p>
 
-<a href="{{ url_for('find_categories', runo_id=runo.id) }}">
+<!-- <a href="{{ url_for('find_categories', runo_id=runo.id) }}">
     <p>runon kategoriat</p>
   </a>
-  
 
+   <p>kategoriat</p>
+{% if category_by is defined %}
+
+<ul>
+  {% for category in category_by %}
+  <li>
+    {{category.id}} {{category.aihe}}
+  </li>
+  {% endfor %}
+</ul>
+{% endif %}    -->
+
+{% if current_user.role=="USER" or current_user.role=="ADMIN" %}
+<table>
+  <tr>
+    <td>
+      <a href="{{ url_for('runot_uppdateForm', runo_id=runo.id)}}">
+        <button type="submit" class="btn btn-primary">muokkaa runoa</button>
+      </a>
+    </td>
+ 
+    <td>
+      <form method="POST" action="{{ url_for('runot_one_delete', runo_id=runo.id)}}">
+        <button type="submit" class="btn btn-danger">poista runo</button>
+      </form>
+    </td> 
+  </tr>
+
+
+</table>
+<br>
+<p>runon kategoriat:</p>
 {% if category_by is defined %}
 
 <ul>
@@ -27,15 +58,7 @@
 </ul>
 {% endif %} 
 
-{% if current_user.role=="USER"%}
 <table>
-  <tr>
-    <td>
-      <a href="{{ url_for('runot_uppdateForm', runo_id=runo.id)}}">
-        <button type="submit" class="btn btn-primary">muokkaa runoa</button>
-      </a>
-    </td>
-
     <td>
       <a href="{{ url_for('category_other', runo_id=runo.id) }}">
         <button>lisää runolle kategoria</button>
@@ -47,14 +70,6 @@
         <button>poista kategoria</button>
       </a>
     </td>
- 
-    <td>
-      <form method="POST" action="{{ url_for('runot_one_delete', runo_id=runo.id)}}">
-        <input type="submit" value="poista runo" />
-      </form>
-    </td> 
-  </tr>
   {% endif %}
 
-</table>
 {% endblock %}

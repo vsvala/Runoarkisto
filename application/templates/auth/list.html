@@ -20,12 +20,13 @@
 
         <td>
             <a href="{{ url_for('auth_uppdateForm', auth_id=user.id)}}">
-                <button>muokkaa</button>
-            </a>
+                    <button type="submit" class="btn btn-primary">muokkaa</button>
+                </a>
         </td>
         <td>
             <a href="{{ url_for('auth_delete', auth_id=user.id)}}">
-                <button>poista</button>
+                <button type="submit" class="btn btn-danger">poista</button>
+
                 <!--TODO Nyt käyttäjä voidaan poistaa vain jos hänellä on runoja...????
                 tsekataan onko käyttäjällä runoja..jos on.siirretään viite poistettujen käyttäjien runot..user role mutetaan poistetuksi???.... -->
             </a>

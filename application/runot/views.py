@@ -111,15 +111,15 @@ def runot_uppdate(runo_id):
 
     form = RunoUpdateForm(request.form)
 
-#TOdo VLA*IDO*INTI   ?????????...tässä jotain häikkää...
+    #TOdo VLA*IDO*INTI   ?????????...tässä jotain häikkää...
     # if form.validate_on_submit():
     #     print("ok")
     # else:
     #     print(form.errors)
    
-    # if not form.validate():
-    #     print("not validateeeeeeeeeeeeeeeeee")
-    #     #return redirect(url_for("runot_uppdateForm",runo_id=runo.id))
+    #if not form.validate():
+    #    print("not validateeeeeeeeeeeeeeeeee")
+    #   return redirect(url_for("runot_uppdateForm",runo_id=runo.id))
     #     return render_template("runot/muokkaa.html", runo=runo,form=form)
 
     runo.name=form.name.data

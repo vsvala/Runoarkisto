@@ -11,7 +11,7 @@ class User(Base):
     password = db.Column(db.String(20), nullable=False)
     role = db.Column(db.String(10), nullable=False)
 
-    runo = db.relationship("Runo", backref='account', lazy=True)
+    runo = db.relationship("Runo", backref='account', lazy=True, cascade="all, delete-orphan")
   
 
     def __init__(self, name, username, password, role):
