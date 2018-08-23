@@ -18,6 +18,6 @@ class CategoryForm(FlaskForm):
     #aihe=SelectMultipleField(u'kategoria', choices=[('sp', 'syntymäpäivät'), ('tp', 'tuparit'), ('text', 'kaste')], option_widget=None)3#
     #aihe= SelectField(u'kategoria', choices=[('cpp', 'C++'), ('py', 'Python'), ('text', 'Plain Text')])
     #aihe=RadioField(u'kategoria', choices=[('cpp', 'C++'), ('py', 'Python'), ('text', 'Plain Text')])
+    
     class Meta:
-        
         csrf = False

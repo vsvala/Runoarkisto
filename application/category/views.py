@@ -22,7 +22,6 @@ def category_showOne(category_id):
 def category_index():
     return render_template("category/list.html", category=Category.query.all())
 
-
 #lisäkategorioiden lisääminen
 @app.route("/category/other/<runo_id>/", methods=["GET","POST"])
 @login_required
@@ -62,56 +61,24 @@ def category_other(runo_id):
     
     return redirect(url_for("runot_showOne", runo_id=runo.id ))
 
-
-#updatessa vielä säädettävää/tarviiko ko. toimintoa
-#kategorian muokkaus lomakkeen haku
-@app.route("/category/<category_id>/", methods=["GET"])
+#tietyn runon kategorian poisto
+@app.route("/category/delete/<category_id>/", methods=["GET", "POST"])
 @login_required
-def category_uppdateForm(category_id):
+def runo_category_delete(category_id):
 
     c = Category.query.get(category_id)
-    form = CategoryForm(request.form) 
-
-    return render_template("category/addCategory.html", c=c, form=form)
-
-
-#kategorian muokkaaminen
-@app.route("/category/<category_id>/", methods=["POST"])
-@login_required
-def category_uppdate(category_id):
-
-    cate = Category.query.get(category_id)
-    form = CategoryForm(request.form)
-    
-    if form.validate_on_submit():
-        print(form.aihe.data)
-                          # else:
-                          #     print(form.errors)
-                         # return render_template("category/addCategory.html", form=form)
-
-    if request.method == "GET":
-        return render_template("category/other.html", form=form)
-
-    form = CategoryForm(request.form)
-    cate.aihe = form.aihe.data
-
+    db.session().delete(c)
     db.session().commit()
-    
 
-    categ = Category.query.filter_by(
-    aihe=form.aihe.data).first()
-    if not categ :
-        return render_template("category/oher.html", form=form,
-                               error="Ei kategoriaa määriteltynä")
-    c_id=categ.id
-    print("kääääääääääääääääääääääääääääääääk",c_id)
-    return redirect(url_for("category_index", c_id=c_id ))
-
+    #return redirect(url_for("loggedu_poems"))
+    return redirect(url_for("runot_showOne", runo_id=runo.id ))
 
 #kategorian poisto
 @app.route("/category/<category_id>/delete/", methods=["GET", "POST"])
 @login_required
 def category_delete(category_id):
+    
+    #etsi runonn kategoria
 
     c = Category.query.get(category_id)
     db.session().delete(c)

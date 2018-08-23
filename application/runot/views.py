@@ -7,7 +7,7 @@ from application.category.models import Category
 from application.runot.models import Runo
 
 from werkzeug import secure_filename
-from application.runot.forms import RunoForm, FindForm, SaveForm, UploadForm
+from application.runot.forms import RunoForm, FindForm, SaveForm, UploadForm, RunoUpdateForm
 
 #yksitttäisen runon näyttö
 @app.route("/runot/one/<runo_id>/", methods=["GET"])
@@ -16,10 +16,25 @@ def runot_showOne(runo_id):
     print(t)
     return render_template("runot/one.html", t=t)
 
+@app.route("/runot/one/logged/<runo_id>/", methods=["GET"])
+def runot_showOne_logged(runo_id):
+    runo = Runo.query.get(runo_id)
+    return render_template("runot/modifyOne.html", runo=runo, category_by=Category.find_categories_by(runo))
+
+
 #runojen listaus
 @app.route("/runot/", methods=["GET"])
 def runot_index():
     return render_template("runot/list.html", runot=Runo.query.all())
+
+#TODOOO.........nää pitäis laittaa vielä uusin ensin järjestykseen
+#kirjautuneen käyttäjän runojen listaus
+@app.route("/runot/listings/b")
+@login_required()
+def loggedu_poems():
+    return render_template("runot/loggedlist.html", loggedUsers_poems =Runo.find_loggedUsers_poems())
+
+
 
 # #uuden runon luomislomakkeen haku 
 # @app.route("/runot/uusi/<c_id>/", methods=["GET"]) # @app.route("/runot/uusi")
@@ -73,7 +88,7 @@ def runot_create():
     db.session().add(t)
     db.session().commit()
 
-    return redirect(url_for("runot_index"))
+    return redirect(url_for("loggedu_poems"))
 
 
 #runon muokkaus lomakkeen haku
@@ -82,32 +97,56 @@ def runot_create():
 def runot_uppdateForm(runo_id):
 
     runo = Runo.query.get(runo_id)
-    form = RunoForm(obj=runo) # Täytetään lomake tietokannasta löytyvillä runon tiedoilla
+    form = RunoUpdateForm(obj=runo) # Täytetään lomake tietokannasta löytyvillä runon tiedoilla
 
     return render_template("runot/muokkaa.html", runo=runo, form=form)
 
-#runon muokkaus
-@app.route("/runot/<runo_id>/", methods=["POST"])
+#runon muokkaus 
+@app.route("/runot/<runo_id>/", methods=["GET","POST"])
 @login_required()
 def runot_uppdate(runo_id):
 
     runo = Runo.query.get(runo_id)
+    #print("runooooooooooooooooooooo", runo)
 
-    form = RunoForm(request.form)
+    form = RunoUpdateForm(request.form)
 
-    if not form.validate():
-        return render_template("runot/muokkaa.html", runo_id=runo.id, form=form)
+#TOdo VLA*IDO*INTI   ?????????...tässä jotain häikkää...
+    # if form.validate_on_submit():
+    #     print("ok")
+    # else:
+    #     print(form.errors)
+   
+    # if not form.validate():
+    #     print("not validateeeeeeeeeeeeeeeeee")
+    #     #return redirect(url_for("runot_uppdateForm",runo_id=runo.id))
+    #     return render_template("runot/muokkaa.html", runo=runo,form=form)
 
     runo.name=form.name.data
     runo.sisalto=form.sisalto.data
     runo.runoilija=form.runoilija.data
-    runo.account_id = current_user.id
+    runo.account_id = current_user.id 
 
+
+    db.session().commit()
+
+#TODOOO mieti näyttäisikö tässä yksittäisenä muokatun runon??? niin sopisi kumpaankin muokkaustilanteesen
+    #return redirect(url_for("runot_showOne", runo_id=runo.id))
+    return render_template("runot/modifyOne.html", runo=runo, category_by=Category.find_categories_by(runo))
+
+#poistaa(admin) listasta
+@app.route("/runot/<runo_id>/del/", methods=["GET", "POST"])
+@login_required()
+def runot_one_delete(runo_id):
+
+    t = Runo.query.get(runo_id)
+    db.session().delete(t)
     db.session().commit()
 
     return redirect(url_for("runot_index"))
 
-#runon poisto
+
+#poistaa( runon userin listasta
 @app.route("/runot/<runo_id>/delete/", methods=["GET", "POST"])
 @login_required()
 def runot_delete(runo_id):
@@ -116,7 +155,7 @@ def runot_delete(runo_id):
     db.session().delete(t)
     db.session().commit()
 
-    return redirect(url_for("runot_index"))
+    return redirect(url_for("loggedu_poems"))
 
 #näyttää haku lomakkeen
 @app.route("/runot/find/", methods=["GET"])
@@ -148,6 +187,32 @@ def find_runo():
     form = FindForm(request.form)
     return render_template("runot/find.html", runo=runo, form=form)
  
+#hakee tietyn kategorian runot
+@app.route("/runot/find/<runo_category>")
+def find_runot_by_category(runo_category):
+    form = FindForm(request.form)
+    category=runo_category
+    if not Runo.find_runot_by_category(category):
+        print("ei löydyyyyyyyyyyyyyyyyyyyyyyyyyyy")
+        return render_template("runot/find.html", form=form, category_error="Etsimälläsi kategorialla ei löydy runoja, yritä toista hakusanaa!")
+
+    return render_template("runot/find.html", runot_by_category = Runo.find_runot_by_category(category), category=category, form=form)
+
+#hakee tietyn runon kategoriat
+@app.route("/runot/one/<runo_id>/a",methods=["GET"])
+def find_categories(runo_id):
+    t = Runo.query.get(runo_id)
+    return render_template("runot/one.html", category_by =Category.find_categories_by(t), t=t)
+
+#hakee tietyn käyttäjän runojen kategoriat
+@app.route("/runot/listing/<runo_id>/a",methods=["GET"])
+def listing_find_categories(runo_id):
+    runo = Runo.query.get(runo_id)
+    return render_template("runot/listings.html", category_by =Category.find_categories_by(runo), runo=runo)
+
+
+#Todo..............::::::::::::::::::::::mieti seuraavia näitä ollenkaan
+
 #näyttää save lomakkeen
 @app.route("/runot/save/", methods=["GET"])
 @login_required()
@@ -187,35 +252,12 @@ def save_runo():
     form = SaveForm(request.form)
     return render_template("runot/save.html", runo=runo, form=form)
 
-#hakee kirjautuneen käyttäjä runot
-@app.route("/runot/listings/b")
-@login_required()
-def loggedu_poems():
-    return render_template("runot/listings.html", loggedUsers_poems =Runo.find_loggedUsers_poems())
-
-#hakee tietyn kategorian runot
-@app.route("/runot/find/<runo_category>")
-def find_runot_by_category(runo_category):
-    form = FindForm(request.form)
-    category=runo_category
-    if not Runo.find_runot_by_category(category):
-        print("ei löydyyyyyyyyyyyyyyyyyyyyyyyyyyy")
-        return render_template("runot/find.html", form=form, category_error="Etsimälläsi kategorialla ei löydy runoja, yritä toista hakusanaa!")
-
-    return render_template("runot/find.html", runot_by_category = Runo.find_runot_by_category(category), category=category, form=form)
-
-#hakee tietyn runon kategoriat
-@app.route("/runot/one/<runo_id>/2",methods=["GET"])
-def find_categories(runo_id):
-    t = Runo.query.get(runo_id)
-    return render_template("runot/one.html", category_by =Category.find_categories_by(t), t=t)
-
-
 #näyttää load lomakkeen
 @app.route("/runot/load/", methods=["GET"])
 @login_required()
 def load_index():
         return render_template("runot/load.html", form=UploadForm())
+
 
 # #lisää runon tekstitiedostosta
 # @app.route("/runot/load/", methods=['GET', 'POST'])

@@ -1,0 +1,23 @@
+{% extends "layout.html" %} {% block body %}
+
+
+<h3>kirjautuneen käyttäjän lisäämät runot </h3>
+<!-- <a href="{{ url_for('loggedu_poems') }}"><h4>kirjautuneen käyttäjän lisäämät runot </h4></a> -->
+</br>
+
+
+{% if loggedUsers_poems is defined %}
+
+<ul>
+    {% for runo in loggedUsers_poems %}
+    <li>
+
+   <a href="{{ url_for('runot_showOne_logged', runo_id=runo.id) }}"><h4>{{ runo.name }}</h4></a>
+
+    </li>
+  
+    {% endfor %}
+
+</ul>
+ {% endif %} 
+     {% endblock %}

@@ -36,9 +36,9 @@
 </table>
 </br>
 <a href="{{ url_for('users_withPoems') }}">
-    <h4>Katso ketkä käyttäjät ovat lisänneet runoja ja mitä runoja kullakin käyttäjällä on </h4>
+    <h4>Katso ketkä käyttäjät ovat lisänneet runoja</h4>
 </a>
-<!--TODOO lisää hakulistaan taulukko mitä runoa kullakin on
+<!--TODOO   aakkosta käyttäjä..........tlisää hakulistaan taulukko mitä runoa kullakin on
 käyttäjä id, käyttäjä runojen nimet alalistana -->
 </li>
 
@@ -53,7 +53,13 @@ käyttäjä id, käyttäjä runojen nimet alalistana -->
 </ul>
 {% endif %}
 
-<!-- <a href="{{ url_for('runot_index') }}"><h2>montako käyttäjää: </h2></a></li>
+
+<p>mitä runoja kullakin käyttäjällä on</p>
+<p>kayttajän runojen poisto?? käyttäjänpoisto??tähänkö</p>
+
+<p>????????tilastoja tähän vai toiselle sivulle??????</p>
+<!-- TILASTOJA?? u??
+    <a href="{{ url_for('runot_index') }}"><h2>montako käyttäjää: </h2></a></li>
     {% if loggedUsers_poems is defined %}
      <p class="lead">
        Hakemasi runo:
@@ -70,8 +76,3 @@ käyttäjä id, käyttäjä runojen nimet alalistana -->
 
 
 {% endblock %}
-
-
-<!-- lisää yksittäisen käyttäjän näyttö muookaus formiin...?
-    tietyn käyttäjän haku????
-    <li><a href="{{ url_for('auth_showOne', auth_id=user.id) }}"><p>nimi:  {{ user.name }} |  käytäjänimi: {{ user.username }}  |  salasana: {{ user.password }}</p></a></li> -->
