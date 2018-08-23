@@ -56,8 +56,17 @@ $ pip install -r requirements.txt
 ```
 $ python3 run.py
 ```
+8. **Lisää admin käyttäjä tietokantaan**
 
-8. **Navigoi osoitteeseen http://127.0.0.1:5000 jossa voit käyttää sovellusta lokaalissa verkkoympäristössä**
+Sovellus luo tietokantataulut automaattisesti käynnistäessa. Luodaksesi pääkäyttäjän tilin, navigoi sovellus/applications kansioon. Käynnistä sqlite3 ja luo pääkäyttäjä seuraavilla käskyillä:
+```
+$ sqlite3 runot.db     
+INSERT INTO account (name, username, password, role) VALUES ('hello world', 'hello','world', 'ADMIN');
+.quit
+```
+Navikoi takaisin sovelluskansioon ja käynnistä sovellus kohdan 7 mukaan
+
+9. **Navigoi osoitteeseen http://127.0.0.1:5000 jossa voit käyttää sovellusta lokaalissa verkkoympäristössä**
 
 ### Git kloonaus
 
@@ -113,14 +122,9 @@ $ git push heroku master
 
 8. **Viritä seuraavaksi Herokun PostgreSQL tietokanta, jotta sovelluksen tieto tallentuu myös Herokussa**
 
-- Asennetaan sovellukseen PostgreSQL-tietokannanhallintajärjestelmän käyttöön tarvittava ajuri psycopg2.
-- Luodaan uusi versio requirements.txt-tiedostosta, jota Heroku käyttää riippuvuuksien lataamiseen ja lisätään tämän jälkeen muutetut tiedostot versionhallintaan
 - Lisätään sovelluksen käyttöön tieto siitä, että sovellus on Herokussa luomalla Herokuun ympäristömuuttuja HEROKU.
 - Lisätään Herokuun tietokanta.
-
 ```
-$ pip install psycopg      
-$ pip freeze | grep -v pkg-resources > requirements.txt
 $ heroku config:set HEROKU=1
 $ heroku addons:add heroku-postgresql:hobby-dev
 ```
