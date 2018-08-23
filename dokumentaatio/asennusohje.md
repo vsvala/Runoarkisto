@@ -125,3 +125,11 @@ $ heroku config:set HEROKU=1
 $ heroku addons:add heroku-postgresql:hobby-dev
 ```
 9. **Sovelluksella on nyt toimiva PostgreSQL -tietokanta Herokun palvelimella**
+
+10. **Lisää admin käyttäjä  Herokun tietokantaan**
+```
+$ heroku pg:psql      
+$ ::DATABASE=> INSERT INTO account (name, username, password, role) VALUES ('hello world', 'hello','world', 'ADMIN');
+$ ::DATABASE=>  select * from account;
+$ ::DATABASE=> \q
+```
