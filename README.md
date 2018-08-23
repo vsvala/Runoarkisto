@@ -1,11 +1,15 @@
 # Runoarkisto -Tietokantasovellus harjoitustyö
 
  Helsingin yliopiston Tietokantasovellus (4 op) kurssilla (kesä-2018) harjoitustyönä tehty tietokantaa käyttävä web-sovellus. 
- - Toteutus: PostgreSQL tietokanta , Python, Flask. 
+ - Toteutus: Herokun PostgreSQL tietokanta , Python, HTML, CSS,  SQLAlchemy,  Flask sovelluskehys, WTForms kirjasto lomakkeiden luomisessa ja validoinnissa,  Bootstrap-kirjasto ulkoasun tyylittelyssä.
  - Julkaisu: verkossa Heroku-pilvipalvelussa: https://tsoha-python-runoarkisto.herokuapp.com/
- - Kirjautuminen:
-      - Username: hello
-      - Password: world
+ - Pääkäyttäjän ja käyttäjän kirjautuminen:
+   - **admin**
+       - Username: hello
+       - Password: world
+   - **User**
+       - Username: test
+       - Password: test     
  
 Runoarkistoon on tarkoitus kerätä kirjautuneilta käyttäjiltä elämän erilaisiin tilanteisiin sopivia
 runoja ja aforismeja. Arkistosta voi eri aihepiirien eli kategorioiden avulla hakea haluaamaansa runoa, joka sopisi esimerkiksi syntymäpäiväkorttiin, häihin, ristäisiin, tupaantuliaisiin, joulukorttiin. Sama runo voi kuulua useaan eri kategoriaan ja yhdessä kategoriassa voi olla useita runoja. Kategorioita voi tarvittaessa myös lisätä.
@@ -32,6 +36,14 @@ Jos aika riittää runoihin on tarkoitus liittää like/tykkäys toiminto, jollo
 - Rekisteröityjen käyttäjien listaaminen ja haku
 
 - Yhteenvetokyselyt tietokannasta:
+    -Käyttäjät jotka ovat lisänneet runoja
+    -Kirjautuneen käyttäjän runojen haku
+    -Valitun runon kaikkien kategorioiden haku
+    -Runon haku otsikon mukaan
+    -Runonojen haku kategorian mukaan
+    
+    todo
+    -Runojen haku valitun käyttäjän mukaan 
     - Kuinka monta runoa ja mitkä runot tietty käyttäjä on lisännyt?
     - Kuinka monta runoa on kussakin kategoriassa?
     * (Kunkin kategorian suosituin runo?)
@@ -46,5 +58,5 @@ Jos aika riittää runoihin on tarkoitus liittää like/tykkäys toiminto, jollo
 ## Dokumentaatio
 - [Alustava tietokantakaavio](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/Runo_db_kaavio.png)
 - [User storyt](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/userstory.md)
-
-
+- [Asennusohje](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/asennusohje.md)
+- [Käyttöohje](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/käyttöohje.md)
