@@ -22,7 +22,7 @@ Sivut ja toiminnot joihin ko. käyttäjällä ei ole oikeuksia ovat piilotettuna
 
 ## *etusivu* 
 
-<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/etusivu.png" width="400">
+<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/etusivu.png" width="600">
 
 Kirjautuessasi sovellukseen sinut ohjataan etusivulle, jossa on lyhyt esittely sovelluksesta sekä aforismi. Navigaatiopalkin linkeistä pääset haluamiisi toimintoihin.
 
@@ -31,7 +31,7 @@ Etusivulle pääsee palaamaan muista sovelluksen paikoista painamalla navigaatio
 
 ## *kaikkien runojen listaus ja yksittäisen runon tietojen ja kategorioiden näyttö* 
 
-<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/kaikki_runot_listaus.png" width="400">
+<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/kaikki_runot_listaus.png" width="600">
 
 Voit listata näkyville kaikkien runojen otsikko linkit painamalla "runot" linkkiä navigaatiopalkissa. Painamalla runon nimeä/ linkkiä, avautuu yksittäinen runo näkyville. Jos haluat myös kyseisen runon kategoriat näkyville paina "runon kategoriat" linkkiä.
 
@@ -40,24 +40,23 @@ Mikäli olet kirjautunut ylläpitäjänä näet yksittäisen runon listauksen yh
 
 ## *Runojen haku* 
 
-<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/haku.png" width="400">
+<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/haku.png" width="600">
 
 Voit etsiä runoja runoarkistosta nimen tai kategorian perusteella painamalla "runot" linkkiä navigaatiopalkissa. Syöttämällä lomakkeeseen arkistossa olevan runon nimen tai kategorian, näet kyseisen runon tai listan hakemaasi kategoriaan kuuluvista runoista. Jos hakemaasi runoa tai kategoriaa ei löydy, saat ilmoituksen.
 
 ## *Rekisteröityminen=uuden käyttäjän lisääminen ja kirjautuminen*
 
-<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/rekisteroidy.png" width="400">
+<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/rekisteroidy.png" width="600">
 
 ##### rekisteröityminen
 Sovellukseen on tehty erillinen lomakesivu rekisteröinnille eli uuden käyttäjän luomiselle. Kyseiselle sivulle pääsee painamalla navigaatiopalkin oikean laidan linkkiä: *"Rekisteröidy"*. Syötä avautuneeseen lomakkeen kenttiin pyydetyt tiedot ja ota huomioon nimimerkeille ja salasanoille annetut rajoitteet. Korjaa tarvittaessa syötteesi virheilmoitusten ilmoittamista virheistä. Lomake rekisteröi käyttäjän rooliksi automaattisesti USER:in
 
-<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/rekisteroidy.png" width="400">
+<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/kirjaudu.png.png" width="600">
 
 
 ##### kirjautuminen
 Rekisteröinnin onnistumisen jälkeen sovellukseen pääsee kirjautumaan avautuvan kirjautumislomakkeen kautta ja myös navigaatiopalkin linkin *"Kirjaudu"* kautta. Navigaation oikeassa reunassa näet kirjautuneen käyttäjänimen ja roolin USER. Uloskirjautuminen tapahtuu oikeassa reunassa olevan "kirjaudu ulos" navigaatiolinkin kautta, jota painamalla ohjaudut etusivulle.
 
-https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/kirjaudu.png
 
 # Kirjautuneelle sallittuja toimintoja
 
