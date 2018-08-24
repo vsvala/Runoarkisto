@@ -30,7 +30,7 @@ Kirjautuessasi sovellukseen sinut ohjataan etusivulle, jossa on lyhyt esittely s
 
 Etusivulle pääsee palaamaan muista sovelluksen paikoista painamalla navigaatiopalkin vasemmassa yläreunassa olevasta "Runoarkisto" nimestä.
 
-## *kaikkien runojen listaaminen ja yksittäisen runon tietojen ja kategorioiden näyttö* 
+## *kaikkien runojen listaus ja yksittäisen runon tietojen ja kategorioiden näyttö* 
 
 Voit listata näkyville kaikkien runojen otsikko linkit painamalla "runot" linkkiä navigaatiopalkissa. Painamalla runon nimeä/ linkkiä, avautuu yksittäinen runo näkyville. Jos haluat myös kyseisen runon kategoriat näkyville paina "runon kategoriat" linkkiä.
 
@@ -57,10 +57,11 @@ Painamalla käyttäjän yksittäisen runon näkymässä nappia "runon muokkausti
 #### *Runon muokkaus ja poisto* 
 Runon muokkausnappi avaa esitäytetyn muokkauslomakkeen valitsemastasi yksittäisestä runosta. Muokkaa haluamiasi kenttiä ja korjaa mahdollisten virheilmoitusten ilmoittamat virheet syötteissä. Painamalla "Muokkaa runoa!" nappia tekemäsi muutokset tallentuvat järjestelmään ja näet muokatun runosi. Poisto nappi poistaa runon olemastasi näkymästä.
 
-### *Kategorian lisäys ja poisto* 
+#### *Kategorian lisäys ja poisto* 
 Kategorian lisäysnappi avaa täytettävän lomakkeen kategorian lisäykseen. "Poista kategoria" napista voit poistaa kyseisen kategorian.
 
 **POISTAMINEN POISTAA KYSEISEN KOHTEEN PYSYVÄSTI JÄRJESTELMÄSTÄ EIKÄ SITÄ VOIDA TÄMÄN JÄLKEEN PALAUTTAA!**
+
 
 
 # Ylläpitäjälle rajattuja toimintoja
@@ -69,11 +70,13 @@ Kategorian lisäysnappi avaa täytettävän lomakkeen kategorian lisäykseen. "P
 ## *Käyttäjien hallinnointi*
 todo
 
-## *Kaikkien runojen poisto, muokkaus*
+## *Kaikkien runojen muokkaus*
 
-Pääkäyttäjänä voit lisäksi poistaa kaikkia järjestelmään kirjattuja runoja kaikkien runojen listaus tarkastelun kautta. Paina "Poista" nappia. Tämä poistaa työtehtävän järjestelmästä.
-todo
+Ylläpitäjänä näet kaikkien runojen yksittäisen runon listauksen yhteydessä lisäksi myös "runon muokkaustilaan" napin, josta pääset muokkaamaan ja poistamaan runon sekä poistamaan ja lisäämään sille uusia kategorioita. (kts. alun kohta "kaikkien runojen listaus"..)
 
-## *Kategorioiden listaus ja poisto* (vain pääkäyttäjä)
-todo
-Pääkäyttäjänä pääset hallinnoimaan kategorioita navigaatiopalkin "kategoriat" linkin kautta. Tällä hetkellä poistonappi...TODO ehkä listaus mitkä runot jategorioiden alle????..
+Kaikkien runojen muokkaustila toimii vastaavalla tavalla kuin kirjautuneen käyttäjän runojen muokkaustila. (kts.ohjeet kohdasta "Kirjautuneen käyttäjän runojen listaus ja yksittäisen runon tiedot"..)
+
+
+## *Kategorioiden listaus ja poisto* 
+
+Pääkäyttäjänä pääset listaamaan kaikki kategoriat navigaatiopalkin "kategoriat" linkin kautta. Listauksen poistonapeista pystyt poistamaan aina ko. kategorian.
