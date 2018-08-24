@@ -73,7 +73,7 @@ poistonapit merkitty punaisella värillä
 
 # Ylläpitäjälle rajattuja toimintoja
 
-Ainoastaan ylläpitjän hallussa olevat navihgaatiolinkit näkyvät punaisella.
+Ainoastaan ylläpitäjän hallussa olevat navigaatiolinkit näkyvät punaisella.
 
 ## *Käyttäjien hallinnointi, muokkaus, poisto ja listaus *
 
