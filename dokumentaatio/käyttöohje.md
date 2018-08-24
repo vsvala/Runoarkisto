@@ -28,12 +28,13 @@ Syötä lomakkeen kenttiin pyydetyt tiedot ja ota huomioon nimimerkeille ja sala
 ## *etusivu* 
 Kirjautuessasi sovellukseen sinut ohjataan etusivulle, jossa on lyhyt esittely sovelluksesta sekä aforismi. Navigaatiopalkin linkeistä pääset haluamiisi toimintoihin.
 
-Etusivulle pääsee palaamaan muista sovelluksen paikoista painamalla navigaatiopalkin vasemmassa yläreunassa olevasta "Sukelluskeskus Dyykkimestarit" nimestä.
+Etusivulle pääsee palaamaan muista sovelluksen paikoista painamalla navigaatiopalkin vasemmassa yläreunassa olevasta "Runoarkisto" nimestä.
 
-## *kaikkien runojen listaaminen ja yksittäisen runon  tietojen näyttö* 
+## *kaikkien runojen listaaminen ja yksittäisen runon tietojen ja kategorioiden näyttö* 
 
-Voit listata kaikkien runojen otsikko linkit painamalla "runot" linkkiä navigaatiopalkissa. Painamalla otsikko linkkiä, avautuu yksittäinen runo näkyville. Jos haluat myös kyseisen runon kategoriat näkyville paina *"runon kategoriat"* linkkiä.
-Mikäli olet kirjautunut ylläpitäjänä, näet listauksen vain itse kirjatuista työtehtävistä. Mikäli olet kirjautunut ylläpitäjänä näet yksittäisen runon mukana myös napit, joista pääset muokkaamaan, poistamaan runon tai lisäämään sille uusia kategorioita. 
+Voit listata näkyville kaikkien runojen otsikko linkit painamalla "runot" linkkiä navigaatiopalkissa. Painamalla runon nimeä/ linkkiä, avautuu yksittäinen runo näkyville. Jos haluat myös kyseisen runon kategoriat näkyville paina "runon kategoriat" linkkiä.
+
+Mikäli olet kirjautunut ylläpitäjänä näet yksittäisen runon listauksen yhteydessä myös "runon muokkautilaan napin, josta pääset muokkaamaan ja poistamaan runon sekä poistamaan ja lisäämään sille uusia kategorioita. 
 
 ## *Runojen haku* 
 
@@ -43,25 +44,23 @@ Voit etsiä runoja runoarkistosta nimen tai kategorian perusteella painamalla "r
 
 ## *Runojen lisäys*
 
-Voit kirjata uuden runon järjestelmään painamalla "Lisää runo" linkkiä navigaatiopalkissa. Syötä avautuvaan lomakkeeseen pyydetyt tiedot, korjaa tarvittaessa virheilmoitusten ilmoittamat virheet syötteissä. Lisätty runo näkyy aukeavassa listaus sivussa.
+Voit kirjata uuden runon järjestelmään painamalla "Lisää runo" linkkiä navigaatiopalkissa. Syötä avautuvaan lomakkeeseen pyydetyt tiedot, korjaa tarvittaessa virheilmoitusten ilmoittamat virheet syötteissä. Lisätty runo näkyy aukeavassa kirjautuneen käyttäjän runojen listaus näkymässä.
 
-## *Kirjautuneen käyttäjän runojen listaus, muokkaus, poisto ja kategorioiden lisäys*
+## *Kirjautuneen käyttäjän runojen listaus ja yksittäinen runon tiedot
 
-Voit listata lisäämäsi runot näkyville painamalla "lisäämäsi runot" linkkiä navigaatiopalkissa. "muokkaa runoa, poista runo, lisää runollle kategoria" nappien kautta voit suorittaa kyseiset toiminnot. Runon muokkausnappi avaa esitäytetyn muokkauslomakkeen valitsemastasi yksittäisestä runosta.Lomakkeen lähetysnapin painallus näyttää muokkaamasi runon.  Kategorian lisäysnappi avaa lomakkeen kategorian lisäykseen. Lomakkeen lähetys näyttää runon ja sen kategoriat(kesken). Poisto nappi poistaa runon olemastasi näkymästä.
+Voit listata lisäämiesi runojen otsikot näkyville painamalla "lisäämäsi runot" linkkiä navigaatiopalkissa. Klikkaamalla runon nimeä/linkkiä saat kyseisen runon kokonaan näkyviin sekä napin runon muokkaustilaan. 
 
+## *Runon muokkaustila* 
 
-## *Runon muokkaaminen* 
+Painamalla käyttäjän yksittäisen runon näkymässä nappia "runon muokkaustilaan" saat näkyviin "muokkaa runoa, poista runo, lisää kategoria ja poisto kategoria" napit, joiden kautta voit suorittaa kyseiset toiminnot valitulle runolle. 
 
-Kirjautuneena käyttäjänä voit muokata ja poistaa lisäämiäsi runoja "lisäämäsi runot" listauksen kautta. Paina "Muokkaa" nappia. Tämä avaa yksittäisen työtehtävän tiedot sisältävän muokkauslomakesivun. Muokkaa haluamiasi kenttiä ja korjaa mahdollisten virheilmoitusten ilmoittamat virheet syötteissä. Painamalla "Muokkaa tehtävää!" nappia tekemäsi muutokset tallentuvat järjestelmään ja sinut ohjataan lisäämmäsi runot näkymään.
+*Runon muokkaus ja poisto*
+Runon muokkausnappi avaa esitäytetyn muokkauslomakkeen valitsemastasi yksittäisestä runosta. Muokkaa haluamiasi kenttiä ja korjaa mahdollisten virheilmoitusten ilmoittamat virheet syötteissä. Painamalla "Muokkaa runoa!" nappia tekemäsi muutokset tallentuvat järjestelmään ja näet muokatun runosi. Poisto nappi poistaa runon olemastasi näkymästä.
 
+*Kategorian lisäys ja poisto*
+Kategorian lisäysnappi avaa täytettävän lomakkeen kategorian lisäykseen. "Poista kategoria" napista voit poistaa kyseisen kategorian.
 
-## *Runon poistaminen* 
-
-**tavallinen käyttäjä**
-Voit poistaa omia järjestelmään kirjaamiasi runoja lisäämäsi runot listauksen kautta. Paina "poista runo" nappia. Tämä poistaa työtehtävän järjestelmästä.
-
-
-**RUNON POISTAMINEN POISTAA RUNON PYSYVÄSTI JÄRJESTELMÄSTÄ EIKÄ SITÄ VOIDA TÄMÄN JÄLKEEN PALAUTTAA!**
+**POISTAMINEN POISTAA KYSEISEN KOHTEEN PYSYVÄSTI JÄRJESTELMÄSTÄ EIKÄ SITÄ VOIDA TÄMÄN JÄLKEEN PALAUTTAA!**
 
 
 # Ylläpitäjälle rajattuja toimintoja
