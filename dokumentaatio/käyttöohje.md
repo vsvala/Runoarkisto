@@ -51,7 +51,7 @@ Voit etsiä runoja runoarkistosta nimen tai kategorian perusteella painamalla "r
 ##### rekisteröityminen
 Sovellukseen on tehty erillinen lomakesivu rekisteröinnille eli uuden käyttäjän luomiselle. Kyseiselle sivulle pääsee painamalla navigaatiopalkin oikean laidan linkkiä: *"Rekisteröidy"*. Syötä avautuneeseen lomakkeen kenttiin pyydetyt tiedot ja ota huomioon nimimerkeille ja salasanoille annetut rajoitteet. Korjaa tarvittaessa syötteesi virheilmoitusten ilmoittamista virheistä. Lomake rekisteröi käyttäjän rooliksi automaattisesti USER:in
 
-<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/kirjaudu.png.png" width="600">
+<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/kirjaudu.png" width="600">
 
 
 ##### kirjautuminen
@@ -62,13 +62,19 @@ Rekisteröinnin onnistumisen jälkeen sovellukseen pääsee kirjautumaan avautuv
 
 ## *Runojen lisäys*
 
+<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/lisaa_runo.png" width="600">
+
 Voit kirjata uuden runon järjestelmään painamalla "Lisää runo" linkkiä navigaatiopalkissa. Syötä avautuvaan lomakkeeseen pyydetyt tiedot, korjaa tarvittaessa virheilmoitusten ilmoittamat virheet syötteissä. Lisätty runo näkyy aukeavassa kirjautuneen käyttäjän runojen listaus näkymässä.
 
 ## *Kirjautuneen käyttäjän runojen listaus ja yksittäisen runon tiedot*
 
+<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/kirjautuneen_one.png" width="600">
+
 Voit listata lisäämiesi runojen otsikot näkyville painamalla "lisäämäsi runot" linkkiä navigaatiopalkissa. Klikkaamalla runon nimeä/linkkiä saat kyseisen runon kokonaan näkyviin sekä napin runon muokkaustilaan. 
 
 ## *Runon muokkaustila* 
+
+<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/muokkaustila.png" width="600">
 
 Painamalla käyttäjän yksittäisen runon näkymässä nappia "runon muokkaustilaan" saat näkyviin "muokkaa runoa, poista runo, lisää kategoria ja poisto kategoria" napit, joiden kautta voit suorittaa kyseiset toiminnot valitulle runolle. 
 
