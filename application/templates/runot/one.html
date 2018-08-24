@@ -17,7 +17,8 @@
 
 
 {% if category_by is defined %}
-<!-- <p class="lead">
+<!--todoo säädä p fontteja
+   <p class="lead">
     runon kategoriat:
      </p> 
       -->
@@ -30,35 +31,15 @@
 </ul>
 {% endif %} 
 
-{% if current_user.role=="ADMIN"%}
+{% if current_user.role=="ADMIN" %}
 <table>
   <tr>
     <td>
-      <a href="{{ url_for('runot_uppdateForm', runo_id=t.id)}}">
-        <button>muokkaa runoa</button>
+      <a href="{{ url_for('runo_modify_page', runo_id=t.id)}}">
+      <button type="submit" class="btn btn-primary">runon muokkaustilaan</button>
       </a>
     </td>
 
-    <td>
-      <a href="{{ url_for('category_other', runo_id=t.id) }}">
-        <button>lisää runolle kategoria</button>
-      </a>
-    </td>
-    <td>
-      <!-- #TODO tähän oikea metodi -->
-      <a href="{{ url_for('category_other', runo_id=t.id)}}">
-        <button>poista kategoria</button>
-      </a>
-    </td>
-
-  </tr>
-  <tr>
-    <td>
-      <form method="POST" action="{{ url_for('runot_one_delete', runo_id=t.id)}}">
-        <input type="submit" value="poista runo" />
-      </form>
-    </td>
-  </tr>
   {% endif %}
 
 </table>

@@ -1,28 +1,21 @@
-{% extends "layout.html" %}
+{% extends "layout.html" %} {% block body %}
 
-{% block body %}
+<h3>Kaikki lisätyt kategoriat: </h3>
+<br> {% for cate in category %}
+<table>
 
-      <h2>Lisätty kategoria: </h2>
-      <br>
+  <tr>
 
-    {% for cate in category %}
-    <ul>
-    <li><h4>{{ cate.aihe }} {{ cate.id }}</h4></li>
-    
-    </ul>
-  
-    <form method="POST" action="{{ url_for('category_list_delete', category_id=cate.id)}}">
-      <input type="submit" value="poista kategoria" />
-            </form>
-  <!-- Mieti vielä Tarviiko tätä???
-      Entä näyttäsikö tässäkin mihin runoihin kategoria aina liittyy..
-   -->
-    {% endfor %}
+    <td>
+      <h5>{{ cate.aihe }} {{ cate.id }}</h5>
+    </td>
+    <td>
+      <form method="POST" action="{{ url_for('category_list_delete', category_id=cate.id)}}">
+        <button type="submit" class="btn btn-danger">poista kategoria</button>
+      </form>
+    </td>
+  </tr>
+</table>
 
-
-
-
-
-
-{% endblock %}  
-
+<!-- Entä näyttäsikö tässäkin mihin runoihin kategoria aina liittyy..  -->
+{% endfor %} {% endblock %}

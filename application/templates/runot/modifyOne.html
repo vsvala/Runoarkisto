@@ -37,7 +37,7 @@
     </td>
 
     <td>
-      <form method="POST" action="{{ url_for('runot_one_delete', runo_id=runo.id)}}">
+      <form method="POST" action="{{ url_for('runot_delete', runo_id=runo.id)}}">
         <button type="submit" class="btn btn-danger">poista runo</button>
       </form>
     </td>
@@ -46,32 +46,26 @@
 
 </table>
 <br>
-<p>runon kategoriat:</p>
+<h5>runon kategoriat:</h5>
 {% if category_by is defined %}
 
 <ul>
   {% for category in category_by %}
   <li>
     {{category.id}} {{category.aihe}}
-  </li>
+
  
   <a href="{{ url_for('category_delete', category_id=category.id, runo_id=runo.id)}}">
       <button type="submit" class="btn btn-danger">poista kategoria</button>
   </a>
+</li>
+</br>
   {% endfor %}
 </ul>
 {% endif %}
 
 <table>
-  <td>
     <a href="{{ url_for('category_other', runo_id=runo.id) }}">
       <button type="submit" class="btn btn-primary">lisää runolle kategoria</button>
-    </a>
-  </td>
-  <td>
-    <!-- #TODO tähän oikea metodi -->
-    <a href="{{ url_for('category_other', runo_id=runo.id)}}">
-      <button>poista kaikki kategoriat</button>
-    </a>
-  </td>
+  
   {% endif %} {% endblock %}

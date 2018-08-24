@@ -21,7 +21,7 @@ def category_showOne(category_id):
 #@login_required
 def category_index():
     return render_template("category/list.html", category=Category.query.all())
-    
+
 #kategorioiden lisääminen
 @app.route("/category/other/<runo_id>/", methods=["GET","POST"])
 @login_required
@@ -59,7 +59,7 @@ def category_other(runo_id):
     # c_id=categ.id
     # print("kääääääääääääääääääääääääääääääääk",c_id)
     
-    return redirect(url_for("runot_showOne_logged", runo_id=runo.id ))
+    return redirect(url_for("runo_modify_page", runo_id=runo.id ))
 
 """ #tietyn runon kategorian poisto
 @app.route("/category/delete/<category_id>/", methods=["GET", "POST"])
@@ -85,7 +85,9 @@ def category_delete( runo_id, category_id,):
     db.session().delete(c)
     db.session().commit()
 
-    return redirect(url_for("runot_showOne_logged", runo_id=runo.id))
+    return redirect(url_for("runo_modify_page", runo_id=runo.id))
+
+    
 #kategorian poisto
 @app.route("/category/delete/<category_id>/", methods=["GET", "POST"])
 @login_required

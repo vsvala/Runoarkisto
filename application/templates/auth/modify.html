@@ -25,7 +25,7 @@
             <td>
                 {{ form.username }}
             </td>
-            <tr>
+        </tr>
                 <td>
                     <ul>
                         {% for error in form.username.errors %}
@@ -66,7 +66,8 @@
 
                 <tr>
                     <td colspan="2">
-                        <input type="submit" value="muokkaa" />
+                            <button type="submit" class="btn btn-success">muokkaa</button>
+
                     </td>
                 </tr>
 </form>
