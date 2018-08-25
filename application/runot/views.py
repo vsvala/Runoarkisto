@@ -10,11 +10,11 @@ from werkzeug import secure_filename
 from application.runot.forms import RunoForm, FindForm, SaveForm, UploadForm
 
 
-#runojen listaus
+#runojen listaus aakkosittain
 @app.route("/runot/", methods=["GET"])
 def runot_index():
-    return render_template("runot/list.html", runot=Runo.query.all())
-
+    runot=Runo.query.order_by(Runo.name).all() 
+    return render_template("runot/list.html", runot=runot) #Runo.query.all()
 
 
 #yksitttäisen runon näyttö
@@ -25,8 +25,7 @@ def runot_showOne(runo_id):
     return render_template("runot/one.html", t=t)
 
 
-#TODOOO.........nää pitäis laittaa vielä uusin ensin järjestykseen
-#kirjautuneen käyttäjän runojen listaus
+#kirjautuneen käyttäjän runojen listaus viimeksi luotu ensin
 @app.route("/runot/loggedlist/")
 @login_required()
 def loggedu_poems():

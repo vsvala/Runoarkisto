@@ -70,7 +70,7 @@ def auth_showOne(auth_id):
 @app.route("/auth/", methods=["GET"])
 @login_required(role="ADMIN")
 def auth_index():
-    users=User.query.order_by(User.username).all() 
+    users=User.query.order_by(User.name).all() 
     return render_template("auth/list.html", users=users)
 
 #käyttäjän muokkaus lomakkeen haku
