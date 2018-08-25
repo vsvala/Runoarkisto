@@ -61,5 +61,4 @@ class User(Base):
 
         return response
 
-#voisko tässä/initissä luoda tyhjän databasin käynnistäessä automaattisesti ADMiN userin, jos ei ole olemassa
 
