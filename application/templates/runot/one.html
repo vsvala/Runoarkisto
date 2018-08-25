@@ -1,6 +1,5 @@
 {% extends "layout.html" %} {% block body %}
 
-</br>
 <h3>{{ t.name }}</h3>
 
 <p>
@@ -17,11 +16,7 @@
 
 
 {% if category_by is defined %}
-<!--todoo säädä p fontteja
-   <p class="lead">
-    runon kategoriat:
-     </p> 
-      -->
+
 <ul>
   {% for category in category_by %}
   <li>

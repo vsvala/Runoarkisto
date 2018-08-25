@@ -1,0 +1,36 @@
+{% extends "layout.html" %} {% block body %}
+
+
+<h3>Sivuston tilastoja</h3>
+</br>
+
+<!-- <a href="{{ url_for('runot_count') }}">
+    <h4>Montako runoa</h4>
+</a> -->
+
+<p class="lead">Arkiston runojen lukumäärä: {{ lkm_runot }} </p>
+
+<p class="lead">Arkiston rekisteröityneiden käyttäjien lukumäärä: {{ lkm_users }} </p>
+
+
+
+<p class="lead">Kenellä käyttäjällä on eniten runoja: </p>
+
+
+<p class="lead">Suosituimmat runot : </p>
+
+<!-- <h4>Kenellä käyttäjällä eniten runoja</h4>
+
+ {% if max_poems is defined %}
+ 
+ <ul>
+   {% for poem in max_poems %}
+   <li>
+  
+ </br>
+   {% endfor %}
+ </ul>
+ {% endif %} -->
+
+
+{% endblock %}

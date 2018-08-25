@@ -1,0 +1,52 @@
+body {
+    background: rgb(255, 255, 255);
+    } 
+    
+    
+    h1 {   color: rgb(121, 171, 175);
+    }
+    
+    h3 { padding-top:20px;
+    }
+    
+ 
+    a:link {
+        color: rgb(121, 171, 175);
+    }
+    
+    /* visited link */
+    a:visited {
+        color: rgb(163, 119, 141);
+    }
+    
+    /* mouse over link */
+    a:hover {
+        color: rgb(141, 140, 140);
+    }
+    
+    /* selected link */
+    a:active {
+        color: rgb(107, 159, 172);
+
+    }
+    
+    .btn-danger {
+        color: #fff;
+        background-color: #b3a5ae;
+        border-color: #b3a5ae;
+    }
+
+    .btn-primary {
+        color: #fff;
+        background-color: #7faaad;
+        border-color: #7faaad;
+    }
+
+    .btn-success {
+        color: #fff;
+        background-color: #7faaad;
+        border-color: #7faaad;
+    }
+
+
+

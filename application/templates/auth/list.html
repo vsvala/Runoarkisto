@@ -38,7 +38,7 @@
 
 
 <a href="{{ url_for('users_withPoems') }}">
-    <h4>Katso ketkä käyttäjät ovat lisänneet runoja</h4>
+    <h5>Katso ketkä käyttäjät ovat lisänneet runoja</h5>
 </a>
 
 {% if how_many is defined %}
@@ -50,7 +50,7 @@
           </form> -->
     <li>
         <a href="{{ url_for('users_poems', user_id=user.id) }}">
-            <h5>{{user.id}} {{user.username}}</h5>
+            <h6>{{user.id}} {{user.username}}</h6>
         </a>
     </li>
     {% endfor %} 

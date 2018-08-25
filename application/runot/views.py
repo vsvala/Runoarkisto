@@ -127,8 +127,6 @@ def runot_uppdate(runo_id):
 
     db.session().commit()
 
-#TODOOO mieti näyttäisikö tässä yksittäisenä muokatun runon??? niin sopisi kumpaankin muokkaustilanteesen
-    #return redirect(url_for("runot_showOne", runo_id=runo.id))
     return render_template("runot/modifyOne.html", runo=runo, category_by=Category.find_categories_by(runo))
 
 
@@ -216,56 +214,85 @@ def users_poems(user_id):
     return render_template("auth/list.html", runot_by =Runo.find_runot_by(user), how_many=User.find_users_with_poem(), users=User.query.all())
 
 
+# ohjaa ja näyttää tilasto sivun
+@app.route("/runot/stats/", methods=["GET"])
+@login_required(role="ADMIN")
+def stats_index():
+    lkm_runot= Runo.query.count()
+    lkm_users= User.query.count()
+    return render_template("runot/stats.html", lkm_runot=lkm_runot, lkm_users=lkm_users)
+
+@app.route("/runot/stats/", methods=["GET"])
+@login_required(role="ADMIN")
+def runot_count():
+    runot= Runo.query.all()
+    #lkm= Runo.query(runot.id).count()
+    lkm= Runo.query.count()
+    print("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS", lkm)
+    return render_template("runot/stats.html", lkm=lkm)
 
 
+@app.route("/runot/stats/", methods=["GET"])
+@login_required(role="ADMIN")
+def max_poems():
+    runot= Runo.query.all()
+    #lkm= Runo.query(runot.id).count()
+    lkm= Runo.query.count()
+    print("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS", lkm)
+    return render_template("runot/stats.html", lkm=lkm)
 
 
 #Todo..............::::::::::::::::::::::mieti seuraavia /tuleeeko näitä ollenkaan
 
-#näyttää save lomakkeen
-@app.route("/runot/save/", methods=["GET"])
-@login_required()
-def save_index():
-        return render_template("runot/save.html", form=SaveForm())
+# #näyttää save lomakkeen
+# @app.route("/runot/save/", methods=["GET"])
+# @login_required()
+# def save_index():
+#         return render_template("runot/save.html", form=SaveForm())
 
-#tallentaa annetun runon nimettyyn tekstitiedotoon
-@app.route("/runot/save/", methods=["POST"])
-@login_required()
-def save_runo():
-    form = SaveForm(request.form)
-    find=form.name.data
-    runo = Runo.query.filter_by(name=find).first()
+# #tallentaa annetun runon nimettyyn tekstitiedotoon
+# @app.route("/runot/save/", methods=["POST"])
+# @login_required()
+# def save_runo():
+#     form = SaveForm(request.form)
+#     find=form.name.data
+#     runo = Runo.query.filter_by(name=find).first()
 
-# Test whether variable is defined to be None
-    try:
-        runo
-    except NameError:
-        runo = None
-    if runo is None:
-        print("Kyseistä runoa ei löydy arkistosta")
+# # Test whether variable is defined to be None
+#     try:
+#         runo
+#     except NameError:
+#         runo = None
+#     if runo is None:
+#         print("Kyseistä runoa ei löydy arkistosta")
 
-    file_name=form.file.data
-    tiedosto = open(file_name, "wt")  #avataan ja luodaan tekstitiedosto annetulla nimellä
-    for rivi in runo.sisalto: #kirjoitetaan teoslistan tiedot tekstitiedostoon allekkain
-        tiedosto.write(str(rivi)) 
-        tiedosto.write("\n") 
-    tiedosto.close() #suljetaan tiedosto
+#     file_name=form.file.data
+#     tiedosto = open(file_name, "wt")  #avataan ja luodaan tekstitiedosto annetulla nimellä
+#     for rivi in runo.sisalto: #kirjoitetaan teoslistan tiedot tekstitiedostoon allekkain
+#         tiedosto.write(str(rivi)) 
+#         tiedosto.write("\n") 
+#     tiedosto.close() #suljetaan tiedosto
      
-     #Varmistetaan että tiedot tallentuivat tekstitiedostoon tulostamalla luotu tiedosto
-    tiedosto = open(file_name, "rt")# avaa tiedosto luettavaksi
-    print("Tallensit seuraavan runon: ", runo.name ,"tiedostoon nimeltä: ", file_name)
-    for rivi in tiedosto: # tulostaa talletetum tiedoston rivi kerrallaan
-        print(rivi[:-1])
-    tiedosto.close()#sulje tiedosto
+#      #Varmistetaan että tiedot tallentuivat tekstitiedostoon tulostamalla luotu tiedosto
+#     tiedosto = open(file_name, "rt")# avaa tiedosto luettavaksi
+#     print("Tallensit seuraavan runon: ", runo.name ,"tiedostoon nimeltä: ", file_name)
+#     for rivi in tiedosto: # tulostaa talletetum tiedoston rivi kerrallaan
+#         print(rivi[:-1])
+#     tiedosto.close()#sulje tiedosto
 
-    form = SaveForm(request.form)
-    return render_template("runot/save.html", runo=runo, form=form)
+#     form = SaveForm(request.form)
+#     return render_template("runot/save.html", runo=runo, form=form)
 
-#näyttää load lomakkeen
-@app.route("/runot/load/", methods=["GET"])
-@login_required()
-def load_index():
-        return render_template("runot/load.html", form=UploadForm())
+
+
+
+# #näyttää load lomakkeen
+# @app.route("/runot/load/", methods=["GET"])
+# @login_required()
+# def load_index():
+#         return render_template("runot/load.html", form=UploadForm())
+
+
 
 
 # #lisää runon tekstitiedostosta

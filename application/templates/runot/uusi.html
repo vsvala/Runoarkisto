@@ -1,6 +1,5 @@
 {% extends "layout.html" %} {% block body %}
 <h3>Lisää runo ja valitse mihin kategorioihin se kuuluu</h3>
-</br>
 
 <form action="{{ url_for('runot_create') }}" method="POST" role="form">
   {{ form.RunoForm }}
@@ -51,10 +50,5 @@
   <button type="submit" class="btn btn-success">Lisää runo</button>
 </form>
 
-
-<!--TODO?????????????????? </br>
-<h4>
-  <a href="{{ url_for('load_index') }} ">voit myös ladata runon tekstitiedostosta</a>
-</h4> -->
 
 {% endblock %}
