@@ -26,6 +26,7 @@ Ylläpitäjä:
 
 ### Tietokannan luonti lauseet
 
+```sql
 CREATE TABLE category (
 	id INTEGER NOT NULL, 
 	aihe VARCHAR(144) NOT NULL, 
@@ -61,4 +62,4 @@ CREATE TABLE categories (
 	FOREIGN KEY(runo_id) REFERENCES runo (id), 
 	FOREIGN KEY(category_id) REFERENCES category (id)
 );
-
+```
