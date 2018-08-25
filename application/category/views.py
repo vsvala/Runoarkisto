@@ -22,7 +22,7 @@ def category_showOne(category_id):
 def category_index():
     return render_template("category/list.html", category=Category.query.all())
 
-#kategorioiden lisääminen
+#kategorian lisäys lomakkeen hakeminen ja kategorioiden lisääminen
 @app.route("/category/other/<runo_id>/", methods=["GET","POST"])
 @login_required
 def category_other(runo_id):
@@ -31,35 +31,35 @@ def category_other(runo_id):
 
     form = CategoryForm(request.form)
 
-    if form.validate_on_submit():
-         print(form.aihe.data)
-                          # else:
-                          #     print(form.errors)
-                         # return render_template("category/addCategory.html", form=form)
-
     if request.method == "GET":
         return render_template("category/other.html", form=form, runo=runo)
 
     form = CategoryForm(request.form)
+
+    runo=Runo.query.get(runo_id)
+
     category = Category(aihe=form.aihe.data)
 
-    db.session().add(category)
-    db.session().commit()
-    
-    runo=Runo.query.get(runo_id)
-    runo.categories.append(category)
+    db.session().add(category) #kategoriaolion  luonti ja commitointi tietokantaan
+    db.session().commit() 
+
+    runo.categories.append(category)    #liitokset runoon 
     db.session().commit()
 
-    #jos kategoriaan j liittyy runo...liitetään uuteen(tee metodi) ja näytetäään runot
 
-    # categ = Category.query.filter_by(aihe=form.aihe.data).first()
-    # if not categ :
-    #     return render_template("category/other.html", form=form, runo_id=runo.id,
-    #                            error="Ei kategoriaa määriteltynä")
-    # c_id=categ.id
-    # print("kääääääääääääääääääääääääääääääääk",c_id)
+    # #lisää tietokantaan usean kategorian checklistalta
+    # list=form.aihe.data
+
+    # for  aihe in list:
+    #     category = Category(aihe)
+    #     db.session().add(category)
+    #     db.session().commit()
+    #     runo.categories.append(category)
+    #     db.session().commit()
+
     
     return redirect(url_for("runo_modify_page", runo_id=runo.id ))
+
 
 """ #tietyn runon kategorian poisto
 @app.route("/category/delete/<category_id>/", methods=["GET", "POST"])

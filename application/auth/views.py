@@ -66,11 +66,12 @@ def auth_showOne(auth_id):
 
     return render_template("auth/one.html", user=user)
 
-#käyttäjien listaus
+#käyttäjien listaus aakkosjärjestyksessä
 @app.route("/auth/", methods=["GET"])
 @login_required(role="ADMIN")
 def auth_index():
-    return render_template("auth/list.html", users=User.query.all())
+    users=User.query.order_by(User.username).all() 
+    return render_template("auth/list.html", users=users)
 
 #käyttäjän muokkaus lomakkeen haku
 @app.route("/auth/modify/<auth_id>/", methods=["GET"])

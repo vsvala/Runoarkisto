@@ -20,8 +20,8 @@
 
         <td>
             <a href="{{ url_for('auth_uppdateForm', auth_id=user.id)}}">
-                    <button type="submit" class="btn btn-success">muokkaa</button>
-                </a>
+                <button type="submit" class="btn btn-success">muokkaa</button>
+            </a>
         </td>
         <td>
             <a href="{{ url_for('auth_delete', auth_id=user.id)}}">
@@ -33,45 +33,33 @@
     </tr>
     {% endfor %}
 </table>
+
 </br>
+
+
 <a href="{{ url_for('users_withPoems') }}">
     <h4>Katso ketkä käyttäjät ovat lisänneet runoja</h4>
 </a>
-<!--TODOO   aakkosta käyttäjä..........tlisää hakulistaan taulukko mitä runoa kullakin on
-käyttäjä id, käyttäjä runojen nimet alalistana -->
-</li>
 
 {% if how_many is defined %}
 
 <ul>
     {% for user in how_many %}
+    <!-- <form method="GET" action="{{ url_for('users_poems', user_id=user.id) }}">
+            <button type="submit" class="btn btn-primary">näytä käyttäjän runot</button>
+          </form> -->
     <li>
-        {{user.id}} {{user.name}}
+        <a href="{{ url_for('users_poems', user_id=user.id) }}">
+            <h5>{{user.id}} {{user.username}}</h5>
+        </a>
     </li>
-    {% endfor %}
+    {% endfor %} 
+
+    {% if runot_by is defined %} 
+    <h5>Klikkaamasi käyttäjän runot</h5>
+    {% for runo in runot_by %}
+    <li>{{runo.name}} </li>
+    {% endfor %} {% endif %}
 </ul>
-{% endif %}
 
-
-<p>mitä runoja kullakin käyttäjällä on</p>
-<p>kayttajän runojen poisto?? käyttäjänpoisto??tähänkö</p>
-
-<p>????????tilastoja tähän vai toiselle sivulle??????</p>
-<!-- TILASTOJA?? u??
-    <a href="{{ url_for('runot_index') }}"><h2>montako käyttäjää: </h2></a></li>
-    {% if loggedUsers_poems is defined %}
-     <p class="lead">
-       Hakemasi runo:
-     </p>
-     
-     <ul>
-       {% for runo in loggedUsers_poems %}
-       <li>
-         {{runo.id}} {{runo.name}}
-       </li>
-       {% endfor %}
-     </ul>
-  {% endif %}  -->
-
-
-{% endblock %}
+{% endif %} {% endblock %}

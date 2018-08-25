@@ -62,12 +62,6 @@ def runot_create():
         print(form.errors)
         return render_template("runot/uusi.html", form=form)
 
-    #kategoria olion luonti ja lisäys kantaan
-    category = Category(aihe=form.aihe.data)
-
-    db.session().add(category)
-    db.session().commit()
-
     # runo-olio t:n luonti lomakesyötteestä
     t = Runo(name=form.name.data, sisalto=form.sisalto.data,runoilija=form.runoilija.data)
 
@@ -75,13 +69,20 @@ def runot_create():
     runo= Runo.query.filter_by(name=t.name).first()
     if runo:
         return render_template("runot/uusi.html", form=form, name_error= "Samanniminen runo on jo arkistossa!")
+   
+   #lisää  kategoriat  tietokantaan checklistalta ja
+ # luodaan monesta moneen iitokset runon ja kategorian välilleja talletetaan runo kantaan    
+    t.account_id = current_user.id  #liitetään tili nykyiseen käyttäjään
+ 
+    list=form.aihe.data
 
-    # luodaan monesta moneen iitokset runon ja kategorian välilleja talletetaan runo kantaan
-    t.account_id = current_user.id
-    t.categories.append(category) 
-
-    db.session().add(t)
-    db.session().commit()
+    for  aihe in list:
+        category = Category(aihe)
+        db.session().add(category)
+        db.session().commit()
+        t.categories.append(category)
+        db.session().add(t)
+        db.session().commit()
 
     return redirect(url_for("loggedu_poems"))
 
@@ -206,8 +207,14 @@ def listing_find_categories(runo_id):
     return render_template("runot/listings.html", category_by =Category.find_categories_by(runo), runo=runo)
 
 
+#hakee tietyn käyttäjän runot
+@app.route("/runot/user/<user_id>/a",methods=["GET"])
+def users_poems(user_id):
 
+    user= User.query.get(user_id)
+    print(user)
 
+    return render_template("auth/list.html", runot_by =Runo.find_runot_by(user), how_many=User.find_users_with_poem(), users=User.query.all())
 
 
 

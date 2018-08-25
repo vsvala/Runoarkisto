@@ -62,16 +62,15 @@ class Runo(Base):
 
         return response
 
-    # @staticmethod
-    # def search_poem():
+    @staticmethod
+    def find_runot_by(user):
+        stmt = text("SELECT DISTINCT runo.id, runo.name FROM runo, account"
+                     " WHERE (runo.account_id =:u)").params(u=user.id)
 
-    #     stmt = text("SELECT runo.name, runo.id FROM Runo"
-    #                 " WHERE account_id=:cid").params(cid=current_user.id)
-
-    #     res = db.engine.execute(stmt)
+        res = db.engine.execute(stmt)
   
-    #     response = []
-    #     for row in res:
-    #         response.append({"id":row[0], "name":row[1]})
+        response = []
+        for row in res:
+            response.append({"id":row[0], "name":row[1]})
 
-    #     return response
+        return response

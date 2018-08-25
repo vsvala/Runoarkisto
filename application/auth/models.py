@@ -34,7 +34,7 @@ class User(Base):
 
     @staticmethod
     def find_users_with_poem():
-        stmt = text("SELECT Account.id, Account.name FROM Account"
+        stmt = text("SELECT Account.id, Account.username FROM Account"
                     " LEFT JOIN Runo ON Runo.account_id = Account.id"
                     " GROUP BY Account.id"
                     " HAVING COUNT(Runo.id) > 0")
@@ -43,7 +43,7 @@ class User(Base):
   
         response = []
         for row in res:
-            response.append({"id":row[0], "name":row[1]})
+            response.append({"id":row[0], "username":row[1]})
 
         return response
 
