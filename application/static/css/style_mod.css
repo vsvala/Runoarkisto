@@ -42,11 +42,40 @@ body {
         border-color: #7faaad;
     }
 
+    .button.btn.btn-primary {
+        color: #fff;
+        background-color: #7faaad;
+        border-color: #7faaad;
+        
+    }
+
     .btn-success {
         color: #fff;
         background-color: #7faaad;
         border-color: #7faaad;
+        
     }
 
-
-
+.button:hover {
+        color: #fff;
+        background-color: #adb9b9;
+        border-color: #b1b5b6;
+    }
+    .btn-danger:hover {
+        color: #fff;
+        background-color: #a97fad;
+        border-color: #a97fad;
+        
+    }
+    .btn-success:hover {
+        color: #fff;
+        background-color: rgb(55, 192, 202);
+        border-color:rgb(55, 192, 202);
+        
+    }
+    .btn-primary:hover {
+        color: #fff;
+        background-color:rgb(55, 192, 202);
+        border-color: rgb(55, 192, 2025);
+        
+    }
