@@ -23,3 +23,42 @@ Ylläpitäjä:
 - Ylläpitäjä voi lisätä muokata ja poistaa runoja ja kategorioita, jotta mahdollisia virheitä voitaisiin korjata ja ei haluttuja runoja poistaa
 - Ylläpitäjä voi lisätä, muokata ja poistaa tykkäys toimintoja virhetilanteiden varalta
 -Ylläpitäjä voi hallinnoia, lisätä ja poistaa rekisteröityneen käyttäjän esim. väärinkäytösten varalta.
+
+### Tietokannan luonti lauseet
+
+CREATE TABLE category (
+	id INTEGER NOT NULL, 
+	aihe VARCHAR(144) NOT NULL, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE account (
+	id INTEGER NOT NULL, 
+	date_created DATETIME, 
+	date_modified DATETIME, 
+	name VARCHAR(100) NOT NULL, 
+	username VARCHAR(20) NOT NULL, 
+	password VARCHAR(20) NOT NULL, 
+	role VARCHAR(10) NOT NULL, 
+	PRIMARY KEY (id), 
+	UNIQUE (username)
+);
+CREATE TABLE runo (
+	id INTEGER NOT NULL, 
+	date_created DATETIME, 
+	date_modified DATETIME, 
+	name VARCHAR(144) NOT NULL, 
+	sisalto VARCHAR(2000) NOT NULL, 
+	runoilija VARCHAR(100) NOT NULL, 
+	account_id INTEGER NOT NULL, 
+	PRIMARY KEY (id), 
+	UNIQUE (name), 
+	FOREIGN KEY(account_id) REFERENCES account (id)
+);
+CREATE TABLE categories (
+	runo_id INTEGER NOT NULL, 
+	category_id INTEGER NOT NULL, 
+	PRIMARY KEY (runo_id, category_id), 
+	FOREIGN KEY(runo_id) REFERENCES runo (id), 
+	FOREIGN KEY(category_id) REFERENCES category (id)
+);
+
