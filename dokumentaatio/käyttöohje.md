@@ -21,12 +21,17 @@ Sivut ja toiminnot joihin ko. käyttäjällä ei ole oikeuksia ovat piilotettuna
 # Kaikille sallittuja toimintoja
 
 ## *etusivu* 
+
+<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/etusivu.png" width="700">
+
 Kirjautuessasi sovellukseen sinut ohjataan etusivulle, jossa on lyhyt esittely sovelluksesta sekä aforismi. Navigaatiopalkin linkeistä pääset haluamiisi toimintoihin.
 
 Etusivulle pääsee palaamaan muista sovelluksen paikoista painamalla navigaatiopalkin vasemmassa yläreunassa olevasta "Runoarkisto" nimestä.
 
 
 ## *kaikkien runojen listaus ja yksittäisen runon tietojen ja kategorioiden näyttö* 
+
+<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/kaikki_runot_listaus.png" width="700">
 
 Voit listata näkyville kaikkien runojen otsikko linkit painamalla "runot" linkkiä navigaatiopalkissa. Painamalla runon nimeä/ linkkiä, avautuu yksittäinen runo näkyville. Jos haluat myös kyseisen runon kategoriat näkyville paina "runon kategoriat" linkkiä.
 
@@ -35,12 +40,19 @@ Mikäli olet kirjautunut ylläpitäjänä näet yksittäisen runon listauksen yh
 
 ## *Runojen haku* 
 
+<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/haku.png" width="700">
+
 Voit etsiä runoja runoarkistosta nimen tai kategorian perusteella painamalla "runot" linkkiä navigaatiopalkissa. Syöttämällä lomakkeeseen arkistossa olevan runon nimen tai kategorian, näet kyseisen runon tai listan hakemaasi kategoriaan kuuluvista runoista. Jos hakemaasi runoa tai kategoriaa ei löydy, saat ilmoituksen.
 
 ## *Rekisteröityminen=uuden käyttäjän lisääminen ja kirjautuminen*
 
+<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/rekisteroidy.png" width="700">
+
 ##### rekisteröityminen
 Sovellukseen on tehty erillinen lomakesivu rekisteröinnille eli uuden käyttäjän luomiselle. Kyseiselle sivulle pääsee painamalla navigaatiopalkin oikean laidan linkkiä: *"Rekisteröidy"*. Syötä avautuneeseen lomakkeen kenttiin pyydetyt tiedot ja ota huomioon nimimerkeille ja salasanoille annetut rajoitteet. Korjaa tarvittaessa syötteesi virheilmoitusten ilmoittamista virheistä. Lomake rekisteröi käyttäjän rooliksi automaattisesti USER:in
+
+<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/kirjaudu.png" width="700">
+
 
 ##### kirjautuminen
 Rekisteröinnin onnistumisen jälkeen sovellukseen pääsee kirjautumaan avautuvan kirjautumislomakkeen kautta ja myös navigaatiopalkin linkin *"Kirjaudu"* kautta. Navigaation oikeassa reunassa näet kirjautuneen käyttäjänimen ja roolin USER. Uloskirjautuminen tapahtuu oikeassa reunassa olevan "kirjaudu ulos" navigaatiolinkin kautta, jota painamalla ohjaudut etusivulle.
@@ -50,13 +62,19 @@ Rekisteröinnin onnistumisen jälkeen sovellukseen pääsee kirjautumaan avautuv
 
 ## *Runojen lisäys*
 
+<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/lisaa_runo.png" width="700">
+
 Voit kirjata uuden runon järjestelmään painamalla "Lisää runo" linkkiä navigaatiopalkissa. Syötä avautuvaan lomakkeeseen pyydetyt tiedot, korjaa tarvittaessa virheilmoitusten ilmoittamat virheet syötteissä. Lisätty runo näkyy aukeavassa kirjautuneen käyttäjän runojen listaus näkymässä.
 
 ## *Kirjautuneen käyttäjän runojen listaus ja yksittäisen runon tiedot*
 
+<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/kirjautuneen_one.png" width="700">
+
 Voit listata lisäämiesi runojen otsikot näkyville painamalla "lisäämäsi runot" linkkiä navigaatiopalkissa. Klikkaamalla runon nimeä/linkkiä saat kyseisen runon kokonaan näkyviin sekä napin runon muokkaustilaan. 
 
 ## *Runon muokkaustila* 
+
+<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/muokkaustila.png" width="700">
 
 Painamalla käyttäjän yksittäisen runon näkymässä nappia "runon muokkaustilaan" saat näkyviin "muokkaa runoa, poista runo, lisää kategoria ja poisto kategoria" napit, joiden kautta voit suorittaa kyseiset toiminnot valitulle runolle. 
 
@@ -65,6 +83,9 @@ Runon muokkausnappi avaa esitäytetyn muokkauslomakkeen valitsemastasi yksittäi
 
 #### *Kategorian lisäys ja poisto* 
 Kategorian lisäysnappi avaa täytettävän lomakkeen kategorian lisäykseen. "Poista kategoria" napista voit poistaa kyseisen kategorian.
+
+<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/lisaa_ketegoria.png" width="600">
+
 
 **POISTAMINEN POISTAA KYSEISEN KOHTEEN PYSYVÄSTI JÄRJESTELMÄSTÄ EIKÄ SITÄ VOIDA TÄMÄN JÄLKEEN PALAUTTAA!**
 poistonapit merkitty punaisella värillä
@@ -76,6 +97,8 @@ poistonapit merkitty punaisella värillä
 Ainoastaan ylläpitäjän hallussa olevat navigaatiolinkit näkyvät punaisella.
 
 ## *Käyttäjien hallinnointi, muokkaus, poisto ja listaus *
+
+<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/kayttajienhallinta.png" width="700">
 
 Pääkäyttäjänä pääset hallinnoimaan ja listaamaan käyttäjien tiedot punaisen navigaatiopalkin "käyttäjät" linkin kautta. Linkistä avautuvassa käyttäjien hallinta näkymässä pystyt "muokkaa" ja "poista" napista muokkaamaan ja poistamaan käyttäjän. Huom!! Käyttäjän poisto napi poistaa järjestelmästä myös hänen runonsa.
 
@@ -92,5 +115,7 @@ Kaikkien runojen muokkaustila toimii vastaavalla tavalla kuin kirjautuneen käyt
 
 
 ## *Kategorioiden listaus ja poisto* 
+
+<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/kategoriat.png">
 
 Pääkäyttäjänä pääset listaamaan kaikki kategoriat navigaatiopalkin punaisen "kategoriat" linkin kautta. Listauksen poisto napeista pystyt poistamaan aina ko. kategorian.
