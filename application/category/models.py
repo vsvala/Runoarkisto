@@ -9,7 +9,7 @@ class Category(db.Model):
     def __init__(self, aihe):
       self.aihe = aihe
 
-    #haetaan runon kategoriat
+    #haetaan runon kategoriat runon nimen perusteella
     @staticmethod
     def find_categories_by(t):
      

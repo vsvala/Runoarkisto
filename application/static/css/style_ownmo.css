@@ -1,12 +1,12 @@
 body {
     background: rgb(255, 255, 255);
-    } 
-    
+
+    }
     
     h1 {   color: rgb(121, 171, 175);
     }
     
-    h3 { padding-top:20px;
+    h3 { padding-top:10px;
     }
     
  
@@ -30,30 +30,31 @@ body {
 
     }
     
+td  {padding-left: 10px;
+
+    }
     .btn-danger {
         color: #fff;
         background-color: #b3a5ae;
         border-color: #b3a5ae;
+        margin-bottom: 10px;
+       
     }
 
     .btn-primary {
         color: #fff;
         background-color: #7faaad;
         border-color: #7faaad;
-    }
-
-    .button.btn.btn-primary {
-        color: #fff;
-        background-color: #7faaad;
-        border-color: #7faaad;
-        
+        margin-bottom: 10px;
+      
     }
 
     .btn-success {
         color: #fff;
         background-color: #7faaad;
         border-color: #7faaad;
-        
+        margin-bottom: 10px;
+  
     }
 
 .button:hover {
@@ -63,19 +64,19 @@ body {
     }
     .btn-danger:hover {
         color: #fff;
-        background-color: #a97fad;
+        background-color: #957897;
         border-color: #a97fad;
         
     }
     .btn-success:hover {
         color: #fff;
-        background-color: rgb(55, 192, 202);
+        background-color: rgb(39, 136, 143);
         border-color:rgb(55, 192, 202);
         
     }
     .btn-primary:hover {
         color: #fff;
-        background-color:rgb(55, 192, 202);
+        background-color:rgb(40, 150, 158);
         border-color: rgb(55, 192, 2025);
         
     }

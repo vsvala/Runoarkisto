@@ -5,20 +5,21 @@ from application import app, db, login_manager, login_required
 from application.auth.models import User
 from application.category.models import Category
 from application.runot.models import Runo
+from application.like.models import Like
 
-from werkzeug import secure_filename
-from application.runot.forms import RunoForm, FindForm, SaveForm, UploadForm
+#from werkzeug import secure_filename
+from application.runot.forms import RunoForm, FindForm
 
 
 #runojen listaus aakkosittain
 @app.route("/runot/", methods=["GET"])
 def runot_index():
     runot=Runo.query.order_by(Runo.name).all() 
-    return render_template("runot/list.html", runot=runot) #Runo.query.all()
+    return render_template("runot/list.html", runot=runot, find_poems=Like.find_poems_with_most_likes()) #Runo.query.all()
 
 
 #yksitttäisen runon näyttö
-@app.route("/runot/shwone/<runo_id>/", methods=["GET"])
+@app.route("/runot/showone/<runo_id>/", methods=["GET"])
 def runot_showOne(runo_id):
     t = Runo.query.get(runo_id)
     print(t)
@@ -76,8 +77,10 @@ def runot_create():
     list=form.aihe.data
 
     for  aihe in list:
-        category = Category(aihe)
-        db.session().add(category)
+    
+        category = Category(aihe)        #luodaan ja lisätään uus olio
+
+        db.session().add(category)             
         db.session().commit()
         t.categories.append(category)
         db.session().add(t)
@@ -87,7 +90,7 @@ def runot_create():
 
 
 #runon muokkaustilaan ohjaus
-@app.route("/runot/modifyOne/<runo_id>", methods=["GET"])
+@app.route("/runot/modifyOne/<runo_id>/", methods=["GET"])
 @login_required()
 def runo_modify_page(runo_id):
 
@@ -97,7 +100,7 @@ def runo_modify_page(runo_id):
 
 
 #runon muokkaus lomakkeen haku
-@app.route("/runot/<runo_id>", methods=["GET"])
+@app.route("/runot/<runo_id>/", methods=["GET"])
 @login_required()
 def runot_uppdateForm(runo_id):
 
@@ -159,7 +162,6 @@ def find_runo():
     runo_name=form.name.data
     runo_category=form.category.data
     #runo = Runo.query.filter_by(name=find).first()
-
     
     if runo_name: 
         runo= Runo.query.filter_by(name=runo_name).first()
@@ -196,12 +198,11 @@ def find_categories(runo_id):
     return render_template("runot/one.html", category_by =Category.find_categories_by(t), t=t)
 
 
-
-#hakee tietyn käyttäjän runojen kategoriat
-@app.route("/runot/listing/<runo_id>/a",methods=["GET"])
-def listing_find_categories(runo_id):
-    runo = Runo.query.get(runo_id)
-    return render_template("runot/listings.html", category_by =Category.find_categories_by(runo), runo=runo)
+# #hakee tietyn käyttäjän runojen kategoriat
+# @app.route("/runot/listing/<runo_id>/a",methods=["GET"])
+# def listing_find_categories(runo_id):
+#     runo = Runo.query.get(runo_id)
+#     return render_template("runot/listings.html", category_by =Category.find_categories_by(runo), runo=runo)
 
 
 #hakee tietyn käyttäjän runot
@@ -213,124 +214,20 @@ def users_poems(user_id):
 
     return render_template("auth/list.html", runot_by =Runo.find_runot_by(user), how_many=User.find_users_with_poem(), users=User.query.all())
 
-
 # ohjaa ja näyttää tilasto sivun
 @app.route("/runot/stats/", methods=["GET"])
 @login_required(role="ADMIN")
 def stats_index():
     lkm_runot= Runo.query.count()
     lkm_users= User.query.count()
-    return render_template("runot/stats.html", lkm_runot=lkm_runot, lkm_users=lkm_users)
+    return render_template("runot/stats.html", lkm_runot=lkm_runot, lkm_users=lkm_users,  most_poems=User.find_users_with_most_poems())
 
+#palauttaa kaikkien runojen luumäärän arkistossa
 @app.route("/runot/stats/", methods=["GET"])
 @login_required(role="ADMIN")
 def runot_count():
     runot= Runo.query.all()
     #lkm= Runo.query(runot.id).count()
     lkm= Runo.query.count()
-    print("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS", lkm)
+    #print("lukumäärä:", lkm)
     return render_template("runot/stats.html", lkm=lkm)
-
-
-@app.route("/runot/stats/", methods=["GET"])
-@login_required(role="ADMIN")
-def max_poems():
-    runot= Runo.query.all()
-    #lkm= Runo.query(runot.id).count()
-    lkm= Runo.query.count()
-    print("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS", lkm)
-    return render_template("runot/stats.html", lkm=lkm)
-
-
-#Todo..............::::::::::::::::::::::mieti seuraavia /tuleeeko näitä ollenkaan
-
-# #näyttää save lomakkeen
-# @app.route("/runot/save/", methods=["GET"])
-# @login_required()
-# def save_index():
-#         return render_template("runot/save.html", form=SaveForm())
-
-# #tallentaa annetun runon nimettyyn tekstitiedotoon
-# @app.route("/runot/save/", methods=["POST"])
-# @login_required()
-# def save_runo():
-#     form = SaveForm(request.form)
-#     find=form.name.data
-#     runo = Runo.query.filter_by(name=find).first()
-
-# # Test whether variable is defined to be None
-#     try:
-#         runo
-#     except NameError:
-#         runo = None
-#     if runo is None:
-#         print("Kyseistä runoa ei löydy arkistosta")
-
-#     file_name=form.file.data
-#     tiedosto = open(file_name, "wt")  #avataan ja luodaan tekstitiedosto annetulla nimellä
-#     for rivi in runo.sisalto: #kirjoitetaan teoslistan tiedot tekstitiedostoon allekkain
-#         tiedosto.write(str(rivi)) 
-#         tiedosto.write("\n") 
-#     tiedosto.close() #suljetaan tiedosto
-     
-#      #Varmistetaan että tiedot tallentuivat tekstitiedostoon tulostamalla luotu tiedosto
-#     tiedosto = open(file_name, "rt")# avaa tiedosto luettavaksi
-#     print("Tallensit seuraavan runon: ", runo.name ,"tiedostoon nimeltä: ", file_name)
-#     for rivi in tiedosto: # tulostaa talletetum tiedoston rivi kerrallaan
-#         print(rivi[:-1])
-#     tiedosto.close()#sulje tiedosto
-
-#     form = SaveForm(request.form)
-#     return render_template("runot/save.html", runo=runo, form=form)
-
-
-
-
-# #näyttää load lomakkeen
-# @app.route("/runot/load/", methods=["GET"])
-# @login_required()
-# def load_index():
-#         return render_template("runot/load.html", form=UploadForm())
-
-
-
-
-# #lisää runon tekstitiedostosta
-# @app.route("/runot/load/", methods=['GET', 'POST'])
-# @login_required
-# def load_runo():
-#     form = UploadForm(request.form)
-#     f=form.fil.data
-#     print("TKKKKKKKKKKKKKKKKKKKKK",f)
-#     #if form.validate_on_submit():
-#     filename = secure_filename(f.filename)
-#     #form.file.data.save('runot/load/' + filename)
-#     #Varmistetaan että tiedot tallentuivat tekstitiedostoon tulostamalla luotu tiedosto
-#     tiedosto = open(filename, "rt")# avaa tiedosto luettavaksi
-#     for rivi in tiedosto: # tulostaa talletetum tiedoston rivi kerrallaan
-#         print(rivi[:-1])
-#     tiedosto.close()#sulje tiedosto
-
-#     #return render_template('runot/load.html', form=form)
-#     #return redirect(url_for('load_index'))
-#     return render_template("runot/load.html", form=UploadForm(), filename=filename)
-
-     
-#      #Varmistetaan että tiedot tallentuivat tekstitiedostoon tulostamalla luotu tiedosto
-#     tiedosto = open(filename, "rt")# avaa tiedosto luettavaksi
-#     for rivi in tiedosto: # tulostaa talletetum tiedoston rivi kerrallaan
-#         print(rivi[:-1])
-#     tiedosto.close()#sulje tiedosto
-
-#     form = SaveForm(request.form)
-
-#     return render_template('runot/upload.html', form=form)
-
-
-#työnalla
-#lasketaan montako runoa tietokannasta löytyy
-# @app.route("/runot/listings/c")
-# @login_required
-# def count_runo():
-#     return render_template("runot/listings.html", find_poem=User.search_poem())
-

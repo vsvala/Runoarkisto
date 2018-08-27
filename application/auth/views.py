@@ -38,12 +38,10 @@ def users_create():
 def auth_login():
     if request.method == "GET":
         return render_template("auth/loginform.html", form=LoginForm())
-
     form = LoginForm(request.form)
 
     #  validoinnit
-    user = User.query.filter_by(
-        username=form.username.data, password=form.password.data).first()
+    user = User.query.filter_by(username=form.username.data, password=form.password.data).first()
     if not user:
         return render_template("auth/loginform.html", form=form,
                                error="Tuntematon käyttäjänimi tai salasana")
@@ -87,9 +85,7 @@ def auth_uppdateForm(auth_id):
 @app.route("/auth/modify/<auth_id>/", methods=["GET","POST"])
 @login_required(role="ADMIN")
 def auth_uppdate(auth_id):
-
     user = User.query.get(auth_id)
-
     form = UserForm(request.form)
 
     #validoinnit

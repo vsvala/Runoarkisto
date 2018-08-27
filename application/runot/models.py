@@ -6,6 +6,7 @@ from sqlalchemy.sql import text
 
 # Määritetään mallit tietokantataululle.
 
+# Kategorian ja runon liitostaulu many to many
 categories_c = db.Table('categories',
         db.Column('runo_id', db.Integer, 
         db.ForeignKey('runo.id'), primary_key=True ),
@@ -17,14 +18,14 @@ class Runo(Base):
     name = db.Column(db.String(144), nullable=False, unique=True) 
     sisalto = db.Column(db.String(2000), nullable=False) 
     runoilija = db.Column(db.String(100), nullable=False) 
-
-   # Liitetään käytäjälle runo
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'),nullable=False)
-
 
     # Määritellään many to many riippuvuussuhde  kategorioiden kanssa. 
     categories = db.relationship('Category', secondary=categories_c, lazy='subquery', cascade="all, delete-orphan", single_parent=True,
         backref=db.backref('runot', lazy=True))   
+
+    #liitetään runolle like
+    like = db.relationship("Like", backref='runo', lazy=True, cascade="all, delete-orphan")
 
 
     def __init__(self, name, sisalto, runoilija): 
@@ -32,7 +33,7 @@ class Runo(Base):
        self.sisalto= sisalto
        self.runoilija = runoilija
 
-  
+  #haetaan kirjautuneen käyttäjän runot
     @staticmethod
     def find_loggedUsers_poems():
 
@@ -48,7 +49,7 @@ class Runo(Base):
 
         return response
 
-
+#haetaan runot annetun kategorian mukaan
     @staticmethod
     def find_runot_by_category(category):
        
@@ -63,6 +64,7 @@ class Runo(Base):
 
         return response
 
+#haetaan tietyn käyttäjän runot
     @staticmethod
     def find_runot_by(user):
         stmt = text("SELECT DISTINCT runo.id, runo.name FROM runo, account"

@@ -46,32 +46,9 @@ def category_other(runo_id):
     runo.categories.append(category)    #liitokset runoon 
     db.session().commit()
 
-
-    # #lisää tietokantaan usean kategorian checklistalta
-    # list=form.aihe.data
-
-    # for  aihe in list:
-    #     category = Category(aihe)
-    #     db.session().add(category)
-    #     db.session().commit()
-    #     runo.categories.append(category)
-    #     db.session().commit()
-
     
     return redirect(url_for("runo_modify_page", runo_id=runo.id ))
 
-
-""" #tietyn runon kategorian poisto
-@app.route("/category/delete/<category_id>/", methods=["GET", "POST"])
-@login_required
-def runo_category_delete(category_id, runo):
-
-    c = Category.query.get(category_id)
-    db.session().delete(c)
-    db.session().commit()
-
-    #return redirect(url_for("loggedu_poems"))
-    return redirect(url_for("runot_showOne", runo_id=runo.id )) """
 
 #kategorian poisto
 @app.route("/category/delete/<runo_id>/<category_id>/", methods=["GET", "POST"])

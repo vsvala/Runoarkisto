@@ -7,9 +7,9 @@
 
 {% if loggedUsers_poems is defined %}
 
-<ul>
+<ol>
     {% for runo in loggedUsers_poems %}
-    <li>
+    <li style= "padding-left:5px; color:gray; font-weight: 500;">
 
    <a href="{{ url_for('runot_showOne_logged', runo_id=runo.id) }}"><h5>{{ runo.name }}<h5></a>
 
@@ -17,6 +17,6 @@
   
     {% endfor %}
 
-</ul>
+</ol>
  {% endif %} 
      {% endblock %}

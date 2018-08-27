@@ -36,14 +36,12 @@
 
 </br>
 
-
 <a href="{{ url_for('users_withPoems') }}">
-    <h5>Katso ketkä käyttäjät ovat lisänneet runoja</h5>
+    <h5>Katso mitä runoja kukin käyttäjä on lisännyt</h5>
 </a>
 
 {% if how_many is defined %}
-
-<ul>
+<ul class="list-unstyled">
     {% for user in how_many %}
     <!-- <form method="GET" action="{{ url_for('users_poems', user_id=user.id) }}">
             <button type="submit" class="btn btn-primary">näytä käyttäjän runot</button>
@@ -56,10 +54,15 @@
     {% endfor %} 
 
     {% if runot_by is defined %} 
-    <h5>Klikkaamasi käyttäjän runot</h5>
-    {% for runo in runot_by %}
-    <li>{{runo.name}} </li>
-    {% endfor %} {% endif %}
+        <h5>Klikkaamasi käyttäjän runot</h5>
+        {% for runo in runot_by %}
+        <ul>
+          <li style="color:gray;"> {{runo.name}} </li>
+        </ul>
+         {% endfor %} 
+    {% endif %}
 </ul>
 
-{% endif %} {% endblock %}
+{% endif %} 
+
+{% endblock %}

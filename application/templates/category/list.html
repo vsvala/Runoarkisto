@@ -1,15 +1,15 @@
 {% extends "layout.html" %} {% block body %}
 
 <h3>Kaikki lisätyt kategoriat: </h3>
-<br> {% for cate in category %}
+<br> 
+
+</table>   
+{% for cate in category %}
 <table>
-
-  <tr>
-
-    <td>
-      <h5>{{ cate.aihe }} {{ cate.id }}</h5>
-    </td>
-    <td>
+  <tr style="color:gray";>
+      <td> <h5>{{ cate.aihe }}</h5> </td>
+      <td><h5>{{ cate.id }}</h5></td>
+    <td style="padding-left:10px;" >
       <form method="POST" action="{{ url_for('category_list_delete', category_id=cate.id)}}">
         <button type="submit" class="btn btn-danger">poista kategoria</button>
       </form>
@@ -17,5 +17,4 @@
   </tr>
 </table>
 
-<!-- Entä näyttäsikö tässäkin mihin runoihin kategoria aina liittyy..???  -->
 {% endfor %} {% endblock %}

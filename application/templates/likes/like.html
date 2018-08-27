@@ -1,0 +1,60 @@
+{% extends "layout.html" %} 
+{% block body %}
+
+<!-- TODOOO.........TESTISIVU POISTETAAN LOpuksi -->
+
+<h3>Tykkäykset</h3>
+
+<h4>Tykätyimmät runot top 10</h4>
+
+<table>
+    {% if find_poems is defined%}
+  <tr>
+    {% for poem in find_poems %}
+    <tr>  <td>{{ poem.name }}</td> <td>{{ poem.total }}</td></tr>
+    {% endfor %}
+</tr>
+  {% endif %}
+</table>
+
+<a href="{{ url_for('like_index', l=l) }}">
+            <h4>kaikki tykkäykset</h4> </a> 
+           
+</br>
+{% if l is defined %}
+{{ l.like }} 
+{% endif %}
+
+{% for like in likes %}
+   <h5>tykkäyksen sisältö {{ like.like }} ja tykkäyksem id: {{ like.id }} tykkääjä {{like.account_id}} runonid {{ like.runo_id }}</h5>
+ 
+    {% endfor %}
+<p>
+kaikki tykkäykset
+      </p> 
+{{ likes }} 
+
+
+<a href="{{ url_for('like_index', l=l) }}">
+            <h4>kaikki tykkäykset</h4> </a> 
+
+            <a href="{{ url_for('like_index', l=l) }}">
+                        <h4>kaikki tykkäykset top 10</h4> </a> 
+                    
+             
+</br>
+{% if l is defined %}
+{{ l.like }} 
+{% endif %}
+
+{% for like in likes %}
+   <h5>tykkäyksen sisältö {{ like.like }} ja tykkäyksem id: {{ like.id }} tykkääjä {{like.account_id}} runonid {{ like.runo_id }}</h5>
+ 
+    {% endfor %}
+<p>
+kaikki tykkäykset
+      </p> 
+{{ likes }} 
+
+
+{% endblock %}
