@@ -29,7 +29,7 @@ Ylläpitäjä:
 	- Arkiston runojen määrä 
 	- Arkiston rekisteröityneiden käyttäjien lukumäärä
 	- Eniten runoja lisänneet käyttäjät (Top 10) 
-- Ylläpitäjä voi lisätä, muokata ja poistaa tykkäyksiä. Kesken näistä vain lisäys tehtynä.
+- Ylläpitäjä voi lisätä, muokata ja poistaa tykkäyksiä. Kesken näistä vain lisäys tehtynä, mutta toimii vain lokaalisti, ei herokussa...
 
 ### Tietokannan luonti lauseet (CREATE TABLE)
 
