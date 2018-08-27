@@ -15,10 +15,10 @@ def runot_create_like(runo_id):
     user=current_user
 
    #tarkastus onko nykyinen käyttäjä jo tykännyt runosta  jos ei liken talletus kantaan
-    if Like.has_poem_liked_by_user(user, runo)==False: #true tai false
-        print("llllllllllllllllllllllllllllllllll")#, liked)
+    liked=Like.has_poem_liked_by_user(user, runo) #true tai false
+    print("llllllllllllllllllllllllllllllllll")
 
-        # if liked==False:
+    if liked==False:
         l=Like(1) #luo olion liken arvolla 1 
         #l.like=1
         l.runo_id=runo.id
