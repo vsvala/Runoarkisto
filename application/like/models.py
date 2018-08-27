@@ -15,7 +15,7 @@ class Like(db.Model):
 #haetaan tykätyimmät runot top 10 
     @staticmethod
     def find_poems_with_most_likes():
-        stmt = text(" SELECT runo.name AS runo, COUNT(like) AS total FROM like, runo"
+        stmt = text(" SELECT runo.name AS runo, COUNT(like) AS total FROM like, runot"
                     " WHERE Runo.id=like.runo_id"
                     " GROUP BY like, runo_id"
                     " LIMIT 10")
@@ -32,7 +32,7 @@ class Like(db.Model):
 #haetaan onko käyttäjä jo likettänyt runoa
     @staticmethod
     def has_poem_liked_by_user(user, runo):
-        stmt = text(" SELECT * FROM like"
+        stmt = text(" SELECT * FROM like, runo, account"
                     " WHERE like.runo_id=:ri AND like.account_id=:la").params(ri=runo.id, la=user.id)
                    
 
