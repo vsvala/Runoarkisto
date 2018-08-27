@@ -32,7 +32,7 @@ class Like(db.Model):
 #haetaan onko käyttäjä jo likettänyt runoa
     @staticmethod
     def has_poem_liked_by_user(user, runo):
-        stmt = text(" SELECT * FROM like"
+        stmt = text(" SELECT * FROM like, runo, account"
                     " WHERE runo_id=:ri AND like.account_id=:la").params(ri=runo.id, la=user.id)
                    
 
