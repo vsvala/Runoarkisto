@@ -40,10 +40,10 @@ class User(Base):
 #haetaan kaikki käyttäjät jotka ovat lisänneet runoja
     @staticmethod
     def find_users_with_poem():
-        stmt = text("SELECT Account.id, Account.username FROM Account"
-                    " LEFT JOIN Runo ON Runo.account_id = Account.id"
-                    " GROUP BY Account.id"
-                    " HAVING COUNT(Runo.id) > 0")
+        stmt = text("SELECT account.id, account.username FROM account"
+                    " LEFT JOIN runo ON runo.account_id = account.id"
+                    " GROUP BY account.id"
+                    " HAVING COUNT(runo.id) > 0")
 
         res = db.engine.execute(stmt)
   
@@ -56,10 +56,10 @@ class User(Base):
 #haetaan  top 10 ketkä ovat lisänneet eniten runoja
     @staticmethod
     def find_users_with_most_poems():
-        stmt = text(" SELECT Account.id, Account.username, COUNT(Runo.id) as runocount FROM Account"
-                    " LEFT JOIN Runo ON Runo.account_id = Account.id"
-                    " WHERE (Runo.id>0)"
-                    " GROUP BY Account.id"
+        stmt = text(" SELECT account.id, account.username, COUNT(runo.id) as runocount FROM account"
+                    " LEFT JOIN runo ON runo.account_id = account.id"
+                    " WHERE (runo.id>0)"
+                    " GROUP BY account.id"
                     " ORDER BY runocount DESC"
                     " LIMIT 10")
 
@@ -75,9 +75,9 @@ class User(Base):
 #arkiston käyttäjien määrä
     @staticmethod
     def how_many_users():
-        stmt = text("SELECT Account.id, COUNT(*) AS howmany FROM Account"
-                    " LEFT JOIN Runo ON Runo.account_id = Account.id"
-                    " GROUP BY Account.id")               
+        stmt = text("SELECT account.id, COUNT(*) AS howmany FROM account"
+                    " LEFT JOIN runo ON runo.account_id = account.id"
+                    " GROUP BY account.id")               
 
         res = db.engine.execute(stmt)
   

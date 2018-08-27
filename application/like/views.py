@@ -20,11 +20,11 @@ def runot_create_like(runo_id):
 
     if liked==False:
         l=Like(1) #luo olion liken arvolla 1 
-        #l.like=1
+        l.likes=1
         l.runo_id=runo.id
         l.account_id=current_user.id
         print(l)
-        print(l.like)
+        print(l.likes)
         print(l.runo_id)
         print(l.account_id)
         db.session().add(l)

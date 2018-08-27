@@ -3,21 +3,21 @@ from sqlalchemy.sql import text
 
 class Like(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    like = db.Column(db.Integer, nullable=False) 
+    likes = db.Column(db.Integer, nullable=False) 
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'),nullable=False)
     runo_id = db.Column(db.Integer, db.ForeignKey('runo.id'),nullable=False)
 
-    def __init__(self, like):
-      self.like = like
+    def __init__(self, likes):
+      self.likes = likes
 
 
 
 #haetaan tykätyimmät runot top 10 
     @staticmethod
     def find_poems_with_most_likes():
-        stmt = text(" SELECT runo.name AS runo, COUNT(like) AS total FROM like, runot"
-                    " WHERE Runo.id=like.runo_id"
-                    " GROUP BY like, runo_id"
+        stmt = text(" SELECT runo.name AS runo, COUNT(likes) AS total FROM like, runo"
+                    " WHERE runo.id=like.runo_id"
+                    " GROUP BY likes, runo_id"
                     " LIMIT 10")
 
         res = db.engine.execute(stmt)
@@ -32,7 +32,7 @@ class Like(db.Model):
 #haetaan onko käyttäjä jo likettänyt runoa
     @staticmethod
     def has_poem_liked_by_user(user, runo):
-        stmt = text(" SELECT * FROM 'like'"
+        stmt = text(" SELECT * FROM like"
                     " WHERE like.runo_id=:ri AND like.account_id=:la").params(ri=runo.id, la=user.id)
                    
 

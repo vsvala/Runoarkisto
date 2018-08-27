@@ -37,7 +37,7 @@ class Runo(Base):
     @staticmethod
     def find_loggedUsers_poems():
 
-        stmt = text("SELECT runo.id, runo.name, runo.sisalto, runo.runoilija FROM Runo"
+        stmt = text("SELECT runo.id, runo.name, runo.sisalto, runo.runoilija FROM runo"
                     " WHERE account_id=:cid"
                     " ORDER BY runo.date_created DESC").params(cid=current_user.id)
 
@@ -53,8 +53,8 @@ class Runo(Base):
     @staticmethod
     def find_runot_by_category(category):
        
-        stmt = text("SELECT DISTINCT runo.id, runo.name, runo.sisalto, runo.runoilija FROM category, categories, Runo" 
-                    " WHERE (Runo.id=categories.runo_id AND categories.category_id=category.id AND category.aihe=:categ)").params(categ=category)
+        stmt = text("SELECT DISTINCT runo.id, runo.name, runo.sisalto, runo.runoilija FROM category, categories, runo" 
+                    " WHERE (runo.id=categories.runo_id AND categories.category_id=category.id AND category.aihe=:categ)").params(categ=category)
 
         res = db.engine.execute(stmt)
   

@@ -13,8 +13,8 @@ class Category(db.Model):
     @staticmethod
     def find_categories_by(t):
      
-        stmt = text("SELECT DISTINCT category.id, category.aihe FROM runo, categories, Category" 
-                    " WHERE (Category.id=categories.category_id AND categories.runo_id=runo.id AND runo.name=:nimi)").params(nimi=t.name)
+        stmt = text("SELECT DISTINCT category.id, category.aihe FROM runo, categories, category" 
+                    " WHERE (category.id=categories.category_id AND categories.runo_id=runo.id AND runo.name=:nimi)").params(nimi=t.name)
 
         res = db.engine.execute(stmt)
   
