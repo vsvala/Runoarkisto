@@ -31,7 +31,11 @@ def runot_create_like(runo_id):
     #if not user_liked 
 
     user=current_user
-    liked=Like.has_poem_liked_by_user(user, r)
+
+    #tarkastetaan löytyykö tykkäyksiä
+    likes=Like.query.all()
+    if likes:
+        liked=Like.has_poem_liked_by_user(user, r)
 
     if not liked:
         l=Like(0)
