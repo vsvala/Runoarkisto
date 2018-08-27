@@ -24,7 +24,11 @@ Ylläpitäjä:
 - Ylläpitäjä voi listata kategoriat, sekä lisätä ja poistaa niitä. ok
 - Ylläpitäjä voi listata, lisätä, muokata ja poistaa käyttäjien tietoja. ok
 - Ylläpitäjä voi hallinnoida: listata, muokata, lisätä ja poistaa rekisteröityneen käyttäjän esim. väärinkäytösten varalta tai esim. antaakseen käyttäjälle ADMIN oikeudet. ok
-- Ylläpitäjä voi tehdä yhteenvetolistauksia sivustolta. ok
+- Ylläpitäjä voi nähdä tilastoja (yhteenvetokyselyt) sivustolta. kaikki ok
+	- Listaa kaikki käyttäjät jotka on lisänneet runoja ja mitä runoja on lisätty
+	- Arkiston runojen määrä 
+	- Arkiston rekisteröityneiden käyttäjien lukumäärä
+	- Eniten runoja lisänneet käyttäjät (Top 10) 
 - Ylläpitäjä voi lisätä, muokata ja poistaa tykkäyksiä. Kesken näistä vain lisäys tehtynä.
 
 ### Tietokannan luonti lauseet (CREATE TABLE)
