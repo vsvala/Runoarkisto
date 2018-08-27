@@ -17,8 +17,8 @@ def runot_index():
     runot=Runo.query.order_by(Runo.name).all()
     likes=Like.query.all()
     if likes:
-        find_poems=find_poems=Like.find_poems_with_most_likes()
-        return render_template("runot/list.html", runot=runot,   find_poems= find_poems )
+        find_poems=Like.find_poems_with_most_likes()
+        return render_template("runot/list.html", runot=runot,  find_poems= find_poems )
 
     return render_template("runot/list.html", runot=runot) #Runo.query.all()
 
@@ -26,9 +26,9 @@ def runot_index():
 #yksitttäisen runon näyttö
 @app.route("/runot/showone/<runo_id>/", methods=["GET"])
 def runot_showOne(runo_id):
-    t = Runo.query.get(runo_id)
-    print(t)
-    return render_template("runot/one.html", t=t)
+    runo = Runo.query.get(runo_id)
+    print(runo)
+    return render_template("runot/one.html", runo=runo)
 
 
 #kirjautuneen käyttäjän runojen listaus viimeksi luotu ensin
@@ -51,44 +51,38 @@ def runot_showOne_logged(runo_id):
 def runot_createform():
 
     if request.method == "GET":
-         return render_template("runot/uusi.html", form= RunoForm())
+         return render_template("runot/new.html", form= RunoForm())
 
 #kategoria ja runo olion luominen lomaketiedoista, tallennustietokantaan ja liitokset
-@app.route("/runot/uusi/create/", methods=["GET","POST"])
+@app.route("/runot/new/create/", methods=["GET","POST"])
 @login_required()
 def runot_create():
-
     form = RunoForm(request.form)
 
     #lomakkeen validointi
-    if form.validate_on_submit():
-         print(form.aihe.data)
-    else:
-        print(form.errors)
-        return render_template("runot/uusi.html", form=form)
+    if not form.validate():
+        return render_template("runot/new.html", form=form)
 
-    # runo-olio t:n luonti lomakesyötteestä
-    t = Runo(name=form.name.data, sisalto=form.sisalto.data,runoilija=form.runoilija.data)
+    # runo-olion luonti lomakesyötteestä
+    runo = Runo(name=form.name.data, sisalto=form.sisalto.data,runoilija=form.runoilija.data)
 
-    #validoidaan samannimiset tietokannasta jos löytyy render lomake uusiks ja error
-    runo= Runo.query.filter_by(name=t.name).first()
-    if runo:
-        return render_template("runot/uusi.html", form=form, name_error= "Samanniminen runo on jo arkistossa!")
+    #validoidaan samannimiset jos nimi löytyy  kannasta render lomake uusiks ja error
+    r= Runo.query.filter_by(name=runo.name).first()
+    if r:
+        return render_template("runot/new.html", form=form, name_error= "Samanniminen runo on jo arkistossa!")
    
-   #lisää  kategoriat  tietokantaan checklistalta ja
- # luodaan monesta moneen iitokset runon ja kategorian välilleja talletetaan runo kantaan    
-    t.account_id = current_user.id  #liitetään tili nykyiseen käyttäjään
+   #lisää  kategoriat  tietokantaan checklistalta, luodaan monesta moneen liitokset runon ja kategorian välille ja talletetaan runo kantaan    
+    runo.account_id = current_user.id  #liitetään tili nykyiseen käyttäjään
  
-    list=form.aihe.data
+    categories_list=form.aihe.data
 
-    for  aihe in list:
-    
-        category = Category(aihe)        #luodaan ja lisätään uus olio
-
+    for  aihe in  categories_list:
+        category = Category(aihe) #luodaan kategoria olio jokaisetsa listan kategoriasta ja lisätään kantaan
         db.session().add(category)             
         db.session().commit()
-        t.categories.append(category)
-        db.session().add(t)
+
+        runo.categories.append(category) 
+        db.session().add(runo)
         db.session().commit()
 
     return redirect(url_for("loggedu_poems"))
@@ -199,8 +193,8 @@ def find_runot_by_category(runo_category):
 #hakee tietyn runon kategoriat
 @app.route("/runot/one/<runo_id>/a",methods=["GET"])
 def find_categories(runo_id):
-    t = Runo.query.get(runo_id)
-    return render_template("runot/one.html", category_by =Category.find_categories_by(t), t=t)
+    runo = Runo.query.get(runo_id)
+    return render_template("runot/one.html", category_by =Category.find_categories_by(runo), runo=runo)
 
 
 # #hakee tietyn käyttäjän runojen kategoriat
