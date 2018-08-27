@@ -14,8 +14,13 @@ from application.runot.forms import RunoForm, FindForm
 #runojen listaus aakkosittain
 @app.route("/runot/", methods=["GET"])
 def runot_index():
-    runot=Runo.query.order_by(Runo.name).all() 
-    return render_template("runot/list.html", runot=runot, find_poems=Like.find_poems_with_most_likes()) #Runo.query.all()
+    runot=Runo.query.order_by(Runo.name).all()
+    likes=Like.query.all()
+    if likes:
+        find_poems=find_poems=Like.find_poems_with_most_likes()
+        return render_template("runot/list.html", runot=runot,   find_poems= find_poems )
+
+    return render_template("runot/list.html", runot=runot) #Runo.query.all()
 
 
 #yksitttäisen runon näyttö
