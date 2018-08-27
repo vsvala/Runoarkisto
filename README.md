@@ -27,15 +27,18 @@ Runo(CRUD)
 - Runon haku nimen tai kategorian perusteella
 - Runon lisäys ja muokkaus
 - Runon poisto
+
 Kategoria(CRD)
 - Yksittäisen runon kategorioiden tarkastelu
 - Kategorian lisäys runolle ja poisto 
 - Kategorioiden listaus ja poisto(admin)
+
 Käyttäjä(CRUD)
 - Käyttäjän lisäys rekisteröityminen/käyttäjätunnusten luominen
 - Kirjautuminen
 - Käyttäjien listaus(vain admin)
 - Käyttäjätietojen muokaus ja käyttäjän poisto(vain admin)
+
 Tykkäys
 - Runojen tykkäystoiminto
 - Suosituimpien runojen haku top 10 
