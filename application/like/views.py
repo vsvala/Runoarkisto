@@ -17,7 +17,7 @@ def runot_create_like(runo_id):
     #alustetaan tietokanta like 0:lla
     likes=Like(1000)
     likes.runo_id=1000
-    likes.account_id=1000
+    likes.account_id=current_user.id
     db.session().add(likes)
     db.session().commit()
    
