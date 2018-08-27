@@ -25,7 +25,7 @@ class Runo(Base):
         backref=db.backref('runot', lazy=True))   
 
     #liitetään runolle like
-    like = db.relationship("Like", backref='runo', lazy=True, cascade="all, delete-orphan")
+    liked = db.relationship("Liked", backref='runo', lazy=True, cascade="all, delete-orphan")
 
 
     def __init__(self, name, sisalto, runoilija): 

@@ -5,7 +5,7 @@ from application import app, db, login_manager, login_required
 from application.auth.models import User
 from application.category.models import Category
 from application.runot.models import Runo
-from application.like.models import Like
+from application.like.models import Liked
 
 #from werkzeug import secure_filename
 from application.runot.forms import RunoForm, FindForm
@@ -15,9 +15,9 @@ from application.runot.forms import RunoForm, FindForm
 @app.route("/runot/", methods=["GET"])
 def runot_index():
     runot=Runo.query.order_by(Runo.name).all()
-    likes=Like.query.all()
+    likes=Liked.query.all()
     if likes:
-        find_poems=Like.find_poems_with_most_likes()
+        find_poems=Liked.find_poems_with_most_likes()
         return render_template("runot/list.html", runot=runot,  find_poems= find_poems )
 
     return render_template("runot/list.html", runot=runot) #Runo.query.all()

@@ -16,7 +16,7 @@ class User(Base):
     
     
     #liitetään käyttäjään like
-    like = db.relationship("Like", backref='account', lazy=True, cascade="all, delete-orphan")
+    liked = db.relationship("Liked", backref='account', lazy=True, cascade="all, delete-orphan")
 
 
     def __init__(self, name, username, password, role):
