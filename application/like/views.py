@@ -37,19 +37,19 @@ def runot_create_like(runo_id):
     if likes:
         liked=Like.has_poem_liked_by_user(user, r)
 
-    if not liked:
-        l=Like(0)
-        l.like=1
-        l.runo_id=r.id
-        l.account_id=account_id
-        print(l)
-        print(l.like)
-        print(l.runo_id)
-        print(l.account_id)
-        db.session().add(l)
-        db.session().commit()
+        if not liked:
+            l=Like(0)
+            l.like=1
+            l.runo_id=r.id
+            l.account_id=account_id
+            print(l)
+            print(l.like)
+            print(l.runo_id)
+            print(l.account_id)
+            db.session().add(l)
+            db.session().commit()
 
-        return render_template("runot/one.html", t=r, l=l)
+            return render_template("runot/one.html", t=r, l=l)
 #tää väis palata takas samaan ja näyttää ko.runon liket..ae ko. runon 
 #h.ae ko. runon liket...
     #return render_template("likes/like.html", l=l)
