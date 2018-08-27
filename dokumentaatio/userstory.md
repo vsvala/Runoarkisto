@@ -27,7 +27,7 @@ Ylläpitäjä:
 - Ylläpitäjä voi tehdä yhteenvetolistauksia sivustolta. ok
 - Ylläpitäjä voi lisätä, muokata ja poistaa tykkäyksiä. Kesken näistä vain lisäys tehtynä.
 
-### Tietokannan luonti lauseet
+### Tietokannan luonti lauseet (CREATE TABLE)
 
 ```sql
 CREATE TABLE category (
