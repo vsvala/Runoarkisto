@@ -14,19 +14,12 @@ def runot_create_like(runo_id):
     runo = Runo.query.get(runo_id) 
     user=current_user
 
-    #alustetaan tietokanta like 0:lla
-    likes=Like(1000)
-    likes.runo_id=1000
-    likes.account_id=current_user.id
-    db.session().add(likes)
-    db.session().commit()
-   
    #tarkastus onko nykyinen käyttäjä jo tykännyt runosta  jos ei liken talletus kantaan
     liked=Like.has_poem_liked_by_user(user, runo)
 
     if not liked:
-        l=Like(0)
-        l.like=1
+        l=Like(1) #luo olion liken arvolla 1 
+        #l.like=1
         l.runo_id=runo.id
         l.account_id=current_user.id
         print(l)
