@@ -62,7 +62,7 @@ CREATE TABLE runo (
 	UNIQUE (name), 
 	FOREIGN KEY(account_id) REFERENCES account (id)
 );
-CREATE TABLE "like" (
+CREATE TABLE liked (
 	id INTEGER NOT NULL, 
 	likes INTEGER NOT NULL, 
 	account_id INTEGER NOT NULL, 
