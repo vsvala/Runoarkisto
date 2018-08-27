@@ -64,7 +64,7 @@ CREATE TABLE runo (
 );
 CREATE TABLE "like" (
 	id INTEGER NOT NULL, 
-	"like" INTEGER NOT NULL, 
+	likes INTEGER NOT NULL, 
 	account_id INTEGER NOT NULL, 
 	runo_id INTEGER NOT NULL, 
 	PRIMARY KEY (id), 
