@@ -27,11 +27,11 @@ Runo(CRUD)
 - Runon haku nimen tai kategorian perusteella
 - Runon lisäys ja muokkaus
 - Runon poisto
-Kategoria (CRD)
+Kategoria(CRD)
 - Yksittäisen runon kategorioiden tarkastelu
 - Kategorian lisäys runolle ja poisto 
 - Kategorioiden listaus ja poisto(admin)
-Käyttäjä (CRUD)
+Käyttäjä(CRUD)
 - Käyttäjän lisäys rekisteröityminen/käyttäjätunnusten luominen
 - Kirjautuminen
 - Käyttäjien listaus(vain admin)
@@ -55,7 +55,7 @@ Tykkäys
     - Kuinka monta runoa on kussakin kategoriassa?
     * (Kunkin kategorian suosituin runo?)
     - Käyttäjän haku syötetyn nimen mukaan? (admin)
-
+    - tykkäysten poisto?(admin)
 
 ## Dokumentaatio
 - [Tietokantakaavio](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/Runo_db_kaavio%20(1).png)
