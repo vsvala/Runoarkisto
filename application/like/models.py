@@ -27,3 +27,20 @@ class Like(db.Model):
             response.append({"name":row[0], "total":row[1]})
 
         return response
+
+
+#haetaan onko käyttäjä jo likettänyt runoa
+    @staticmethod
+    def has_poem_liked_by_user(user, runo):
+        stmt = text(" SELECT *  FROM like"
+                    " WHERE like.runo_id= :ri AND like.account_id= :la").params(ri=runo.id, la=user.id)
+                    
+
+        res = db.engine.execute(stmt)
+
+        response=res.fetchone()
+
+        if response==None:
+            return False
+        return True    
+

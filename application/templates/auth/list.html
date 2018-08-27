@@ -37,10 +37,11 @@
 </br>
 
 <a href="{{ url_for('users_withPoems') }}">
-    <h5>Katso mitä runoja kukin käyttäjä on lisännyt</h5>
+    <h5>Listaa runoja lisänneet käyttäjät</h5>
 </a>
 
 {% if how_many is defined %}
+<p>Klikkaa nimeä nähdäksesi käyttäjän runot</p>
 <ul class="list-unstyled">
     {% for user in how_many %}
     <!-- <form method="GET" action="{{ url_for('users_poems', user_id=user.id) }}">

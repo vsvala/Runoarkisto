@@ -22,7 +22,7 @@ def users_create():
 
    #validoidaan samannimiset käyttäjänimet,jos löytyy render lomake uusiks ja error
     if User.query.filter_by(username=form.username.data).first():
-        return render_template("auth/newuser.html", form=form, same_error= "Samanniminen runo on jo arkistossa!")
+        return render_template("auth/newuser.html", form=form, same_error= "Samanniminen käyttäjänimi on jo arkistossa!")
 
     t = User(name=form.name.data, username=form.username.data,
              password=form.password.data, role="USER")
