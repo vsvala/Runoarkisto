@@ -58,11 +58,14 @@ CREATE TABLE runo (
 	UNIQUE (name), 
 	FOREIGN KEY(account_id) REFERENCES account (id)
 );
-CREATE TABLE categories (
+CREATE TABLE "like" (
+	id INTEGER NOT NULL, 
+	"like" INTEGER NOT NULL, 
+	account_id INTEGER NOT NULL, 
 	runo_id INTEGER NOT NULL, 
-	category_id INTEGER NOT NULL, 
-	PRIMARY KEY (runo_id, category_id), 
-	FOREIGN KEY(runo_id) REFERENCES runo (id), 
-	FOREIGN KEY(category_id) REFERENCES category (id)
+	PRIMARY KEY (id), 
+	FOREIGN KEY(account_id) REFERENCES account (id), 
+	FOREIGN KEY(runo_id) REFERENCES runo (id)
 );
+
 ```
