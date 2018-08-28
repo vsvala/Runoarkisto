@@ -1,25 +1,5 @@
 {% extends "layout.html" %} {% block body %}
 
-
-<h3>Tykätyimmät runot (top 10)</h3>
-<br>
-<table>
-  <tr>
-    <th>runo</th>
-    <th>tykkäykset</th>
-  </tr>
-  {% if find_poems is defined%}
-    {% for poem in find_poems %}
-    <tr style="color:gray;">
-      <td>{{ poem.name }}</td>
-      <td>{{ poem.total }}</td>
-    </tr>
-    {% endfor %}
-  {% endif %}
-</table>
-<br>
-
-
 <h3>Kaikki runot: </h3>
 <br> 
 <ol>
@@ -49,6 +29,6 @@
     </ul>
   </nav>
 
-<p class="lead">Arkistostä on yhteensä {{ lkm_runot }} runoa </p>
+<p>Arkistostä on yhteensä {{ lkm_runot }} runoa </p>
 
 {% endblock %}

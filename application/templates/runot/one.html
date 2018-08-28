@@ -4,7 +4,7 @@
 <br>
 
 <blockquote class="blockquote">
-  <p class="mb-0"></p><em>{{ runo.sisalto }}</em>
+  <p class="mb-0 "style="color:gray;"><em>{{ runo.sisalto }}</em></p>
   <footer class="blockquote-footer"> {{ runo.runoilija }}</footer>
 </blockquote>
 
@@ -15,7 +15,7 @@
 {% if category_by is defined %}
 <ul>
   {% for category in category_by %}
-  <li style="color:gray;">
+  <li style="color:rgb(87, 87, 87);">
     {{category.aihe}}
   </li>
   {% endfor %}
@@ -41,7 +41,7 @@
   <tr>
     <td>
       <a href="{{ url_for('runo_modify_page', runo_id=runo.id)}}">
-        <button type="submit" class="btn btn-primary">runon muokkaustilaan</button>
+        <button type="submit" class="btn btn-danger">runon muokkaustilaan</button>
       </a>
     </td>
     {% endif %}

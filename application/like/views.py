@@ -7,6 +7,13 @@ from application.runot.models import Runo
 from application.like.models import Liked
 
 
+#top 10 listaus
+@app.route("/likes/top/", methods=["GET"])
+def top_poems():
+    find_poems=Liked.find_poems_with_most_likes()
+    return render_template("runot/top.html", find_poems= find_poems )
+
+
 @app.route("/likes/<runo_id>", methods=["GET"])
 @login_required()
 def runot_create_like(runo_id):

@@ -21,7 +21,7 @@ def runot_index(page):
     lkm_runot= Runo.query.count()
     if likes:
         find_poems=Liked.find_poems_with_most_likes()
-        return render_template("runot/list.html", runot=runot, lkm_runot = lkm_runot,  find_poems= find_poems )
+        return render_template("runot/list.html", runot=runot, lkm_runot = lkm_runot)
 
     return render_template("runot/list.html", runot=runot, lkm_runot = lkm_runot) #Runo.query.all()
 
@@ -57,17 +57,26 @@ def runot_createform():
     if request.method == "GET":
          return render_template("runot/new.html", form= RunoForm())
 
+
 #kategoria ja runo olion luominen lomaketiedoista, tallennustietokantaan ja liitokset
 @app.route("/runot/new/create/", methods=["GET","POST"])
 @login_required()
 def runot_create():
     form = RunoForm(request.form)
 
+    #validoidaan eka otsikon kirjain isoksi (aakkostamisen takia,,,) 
+    n=form.name.data
+    bool=n[0].isupper()
+    print("booooooooooooooool", bool)
+    if bool==False:
+        print("faaaaaaaaaaaaaaaaaaaaalssssssssssssssssssssssseeeee")
+        return render_template("runot/new.html", form=form, capital_error= "Aloita otsikko isolla kirjaimella!")
+
     #lomakkeen validointi
     if not form.validate():
         return render_template("runot/new.html", form=form)
-
-    # runo-olion luonti lomakesyötteestä
+ 
+    #  runo-olion luonti lomakesyötteestä
     runo = Runo(name=form.name.data, sisalto=form.sisalto.data,runoilija=form.runoilija.data)
 
     #validoidaan samannimiset jos nimi löytyy  kannasta render lomake uusiks ja error
@@ -77,8 +86,12 @@ def runot_create():
    
    #lisää  kategoriat  tietokantaan checklistalta, luodaan monesta moneen liitokset runon ja kategorian välille ja talletetaan runo kantaan    
     runo.account_id = current_user.id  #liitetään tili nykyiseen käyttäjään
- 
+    
+    #tsekataan että kategoria valittuna
     categories_list=form.aihe.data
+    if not categories_list:
+        return render_template("runot/new.html", form=form, category_error= "Valitse väintään yksi kategorioista!")
+
 
     for  aihe in  categories_list:
         category = Category(aihe) #luodaan kategoria olio jokaisetsa listan kategoriasta ja lisätään kantaan
@@ -222,7 +235,8 @@ def users_poems(user_id):
 @login_required(role="ADMIN")
 def stats_index():
     lkm_users= User.query.count()
-    return render_template("runot/stats.html", lkm_users=lkm_users,  most_poems=User.find_users_with_most_poems())
+    lkm_runot= User.query.count()
+    return render_template("runot/stats.html", lkm_users=lkm_users, lkm_runot=lkm_runot,  most_poems=User.find_users_with_most_poems())
 
 # #palauttaa kaikkien runojen luumäärän arkistossa
 # @app.route("/runot/stats/", methods=["GET"])

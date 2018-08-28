@@ -6,6 +6,9 @@ from application.runot.models import Runo
 class FindForm(FlaskForm):
     name = StringField("nimi", [validators.Length(min=2, max=144)])
     category = StringField("kategoria", [validators.Length(min=2, max=144)])
+ 
+    class Meta:
+        csrf = False
 
 class MultiCheckboxField(SelectMultipleField):
     widget = widgets.ListWidget(prefix_label=False)
@@ -21,7 +24,6 @@ class RunoForm(FlaskForm):
      # create a list of value/description tuples
     files = [(x, x) for x in list_of_files]
     aihe = MultiCheckboxField('Kategoriat:', choices=files)
-
 
     class Meta:
         csrf = False
