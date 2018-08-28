@@ -27,38 +27,41 @@ Runo(CRUD)
 - Runon haku nimen tai kategorian perusteella
 - Runon lisäys ja muokkaus
 - Runon poisto
-Kategoria (CRD)
+
+Kategoria(CRD)
 - Yksittäisen runon kategorioiden tarkastelu
 - Kategorian lisäys runolle ja poisto 
 - Kategorioiden listaus ja poisto(admin)
-Käyttäjä (CRUD)
+
+Käyttäjä(CRUD)
 - Käyttäjän lisäys rekisteröityminen/käyttäjätunnusten luominen
 - Kirjautuminen
-- Käyttäjien listaus (vain admin)
+- Käyttäjien listaus(vain admin)
 - Käyttäjätietojen muokaus ja käyttäjän poisto(vain admin)
-- Rekisteröityjen käyttäjien listaaminen ja haku
+
+Tykkäys
+- Runojen tykkäystoiminto
+- Suosituimpien runojen haku top 10 
 
 - Yhteenvetokyselyt tietokannasta: 
-    -Kirjautuneen käyttäjän runojen haku
-    -Käyttäjät jotka ovat lisänneet runoja
-    -Valitun runon kaikkien kategorioiden haku
-    -Runon haku otsikon mukaan
-    -Runonojen haku kategorian mukaan
-    
-    todo
-    -Runojen haku valitun käyttäjän mukaan 
+    - Kirjautuneen käyttäjän runojen haku 
+    - Käyttäjät jotka ovat lisänneet runoja (admin)
+    - Valitun runon kaikkien kategorioiden haku(admin)
+    - Ketkä lisänneet eniten runoja top 10 (admin)
+    - Runon haku otsikon mukaan
+    - Runojen haku kategorian mukaan
     - Kuinka monta runoa ja mitkä runot tietty käyttäjä on lisännyt?
+    - Paljonko runoja yhteensä
+    - Paljonko käyttäjiä yhteensä
+  
+    todo
     - Kuinka monta runoa on kussakin kategoriassa?
     * (Kunkin kategorian suosituin runo?)
-    - ?
-
-(mahdollisesti myös)
-* Runojen tykkäys/äänestys toiminto
-* Suosituimpien runojen haku top10 ja järjestäminen
-
+    - Käyttäjän haku syötetyn nimen mukaan? (admin)
+    - tykkäysten poisto?(admin)
 
 ## Dokumentaatio
-- [Tietokantakaavio](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/Runoarkisto_db_kaavio.png)
+- [Tietokantakaavio](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/Runo_db_kaavio%20(1).png)
 - [User storyt](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/userstory.md)
 - [Asennusohje](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/asennusohje.md)
 - [Käyttöohje](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/käyttöohje.md)
