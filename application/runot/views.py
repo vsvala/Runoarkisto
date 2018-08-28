@@ -11,15 +11,16 @@ from application.like.models import Liked
 from application.runot.forms import RunoForm, FindForm
 
 
-#runojen listaus aakkosittain
-@app.route("/runot/", methods=["GET"])
-def runot_index():
-    runot=Runo.query.order_by(Runo.name).all()
+# #runojen top 10 listaus,  listaus aakkosittain ja sivuttaminen 20 kerrallaan
+@app.route("/runot/", defaults={'page': 1})
+@app.route("/user/page/<int:page>/")
+def runot_index(page):
+    per_page = 10
+    runot=Runo.query.order_by(Runo.name).paginate(page, per_page, error_out=False)
     likes=Liked.query.all()
     if likes:
         find_poems=Liked.find_poems_with_most_likes()
         return render_template("runot/list.html", runot=runot,  find_poems= find_poems )
-
     return render_template("runot/list.html", runot=runot) #Runo.query.all()
 
 
@@ -225,7 +226,7 @@ def stats_index():
 @app.route("/runot/stats/", methods=["GET"])
 @login_required(role="ADMIN")
 def runot_count():
-    runot= Runo.query.all()
+    #runot= Runo.query.all()
     #lkm= Runo.query(runot.id).count()
     lkm= Runo.query.count()
     #print("lukumäärä:", lkm)

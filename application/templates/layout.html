@@ -8,7 +8,7 @@
   <title>Runoarkisto</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style_ownmo.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style_overriding.css') }}">
 
 </head>
 
@@ -41,13 +41,13 @@
 
         {% endif %} {% if current_user.role=="ADMIN" %}
         <li class="nav-item">
-          <a class="nav-link" style="color:rgb(121, 171, 175) " href="{{ url_for('auth_index') }} ">käyttäjät</a>
+          <a class="nav-link" style="color:rgb(121, 171, 175);" href="{{ url_for('auth_index') }}">käyttäjät</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" style="color:rgb(121, 171, 175)" href="{{ url_for('category_index') }} ">kategoriat</a>
+          <a class="nav-link" style="color:rgb(121, 171, 175)" href="{{ url_for('category_index') }}">kategoriat</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" style="color:rgb(121, 171, 175)" href="{{ url_for('stats_index') }} ">tilastoja</a>
+          <a class="nav-link" style="color:rgb(121, 171, 175)" href="{{ url_for('stats_index') }}">tilastoja</a>
         </li>
      <!--  TODOO testikäyttöön poistetaan  <li class="nav-item">
             <a class="nav-link" style="color:rgb(121, 171, 175)" href="{{ url_for('like_index') }} ">likes</a>

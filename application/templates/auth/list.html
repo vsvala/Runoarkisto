@@ -4,6 +4,7 @@
 <br>
 
 <table>
+    
     <tr>
         <th>nimi</th>
         <th>käyttäjänimi</th>
@@ -11,13 +12,13 @@
         <th>rooli</th>
     </tr>
 
+    <tbody>
     {% for user in users %}
-    <tr>
+    <tr>   
         <td>{{ user.name }}</td>
         <td>{{ user.username }}</td>
         <td> {{ user.password }}</td>
         <td>{{ user.role }}</td>
-
         <td>
             <a href="{{ url_for('auth_uppdateForm', auth_id=user.id)}}">
                 <button type="submit" class="btn btn-success">muokkaa</button>
@@ -29,12 +30,11 @@
 
             </a>
         </td>
-
     </tr>
     {% endfor %}
+    <tbody>
 </table>
-
-</br>
+<br>
 
 <a href="{{ url_for('users_withPoems') }}">
     <h5>Listaa runoja lisänneet käyttäjät</h5>
@@ -65,5 +65,6 @@
 </ul>
 
 {% endif %} 
+
 
 {% endblock %}

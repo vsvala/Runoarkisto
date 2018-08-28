@@ -2,15 +2,7 @@
 
 
 <h3>Tykätyimmät runot (top 10)</h3>
-</br>
-<!-- {% if find_poems is defined%}
-    <ol>
-      {% for poem in find_poems %}
-      <li> | {{ poem.name }} |  tykkäyksiä: {{ poem.total }} </li>
-      {% endfor %}
-    </ol>
-  {% endif %} -->
-
+<br>
 <table>
   <tr>
     <th>runo</th>
@@ -25,12 +17,12 @@
     {% endfor %}
   {% endif %}
 </table>
-</br>
+<br>
 <h3>Kaikki runot: </h3>
 
 <br> 
 <ol>
-{% for runo in runot %}
+{% for runo in runot.items %}
 
 <li style= "padding-left:5px; color:gray; font-weight: 500;">
     <a href="{{ url_for('runot_showOne', runo_id=runo.id) }}">
@@ -43,6 +35,21 @@
 
 <p>{{ category_error }}</p>
 
+<!-- navigaatio -->
+<nav aria-label="Page navigation">
+    <ul class="pagination">
+      {% if runot.has_prev %}
+      <li class="page-item"><a class="page-link" href="{{ url_for('runot_index', page=runot.prev_num) }}">Previous page</a></li>
+      {% else %}
+      <li class="page-item-disabled"><a class="page-link">Edellinen sivu</a></li>
+      {% endif %} {% if runot.has_next %}
+      <li class="page-item"><a class="page-link" href="{{ url_for('runot_index', page=runot.next_num) }}">Seuraava sivu</a></li>
+      {% else %}
+      <li class="page-item-disabled"><a class="page-link">Seuraava sivue</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+<br>
 
 
 {% endblock %}
