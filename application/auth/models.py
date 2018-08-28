@@ -41,7 +41,7 @@ class User(Base):
     def is_authenticated(self):
         return True
 
-# tarvitsee
+# tarvitsee BCRYPT
     # def set_password(self,password):
     #     self.password = bcrypt.generate_password_hash(password)
 

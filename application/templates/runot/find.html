@@ -13,13 +13,14 @@
             </div>
       </div>
       <button type="submit" class="btn btn-primary">Etsi</button>
-
       <p>{{ name_error }}</p>
       <ul>
             {% for error in form.name.errors %}
             <li>{{ error }}</li>
             {% endfor %}
       </ul>
+
+
       <div class="form-group row">
             <label for="category" class="col-sm-1 col-form-label">kategoria:</label>
             <div class="col-5">
@@ -34,39 +35,39 @@
       </div>
       <button type="submit" class="btn btn-primary">Etsi</button>
 </form>
-</br>
-</br>
+
+
+<br>
+<br>
 {% if runo is defined %}
-
 <h5>{{runo.name}}</h5>
-
 <blockquote class="blockquote">
       <p class="mb-0">
             <em>{{ runo.sisalto }}</em>
       </p>
       <footer class="blockquote-footer"> {{ runo.runoilija }}</footer>
 </blockquote>
+<br>
+{% endif %} 
 
-</br>
 
-{% endif %} {% if runot_by_category is defined %}
-
+{% if runot_by_category is defined %}
 <h4>Runot jotka kuuluvat
       <i> {{category }} </i> kategoriaan: </h4>
-</br>
+<br>
+
 
 <ul>
-      {% for runo in runot_by_category %}
+{% for runo in runot_by_category %}
       <li>
-            <h5>{{runo.id}} {{runo.name}}</h5>
-
+       <h5>{{runo.id}} {{runo.name}}</h5>
             <blockquote class="blockquote">
-                  <p class="mb-0">
-                        <em>{{ runo.sisalto }}</em>
-                  </p>
+                  <p class="mb-0"><em>{{ runo.sisalto }}</em></p>
                   <footer class="blockquote-footer"> {{ runo.runoilija }}</footer>
             </blockquote>
       </li>
-      {% endfor %}
+{% endfor %}
 </ul>
-{% endif %} {% endblock %}
+
+{% endif %} 
+{% endblock %}

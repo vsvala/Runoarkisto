@@ -3,8 +3,7 @@
 <h2>Käyttäjien hallinta: </h2>
 <br>
 
-<table>
-    
+<table>   
     <tr>
         <th>nimi</th>
         <th>käyttäjänimi</th>
@@ -24,10 +23,10 @@
                 <button type="submit" class="btn btn-success">muokkaa</button>
             </a>
         </td>
+
         <td>
             <a href="{{ url_for('auth_delete', auth_id=user.id)}}">
                 <button type="submit" class="btn btn-danger">poista</button>
-
             </a>
         </td>
     </tr>
@@ -35,6 +34,7 @@
     <tbody>
 </table>
 <br>
+
 
 <a href="{{ url_for('users_withPoems') }}">
     <h5>Listaa runoja lisänneet käyttäjät</h5>
@@ -44,12 +44,9 @@
 <p>Klikkaa nimeä nähdäksesi käyttäjän runot</p>
 <ul class="list-unstyled">
     {% for user in how_many %}
-    <!-- <form method="GET" action="{{ url_for('users_poems', user_id=user.id) }}">
-            <button type="submit" class="btn btn-primary">näytä käyttäjän runot</button>
-          </form> -->
     <li>
         <a href="{{ url_for('users_poems', user_id=user.id) }}">
-            <h6>{{user.id}} {{user.username}}</h6>
+           <h6>{{user.id}} {{user.username}}</h6>
         </a>
     </li>
     {% endfor %} 
@@ -63,7 +60,6 @@
          {% endfor %} 
     {% endif %}
 </ul>
-
 {% endif %} 
 
 

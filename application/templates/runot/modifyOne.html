@@ -1,12 +1,11 @@
 {% extends "layout.html" %} {% block body %}
 
 <h3>{{ runo.name }}</h3>
-</br>
+<br>
+
 <blockquote class="blockquote">
-    <p class="mb-0">
-          <em>{{ runo.sisalto }}</em>
-    </p>
-    <footer class="blockquote-footer"> {{ runo.runoilija }}</footer>
+  <p class="mb-0"><em>{{ runo.sisalto }}</em></p>
+  <footer class="blockquote-footer"> {{ runo.runoilija }}</footer>
 </blockquote>
 
 {% if current_user.role=="USER" or current_user.role=="ADMIN" %}
@@ -24,29 +23,25 @@
       </form>
     </td>
   </tr>
-
-
 </table>
 
 <h5>runon kategoriat:</h5>
 {% if category_by is defined %}
-
 <ul>
   {% for category in category_by %}
   <li>
     {{category.id}} {{category.aihe}}
-
-
     <a href="{{ url_for('category_delete', category_id=category.id, runo_id=runo.id)}}">
       <button type="submit" class="btn btn-danger">poista kategoria</button>
     </a>
   </li>
-  </br>
+  <br>
   {% endfor %}
 </ul>
 {% endif %}
-
 <a href="{{ url_for('category_other', runo_id=runo.id) }}">
   <button type="submit" class="btn btn-primary">lisää runolle kategoria</button>
 </a>
-{% endif %} {% endblock %}
+{% endif %}
+
+{% endblock %}

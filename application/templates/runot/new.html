@@ -1,6 +1,7 @@
 {% extends "layout.html" %} {% block body %}
 <h3>Lisää runo ja valitse mihin kategorioihin se kuuluu</h3>
-</br>
+<br>
+
 <form action="{{ url_for('runot_create') }}" method="POST" role="form">
   {{ form.RunoForm }}
   <div class="form-group row">
@@ -9,15 +10,17 @@
       <input type="text" class="form-control" id="name" name="name" placeholder="otsikko">
     </div>
   </div>
+
   <ul>
     {% for error in form.name.errors %}
     <li>{{ error }}</li>
     {% endfor %}
   </ul>
+
   <div class="form-group row">
     <label for="sisalto" class="col-sm-1 col-form-label">sisältö:</label>
     <div class="col-6">
-       <textarea class="form-control" rows="6" id="sisalto" name="sisalto" placeholder="sisältö"></textarea>
+      <textarea class="form-control" rows="6" id="sisalto" name="sisalto" placeholder="sisältö"></textarea>
     </div>
   </div>
   <ul>
@@ -38,10 +41,10 @@
     {% endfor %}
   </ul>
   <ul class="list-unstyled">
-      <li> {{ form.aihe.label }}</li>
-     <li style="color:gray;">  {{ form.aihe }}</li>
-    </ul>     
-   <ul>
+    <li> {{ form.aihe.label }}</li>
+    <li style="color:gray;"> {{ form.aihe }}</li>
+  </ul>
+  <ul>
     {% for error in form.aihe.errors %}
     <li>{{ error }}</li>
     {% endfor %}

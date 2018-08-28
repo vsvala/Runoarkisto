@@ -18,18 +18,17 @@
   {% endif %}
 </table>
 <br>
-<h3>Kaikki runot: </h3>
 
+
+<h3>Kaikki runot: </h3>
 <br> 
 <ol>
 {% for runo in runot.items %}
-
 <li style= "padding-left:5px; color:gray; font-weight: 500;">
     <a href="{{ url_for('runot_showOne', runo_id=runo.id) }}">
       <h5>{{ runo.name }}</h5>
     </a>
   </li>
-
 {% endfor %}
 </ol>
 
@@ -41,15 +40,15 @@
       {% if runot.has_prev %}
       <li class="page-item"><a class="page-link" href="{{ url_for('runot_index', page=runot.prev_num) }}">Previous page</a></li>
       {% else %}
-      <li class="page-item-disabled"><a class="page-link">Edellinen sivu</a></li>
+      <li class="page-item-disabled"><a class="page-link">Edelliset 20</a></li>
       {% endif %} {% if runot.has_next %}
       <li class="page-item"><a class="page-link" href="{{ url_for('runot_index', page=runot.next_num) }}">Seuraava sivu</a></li>
       {% else %}
-      <li class="page-item-disabled"><a class="page-link">Seuraava sivue</a></li>
+      <li class="page-item-disabled"><a class="page-link">Seuraavat 20</a></li>
       {% endif %}
     </ul>
   </nav>
-<br>
 
+<p class="lead">Arkistostä on yhteensä {{ lkm_runot }} runoa </p>
 
 {% endblock %}

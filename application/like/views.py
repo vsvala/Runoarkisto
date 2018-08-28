@@ -30,18 +30,11 @@ def runot_create_like(runo_id):
         db.session().add(l)
         db.session().commit()
 
-        return render_template("runot/one.html", runo=runo, l=l) 
-    #return redirect(url_for("runot_index"))
-    return render_template("runot/one.html", runo=runo, liked_message="Samaa runoa voi tykätä vain kerran!!")
+        print("luo likeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeen", l)
+        return redirect(url_for('runot_showOne', runo_id=runo.id, l=l))
+        #return render_template("runot/one.html", runo=runo, l=l) 
+    
+    print("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeel") 
+
+    return render_template("runot/one.html", runo=runo, liked_message="Samasta runosta voi tykätä vain kerran!!")
     #TODooo tähän molempiin haku ko. runon liket
-
-
-
-
-#TODOO poista testikäytön juttu kun et tarvi enää TODOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-@app.route("/likes/", methods=["GET"])
-def like_index():
-    likes = Liked.query.all() 
-    print(likes)  
-    return render_template("likes/like.html", likes=likes, find_poems=Liked.find_poems_with_most_likes())
-     

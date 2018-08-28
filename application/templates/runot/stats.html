@@ -1,26 +1,26 @@
-{% extends "layout.html" %} {% block body %}
+{% extends "layout.html" %} 
+{% block body %}
 
 
 <h3>Sivuston tilastoja</h3>
 <br>
 
-<p class="lead">Arkiston runojen lukumäärä: {{ lkm_runot }} </p>
+<!-- <p class="lead">Arkiston runojen lukumäärä: {{ lkm_runot }} </p> -->
 
-<p class="lead">Arkiston rekisteröityneiden käyttäjien lukumäärä: {{ lkm_users }} </p>
+<p class="lead">Rekisteröityneiden käyttäjien lukumäärä: {{ lkm_users }} </p>
 
 <p class="lead">Eniten runoja lisänneet käyttäjät (Top 10): </p>
 
 {% if most_poems is defined %}
-<ul style="color:gray";>
+<ul style="color:gray" ;>
     {% for user in most_poems %}
-   <li>
+    <li>
         Käyttäjänimi: {{user.username}} on lisännyt {{user.runo_count}} runoa
     </li>
     {% endfor %}
 </ul>
-{% endif %} 
+{% endif %}
 <br/>
-<img src="/static/images/ornaments.svg" alt="ornament" style="width:225px;height:225px; padding-left:50px;" >
+<img src="/static/images/ornaments.svg" alt="ornament" style="width:225px;height:225px; padding-left:50px;">
 
-
-{% endblock %}
+{% endblock%}

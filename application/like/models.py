@@ -28,22 +28,6 @@ class Liked(db.Model):
 
         return response
 
-#haetaan valitun runon tykkäysten määrä  
-    @staticmethod
-    def find_poems_likes(runo):
-        stmt = text(" SELECT runo.name AS runo, COUNT(likes) AS total FROM liked, runo"
-                    " WHERE runo.id=:ri"
-                    " GROUP BY likes, runo.name"
-                    ).params(ri=runo.id)
-
-        res = db.engine.execute(stmt)
-  
-        response = []
-        for row in res:
-            response.append({"name":row[0], "total":row[1]})
-
-        return response
-
 
 #haetaan onko käyttäjä jo likettänyt runoa
     @staticmethod
@@ -60,3 +44,32 @@ class Liked(db.Model):
             return False
         return True    
 
+
+#haetaan valitun runon tykkäykset
+    @staticmethod
+    def find_runo_likes(runo):
+        stmt = text(" SELECT SUM(likes) AS total FROM liked"
+                    " WHERE liked.runo_id=:ri").params(ri=runo.id)     
+
+        res = db.engine.execute(stmt)
+
+        response = res.fetchone()[0]
+      
+        return response
+
+# #haetaan valitun runon tykkäysten määrä  
+#     @staticmethod
+#     def find_poems_likes(runo):
+#         stmt = text(" SELECT runo.name AS runo, COUNT(likes) AS total FROM liked, runo"
+#                     " WHERE runo.id=:ri"
+#                     " GROUP BY likes, runo.name"
+#                     ).params(ri=runo.id)
+
+#         res = db.engine.execute(stmt)
+  
+#         response = []
+#         for row in res:
+ 
+#    response.append({"name":row[0], "total":row[1]})
+
+#         return response

@@ -3,7 +3,6 @@
 <h3>Lisää kategoria:</h3>
 
 <br>
-
 <form action="{{  url_for('category_other', runo_id=runo.id) }}" method="POST" role="form">
     {{ form.CategoryForm}}
     <div class="form-group row">
@@ -21,6 +20,8 @@
     <button type="submit" class="btn btn-success">lisää</button>
     <br>
 </form>
+
+
 <br>
 <p class="lead">Voit lisätä jonkin aikaisimmista kategorioista tai keksiä uuden</p>
 <ul style="color:gray;">

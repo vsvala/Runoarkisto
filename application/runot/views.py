@@ -11,25 +11,28 @@ from application.like.models import Liked
 from application.runot.forms import RunoForm, FindForm
 
 
-# #runojen top 10 listaus,  listaus aakkosittain ja sivuttaminen 20 kerrallaan
+# #runojen top 10 listaus,  listaus aakkosittain ja sivuttaminen 20 kerrallaan, ja käyttäjien lkm haku
 @app.route("/runot/", defaults={'page': 1})
 @app.route("/user/page/<int:page>/")
 def runot_index(page):
     per_page = 10
     runot=Runo.query.order_by(Runo.name).paginate(page, per_page, error_out=False)
     likes=Liked.query.all()
+    lkm_runot= Runo.query.count()
     if likes:
         find_poems=Liked.find_poems_with_most_likes()
-        return render_template("runot/list.html", runot=runot,  find_poems= find_poems )
-    return render_template("runot/list.html", runot=runot) #Runo.query.all()
+        return render_template("runot/list.html", runot=runot, lkm_runot = lkm_runot,  find_poems= find_poems )
+
+    return render_template("runot/list.html", runot=runot, lkm_runot = lkm_runot) #Runo.query.all()
 
 
-#yksitttäisen runon näyttö
+#yksitttäisen runon näyttö ja tykkäyssien haku
 @app.route("/runot/showone/<runo_id>/", methods=["GET"])
 def runot_showOne(runo_id):
     runo = Runo.query.get(runo_id)
-    print(runo)
-    return render_template("runot/one.html", runo=runo)
+    l=Liked.find_runo_likes(runo)
+    print("llllllllllllllllllllllllllllllllll", l)
+    return render_template("runot/one.html", runo=runo, l=l)
 
 
 #kirjautuneen käyttäjän runojen listaus viimeksi luotu ensin
@@ -214,20 +217,19 @@ def users_poems(user_id):
 
     return render_template("auth/list.html", runot_by =Runo.find_runot_by(user), how_many=User.find_users_with_poem(), users=User.query.all())
 
-# ohjaa ja näyttää tilasto sivun
+# lkm ohjaa ja näyttää tilasto sivun
 @app.route("/runot/stats/", methods=["GET"])
 @login_required(role="ADMIN")
 def stats_index():
-    lkm_runot= Runo.query.count()
     lkm_users= User.query.count()
-    return render_template("runot/stats.html", lkm_runot=lkm_runot, lkm_users=lkm_users,  most_poems=User.find_users_with_most_poems())
+    return render_template("runot/stats.html", lkm_users=lkm_users,  most_poems=User.find_users_with_most_poems())
 
-#palauttaa kaikkien runojen luumäärän arkistossa
-@app.route("/runot/stats/", methods=["GET"])
-@login_required(role="ADMIN")
-def runot_count():
-    #runot= Runo.query.all()
-    #lkm= Runo.query(runot.id).count()
-    lkm= Runo.query.count()
-    #print("lukumäärä:", lkm)
-    return render_template("runot/stats.html", lkm=lkm)
+# #palauttaa kaikkien runojen luumäärän arkistossa
+# @app.route("/runot/stats/", methods=["GET"])
+# @login_required(role="ADMIN")
+# def runot_count():
+#     #runot= Runo.query.all()
+#     #lkm= Runo.query(runot.id).count()
+#     lkm= Runo.query.count()
+#     #print("lukumäärä:", lkm)
+#     return render_template("runot/stats.html", lkm=lkm)

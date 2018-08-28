@@ -1,19 +1,19 @@
-{% extends "layout.html" %} {% block body %}
+{% extends "layout.html" %} 
+{% block body %}
 
 <h3>{{runo.name }}</h3>
-</br>
+<br>
 <blockquote class="blockquote">
-    <p class="mb-0">
-          <em>{{ runo.sisalto }}</em>
-    </p>
-    <footer class="blockquote-footer"> {{ runo.runoilija }}</footer>
+  <p class="mb-0">
+    <em>{{ runo.sisalto }}</em>
+  </p>
+  <footer class="blockquote-footer"> {{ runo.runoilija }}</footer>
 </blockquote>
 
 <!--todoo...mieti vielä  tarviiko kategoriaa tässä kohtaa näkyville????
      <a href="{{ url_for('find_categories', runo_id=runo.id) }}">
   <p>runon kategoriat</p>
 </a> 
-
 
 {% if category_by is defined %}
 <p class="lead">
@@ -34,12 +34,10 @@
   <tr>
     <td>
       <a href="{{ url_for('runo_modify_page', runo_id=runo.id)}}">
-      <button type="submit" class="btn btn-primary">runon muokkaustilaan</button>
+        <button type="submit" class="btn btn-primary">runon muokkaustilaan</button>
       </a>
     </td>
-
-
-  {% endif %}
+{% endif %}
 
 </table>
 {% endblock %}
