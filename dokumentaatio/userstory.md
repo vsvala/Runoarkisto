@@ -11,9 +11,17 @@ tiedon selaaminen
 
 
 ```sql
-SELECT * FROM runo;
+SELECT * FROM runo ORDER BY runo.name DESC LIMIT 10;
+
+SELECT DISTINCT runo.id, runo.name, runo.sisalto, runo.runoilija FROM category, categories, runo WHERE (runo.id=categories.runo_id AND categories.category_id=category.id AND category.aihe=:categ)).params(categ=category)
+(parametrina käyttäjän syöttämä kategoria id>)
 
 SELECT runo.id, runo.name COUNT(likes) AS total FROM liked, runo WHERE runo.id=liked.runo_id GROUP BY likes, runo.name, runo.id" ORDER BY total DESC LIMIT 10;
+
+SELECT * FROM runo;
+
+SELECT DISTINCT runo.id, runo.name FROM runo, account WHERE (runo.account_id =:u)").params(u=user.id); 
+(parametrina käyttäjän syöte id
 
 ```
 
