@@ -39,6 +39,9 @@ Kirjautunut käyttäjä:
 SELECT DISTINCT runo.id, runo.name FROM runo, account WHERE (runo.account_id =:u)").params(u=user.id);
 SELECT * FROM runo WHERE runo.id = ? ; (klikatun runon runo.id)
 
+SELECT SUM(likes) AS total FROM liked " WHERE liked.runo_id=:ri").params(ri=runo.id)     
+
+SELECT * FROM liked" WHERE liked.runo_id=:ri AND liked.account_id=:la").params(ri=runo.id, la=user.id)                
 
 ```
 Ylläpitäjä:
@@ -54,6 +57,27 @@ Ylläpitäjä:
 	- Arkiston rekisteröityneiden käyttäjien lukumäärä
 	- Eniten runoja lisänneet käyttäjät (Top 10) 
 - Ylläpitäjä lisätä voi poistaa tykkäyksiä.ok
+
+
+
+```sql
+"SELECT account.id, account.username FROM account"
+                    " LEFT JOIN runo ON runo.account_id = account.id"
+                    " GROUP BY account.id"
+                    " HAVING COUNT(runo.id) > 0")
+		    
+ SELECT account.id, account.username, COUNT(runo.id) as runocount FROM account"
+                    " LEFT JOIN runo ON runo.account_id = account.id"
+                    " WHERE (runo.id>0)"
+                    " GROUP BY account.id"
+                    " ORDER BY runocount DESC"
+                    " LIMIT 10")
+		    
+"SELECT account.id, COUNT(*) AS howmany FROM account"
+                    " LEFT JOIN runo ON runo.account_id = account.id"
+                    " GROUP BY account.id")             
+
+```
 
 ### Tietokannan luonti lauseet (CREATE TABLE)
 
