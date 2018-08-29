@@ -1,6 +1,6 @@
 {% extends "layout.html" %} {% block body %}
 
-<h3>kirjautuneen käyttäjän lisäämät runot </h3>
+<h3>Käyttäjän {{ current_user.name }} lisäämät runot </h3>
 <br>
 
 {% if loggedUsers_poems is defined %}

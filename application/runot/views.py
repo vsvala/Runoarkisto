@@ -120,7 +120,6 @@ def runo_modify_page(runo_id):
     return render_template("runot/modifyOne.html", runo=runo, category_by=Category.find_categories_by(runo))
 
 
-
 #runon muokkaus lomakkeen haku
 @app.route("/runot/modify/<runo_id>/", methods=["GET"])
 @login_required()
@@ -155,7 +154,7 @@ def runot_uppdate(runo_id):
     return render_template("runot/modifyOne.html", runo=runo, category_by=Category.find_categories_by(runo))
 
 
-#poistaa(admin) tai(user)listasta
+#poistaa runon poistajan(admin) tai(user)
 @app.route("/runot/<runo_id>/del/", methods=["GET", "POST"])
 @login_required()
 def runot_delete(runo_id):
@@ -191,10 +190,11 @@ def find_runo():
     
     if runo_category:
         return redirect(url_for("find_runot_by_category", runo_category=runo_category))
+
     
     if not runo_name or runo_category:
         return render_template("runot/find.html", form=form, name_error="Syötä jompikumpi tiedoista!")
-
+    
   
     form = FindForm(request.form)
     return render_template("runot/find.html", runo=runo, form=form)

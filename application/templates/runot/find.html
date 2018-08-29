@@ -36,6 +36,7 @@
       <button type="submit" class="btn btn-primary">Etsi</button>
 </form>
 
+<p>{{ category_error }}</p>
 
 <br>
 <br>
@@ -48,6 +49,7 @@
       <footer class="blockquote-footer"> {{ runo.runoilija }}</footer>
 </blockquote>
 <br>
+
 {% if current_user.role=="ADMIN" %}
 <table>
   <tr>
@@ -63,13 +65,12 @@
 
 
 {% if runot_by_category is defined %}
-<h4>Runot jotka kuuluvat
-      <i> {{category }} </i> kategoriaan: </h4>
+<h4>Runot jotka kuuluvat <i> {{category }} </i> kategoriaan: </h4>
 <br>
 <ul>
 {% for runo in runot_by_category %}
       <li>
-       <h5>{{runo.id}} {{runo.name}}</h5>
+       <h5>{{runo.name}}</h5>
             <blockquote class="blockquote">
                   <p class="mb-0"><em>{{ runo.sisalto }}</em></p>
                   <footer class="blockquote-footer"> {{ runo.runoilija }}</footer>
