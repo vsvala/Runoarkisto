@@ -65,13 +65,17 @@ Rekisteröinnin onnistumisen jälkeen sovellukseen pääsee kirjautumaan avautuv
 
 # Kirjautuneelle sallittuja toimintoja
 
+## *Tykkäys toiminto*
+
+Kirjautuneena näet runon listauksen yhteydessä myös runon tykkäys napin. Voit tykätä samasta runosta vain kerran.
+
 ## *Runojen lisäys*
 
 <img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/runonlisäys.png" width="700">
 
 Voit kirjata uuden runon järjestelmään painamalla "Lisää runo" linkkiä navigaatiopalkissa. Syötä avautuvaan lomakkeeseen pyydetyt tiedot, korjaa tarvittaessa virheilmoitusten ilmoittamat virheet syötteissä. Lisätty runo näkyy aukeavassa kirjautuneen käyttäjän runojen listaus näkymässä.
 
-## *Kirjautuneen käyttäjän runojen listaus ja yksittäisen runon tiedot*
+## *Kirjautuneen käyttäjän runojen listaus ja yksittäisen runon tiedot *
 
 <img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/kayttajan_runot.png" width="700">
 
