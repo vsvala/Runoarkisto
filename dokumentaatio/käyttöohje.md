@@ -22,12 +22,11 @@ Sivut ja toiminnot joihin ko. käyttäjällä ei ole oikeuksia ovat piilotettuna
 
 ## *etusivu* 
 
-<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/etusivu.png" width="700">
-
 Kirjautuessasi sovellukseen sinut ohjataan etusivulle, jossa on lyhyt esittely sovelluksesta sekä aforismi. Navigaatiopalkin linkeistä pääset haluamiisi toimintoihin.
 
 Etusivulle pääsee palaamaan muista sovelluksen paikoista painamalla navigaatiopalkin vasemmassa yläreunassa olevasta "Runoarkisto" nimestä.
 
+<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/etusivu.png" width="700">
 
 ## *kaikkien runojen listaus ja yksittäisen runon tietojen ja kategorioiden näyttö* 
 
