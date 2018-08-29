@@ -37,8 +37,9 @@ def category_other(runo_id):
     form = CategoryForm(request.form)
 
     runo=Runo.query.get(runo_id)
-
-    category = Category(aihe=form.aihe.data)
+    category_lowercase=form.aihe.data.lower() #muutetaan kaikki pieniksi hakutoimintoa varten
+    category = Category(category_lowercase)
+ 
 
     db.session().add(category) #kategoriaolion  luonti ja commitointi tietokantaan
     db.session().commit() 
