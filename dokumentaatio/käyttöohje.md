@@ -107,8 +107,6 @@ Ainoastaan ylläpitäjän hallussa olevat navigaatiolinkit näkyvät vihreällä
 
 ## *Käyttäjien hallinnointi, muokkaus, poisto ja listaus *
 
-<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/hallinta.png" width="700">
-
 Pääkäyttäjänä pääset hallinnoimaan ja listaamaan käyttäjien tiedot navigaatiopalkin "käyttäjät" linkin kautta. Linkistä avautuvassa käyttäjien hallinta näkymässä pystyt "muokkaa" ja "poista" napista muokkaamaan ja poistamaan käyttäjän. Huom!! Käyttäjän poisto napi poistaa järjestelmästä myös hänen runonsa kategorioineen.
 
 Muokkaus nappi avaa yksittäisen käyttäjän tiedoilla esitäytetyn muokkauslomakkeen. Lomakkeeseen on lisätty rekisteröitymisliomakkeesta poiketen nyt myös rooli selection kenttä. Rooli kentän avulla voi muokata USER käyttäjästä ADMIN käyttäjän ja toisinpäin. 
@@ -117,21 +115,22 @@ Näkymästä voit lisäksi klikata linkistä "Katso ketkä käyttäjät ovat lis
 
 Samassa näkymässä alimpana on runojen tykkäysten resetointi eli poisto nappi, joka poistaa kaikkien runojen tykkäykset.
 
+<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/hallinta.png" width="700">
 
 ## *Kaikkien runojen muokkaus*
 
-<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/runot_admin.png" width="700">
-          
 Ylläpitäjänä näet kaikkien runojen listauksen yhteydessä tykkäys napin lisäksi myös "runon muokkaustilaan" napin, josta pääset muokkaamaan ja poistamaan runon sekä poistamaan ja lisäämään sille uusia kategorioita. (kts. alun kohta "kaikkien runojen listaus..")
 
 Kaikkien runojen muokkaustila toimii vastaavalla tavalla kuin kirjautuneen käyttäjän runojen muokkaustila. (kts.ohjeet kohdasta "Kirjautuneen käyttäjän runojen listaus ja yksittäisen runon tiedot")
 
+<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/runot_admin.png" width="700">
+   
 
 ## *Kategorioiden listaus ja poisto* 
 
-<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/kategoriat.png" width="700">
-
 Pääkäyttäjänä pääset listaamaan kaikki kategoriat navigaatiopalkin punaisen "kategoriat" linkin kautta. Listauksen poisto napeista pystyt poistamaan aina ko. kategorian.
+
+<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/kategoriat.png" width="700">
 
 ## *Tilastoja*
 
