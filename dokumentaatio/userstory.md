@@ -6,7 +6,7 @@ Kaikki käyttäjät:
 - Kukatahansa käyttäjä voi hakea runoja niiden nimen perusteella, jotta runo löytyisi nopeammin. ok
 - Kukatahana käyttäjä voi hakea runoja eri kategorioiden eli aihepiirien mukaan, jotta hän löytää tiettyyn tilanteeseen sopivan runon. ok
 - Kukatahansa käyttäjä voi lukea suosituimmat runot (top 10). ok
-- Kukatahansa käyttäjä voi rekisteröityä sivustolle, jotta hän voi kirjautua  ja  saisi lisää toiminnallisuuksia käyttöönsä. ok
+- Kukatahansa käyttäjä voi rekisteröityä sivustolle, jotta hän voi kirjautua saadakseen lisää toiminnallisuuksia käyttöönsä. ok
 
 Kirjautunut käyttäjä:
 
@@ -20,16 +20,16 @@ Kirjautunut käyttäjä:
 Ylläpitäjä:
 
 - Ylläpitäjä voi itse lisätä runoja ja uusia kategorioita tietokantaan haettaviksi. ok
-- Ylläpitäjä voi listata, lisätä muokata ja poistaa runoja, jotta mahdollisia virheitä voitaisiin korjata ja ei haluttuja runoja poistaa. ok
+- Ylläpitäjä voi lisätä, listata, lisätä muokata ja poistaa runoja, jotta mahdollisia virheitä voitaisiin korjata ja ei haluttuja runoja poistaa. ok
 - Ylläpitäjä voi listata kategoriat, sekä lisätä ja poistaa niitä. ok
-- Ylläpitäjä voi listata, lisätä, muokata ja poistaa käyttäjien tietoja. ok
+- Ylläpitäjä voi listata, lisätä, muokata ja poistaa kaikkia käyttäjän tietoja. ok
 - Ylläpitäjä voi hallinnoida: listata, muokata, lisätä ja poistaa rekisteröityneen käyttäjän esim. väärinkäytösten varalta tai esim. antaakseen käyttäjälle ADMIN oikeudet. ok
 - Ylläpitäjä voi nähdä tilastoja (yhteenvetokyselyt) sivustolta. kaikki ok
 	- Listaa kaikki käyttäjät jotka on lisänneet runoja ja mitä runoja on lisätty
 	- Arkiston runojen määrä 
 	- Arkiston rekisteröityneiden käyttäjien lukumäärä
 	- Eniten runoja lisänneet käyttäjät (Top 10) 
-- Ylläpitäjä voi lisätä a poistaa tykkäyksiä. Kesken näistä lisäys tehtynä, poisto uupuu
+- Ylläpitäjä voi poistaa tykkäyksiä.
 
 ### Tietokannan luonti lauseet (CREATE TABLE)
 
