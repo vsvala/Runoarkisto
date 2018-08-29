@@ -3,7 +3,7 @@
 <h2>Käyttäjien hallinta: </h2>
 <br>
 
-<table>   
+<table>
     <tr>
         <th>nimi</th>
         <th>käyttäjänimi</th>
@@ -12,55 +12,56 @@
     </tr>
 
     <tbody>
-    {% for user in users %}
-    <tr>   
-        <td>{{ user.name }}</td>
-        <td>{{ user.username }}</td>
-        <td> {{ user.password }}</td>
-        <td>{{ user.role }}</td>
-        <td>
-            <a href="{{ url_for('auth_uppdateForm', auth_id=user.id)}}">
-                <button type="submit" class="btn btn-success">muokkaa</button>
-            </a>
-        </td>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.name }}</td>
+            <td>{{ user.username }}</td>
+            <td> {{ user.password }}</td>
+            <td>{{ user.role }}</td>
+            <td>
+                <a href="{{ url_for('auth_uppdateForm', auth_id=user.id)}}">
+                    <button type="submit" class="btn btn-success">muokkaa</button>
+                </a>
+            </td>
 
-        <td>
-            <a href="{{ url_for('auth_delete', auth_id=user.id)}}">
-                <button type="submit" class="btn btn-danger">poista</button>
-            </a>
-        </td>
-    </tr>
-    {% endfor %}
-    <tbody>
+            <td>
+                <a href="{{ url_for('auth_delete', auth_id=user.id)}}">
+                    <button type="submit" class="btn btn-danger">poista</button>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+        <tbody>
 </table>
-<br>
-
-
-<a href="{{ url_for('users_withPoems') }}">
-    <h5>Listaa runoja lisänneet käyttäjät</h5>
-</a>
-
-{% if how_many is defined %}
+<br> {% if how_many is defined %}
 <p>Klikkaa nimeä nähdäksesi käyttäjän runot</p>
 <ul class="list-unstyled">
     {% for user in how_many %}
     <li>
         <a href="{{ url_for('users_poems', user_id=user.id) }}">
-           <h6>{{user.id}} {{user.username}}</h6>
+            <h6>{{user.id}} {{user.username}}</h6>
         </a>
     </li>
-    {% endfor %} 
-
-    {% if runot_by is defined %} 
-        <h5>Klikkaamasi käyttäjän runot</h5>
-        {% for runo in runot_by %}
-        <ul>
-          <li style="color:gray;"> {{runo.name}} </li>
-        </ul>
-         {% endfor %} 
-    {% endif %}
+    {% endfor %} {% if runot_by is defined %}
+    <h5>Klikkaamasi käyttäjän runot</h5>
+    {% for runo in runot_by %}
+    <ul>
+        <li style="color:gray;"> {{runo.name}} </li>
+    </ul>
+    {% endfor %} {% endif %}
 </ul>
-{% endif %} 
+{% endif %}
+
+<a href="{{ url_for('users_withPoems') }}">
+    <h5>Listaa runoja lisänneet käyttäjät</h5>
+</a>
 
 
-{% endblock %}
+<br>
+<h5>Resetoi kaikkien runojen tykkäykset</h5>
+<a href="{{ url_for('delete_likes')}}">
+    <button type="submit" class="btn btn-danger">poista kaikki tykkäykset</button>
+</a>
+
+<br>
+ {% endblock %}

@@ -48,6 +48,17 @@
       <footer class="blockquote-footer"> {{ runo.runoilija }}</footer>
 </blockquote>
 <br>
+{% if current_user.role=="ADMIN" %}
+<table>
+  <tr>
+    <td>
+      <a href="{{ url_for('runo_modify_page', runo_id=runo.id)}}">
+        <button type="submit" class="btn btn-danger">runon muokkaustilaan</button>
+      </a>
+    </td>
+    {% endif %}
+</table> 
+
 {% endif %} 
 
 
@@ -55,8 +66,6 @@
 <h4>Runot jotka kuuluvat
       <i> {{category }} </i> kategoriaan: </h4>
 <br>
-
-
 <ul>
 {% for runo in runot_by_category %}
       <li>
@@ -66,8 +75,22 @@
                   <footer class="blockquote-footer"> {{ runo.runoilija }}</footer>
             </blockquote>
       </li>
+
+
+      {% if current_user.role=="ADMIN" %}
+      <table>
+        <tr>
+          <td>
+            <a href="{{ url_for('runo_modify_page', runo_id=runo.id)}}">
+              <button type="submit" class="btn btn-danger">runon muokkaustilaan</button>
+            </a>
+          </td>
+          {% endif %}
+      </table> 
+      
 {% endfor %}
 </ul>
 
 {% endif %} 
+
 {% endblock %}

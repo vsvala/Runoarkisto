@@ -1,30 +1,65 @@
 {% extends "layout.html" %} {% block body %}
 
-<h3>Kaikki runot: </h3>
+<h3>Runoarkiston runot: </h3>
 <br> 
-<ol>
+{% if l is defined %} tykkäykset: {{ l }}
+{% endif %}
+
+{% if liked_message is defined %} 
+{{ liked_message }}  
+{% endif %}   
+
+
 {% for runo in runot.items %}
-<li style= "padding-left:5px; color:gray; font-weight: 500;">
-    <a href="{{ url_for('runot_showOne', runo_id=runo.id) }}">
-      <h5>{{ runo.name }}</h5>
-    </a>
-  </li>
-{% endfor %}
-</ol>
 
-<p>{{ category_error }}</p>
+<h3>{{ runo.name }}</h3>
 
+<blockquote class="blockquote">
+  <p class="mb-0 "style="color:gray;"><em>{{ runo.sisalto }}</em></p>
+  <footer class="blockquote-footer"> {{ runo.runoilija }}</footer>
+</blockquote>
+
+
+{% if current_user.is_authenticated %}
+
+<table>
+  <tr>
+    <td>
+      <a href="{{  url_for('create_like', runo_id=runo.id) }}">
+        <button type="submit" class="btn btn-primary">tykkää runosta</button>
+      </a>
+    </td>
+  </tr>
+</table>
+
+
+{% endif %} 
+
+
+{% if current_user.role=="ADMIN" %}
+<table>
+  <tr>
+    <td>
+      <a href="{{ url_for('runo_modify_page', runo_id=runo.id)}}">
+        <button type="submit" class="btn btn-danger">runon muokkaustilaan</button>
+      </a>
+    </td>
+    {% endif %}
+</table>
+
+
+{% endfor %} 
 <!-- navigaatio -->
 <nav aria-label="Page navigation">
     <ul class="pagination">
       {% if runot.has_prev %}
       <li class="page-item"><a class="page-link" href="{{ url_for('runot_index', page=runot.prev_num) }}">Previous page</a></li>
       {% else %}
-      <li class="page-item-disabled"><a class="page-link">Edelliset 20</a></li>
+      <li class="page-item-disabled"><a class="page-link">Edelliset 10</a></li>
       {% endif %} {% if runot.has_next %}
       <li class="page-item"><a class="page-link" href="{{ url_for('runot_index', page=runot.next_num) }}">Seuraava sivu</a></li>
       {% else %}
-      <li class="page-item-disabled"><a class="page-link">Seuraavat 20</a></li>
+      <li class="page-item-disabled"><a class="page-link">Seuraavat 10</a></li>
       {% endif %}
     </ul>
   </nav>

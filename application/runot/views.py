@@ -10,30 +10,37 @@ from application.like.models import Liked
 #from werkzeug import secure_filename
 from application.runot.forms import RunoForm, FindForm
 
-
-# #runojen top 10 listaus,  listaus aakkosittain ja sivuttaminen 20 kerrallaan, ja käyttäjien lkm haku
+# kaikkien runojen  listaus aakkosittain ja sivuttaminen paginate 20 kerrallaan, ja käyttäjien lkm haku
 @app.route("/runot/", defaults={'page': 1})
-@app.route("/user/page/<int:page>/")
+@app.route("/runot/page/<int:page>/")
 def runot_index(page):
     per_page = 10
-    runot=Runo.query.order_by(Runo.name).paginate(page, per_page, error_out=False)
-    likes=Liked.query.all()
+    runot=Runo.query.order_by(Runo.name).paginate(page, per_page, error_out=False)#Runo.query.all()
     lkm_runot= Runo.query.count()
-    if likes:
-        find_poems=Liked.find_poems_with_most_likes()
-        return render_template("runot/list.html", runot=runot, lkm_runot = lkm_runot)
+    return render_template("runot/list.html", runot=runot, lkm_runot = lkm_runot) 
 
-    return render_template("runot/list.html", runot=runot, lkm_runot = lkm_runot) #Runo.query.all()
-
-
-#yksitttäisen runon näyttö ja tykkäyssien haku
-@app.route("/runot/showone/<runo_id>/", methods=["GET"])
-def runot_showOne(runo_id):
+ # Ŕunojen top 10 lista ja tykkäkset
+@app.route("/runot/top/<runo_id>/", methods=["GET"])
+def show_toplist(runo_id):
     runo = Runo.query.get(runo_id)
-    l=Liked.find_runo_likes(runo)
-    print("llllllllllllllllllllllllllllllllll", l)
-    return render_template("runot/one.html", runo=runo, l=l)
+    likes=Liked.query.all()
+    if likes:
+        top=Liked.find_poems_with_most_likes()
+        l=Liked.find_runo_likes(runo)
+        return render_template("runot/one.html", top=top, l=l, runo=runo)
+    return render_template("runot/one.html", runo=runo)
 
+
+#yksitttäisen runon näyttö ja tykkäyksien haku
+@app.route("/runot/one/<runo_id>/", methods=["GET"])
+def runot_one(runo_id):
+    runo = Runo.query.get(runo_id)
+    likes=Liked.query.all()
+    if likes:
+        l=Liked.find_runo_likes(runo)
+        if l:
+            return render_template("runot/one.html", runo=runo, l=l)  
+    return render_template("runot/one.html", runo=runo, l=l, liked_message="Samasta runosta voi tykätä vain kerran!")
 
 #kirjautuneen käyttäjän runojen listaus viimeksi luotu ensin
 @app.route("/runot/loggedlist/")
@@ -49,11 +56,10 @@ def runot_showOne_logged(runo_id):
     return render_template("runot/one_logged.html", runo=runo, category_by=Category.find_categories_by(runo))
 
 
-# runon luomislomakkeen näyttö ja runon luominen
+# runon luomislomakkeen haku
 @app.route("/runot/new/", methods=["GET"])
 @login_required()
 def runot_createform():
-
     if request.method == "GET":
          return render_template("runot/new.html", form= RunoForm())
 
@@ -116,7 +122,7 @@ def runo_modify_page(runo_id):
 
 
 #runon muokkaus lomakkeen haku
-@app.route("/runot/<runo_id>/", methods=["GET"])
+@app.route("/runot/modify/<runo_id>/", methods=["GET"])
 @login_required()
 def runot_uppdateForm(runo_id):
 
@@ -170,7 +176,6 @@ def runot_delete(runo_id):
 def find_index():
         return render_template("runot/find.html", form=FindForm())
 
-
 #hakee annetun runon
 @app.route("/runot/find/", methods=["POST"])
 def find_runo():
@@ -201,49 +206,31 @@ def find_runot_by_category(runo_category):
     form = FindForm(request.form)
     category=runo_category
     if not Runo.find_runot_by_category(category):
-        print("ei löydyyyyyyyyyyyyyyyyyyyyyyyyyyy")
         return render_template("runot/find.html", form=form, category_error="Etsimälläsi kategorialla ei löydy runoja, yritä toista hakusanaa!")
 
     return render_template("runot/find.html", runot_by_category = Runo.find_runot_by_category(category), category=category, form=form)
 
 
 #hakee tietyn runon kategoriat
-@app.route("/runot/one/<runo_id>/a",methods=["GET"])
+@app.route("/runot/category/<runo_id>/",methods=["GET"])
 def find_categories(runo_id):
-    runo = Runo.query.get(runo_id)
-    return render_template("runot/one.html", category_by =Category.find_categories_by(runo), runo=runo)
-
-
-# #hakee tietyn käyttäjän runojen kategoriat
-# @app.route("/runot/listing/<runo_id>/a",methods=["GET"])
-# def listing_find_categories(runo_id):
-#     runo = Runo.query.get(runo_id)
-#     return render_template("runot/listings.html", category_by =Category.find_categories_by(runo), runo=runo)
+    runo = Runo.query.get(runo_id)    
+    #return render_template("runot/list.html", runot=runot)
+    category_by =Category.find_categories_by(runo)
+    return redirect(url_for("runot_index_category",category_by=category_by))
 
 
 #hakee tietyn käyttäjän runot
 @app.route("/runot/user/<user_id>/a",methods=["GET"])
 def users_poems(user_id):
-
     user= User.query.get(user_id)
     print(user)
-
     return render_template("auth/list.html", runot_by =Runo.find_runot_by(user), how_many=User.find_users_with_poem(), users=User.query.all())
 
-# lkm ohjaa ja näyttää tilasto sivun
+# hakee  runojen ja käyttäjien määrät ja ohjaa tialstosivulle
 @app.route("/runot/stats/", methods=["GET"])
 @login_required(role="ADMIN")
 def stats_index():
     lkm_users= User.query.count()
-    lkm_runot= User.query.count()
+    lkm_runot= Runo.query.count()
     return render_template("runot/stats.html", lkm_users=lkm_users, lkm_runot=lkm_runot,  most_poems=User.find_users_with_most_poems())
-
-# #palauttaa kaikkien runojen luumäärän arkistossa
-# @app.route("/runot/stats/", methods=["GET"])
-# @login_required(role="ADMIN")
-# def runot_count():
-#     #runot= Runo.query.all()
-#     #lkm= Runo.query(runot.id).count()
-#     lkm= Runo.query.count()
-#     #print("lukumäärä:", lkm)
-#     return render_template("runot/stats.html", lkm=lkm)

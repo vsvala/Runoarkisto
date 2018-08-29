@@ -8,34 +8,22 @@
   <footer class="blockquote-footer"> {{ runo.runoilija }}</footer>
 </blockquote>
 
-<a href="{{ url_for('find_categories', runo_id=runo.id) }}">
-  <p>runon kategoriat</p>
-</a>
-
-{% if category_by is defined %}
-<ul>
-  {% for category in category_by %}
-  <li style="color:rgb(87, 87, 87);">
-    {{category.aihe}}
-  </li>
-  {% endfor %}
-</ul>
-{% endif %} 
 
 
 {% if current_user.is_authenticated %}
 <table>
   <tr>
     <td>
-      <a href="{{  url_for('runot_create_like', runo_id=runo.id) }}">
+      <!-- <a href="{{  url_for('create_like', runo_id=runo.id) }}">
         <button type="submit" class="btn btn-primary">tykkää runosta</button>
-      </a>
-      {% if liked_message is defined %} {{ liked_message }} {% endif %} {% if l is defined %} tykkäyksiä: {{ l }} {% endif %}
+      </a> -->
+      {% if liked_message is defined %} {{ liked_message }} {% endif %} 
+      {% if l is defined %} Tykkäyksiä: {{ l }} {% endif %}
     </td>
   </tr>
 </table>
 {% endif %} 
-
+<!-- 
 {% if current_user.role=="ADMIN" %}
 <table>
   <tr>
@@ -45,6 +33,6 @@
       </a>
     </td>
     {% endif %}
-</table>
+</table> -->
 
 {% endblock %}

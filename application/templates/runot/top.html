@@ -1,21 +1,27 @@
 {% extends "layout.html" %} {% block body %}
 
-<h3>Tykätyimmät runot (top 5)</h3>
+<h3>Tykätyimmät runot (top 10)</h3>
 <br>
-<table>
+<!-- <table>
   <tr>
     <th>runo</th>
     <th>tykkäykset</th>
   </tr>
-  {% if find_poems is defined%}
-    {% for poem in find_poems %}
-    <tr style="color:gray;">
-      <td>{{ poem.name }}</td>
-      <td>{{ poem.total }}</td>
-    </tr>
-    {% endfor %}
-  {% endif %}
-</table>
+</table> -->
+
+{% if top is defined%}
+<ol>
+  {% for runo in top %}
+  <li>
+    <a href="{{ url_for('show_toplist', runo_id=runo.id) }}">
+      <h5> {{ runo.name }} {{ runo.total }}</h5>
+    </a>
+  </li>
+  {% endfor %} {% endif %}
+</ol>
 <br>
+<!-- kuva -->
+  <img src ="https://openclipart.org/download/205688/ornaments-Art-O-17.svg" alt="rose" style="width:300px;height:300px; position: relative;
+  left: 100px; opacity: 0.1; filter: alpha(opacity=50)">
 
 {% endblock %}

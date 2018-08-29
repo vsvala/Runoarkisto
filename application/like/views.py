@@ -10,18 +10,18 @@ from application.like.models import Liked
 #top 10 listaus
 @app.route("/likes/top/", methods=["GET"])
 def top_poems():
-    find_poems=Liked.find_poems_with_most_likes()
-    return render_template("runot/top.html", find_poems= find_poems )
+    top=Liked.find_poems_with_most_likes()
+    return render_template("runot/top.html", top= top)
 
-
-@app.route("/likes/<runo_id>", methods=["GET"])
+#luodaan tykkäyksiä
+@app.route("/create/likes/<runo_id>/", methods=["GET"])
 @login_required()
-def runot_create_like(runo_id):
+def create_like(runo_id):
 
     runo = Runo.query.get(runo_id) 
     user=current_user
 
-   #tarkastus onko nykyinen käyttäjä jo tykännyt runosta  jos ei liken talletus kantaan
+   #tarkastus onko nykyinen käyttäjä jo tykännyt runosta  jos ei liken talletus kantaan muutoin viesti
     liked=Liked.has_poem_liked_by_user(user, runo) #true tai false
     print("llllllllllllllllllllllllllllllllll")
 
@@ -37,11 +37,17 @@ def runot_create_like(runo_id):
         db.session().add(l)
         db.session().commit()
 
-        print("luo likeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeen", l)
-        return redirect(url_for('runot_showOne', runo_id=runo.id, l=l))
-        #return render_template("runot/one.html", runo=runo, l=l) 
-    
-    print("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeel") 
+        return redirect(url_for('runot_one', runo_id=runo.id, l=l))
 
-    return render_template("runot/one.html", runo=runo, liked_message="Samasta runosta voi tykätä vain kerran!!")
-    #TODooo tähän molempiin haku ko. runon liket
+    return render_template("runot/one.html", runo=runo, liked_message="Olet jo tykännyt tästä runosta! Samasta runosta voi tykätä vain kerran!!")
+
+#kaikkien tykkäysten poisto
+@app.route("/likes/delete/all/", methods=["GET", "POST"])
+@login_required(role="ADMIN")
+def delete_likes():
+
+    likes=Liked.query.delete()
+    db.session().commit()
+
+    return redirect(url_for("top_poems"))
+
