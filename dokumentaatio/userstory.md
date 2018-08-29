@@ -29,7 +29,7 @@ Ylläpitäjä:
 	- Arkiston runojen määrä 
 	- Arkiston rekisteröityneiden käyttäjien lukumäärä
 	- Eniten runoja lisänneet käyttäjät (Top 10) 
-- Ylläpitäjä lisätä voi poistaa tykkäyksiä.
+- Ylläpitäjä lisätä voi poistaa tykkäyksiä.ok
 
 ### Tietokannan luonti lauseet (CREATE TABLE)
 
