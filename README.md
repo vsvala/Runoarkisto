@@ -1,7 +1,7 @@
 # Runoarkisto -Tietokantasovellus harjoitustyö
 
  Helsingin yliopiston Tietokantasovellus (4 op) kurssilla (kesä-2018) harjoitustyönä tehty tietokantaa käyttävä web-sovellus. 
- - Toteutus: Herokun PostgreSQL tietokanta , Python, HTML, CSS,  SQLAlchemy,  Flask sovelluskehys, WTForms kirjasto lomakkeiden luomisessa ja validoinnissa,  Bootstrap-kirjasto ulkoasun tyylittelyssä.
+ - Toteutus: Herokun PostgreSQL tietokanta , Python, HTML, CSS, [ SQLAlchemy ](https://www.sqlalchemy.org),  Flask sovelluskehys, WTForms kirjasto lomakkeiden luomisessa ja validoinnissa,  Bootstrap-kirjasto ulkoasun tyylittelyssä.
  - Julkaisu: verkossa Heroku-pilvipalvelussa: https://tsoha-python-runoarkisto.herokuapp.com/
  - Pääkäyttäjän ja käyttäjän kirjautuminen:
    - **admin**
@@ -67,3 +67,10 @@ Tykkäys
 - [User storyt ja SQL lauseet](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/userstory.md)
 - [Asennusohje](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/asennusohje.md)
 - [Käyttöohje](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/käyttöohje.md)
+
+
+## Puutteet & jatkokehitysideat
+Mitä puutteita tai bugeja ohjelmassa on? Mitä lisäominaisuuksia ohjelmaan voisi lisätä?
+
+## Omat kokemukset
+Mikä oli tietokantasovelluksen teossa helppoa? Mikä vaikeaa? Mitä opit? Muu vapaa sana.
