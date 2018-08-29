@@ -44,9 +44,12 @@ Mikäli olet kirjautunut ylläpitäjänä näet yksittäisen runon listauksen yh
 
 Voit etsiä runoja runoarkistosta nimen tai kategorian perusteella painamalla "runot" linkkiä navigaatiopalkissa. Syöttämällä lomakkeeseen arkistossa olevan runon nimen tai kategorian, näet kyseisen runon tai listan hakemaasi kategoriaan kuuluvista runoista. Jos hakemaasi runoa tai kategoriaa ei löydy, saat ilmoituksen.
 
+
+<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/top10.png">
+
 ## *Rekisteröityminen=uuden käyttäjän lisääminen ja kirjautuminen*
 
-<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/rekist.png.png" width="700">
+<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/rekist.png" width="700">
 
 ##### rekisteröityminen
 Sovellukseen on tehty erillinen lomakesivu rekisteröinnille eli uuden käyttäjän luomiselle. Kyseiselle sivulle pääsee painamalla navigaatiopalkin oikean laidan linkkiä: *"Rekisteröidy"*. Syötä avautuneeseen lomakkeen kenttiin pyydetyt tiedot ja ota huomioon nimimerkeille ja salasanoille annetut rajoitteet. Korjaa tarvittaessa syötteesi virheilmoitusten ilmoittamista virheistä. Lomake rekisteröi käyttäjän rooliksi automaattisesti USER:in
@@ -110,6 +113,8 @@ Näkymästä voit lisäksi klikata linkistä "Katso ketkä käyttäjät ovat lis
 
 ## *Kaikkien runojen muokkaus*
 
+<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/runot_admin.png>
+          
 Ylläpitäjänä näet kaikkien runojen yksittäisen runon listauksen yhteydessä lisäksi myös "runon muokkaustilaan" napin, josta pääset muokkaamaan ja poistamaan runon sekä poistamaan ja lisäämään sille uusia kategorioita. (kts. alun kohta "kaikkien runojen listaus..")
 
 Kaikkien runojen muokkaustila toimii vastaavalla tavalla kuin kirjautuneen käyttäjän runojen muokkaustila. (kts.ohjeet kohdasta "Kirjautuneen käyttäjän runojen listaus ja yksittäisen runon tiedot")
@@ -120,3 +125,8 @@ Kaikkien runojen muokkaustila toimii vastaavalla tavalla kuin kirjautuneen käyt
 <img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/kategoriat.png">
 
 Pääkäyttäjänä pääset listaamaan kaikki kategoriat navigaatiopalkin punaisen "kategoriat" linkin kautta. Listauksen poisto napeista pystyt poistamaan aina ko. kategorian.
+
+
+<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/stats.png">
+
+
