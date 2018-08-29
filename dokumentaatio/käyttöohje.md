@@ -75,7 +75,7 @@ Voit kirjata uuden runon järjestelmään painamalla "Lisää runo" linkkiä nav
 
 <img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/runonlisäys.png" width="700">
 
-## *Kirjautuneen käyttäjän runojen listaus ja yksittäisen runon tiedot *
+## *Kirjautuneen käyttäjän runojen listaus ja yksittäisen runon tiedot*
 
 Voit listata lisäämiesi runojen otsikot näkyville painamalla "lisäämäsi runot" linkkiä navigaatiopalkissa. Klikkaamalla runon nimeä/linkkiä saat kyseisen runon kokonaan näkyviin sekä napin runon muokkaustilaan. 
 
