@@ -78,10 +78,10 @@ Voit listata lisäämiesi runojen otsikot näkyville painamalla "lisäämäsi ru
 ## *Runon muokkaustila* 
 
 <img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/muokkaus.png" width="700">
-<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/muokkaus.png" width="700">
 
 Painamalla käyttäjän yksittäisen runon näkymässä nappia "runon muokkaustilaan" saat näkyviin "muokkaa runoa, poista runo, lisää kategoria ja poisto kategoria" napit, joiden kautta voit suorittaa kyseiset toiminnot valitulle runolle. 
 
+<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/modif.png" width="700">
 #### *Runon muokkaus ja poisto* 
 Runon muokkausnappi avaa esitäytetyn muokkauslomakkeen valitsemastasi yksittäisestä runosta. Muokkaa haluamiasi kenttiä ja korjaa mahdollisten virheilmoitusten ilmoittamat virheet syötteissä. Painamalla "Muokkaa runoa!" nappia tekemäsi muutokset tallentuvat järjestelmään ja näet muokatun runosi. Poisto nappi poistaa runon olemastasi näkymästä.
 
