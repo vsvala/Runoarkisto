@@ -50,17 +50,18 @@ Navikaatiopalkin "top10" linkistä pääset tarkastelemaan 10 tykätyintä runoa
 
 <img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/top10.png">
 
-## *Rekisteröityminen=uuden käyttäjän lisääminen ja kirjautuminen*
+## *Rekisteröityminen/uuden käyttäjän lisääminen ja kirjautuminen*
 
-<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/rekist.png" width="700">
 
 ##### rekisteröityminen
 Sovellukseen on tehty erillinen lomakesivu rekisteröinnille eli uuden käyttäjän luomiselle. Kyseiselle sivulle pääsee painamalla navigaatiopalkin oikean laidan linkkiä: *"Rekisteröidy"*. Syötä avautuneeseen lomakkeen kenttiin pyydetyt tiedot ja ota huomioon nimimerkeille ja salasanoille annetut rajoitteet. Korjaa tarvittaessa syötteesi virheilmoitusten ilmoittamista virheistä. Lomake rekisteröi käyttäjän rooliksi automaattisesti USER:in
 
-<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/kirjaudu.png" width="700">
+<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/rekist.png" width="700">
 
 ##### kirjautuminen
 Rekisteröinnin onnistumisen jälkeen sovellukseen pääsee kirjautumaan avautuvan kirjautumislomakkeen kautta ja myös navigaatiopalkin linkin *"Kirjaudu"* kautta. Navigaation oikeassa reunassa näet kirjautuneen käyttäjänimen ja roolin USER. Uloskirjautuminen tapahtuu oikeassa reunassa olevan "kirjaudu ulos" navigaatiolinkin kautta, jota painamalla ohjaudut etusivulle.
+
+<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/kirjaudu.png" width="700">
 
 # Kirjautuneelle sallittuja toimintoja
 
@@ -70,26 +71,26 @@ Kirjautuneena näet runon listauksen yhteydessä myös runon tykkäys napin. Voi
 
 ## *Runojen lisäys*
 
-<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/runonlisäys.png" width="700">
-
 Voit kirjata uuden runon järjestelmään painamalla "Lisää runo" linkkiä navigaatiopalkissa. Syötä avautuvaan lomakkeeseen pyydetyt tiedot, korjaa tarvittaessa virheilmoitusten ilmoittamat virheet syötteissä. Lisätty runo näkyy aukeavassa kirjautuneen käyttäjän runojen listaus näkymässä.
+
+<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/runonlisäys.png" width="700">
 
 ## *Kirjautuneen käyttäjän runojen listaus ja yksittäisen runon tiedot *
 
-<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/kayttajan_runot.png" width="700">
-
 Voit listata lisäämiesi runojen otsikot näkyville painamalla "lisäämäsi runot" linkkiä navigaatiopalkissa. Klikkaamalla runon nimeä/linkkiä saat kyseisen runon kokonaan näkyviin sekä napin runon muokkaustilaan. 
+
+<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/kayttajan_runot.png" width="700">
 
 ## *Runon muokkaustila* 
 
-<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/muokkaus.png" width="700">
-
 Painamalla käyttäjän yksittäisen runon näkymässä nappia "runon muokkaustilaan" saat näkyviin "muokkaa runoa, poista runo, lisää kategoria ja poisto kategoria" napit, joiden kautta voit suorittaa kyseiset toiminnot valitulle runolle. 
 
-<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/modif.png" width="700">
+<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/muokkaus.png" width="700">
 
 #### *Runon muokkaus ja poisto* 
 Runon muokkausnappi avaa lisäämislomakkeen kaltaisen, mutta esitäytetyn muokkauslomakkeen valitsemastasi yksittäisestä runosta. Muokkaa haluamiasi kenttiä ja korjaa mahdollisten virheilmoitusten ilmoittamat virheet syötteissä. Painamalla "Muokkaa runoa!" nappia tekemäsi muutokset tallentuvat järjestelmään ja näet muokatun runosi. Poisto nappi poistaa runon.
+
+<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/modif.png" width="700">
 
 #### *Kategorian lisäys ja poisto* 
 Kategorian lisäysnappi avaa täytettävän lomakkeen kategorian lisäykseen. "Poista kategoria" napista voit poistaa kyseisen kategorianko runolta.
@@ -97,7 +98,7 @@ Kategorian lisäysnappi avaa täytettävän lomakkeen kategorian lisäykseen. "P
 <img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/lisaa_kategoria.png" width="600">
 
 **POISTAMINEN POISTAA KYSEISEN KOHTEEN PYSYVÄSTI JÄRJESTELMÄSTÄ EIKÄ SITÄ VOIDA TÄMÄN JÄLKEEN PALAUTTAA!**
-poistonapit merkitty violetinsävyisellä värillä
+poistonapit merkitty violetin sävyisellä värillä.
 
 
 # Ylläpitäjälle rajattuja toimintoja
