@@ -60,7 +60,7 @@ Tykkäys
     * (Kunkin kategorian suosituin runo?)
     - Käyttäjän haku syötetyn nimen mukaan? (admin)
     - etsi toimintoon ignooraus isoista ja pienistä kirjaimista ja regular expression..löytämisen helpottamiseksi..
-
+    - salasanan Bcryptaus
 
 ## Dokumentaatio
 - [Tietokantakaavio](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/Runo_db_kaavio%20(1).png)
