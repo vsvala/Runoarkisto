@@ -40,8 +40,9 @@ Käyttäjä(CRUD)
 - Käyttäjätietojen muokaus ja käyttäjän poisto(vain admin)
 
 Tykkäys
-- Runojen tykkäystoiminto
-- Suosituimpien runojen haku top 10 
+- Runojen tykkäystoiminto(kirjautunut)
+- Tykätyimpien runojen haku top 10 
+- Tykkäysten resetointi(admin)
 
 - Yhteenvetokyselyt tietokannasta: 
     - Kirjautuneen käyttäjän runojen haku 
@@ -54,11 +55,12 @@ Tykkäys
     - Paljonko runoja yhteensä
     - Paljonko käyttäjiä yhteensä
   
-    todo
+    Jatko ehdotuksia (todo)
     - Kuinka monta runoa on kussakin kategoriassa?
     * (Kunkin kategorian suosituin runo?)
     - Käyttäjän haku syötetyn nimen mukaan? (admin)
-    - tykkäysten poisto?(admin)
+    - etsi toimintoon ignooraus isoista ja pienistä kirjaimista ja regular expression..löytämisen helpottamiseksi..
+
 
 ## Dokumentaatio
 - [Tietokantakaavio](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/Runo_db_kaavio%20(1).png)
