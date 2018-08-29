@@ -14,7 +14,7 @@ Kirjautunut käyttäjä:
 - Kirjautunut käyttäjä voi listata lisäänsä runot. ok
 - Kirjautunut käyttäjä voi poistaa tai muokata lisäämäänsä runoa, typojen varalta. ok
 - Kirjautunut käyttäjä voi lisätä ja poistaa lisäämänsä runojen kategorioitaja keksiä uusia,jos runo ei sovi valmiisiin. ok
-- Kirjautunut käyttäjä voi tykätä runoista, jotta saadaan tietoon suosituimmat runot. ok
+- Kirjautunut käyttäjä voi tykätä runoista(kerran per runo), jotta saadaan tietoon suosituimmat runot. ok
 
 
 Ylläpitäjä:
@@ -29,7 +29,7 @@ Ylläpitäjä:
 	- Arkiston runojen määrä 
 	- Arkiston rekisteröityneiden käyttäjien lukumäärä
 	- Eniten runoja lisänneet käyttäjät (Top 10) 
-- Ylläpitäjä voi poistaa tykkäyksiä.
+- Ylläpitäjä lisätä voi poistaa tykkäyksiä.
 
 ### Tietokannan luonti lauseet (CREATE TABLE)
 
