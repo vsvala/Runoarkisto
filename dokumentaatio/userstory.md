@@ -3,38 +3,44 @@
 ## Kaikki käyttäjät:  
 tiedon selaaminen
 
-- Kukatahansa käyttäjä voi  listata  runot akkosjärjestykseen ja lukea lisättyjä runoja. ok
-- Kukatahansa käyttäjä voi hakea runoja niiden nimen perusteella, jotta runo löytyisi nopeammin. ok
+- Kukatahansa käyttäjä voi  listata  runot akkosjärjestykseen ja lukea lisättyjä runoja (sivutus 10). ok
+- Kukatahansa käyttäjä voi hakea yksittäistä runoa sen nimen perusteella, jotta runo löytyisi nopeammin. ok
 - Kukatahana käyttäjä voi hakea runoja eri kategorioiden eli aihepiirien mukaan, jotta hän löytää tiettyyn tilanteeseen sopivan runon. ok
 - Kukatahansa käyttäjä voi lukea suosituimmat runot (top 10). ok
 - Kukatahansa käyttäjä voi rekisteröityä sivustolle, jotta hän voi kirjautua saadakseen lisää toiminnallisuuksia käyttöönsä. ok
 
-
 ```sql
-SELECT * FROM runo ORDER BY runo.name DESC LIMIT 10;
+SELECT * FROM runo ORDER BY runo.name LIMIT 10;
+SELECT * FROM runo ORDER BY runo.name LIMIT 10 OFFSET ?; (OFFSET= 10 * page, annetaan parametrina)
 
-SELECT DISTINCT runo.id, runo.name, runo.sisalto, runo.runoilija FROM category, categories, runo WHERE (runo.id=categories.runo_id AND categories.category_id=category.id AND category.aihe=:categ)).params(categ=category)
-(parametrina käyttäjän syöttämä kategoria id>)
+SELECT * FROM runo WHERE (runo.name =:n).params(n='parametrina käyttäjän syöte'); 
+SELECT * FROM runo WHERE runo.name ='parametrina käyttäjän syöte';
+
+SELECT DISTINCT runo.id, runo.name, runo.sisalto, runo.runoilija FROM category, categories, runo WHERE runo.id=categories.runo_id AND categories.category_id=category.id AND category.aihe=:categ.params(categ='käyttäjän syöte')
+(parametrina käyttäjän syöttämä kategorian aihe)
 
 SELECT runo.id, runo.name COUNT(likes) AS total FROM liked, runo WHERE runo.id=liked.runo_id GROUP BY likes, runo.name, runo.id" ORDER BY total DESC LIMIT 10;
 
-SELECT * FROM runo;
-
-SELECT DISTINCT runo.id, runo.name FROM runo, account WHERE (runo.account_id =:u)").params(u=user.id); 
-(parametrina käyttäjän syöte id
-
+rekisteröityminen ja
+kirajutuminen...TODOO
 ```
-
 
 Kirjautunut käyttäjä:
 
 - Kirjautunut käyttäjä voi lisätä runoja arkistoon, jotta arkistossa olisi enemmän valinnan varaa. ok
-- Kirjautunut käyttäjä voi listata lisäänsä runot. ok
+- Kirjautunut käyttäjä voi listata kaikki lisäänsä runot ja tarkastella yksittäistä. ok
 - Kirjautunut käyttäjä voi poistaa tai muokata lisäämäänsä runoa, typojen varalta. ok
 - Kirjautunut käyttäjä voi lisätä ja poistaa lisäämänsä runojen kategorioitaja keksiä uusia,jos runo ei sovi valmiisiin. ok
 - Kirjautunut käyttäjä voi tykätä runoista(kerran per runo), jotta saadaan tietoon suosituimmat runot. ok
 
 
+```sql
+
+SELECT DISTINCT runo.id, runo.name FROM runo, account WHERE (runo.account_id =:u)").params(u=user.id);
+SELECT * FROM runo WHERE runo.id = ? ; (klikatun runon runo.id)
+
+
+```
 Ylläpitäjä:
 
 - Ylläpitäjä voi itse lisätä runoja ja uusia kategorioita tietokantaan haettaviksi. ok
