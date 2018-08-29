@@ -1,12 +1,22 @@
-## Käyttötapaukset
+# Käyttötapaukset
 
-Kaikki käyttäjät:
+## Kaikki käyttäjät:  
+tiedon selaaminen
 
-- Kukatahansa käyttäjä voi  listata ja lukea lisättyjä runoja. ok
+- Kukatahansa käyttäjä voi  listata  runot akkosjärjestykseen ja lukea lisättyjä runoja. ok
 - Kukatahansa käyttäjä voi hakea runoja niiden nimen perusteella, jotta runo löytyisi nopeammin. ok
 - Kukatahana käyttäjä voi hakea runoja eri kategorioiden eli aihepiirien mukaan, jotta hän löytää tiettyyn tilanteeseen sopivan runon. ok
 - Kukatahansa käyttäjä voi lukea suosituimmat runot (top 10). ok
 - Kukatahansa käyttäjä voi rekisteröityä sivustolle, jotta hän voi kirjautua saadakseen lisää toiminnallisuuksia käyttöönsä. ok
+
+
+```sql
+SELECT * FROM runo;
+
+SELECT runo.id, runo.name COUNT(likes) AS total FROM liked, runo WHERE runo.id=liked.runo_id GROUP BY likes, runo.name, runo.id" ORDER BY total DESC LIMIT 10
+
+```
+
 
 Kirjautunut käyttäjä:
 
