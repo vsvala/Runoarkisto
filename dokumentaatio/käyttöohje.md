@@ -31,26 +31,25 @@ Etusivulle pääsee palaamaan muista sovelluksen paikoista painamalla navigaatio
 
 ## *kaikkien runojen listaus ja yksittäisen runon tietojen ja kategorioiden näyttö* 
 
-<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/runot_kaikki.png" width="700">
-
 Voit listata näkyville kaikki runot aakkosjärjestyksessä painamalla "runot" linkkiä navigaatiopalkissa. Runoista näytetään 10 runoa kerrallaan. Sivun alareunan seuraav runo painikkeesta pääset selaamaan runoja eteenpäin ja edellinen taaksepäin. Sivun alareunassa myös kerrotaanpaljonko runoja on yhteensä
 
 Mikäli olet kirjautunut näet runon listauksen yhteydessä myös runon tykkäys napin.
 
 Mikäli olet kirjautunut ylläpitäjänä näet yksittäisen runon listauksen yhteydessä myös "runon muokkautilaan napin, josta pääset muokkaamaan ja poistamaan runon sekä poistamaan ja lisäämään sille uusia kategorioita. 
 
+<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/runot_kaikki.png" width="700">
 
 ## *Runojen haku* 
 
-<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/haku.png" width="700">
-
 Voit etsiä runoja runoarkistosta nimen tai kategorian perusteella painamalla "etsi" linkkiä navigaatiopalkissa. Syöttämällä lomakkeeseen arkistossa olevan runon nimen tai kategorian, näet kyseisen runon tai listan hakemaasi kategoriaan kuuluvista runoista. Jos hakemaasi runoa tai kategoriaa ei löydy, saat ilmoituksen.
 
-<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/top10.png">
+<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/haku.png" width="700">
 
 ## *Top10 tykätyimpien runojen listaus* 
 
 Navikaatiopalkin "top10" linkistä pääset tarkastelemaan 10 tykätyintä runoa ja niiden tykkäysten määrää. Klikkaamalla runoa, näet sen kokonaisuudessaan.
+
+<img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/top10.png">
 
 ## *Rekisteröityminen=uuden käyttäjän lisääminen ja kirjautuminen*
 
@@ -106,18 +105,20 @@ Ainoastaan ylläpitäjän hallussa olevat navigaatiolinkit näkyvät vihreällä
 
 <img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/hallinta.png" width="700">
 
-Pääkäyttäjänä pääset hallinnoimaan ja listaamaan käyttäjien tiedot vihreän navigaatiopalkin "käyttäjät" linkin kautta. Linkistä avautuvassa käyttäjien hallinta näkymässä pystyt "muokkaa" ja "poista" napista muokkaamaan ja poistamaan käyttäjän. Huom!! Käyttäjän poisto napi poistaa järjestelmästä myös hänen runonsa kategorioineen.
+Pääkäyttäjänä pääset hallinnoimaan ja listaamaan käyttäjien tiedot navigaatiopalkin "käyttäjät" linkin kautta. Linkistä avautuvassa käyttäjien hallinta näkymässä pystyt "muokkaa" ja "poista" napista muokkaamaan ja poistamaan käyttäjän. Huom!! Käyttäjän poisto napi poistaa järjestelmästä myös hänen runonsa kategorioineen.
 
 Muokkaus nappi avaa yksittäisen käyttäjän tiedoilla esitäytetyn muokkauslomakkeen. Lomakkeeseen on lisätty rekisteröitymisliomakkeesta poiketen nyt myös rooli selection kenttä. Rooli kentän avulla voi muokata USER käyttäjästä ADMIN käyttäjän ja toisinpäin. 
 
 Näkymästä voit lisäksi klikata linkistä "Katso ketkä käyttäjät ovat lisänneet runoja" näkyville listan käyttäjistä joilla on runoja lisättynä ja mitä runoja ko. käyttäjällä on.
+
+Samassa näkymässä alimpana on runojen tykkäysten resetointi eli poisto nappi, joka poistaa kaikkien runojen tykkäykset.
 
 
 ## *Kaikkien runojen muokkaus*
 
 <img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/runot_admin.png" width="700">
           
-Ylläpitäjänä näet kaikkien runojen yksittäisen runon listauksen yhteydessä lisäksi myös "runon muokkaustilaan" napin, josta pääset muokkaamaan ja poistamaan runon sekä poistamaan ja lisäämään sille uusia kategorioita. (kts. alun kohta "kaikkien runojen listaus..")
+Ylläpitäjänä näet kaikkien runojen listauksen yhteydessä tykkäys napin lisäksi myös "runon muokkaustilaan" napin, josta pääset muokkaamaan ja poistamaan runon sekä poistamaan ja lisäämään sille uusia kategorioita. (kts. alun kohta "kaikkien runojen listaus..")
 
 Kaikkien runojen muokkaustila toimii vastaavalla tavalla kuin kirjautuneen käyttäjän runojen muokkaustila. (kts.ohjeet kohdasta "Kirjautuneen käyttäjän runojen listaus ja yksittäisen runon tiedot")
 
@@ -128,6 +129,9 @@ Kaikkien runojen muokkaustila toimii vastaavalla tavalla kuin kirjautuneen käyt
 
 Pääkäyttäjänä pääset listaamaan kaikki kategoriat navigaatiopalkin punaisen "kategoriat" linkin kautta. Listauksen poisto napeista pystyt poistamaan aina ko. kategorian.
 
+## *Tilastoja*
+
+Navikaation "tilastoja" linkikiä painamalla pääset tarkastelemaan mutamia sivun tilastoja.
 
 <img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/stats.png" width="700">
 
