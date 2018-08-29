@@ -39,16 +39,14 @@
 <p>{{ category_error }}</p>
 
 <br>
-<br>
 {% if runo is defined %}
-<h5>{{runo.name}}</h5>
+<h4>{{runo.name}}</h4>
 <blockquote class="blockquote">
       <p class="mb-0">
             <em>{{ runo.sisalto }}</em>
       </p>
       <footer class="blockquote-footer"> {{ runo.runoilija }}</footer>
 </blockquote>
-<br>
 
 {% if current_user.role=="ADMIN" %}
 <table>
@@ -60,9 +58,7 @@
     </td>
     {% endif %}
 </table> 
-
 {% endif %} 
-
 
 {% if runot_by_category is defined %}
 <h4>Runot jotka kuuluvat <i> {{category }} </i> kategoriaan: </h4>
@@ -70,7 +66,7 @@
 <ul>
 {% for runo in runot_by_category %}
       <li>
-       <h5>{{runo.name}}</h5>
+       <h4>{{runo.name}}</h4>
             <blockquote class="blockquote">
                   <p class="mb-0"><em>{{ runo.sisalto }}</em></p>
                   <footer class="blockquote-footer"> {{ runo.runoilija }}</footer>

@@ -1,6 +1,6 @@
 {% extends "layout.html" %} {% block body %}
 
-<h3>Runoarkiston runot: </h3>
+<h3>Runoarkiston runot:</h3>
 <br> 
 {% if l is defined %} tykkäykset: {{ l }}
 {% endif %}
@@ -12,7 +12,7 @@
 
 {% for runo in runot.items %}
 
-<h3>{{ runo.name }}</h3>
+<h5>{{ runo.name }}</h5>
 
 <blockquote class="blockquote">
   <p class="mb-0 "style="color:gray;"><em>{{ runo.sisalto }}</em></p>
