@@ -1,4 +1,5 @@
 {% extends "layout.html" %} {% block body %}
+
 <h2>Muokkaa käyttäjää</h2>
 
 <br>
@@ -38,14 +39,21 @@
         {% for error in form.password.errors %}
         <li>{{ error }}</li>
         {% endfor %}
-    </ul>
+    <!-- </ul>
     <div class="form-group row">
         <label for="role" class="col-sm-2 col-form-label">rooli:</label>
         <div class="col-4">
             <input type="text" class="form-control" id="role" name="role" value= {{ user.role }}>
         </div>
     </div>
-    <ul>
+    <ul> -->
+        </ul>
+        <ul class="list-unstyled">
+          <li> {{ form.role.label }}</li>
+          <li style="color:gray;"> {{ form.role }}</li>
+        </ul>
+
+        <ul>
         {% for error in form.role.errors %}
         <li>{{ error }}</li>
         {% endfor %}

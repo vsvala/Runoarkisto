@@ -43,8 +43,7 @@
 <a href="{{ url_for('users_withPoems') }}">
     <h5>Listaa runoja lisänneet käyttäjät</h5>
 </a>
-
-<br> {% if how_many is defined %}
+ {% if how_many is defined %}
 <p>Klikkaa nimeä nähdäksesi käyttäjän runot</p>
 <ul class="list-unstyled">
     {% for user in how_many %}
