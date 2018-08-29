@@ -15,7 +15,6 @@ def auth_index():
     return render_template("auth/list.html", users=users)
 
 
-
 # Rekisteröitymislomakkeen luonti sekä lähetys
 @app.route("/auth/newuser", methods=["GET", "POST"])
 def users_create():
@@ -68,7 +67,6 @@ def auth_uppdateForm(auth_id):
     form = UserForm(obj=user) # Täytetään lomake tietokannasta löytyvillä käyttäjän tiedoilla
     
     return render_template("auth/modify.html", user=user, form=form)
-
 
 
 #käyttäjän muokkaus

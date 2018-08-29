@@ -5,19 +5,25 @@
 
 <table>
     <tr>
+        <th>id</th>
         <th>nimi</th>
         <th>käyttäjänimi</th>
         <th>salasana</th>
         <th>rooli</th>
+        <th>lisätty</th>
+        <th>päivitetty</th>
     </tr>
 
     <tbody>
         {% for user in users %}
-        <tr>
+        <tr><td>{{user.id }}</td>
             <td>{{ user.name }}</td>
             <td>{{ user.username }}</td>
             <td> {{ user.password }}</td>
             <td>{{ user.role }}</td>
+            <td>{{ user.date_created }}</td>
+            <td>{{user.date_modified }}</td>
+
             <td>
                 <a href="{{ url_for('auth_uppdateForm', auth_id=user.id)}}">
                     <button type="submit" class="btn btn-success">muokkaa</button>
@@ -33,6 +39,11 @@
         {% endfor %}
         <tbody>
 </table>
+<br>
+<a href="{{ url_for('users_withPoems') }}">
+    <h5>Listaa runoja lisänneet käyttäjät</h5>
+</a>
+
 <br> {% if how_many is defined %}
 <p>Klikkaa nimeä nähdäksesi käyttäjän runot</p>
 <ul class="list-unstyled">
@@ -52,16 +63,11 @@
 </ul>
 {% endif %}
 
-<a href="{{ url_for('users_withPoems') }}">
-    <h5>Listaa runoja lisänneet käyttäjät</h5>
-</a>
-
 
 <br>
 <h5>Resetoi kaikkien runojen tykkäykset</h5>
 <a href="{{ url_for('delete_likes')}}">
-    <button type="submit" class="btn btn-danger">poista kaikki tykkäykset</button>
-</a>
-
+<button type="submit" class="btn btn-danger">poista kaikki tykkäykset</button>
+<br>   </a>
 <br>
  {% endblock %}

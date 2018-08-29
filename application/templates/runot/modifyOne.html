@@ -8,6 +8,7 @@
   <footer class="blockquote-footer"> {{ runo.runoilija }}</footer>
 </blockquote>
 
+
 {% if current_user.role=="USER" or current_user.role=="ADMIN" %}
 <table>
   <tr>
@@ -30,7 +31,7 @@
 <ul>
   {% for category in category_by %}
   <li>
-    {{category.id}} {{category.aihe}}
+   {{category.aihe}}
     <a href="{{ url_for('category_delete', category_id=category.id, runo_id=runo.id)}}">
       <button type="submit" class="btn btn-danger">poista kategoria</button>
     </a>
