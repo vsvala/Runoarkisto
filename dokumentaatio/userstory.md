@@ -114,10 +114,8 @@ CREATE TABLE liked (
 	id INTEGER NOT NULL, 
 	likes INTEGER NOT NULL, 
 	account_id INTEGER NOT NULL, 
-	runo_id INTEGER NOT NULL, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(account_id) REFERENCES account (id), 
-	FOREIGN KEY(runo_id) REFERENCES runo (id)
+	FOREIGN KEY(account_id) REFERENCES account (id)
 );
 CREATE TABLE categories (
 	runo_id INTEGER NOT NULL, 
@@ -125,6 +123,14 @@ CREATE TABLE categories (
 	PRIMARY KEY (runo_id, category_id), 
 	FOREIGN KEY(runo_id) REFERENCES runo (id), 
 	FOREIGN KEY(category_id) REFERENCES category (id)
+);
+
+CREATE TABLE runo_liked (
+	runo_id INTEGER NOT NULL, 
+	liked_id INTEGER NOT NULL, 
+	PRIMARY KEY (runo_id, liked_id), 
+	FOREIGN KEY(runo_id) REFERENCES runo (id), 
+	FOREIGN KEY(liked_id) REFERENCES liked (id)
 );
 
 ```
