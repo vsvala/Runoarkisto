@@ -34,7 +34,6 @@
             <li>{{ error }}</li>
             {% endfor %}
             <p>{{ lower_error }}</p>
-       
       </ul>
       </div>
       <button type="submit" class="btn btn-primary">Etsi</button>
@@ -93,5 +92,23 @@
 </ul>
 
 {% endif %} 
+
+
+{% if runo is not defined %}
+{% if runot_by_category is not defined %}
+<p class="lead">kategoria esimerkkejä</p>
+<ul style="color:gray;">
+<li>syntymäpäivä</li>
+<li>tuparit</li>
+<li>kaste</li>
+<li>häät</li>
+<li>joulu</li>
+<li>ystävä</li>
+<li>hautajaiset</li>
+<li>onnittelu</li>
+<li>rakkaus</li>
+</ul>
+{% endif %} 
+{% endif %}
 
 {% endblock %}

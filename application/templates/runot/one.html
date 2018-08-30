@@ -9,30 +9,13 @@
 </blockquote>
 
 
-
 {% if current_user.is_authenticated %}
 <table>
   <tr>
     <td>
-      <!-- <a href="{{  url_for('create_like', runo_id=runo.id) }}">
-        <button type="submit" class="btn btn-primary">tykkää runosta</button>
-      </a> -->
       {% if liked_message is defined %} {{ liked_message }} {% endif %} 
       {% if l is defined %} Tykkäyksiä: {{ l }} {% endif %}
     </td>
   </tr>
 </table>
 {% endif %} 
-<!-- 
-{% if current_user.role=="ADMIN" %}
-<table>
-  <tr>
-    <td>
-      <a href="{{ url_for('runo_modify_page', runo_id=runo.id)}}">
-        <button type="submit" class="btn btn-danger">runon muokkaustilaan</button>
-      </a>
-    </td>
-    {% endif %}
-</table> -->
-
-{% endblock %}

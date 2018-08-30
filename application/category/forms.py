@@ -1,14 +1,15 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, validators, SelectMultipleField, widgets
 
+
 class MultiCheckboxField(SelectMultipleField):
+    
     widget = widgets.ListWidget(prefix_label=False)
     option_widget = widgets.CheckboxInput()
 
 
 
 class CategoryForm(FlaskForm):
-   
 
    #aihe = StringField("kategoria", [validators.Length(max=144)]) #muokkauksessa tyhjä/ei käytössä
     string_of_files = ['syntymäpäivä\r\ntuparit\r\nkaste\r\nhäät\r\nhautajaiset\r\njoulu\r\nystävä\r\nonnittelu\r\nrakkaus\r\nmuu']

@@ -73,9 +73,7 @@ def runot_create():
     #validoidaan eka otsikon kirjain isoksi (aakkostamisen takia ja hakemisen,,,) 
     n=form.name.data
     bool=n[0].isupper()
-    print("booooooooooooooool", bool)
     if bool==False:
-        print("faaaaaaaaaaaaaaaaaaaaalssssssssssssssssssssssseeeee")
         return render_template("runot/new.html", form=form, capital_error= "Aloita otsikko isolla kirjaimella!")
 
     #lomakkeen validointi
@@ -143,13 +141,10 @@ def runot_uppdate(runo_id):
     #validoidaan eka otsikon kirjain isoksi (aakkostamisen takia ja hakemisen,,,) 
     n=form.name.data
     bool=n[0].isupper()
-    print("booooooooooooooool", bool)
     if bool==False:
-        print("faaaaaaaaaaaaaaaaaaaaalssssssssssssssssssssssseeeee")
         return render_template("runot/muokkaa.html", runo=runo, form=form, capital_error= "Aloita otsikko isolla kirjaimella!")
 
     if not form.validate():
-        print("not validateeeeeeeeeeeeeeeeee")
         return render_template("runot/muokkaa.html", runo=runo,form=form)
 
     runo.name=form.name.data
@@ -196,23 +191,15 @@ def find_runo():
         #validoidaan eka otsikon kirjain isoksi (aakkostamisen takia ja hakemisen,,,) 
         n=form.name.data
         bool=n[0].isupper()
-        print("booooooooooooooool", bool)
         if bool==False:
-            print("faaaaaaaaaaaaaaaaaaaaalssssssssssssssssssssssseeeee")
             return render_template("runot/find.html", form=form, capital_error= "Aloita nimi isolla kirjaimella!")
 
         runo= Runo.query.filter_by(name=runo_name).first()
         if not runo:
             return render_template("runot/find.html", form=form, name_error="Etsimälläsi nimellä ei löydy runoa arkistosta, etsi toisella nimellä!")
-    
+     
+
     if runo_category:
-        n=form.category.data
-        bool=n[0].islower()
-        print("booooooooooooooool", bool)
-        if bool==False:
-            print("faaaaaaaaaaaaaaaaaaaaalssssssssssssssssssssssseeeee")
-            return render_template("runot/find.html", form=form, lower_error= "Kirjoita kategoria pienin kirjaimin")
-    
         return redirect(url_for("find_runot_by_category", runo_category=runo_category))
 
     
@@ -228,7 +215,8 @@ def find_runo():
 @app.route("/runot/find/<runo_category>")
 def find_runot_by_category(runo_category):
     form = FindForm(request.form)
-    category=runo_category
+    category=runo_category.lower() #muutetaan pieniksi kirjaimiksi
+  
     if not Runo.find_runot_by_category(category):
         return render_template("runot/find.html", form=form, category_error="Etsimälläsi kategorialla ei löydy runoja, yritä toista hakusanaa!")
 
