@@ -14,8 +14,10 @@
     {% for error in form.name.errors %}
       <li>{{ error }}</li>
     {% endfor %}
-
+    <p>{{ capital_error }}</p>
   </ul>
+
+  
   <div class="form-group row">
     <label for="sisalto" class="col-sm-1 col-form-label">sisältö:</label>
     <div class="col-6">

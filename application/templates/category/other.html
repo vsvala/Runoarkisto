@@ -3,10 +3,27 @@
 <h3>Lisää kategoria:</h3>
 
 <br>
+<p class="lead">Voit lisätä kategorioiota alla olevasta listasta tai tarvittaessa keksiä uuden</p>
+
+
 <form action="{{  url_for('category_other', runo_id=runo.id) }}" method="POST" role="form">
-    {{ form.CategoryForm}}
+        {{ form.CategoryForm}}
+
+
+<ul class="list-unstyled">
+        <li> {{ form.tokaaihe.label }}</li>
+        <li style="color:gray;"> {{ form.tokaaihe }}</li>
+      </ul>
+      <ul>
+        {% for error in form.tokaaihe.errors %}
+        <li>{{ error }}</li>
+        {% endfor %} 
+        <p>{{ category_error }}</p>
+      </ul>
+
+
     <div class="form-group row">
-        <label for="aihe" class="col-sm-1 col-form-label">kategoria:</label>
+        <label for="aihe" class="col-sm-1 col-form-label">uusi:</label>
         <div class="col-6">
             <input type="text" class="form-control" id="aihe" name="aihe" placeholder="kategoria">
         </div>
@@ -20,19 +37,4 @@
     <button type="submit" class="btn btn-success">lisää</button>
     <br>
 </form>
-
-
-<br>
-<p class="lead">Voit lisätä jonkin aikaisimmista kategorioista tai keksiä uuden</p>
-<ul style="color:gray;">
-<li>syntymäpäivä</li>
-<li>tuparit</li>
-<li>kaste</li>
-<li>häät</li>
-<li>joulu</li>
-<li>ystävä</li>
-<li>hautajaiset</li>
-<li>onnittelu</li>
-<li>rakkaus</li>
-</ul>
 {% endblock %}

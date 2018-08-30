@@ -70,7 +70,7 @@ def runot_createform():
 def runot_create():
     form = RunoForm(request.form)
 
-    #validoidaan eka otsikon kirjain isoksi (aakkostamisen takia,,,) 
+    #validoidaan eka otsikon kirjain isoksi (aakkostamisen takia ja hakemisen,,,) 
     n=form.name.data
     bool=n[0].isupper()
     print("booooooooooooooool", bool)
@@ -139,7 +139,15 @@ def runot_uppdate(runo_id):
     runo = Runo.query.get(runo_id)
 
     form = RunoForm(request.form)
-   
+
+    #validoidaan eka otsikon kirjain isoksi (aakkostamisen takia ja hakemisen,,,) 
+    n=form.name.data
+    bool=n[0].isupper()
+    print("booooooooooooooool", bool)
+    if bool==False:
+        print("faaaaaaaaaaaaaaaaaaaaalssssssssssssssssssssssseeeee")
+        return render_template("runot/muokkaa.html", runo=runo, form=form, capital_error= "Aloita otsikko isolla kirjaimella!")
+
     if not form.validate():
         print("not validateeeeeeeeeeeeeeeeee")
         return render_template("runot/muokkaa.html", runo=runo,form=form)
@@ -180,15 +188,31 @@ def find_index():
 def find_runo():
     form = FindForm(request.form)
     runo_name=form.name.data
+
     runo_category=form.category.data
     #runo = Runo.query.filter_by(name=find).first()
-    
+
     if runo_name: 
+        #validoidaan eka otsikon kirjain isoksi (aakkostamisen takia ja hakemisen,,,) 
+        n=form.name.data
+        bool=n[0].isupper()
+        print("booooooooooooooool", bool)
+        if bool==False:
+            print("faaaaaaaaaaaaaaaaaaaaalssssssssssssssssssssssseeeee")
+            return render_template("runot/find.html", form=form, capital_error= "Aloita nimi isolla kirjaimella!")
+
         runo= Runo.query.filter_by(name=runo_name).first()
         if not runo:
             return render_template("runot/find.html", form=form, name_error="Etsimälläsi nimellä ei löydy runoa arkistosta, etsi toisella nimellä!")
     
     if runo_category:
+        n=form.category.data
+        bool=n[0].islower()
+        print("booooooooooooooool", bool)
+        if bool==False:
+            print("faaaaaaaaaaaaaaaaaaaaalssssssssssssssssssssssseeeee")
+            return render_template("runot/find.html", form=form, lower_error= "Kirjoita kategoria pienin kirjaimin")
+    
         return redirect(url_for("find_runot_by_category", runo_category=runo_category))
 
     

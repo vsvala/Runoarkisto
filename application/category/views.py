@@ -28,30 +28,37 @@ def category_index():
 def category_other(runo_id):
 
     runo = Runo.query.get(runo_id)
-
     form = CategoryForm(request.form)
-
     if request.method == "GET":
         return render_template("category/other.html", form=form, runo=runo)
 
     form = CategoryForm(request.form)
-
     runo=Runo.query.get(runo_id)
+
+    #  validointi: tsekataan että jokin kategoria valittuna
+    if not form.aihe.data and not form.tokaaihe.data:    
+        return render_template("category/other.html", form=form, runo=runo, category_error= "Runolla täytyy valita tai lisätä vähintään yksi kategoria!")
+
+    list=form.tokaaihe.data
+
     category_lowercase=form.aihe.data.lower() #muutetaan kaikki pieniksi hakutoimintoa varten
-    category = Category(category_lowercase)
- 
 
-    db.session().add(category) #kategoriaolion  luonti ja commitointi tietokantaan
-    db.session().commit() 
+    list.append(category_lowercase)   #lisätäänmyös oma  kategoria samaan listaan
+    
+    for  aihe in list:
+        category = Category(aihe) #luodaan kategoria olio jokaisesta listan kategoriasta ja lisätään kantaan
+        db.session().add(category)             
+        db.session().commit()
 
-    runo.categories.append(category)    #liitokset runoon 
-    db.session().commit()
-
+        runo.categories.append(category) 
+        db.session().add(runo)
+        db.session().commit()
     
     return redirect(url_for("runo_modify_page", runo_id=runo.id ))
 
 
-#kategorian poisto
+
+#kategorian poisto muokkaustilassa runo parametrina
 @app.route("/category/delete/<runo_id>/<category_id>/", methods=["GET", "POST"])
 @login_required
 def category_delete( runo_id, category_id,):
@@ -66,13 +73,11 @@ def category_delete( runo_id, category_id,):
     return redirect(url_for("runo_modify_page", runo_id=runo.id))
 
     
-#kategorian poisto
+#kategorian poisto adminin kategorialistaussivulta
 @app.route("/category/delete/<category_id>/", methods=["GET", "POST"])
 @login_required
 def category_list_delete(category_id,):
     
-    #etsi id:tä vastaava runo-olio
-    #etsi id:tä vastaava kategoriaolio
     c = Category.query.get(category_id)
     db.session().delete(c)
     db.session().commit()

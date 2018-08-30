@@ -25,7 +25,8 @@
     </td>
   </tr>
 </table>
-
+<br>
+<br>
 <h5>runon kategoriat:</h5>
 {% if category_by is defined %}
 <ul>
@@ -36,8 +37,8 @@
       <button type="submit" class="btn btn-danger">poista kategoria</button>
     </a>
   </li>
-  <br>
   {% endfor %}
+
 </ul>
 {% endif %}
 <a href="{{ url_for('category_other', runo_id=runo.id) }}">
