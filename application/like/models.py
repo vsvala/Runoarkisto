@@ -8,9 +8,9 @@ class Liked(db.Model):
     likes = db.Column(db.Integer, nullable=False) 
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'),nullable=False)
 
-    def __init__(self, likes, account_id):
+    def __init__(self, likes):
       self.likes = likes
-      self.account_id=current_user.id
+   
 
 #haetaan tykätyimmät runot top 10 
     @staticmethod

@@ -26,8 +26,10 @@ def create_like(runo_id):
     print("llllllllllllllllllllllllllllllllll")
    
     if liked==False:
-        like.account_id=current_user.id
-        like=Liked(likes=1) #luo olion liken arvolla 1 
+        like=Liked(1) #luo olion liken arvolla 1 
+        db.session().commit()
+
+
         #like.id=runo.id
         #like.likes=1
         like.account_id=current_user.id
