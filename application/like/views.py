@@ -18,32 +18,32 @@ def top_poems():
 @login_required()
 def create_like(runo_id):
 
-    runo = Runo.query.get(runo_id) 
+    r = Runo.query.get(runo_id) 
     user=current_user
     
    #tarkastus onko nykyinen käyttäjä jo tykännyt runosta  jos ei liken talletus kantaan muutoin viesti
-    likepoem=Liked.has_poem_liked_by_user(user, runo) #true tai false   ###ei ielä toimi kunnolla...
+    likepoem=Liked.has_poem_liked_by_user(user, r) #true tai false 
     print("llllllllllllllllllllllllllllllllll", likepoem)
    
     if likepoem==False:
         print("currentuserid", current_user.id)
-        like=Liked(likes=1, account_id=current_user.id) #luo olion liken arvolla 1 
+        like=Liked(likes=1, account_id=current_user.id, runo_id=r.id) #luo olion liken arvolla 1 
         print("lllllllllllll", like)
-        #liked.id=runo.id
+        #like.runo_id=r.id
         #liked.likes=1
         #like.account_id=current_user.id
         print("aaaaaaaaaaaaaa", like.account_id)
         db.session().add(like)
         db.session().commit()
 
-        runo.runo_liked.append(like) 
-        db.session().add(runo)
+        r.runo_liked.append(like) 
+        db.session().add(r)
         db.session().commit()
 
-        return redirect(url_for('runot_one', runo_id=runo.id, l=like))
+        return redirect(url_for('runot_one', runo_id=r.id, l=like))
 
     else:
-        return render_template("runot/one.html", runo=runo, liked_message="Olet jo tykännyt tästä runosta! Samasta runosta voi tykätä vain kerran!!")
+        return render_template("runot/one.html", runo=r, liked_message="Olet jo tykännyt tästä runosta! Samasta runosta voi tykätä vain kerran!!")
 
 
 #kaikkien tykkäysten poisto
