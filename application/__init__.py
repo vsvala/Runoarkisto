@@ -23,7 +23,6 @@ db = SQLAlchemy(app)
 # kirjautuminen part1
 from os import urandom
 app.config["SECRET_KEY"] = urandom(32)
-#app.config["SECRET_KEY"] = 'supersecret'
 
 from flask_login import LoginManager,current_user
 login_manager = LoginManager()

@@ -24,10 +24,12 @@ def create_like(runo_id):
    #tarkastus onko nykyinen käyttäjä jo tykännyt runosta  jos ei liken talletus kantaan muutoin viesti
     liked=Liked.has_poem_liked_by_user(user, runo) #true tai false   ###ei ielä toimi kunnolla...
     print("llllllllllllllllllllllllllllllllll")
-    like=Liked(1) #luo olion liken arvolla 1 
+   
     if liked==False:
-        like.id=runo.id
-        like.likes=1
+
+        like=Liked(likes=1) #luo olion liken arvolla 1 
+        #like.id=runo.id
+        #like.likes=1
         like.account_id=current_user.id
         db.session().add(like)
         db.session().commit()
