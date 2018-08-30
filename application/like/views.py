@@ -22,17 +22,16 @@ def create_like(runo_id):
     user=current_user
 
    #tarkastus onko nykyinen käyttäjä jo tykännyt runosta  jos ei liken talletus kantaan muutoin viesti
-    liked=Liked.has_poem_liked_by_user(user, runo) #true tai false   ###ei ielä toimi kunnolla...
-    print("llllllllllllllllllllllllllllllllll")
+    likepoem=Liked.has_poem_liked_by_user(user, runo) #true tai false   ###ei ielä toimi kunnolla...
+    print("llllllllllllllllllllllllllllllllll", likepoem)
    
-    if liked==False:
-        like=Liked(1) #luo olion liken arvolla 1 
-        db.session().commit()
-
-
-        #like.id=runo.id
-        #like.likes=1
-        like.account_id=current_user.id
+    if likepoem==False:
+        like=Liked(1, current_user.id) #luo olion liken arvolla 1 
+        print("lllllllllllll", like)
+        #liked.id=runo.id
+        #liked.likes=1
+        #like.account_id=current_user.id
+        print("aaaaaaaaaaaaaa", like.account_id)
         db.session().add(like)
         db.session().commit()
 
