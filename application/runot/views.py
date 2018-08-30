@@ -113,7 +113,6 @@ def runot_create():
 @app.route("/runot/modifyOne/<runo_id>/", methods=["GET"])
 @login_required()
 def runo_modify_page(runo_id):
-
     runo = Runo.query.get(runo_id)
     return render_template("runot/modifyOne.html", runo=runo, category_by=Category.find_categories_by(runo))
 
@@ -157,7 +156,7 @@ def runot_uppdate(runo_id):
     return render_template("runot/modifyOne.html", runo=runo, category_by=Category.find_categories_by(runo))
 
 
-#poistaa runon poistajan(admin) tai(user)
+#poistaa runon (admin) tai(user)
 @app.route("/runot/<runo_id>/del/", methods=["GET", "POST"])
 @login_required()
 def runot_delete(runo_id):

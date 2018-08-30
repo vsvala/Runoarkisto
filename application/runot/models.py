@@ -21,7 +21,7 @@ class Runo(Base):
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'),nullable=False)
 
     # Määritellään many to many riippuvuussuhde  kategorioiden kanssa. 
-    categories = db.relationship('Category', secondary=categories_c, lazy='subquery', cascade="all, delete-orphan", single_parent=True,
+    categories = db.relationship('Category', secondary=categories_c, lazy='subquery', #cascade="all, delete-orphan", single_parent=True
         backref=db.backref('runot', lazy=True))   
 
     #liitetään runolle like

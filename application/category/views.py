@@ -41,20 +41,29 @@ def category_other(runo_id):
 
     list=form.tokaaihe.data
 
-    category_lowercase=form.aihe.data.lower() #muutetaan kaikki pieniksi hakutoimintoa varten
-
-    list.append(category_lowercase)   #lisätäänmyös oma  kategoria samaan listaan
+    if form.aihe.data:
+        category_lowercase=form.aihe.data.lower() #muutetaan kaikki pieniksi hakutoimintoa varten
     
-    for  aihe in list:
-        category = Category(aihe) #luodaan kategoria olio jokaisesta listan kategoriasta ja lisätään kantaan
-        db.session().add(category)             
-        db.session().commit()
-
-        runo.categories.append(category) 
-        db.session().add(runo)
-        db.session().commit()
+        list.append(category_lowercase)   #lisätäänmyös oma  kategoria samaan listaan
     
-    return redirect(url_for("runo_modify_page", runo_id=runo.id ))
+    for  cate in list:
+        c = Category.query.filter_by(aihe=cate).first()
+        if c is  None:  
+            category = Category(cate)
+            db.session().add(category)
+            db.session().commit()
+
+            runo.categories.append(category) 
+            db.session().add(runo)
+            db.session().commit()
+  
+            #category = Category(aihe) #luodaan kategoria olio jokaisesta listan kategoriasta ja lisätään kantaan
+        else:  #jos ei ole kategoriaa
+            runo.categories.append(c)
+            db.session().commit() 
+    
+    
+    return redirect(url_for("runo_modify_page", runo_id=runo.id, category_by=Category.find_categories_by(runo) ))
 
 
 
