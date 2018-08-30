@@ -20,13 +20,14 @@ def create_like(runo_id):
 
     runo = Runo.query.get(runo_id) 
     user=current_user
-
+    
    #tarkastus onko nykyinen käyttäjä jo tykännyt runosta  jos ei liken talletus kantaan muutoin viesti
     likepoem=Liked.has_poem_liked_by_user(user, runo) #true tai false   ###ei ielä toimi kunnolla...
     print("llllllllllllllllllllllllllllllllll", likepoem)
    
     if likepoem==False:
-        like=Liked(1, current_user.id) #luo olion liken arvolla 1 
+        print("currentuserid", current_user.id)
+        like=Liked(likes=1, account_id=current_user.id) #luo olion liken arvolla 1 
         print("lllllllllllll", like)
         #liked.id=runo.id
         #liked.likes=1
