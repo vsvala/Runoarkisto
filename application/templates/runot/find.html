@@ -44,12 +44,10 @@
 <br>
 {% if runo is defined %}
 <h4>{{runo.name}}</h4>
-<blockquote class="blockquote">
-      <p class="mb-0">
-            <em>{{ runo.sisalto }}</em>
-      </p>
-      <footer class="blockquote-footer"> {{ runo.runoilija }}</footer>
-</blockquote>
+      <blockquote class="blockquote">
+            <p class="mb-0 "style="color:gray;"><em>{{ runo.sisalto }}</em></p>
+            <footer class="blockquote-footer"> {{ runo.runoilija }}</footer>
+      </blockquote>
 
 {% if current_user.role=="ADMIN" %}
 <table>
@@ -63,6 +61,7 @@
 </table> 
 {% endif %} 
 
+
 {% if runot_by_category is defined %}
 <h4>Runot jotka kuuluvat <i> {{category }} </i> kategoriaan: </h4>
 <br>
@@ -71,7 +70,7 @@
       <li>
        <h4>{{runo.name}}</h4>
             <blockquote class="blockquote">
-                  <p class="mb-0"><em>{{ runo.sisalto }}</em></p>
+                  <p class="mb-0 "style="color:gray;"><em>{{ runo.sisalto }}</em></p>
                   <footer class="blockquote-footer"> {{ runo.runoilija }}</footer>
             </blockquote>
       </li>
