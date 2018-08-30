@@ -14,7 +14,7 @@ def top_poems():
     return render_template("runot/top.html", top= top)
 
 #luodaan tykkäyksiä
-@app.route("/create/likes/<runo_id>/", methods=["GET"])
+@app.route("/create/likes/<runo_id>/", methods=["GET", "POST"])
 @login_required()
 def create_like(runo_id):
 
@@ -22,31 +22,34 @@ def create_like(runo_id):
     user=current_user
 
    #tarkastus onko nykyinen käyttäjä jo tykännyt runosta  jos ei liken talletus kantaan muutoin viesti
-    liked=Liked.has_poem_liked_by_user(user, runo) #true tai false
+    liked=Liked.has_poem_liked_by_user(user, runo) #true tai false   ###ei ielä toimi kunnolla...
     print("llllllllllllllllllllllllllllllllll")
-
+    like=Liked(1) #luo olion liken arvolla 1 
     if liked==False:
-        l=Liked(1) #luo olion liken arvolla 1 
-        l.likes=1
-        l.runo_id=runo.id
-        l.account_id=current_user.id
-        print(l)
-        print(l.likes)
-        print(l.runo_id)
-        print(l.account_id)
-        db.session().add(l)
+   
+        like.likes=1
+        like.account_id=current_user.id
+        db.session().add(like)
         db.session().commit()
 
-        return redirect(url_for('runot_one', runo_id=runo.id, l=l))
+        runo.runo_liked.append(like) 
+        db.session().add(runo)
+        db.session().commit()
 
-    return render_template("runot/one.html", runo=runo, liked_message="Olet jo tykännyt tästä runosta! Samasta runosta voi tykätä vain kerran!!")
+        return redirect(url_for('runot_one', runo_id=runo.id, l=like))
+
+    else:
+        return render_template("runot/one.html", runo=runo, liked_message="Olet jo tykännyt tästä runosta! Samasta runosta voi tykätä vain kerran!!")
+
 
 #kaikkien tykkäysten poisto
 @app.route("/likes/delete/all/", methods=["GET", "POST"])
 @login_required(role="ADMIN")
 def delete_likes():
 
-    likes=Liked.query.delete()
+    likes=Liked.query.all()
+    for like in likes:
+        db.session().delete(like)
     db.session().commit()
 
     return redirect(url_for("top_poems"))

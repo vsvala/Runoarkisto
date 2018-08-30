@@ -13,6 +13,14 @@ categories_c = db.Table('categories',
         db.Column('category_id', 
         db.Integer, db.ForeignKey('category.id'), primary_key=True))
 
+# Liken ja runon liitostaulu many to many
+liked_l = db.Table('runo_liked',
+        db.Column('runo_id', db.Integer,
+        db.ForeignKey('runo.id'), primary_key=True ),
+        db.Column('liked_id', 
+        db.Integer, db.ForeignKey('liked.id'), primary_key=True))
+
+
 class Runo(Base):
 
     name = db.Column(db.String(144), nullable=False, unique=True) 
@@ -24,8 +32,12 @@ class Runo(Base):
     categories = db.relationship('Category', secondary=categories_c, lazy='subquery', #cascade="all, delete-orphan", single_parent=True
         backref=db.backref('runot', lazy=True))   
 
+       # Määritellään many to many riippuvuussuhde  likejen kanssa. 
+    runo_liked = db.relationship('Liked', secondary=liked_l, lazy='subquery',cascade="all, delete-orphan", single_parent=True, #cascade="all, delete-orphan", single_parent=True
+        backref=db.backref('runot', lazy=True))   
+
     #liitetään runolle like
-    liked = db.relationship("Liked", backref='runo', lazy=True, cascade="all, delete-orphan")
+    #liked = db.relationship("Liked", backref='runo', lazy=True, cascade="all, delete-orphan")
 
 
     def __init__(self, name, sisalto, runoilija): 

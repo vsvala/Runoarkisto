@@ -2,11 +2,6 @@ from application import db
 from application.models import Base
 from sqlalchemy.sql import text
 
-# from flask import Flask
-# from flask.ext.bcrypt import Bcrypt
-# app = Flask(__name__)
-# bcrypt = Bcrypt(app)
-
 class User(Base):
     __tablename__ = "account"
 
@@ -40,14 +35,6 @@ class User(Base):
 
     def is_authenticated(self):
         return True
-
-# tarvitsee BCRYPT
-    # def set_password(self,password):
-    #     self.password = bcrypt.generate_password_hash(password)
-
-    # def is_correct_password(self, password):
-    #     return bcrypt.check_password_hash(self.password,password)
-
 
 #haetaan kaikki käyttäjät jotka ovat lisänneet runoja
     @staticmethod
