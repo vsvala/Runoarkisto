@@ -73,15 +73,13 @@ Ylläpitäjä:
 ```sql
 
 hakee kaikki käyttäjät joilla on lisättyjä runoja
-
-"SELECT account.id, account.username FROM account"
+SELECT account.id, account.username FROM account"
                     " LEFT JOIN runo ON runo.account_id = account.id"
                     " GROUP BY account.id"
                     " HAVING COUNT(runo.id) > 0")
 
 Hakee top10 eniten runoja lisänneet käyttäjät
-
- "SELECT account.id, account.username, COUNT(runo.id) as runocount FROM account"
+SELECT account.id, account.username, COUNT(runo.id) as runocount FROM account"
                     " LEFT JOIN runo ON runo.account_id = account.id"
                     " WHERE (runo.id>0)"
                     " GROUP BY account.id"
@@ -89,8 +87,7 @@ Hakee top10 eniten runoja lisänneet käyttäjät
                     " LIMIT 10")
 
 Laskee arkiston käyttäjien määrän
-
-"SELECT account.id, COUNT(*) AS howmany FROM account"
+SELECT account.id, COUNT(*) AS howmany FROM account"
                     " LEFT JOIN runo ON runo.account_id = account.id"
                     " GROUP BY account.id")             
 
