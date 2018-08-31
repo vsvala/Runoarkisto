@@ -25,7 +25,11 @@ def create_like(runo_id):
     likepoem=Liked.has_poem_liked_by_user(user, runo) #true tai false 
     
     if likepoem==False: 
-        like=Liked(1, current_user.id) 
+        like=Liked(1)
+        like.account_id=current_user.id 
+        print(like)
+        print("LLLLLLLLLLLLLLLLLLLL", like.likes, like.account_id, like.id )
+    
         db.session().add(like)
         db.session().commit()
 

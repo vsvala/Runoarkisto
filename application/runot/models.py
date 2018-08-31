@@ -1,6 +1,7 @@
 from application import db
 from application.models import Base
 from application.category import models
+from application.like import models
 from flask_login import current_user
 from sqlalchemy.sql import text
 
