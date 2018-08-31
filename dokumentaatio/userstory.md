@@ -21,7 +21,7 @@ SELECT DISTINCT runo.id, runo.name, runo.sisalto, runo.runoilija FROM category, 
 (parametrina käyttäjän syöttämä kategorian aihe)
 
 Haetaan 10 tykätyintä runoa
-SELECT runo.id, runo.name COUNT(likes) AS total FROM liked, runo, runo_liked WHERE runo.id=liked.runo_id AND liked.id=runo_liked.liked_id"  GROUP BY likes, runo.name, runo.id" ORDER BY total DESC LIMIT 10;
+SELECT runo.id, runo.name COUNT(likes) AS total FROM liked, runo, runo_liked WHERE runo.id=liked.runot_id AND liked.id=runo_liked.liked_id"  GROUP BY likes, runo.name, runo.id" ORDER BY total DESC LIMIT 10;
 
 käyttäjän User lisäys:
 INSERT INTO account (name, username, password, role) VALUES ('nimi', 'tunnus', 'salasana', 'user');
@@ -45,8 +45,11 @@ SELECT DISTINCT runo.id, runo.name FROM runo, account WHERE (runo.account_id =?<
 Haetaan tietyn runon kaikki tiedot
 SELECT * FROM runo WHERE runo.id = ? <parametrinä klikatun runon runo.i>);
 
+valitun runon tykkäykset
+SELECT SUM(likes) AS total FROM liked, runo_liked WHERE liked.runot_id=? <parametrina valittu runon id> AND liked.account_id=? <parametrina annettu käyttäjän id)   
+
 Onko käyttäjä jo tykännyt runosta
-SELECT SUM(likes) AS total FROM liked, runo_liked WHERE liked.runo_id=? <parametrina valittu runon id> AND liked.account_id=? <parametrina annettu käyttäjän id)   
+SELECT * FROM liked, runo_liked WHERE  liked.id=runo_liked.liked_id AND runo_liked.runot_id=:ri AND account_id=:la").params(ri=runo.id, la=user.id)                     
 
 Runon poisto
 DELETE FROM runo WHERE runo.id = ? <parametrinä annettu runo.id >);
@@ -66,9 +69,7 @@ Ylläpitäjä:
 	- Arkiston runojen määrä 
 	- Arkiston rekisteröityneiden käyttäjien lukumäärä
 	- Eniten runoja lisänneet käyttäjät (Top 10) 
-- Ylläpitäjä lisätä voi poistaa tykkäyksiä. (lokaalisti toimii, herokussa ei)
-
-
+- Ylläpitäjä lisätä voi poistaa tykkäyksiä. Pitäisi olla nyt ok.
 
 ```sql
 
@@ -140,10 +141,10 @@ CREATE TABLE categories (
 );
 
 CREATE TABLE runo_liked (
-	runo_id INTEGER NOT NULL, 
+	runot_id INTEGER NOT NULL, 
 	liked_id INTEGER NOT NULL, 
 	PRIMARY KEY (runo_id, liked_id), 
-	FOREIGN KEY(runo_id) REFERENCES runo (id), 
+	FOREIGN KEY(runot_id) REFERENCES runo (id), 
 	FOREIGN KEY(liked_id) REFERENCES liked (id)
 );
 
