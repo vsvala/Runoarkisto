@@ -1,6 +1,6 @@
 ## Omat kokemukset
 
-Sain alkuaan suunnittelemani toiminallisuudet toteutettua. Tykkäystoiminta oli ylimääräisenä listallani ja se jäikin harmillisesti kesken....Sain tykkäykset alkuun toimimaan myös herokussa laittamalla tavalliset yhdetä moneen liitokset, mutta kun aloin viimetingassa säätämään monestamoneen suhdetta ja liitostaulua runon ja tykkäyksen välille, en saanut sitä enää toimimaan kuin lokaalisti. Olisi kiva vielä saada tämä myöhemmin kuntoon...
+Sain alkuaan suunnittelemani toiminallisuudet toteutettua. Tykkäystoiminta aiheutti eniten harmia. Tämän kohdalla törmäsin pariin kertaan ongelmaan joka johtui huonosta nimeämisestä. Täytyy muistaa ensikerralla miettiä nimi tarkasti. Esim herokun postgress ei hyväksy taulun nimeksi "like"  ja myös foreign key runo_id:n kanssa näytti olevan ongelmia...
 
 Alussa suunnittelin, että runojen uusien kategorioidenlisääminen ja julkaisun voisi hyväksyttää adminilla, tämän jätin kuitenkin kokonaan pois toteutuksesta.
 
