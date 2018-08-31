@@ -35,7 +35,7 @@ class Liked(db.Model):
     @staticmethod
     def has_poem_liked_by_user(user, runo):
         stmt = text(" SELECT * FROM liked, runo_liked"
-                    " WHERE  liked.id=runo_liked.liked_id AND runo_liked.runo_id=:ri AND account_id=:la").params(ri=runo.id, la=user.id)                     
+                    " WHERE  liked.id=runo_liked.liked_id AND runo_liked.runot_id=:ri AND account_id=:la").params(ri=runo.id, la=user.id)                     
 
         res = db.engine.execute(stmt)
 
@@ -50,7 +50,7 @@ class Liked(db.Model):
     @staticmethod
     def find_runo_likes(runo):
         stmt = text(" SELECT SUM(likes) AS total FROM liked, runo_liked" 
-                    " WHERE liked.id=runo_liked.runo_id AND liked.id=:ri").params(ri=runo.id)     
+                    " WHERE liked.id=runo_liked.runot_id AND liked.id=:ri").params(ri=runo.id)     
 
         res = db.engine.execute(stmt)
 
