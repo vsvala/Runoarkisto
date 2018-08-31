@@ -36,9 +36,6 @@ class Runo(Base):
     runo_liked = db.relationship('Liked', secondary=liked_l, lazy='subquery',cascade="all, delete-orphan", single_parent=True, #cascade="all, delete-orphan", single_parent=True
         backref=db.backref('runot', lazy=True))   
 
-    #liitetään runolle like
-    #liked = db.relationship("Liked", backref='runo', lazy=True, cascade="all, delete-orphan")
-
 
     def __init__(self, name, sisalto, runoilija): 
        self.name = name

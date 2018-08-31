@@ -18,32 +18,47 @@ def top_poems():
 @login_required()
 def create_like(runo_id):
 
-    r = Runo.query.get(runo_id) 
+    runo = Runo.query.get(runo_id)  
+  
     user=current_user
-    
    #tarkastus onko nykyinen käyttäjä jo tykännyt runosta  jos ei liken talletus kantaan muutoin viesti
-    likepoem=Liked.has_poem_liked_by_user(user, r) #true tai false 
-    print("llllllllllllllllllllllllllllllllll", likepoem)
-   
-    if likepoem==False:
-        print("currentuserid", current_user.id)
-        like=Liked(likes=1, account_id=current_user.id, runo_id=r.id) #luo olion liken arvolla 1 
-        print("lllllllllllll", like)
-        #like.runo_id=r.id
-        #liked.likes=1
-        #like.account_id=current_user.id
-        print("aaaaaaaaaaaaaa", like.account_id)
-        db.session().add(like)
+    likepoem=Liked.has_poem_liked_by_user(user, runo) #true tai false 
+    print("on jo tykännyyyyyyyyyyyyyyyyyyyy", likepoem)
+  
+    like=Liked(1) #liked olion luonti
+    like.account_id=current_user.id #liitetään nykyiseen käyttäjän
+
+    if likepoem==False: 
+        runo.runo_liked.append(like)
+        db.session().add(runo)
         db.session().commit()
 
-        r.runo_liked.append(like) 
-        db.session().add(r)
-        db.session().commit()
 
-        return redirect(url_for('runot_one', runo_id=r.id, l=like))
+    # if likepoem==False:
+    #     print("currentuserid", current_user.id)
+    #     #like=Liked(likes=1, account_id=current_user.id) #luo olion liken arvolla 1 
+    #     like=Liked(1) #luo olion liken arvolla 1
+    #     like.account_id=current_user.id
+    #     db.session().add(like)
+    #     db.session().commit() 
+    #     print("lllllllllllll", like)  
+        
+    #     #r.likedliked_id=r.id
+    #     #like.runo_id=r.id
+    #     #liked.likes=1
+    #     print("aaaaaaaaaaaaaa", like.account_id)
+    #     r.runo-
+    #     db.session().add(like)
+    #     db.session().commit()
+
+    #     r.runo_liked.append(like) 
+    #     db.session().add(r)
+    #     db.session().commit()
+
+        return redirect(url_for('runot_one', runo_id=runo.id, l=like))
 
     else:
-        return render_template("runot/one.html", runo=r, liked_message="Olet jo tykännyt tästä runosta! Samasta runosta voi tykätä vain kerran!!")
+        return render_template("runot/one.html", runo=runo, liked_message="Olet jo tykännyt tästä runosta! Samasta runosta voi tykätä vain kerran!!")
 
 
 #kaikkien tykkäysten poisto

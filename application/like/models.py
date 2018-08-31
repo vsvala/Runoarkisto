@@ -8,10 +8,9 @@ class Liked(db.Model):
     likes = db.Column(db.Integer, nullable=False) 
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'),nullable=False)
 
-    def __init__(self, likes, account_id, runo_id):
-      self.likes = likes
-      self.account_id=current_user.id
-      self.runo_id=runo_id
+    def __init__(self, likes):  #, account_id, runo_id
+        self.likes = likes
+        #self.runo_id=runo_id
    
 
 #haetaan tykätyimmät runot top 10 

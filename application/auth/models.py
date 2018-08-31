@@ -13,7 +13,6 @@ class User(Base):
     #liitetään käyttäjään runo
     runo = db.relationship("Runo", backref='account', lazy=True, cascade="all, delete-orphan")
     
-    
     #liitetään käyttäjään like
     liked = db.relationship("Liked", backref='account', lazy=True, cascade="all, delete-orphan")
 
