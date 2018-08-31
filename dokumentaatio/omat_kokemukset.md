@@ -1,6 +1,6 @@
 ## Omat kokemukset
 
-Sain alkuaan suunnittelemani toiminallisuudet toteutettua. Tykkäystoiminta oli ylimääräisenä listallani ja se jäikin harmillisesti kesken. Siinä myös käyttäjän ja tykkäyksen välisen suoran suhteen voisi vielä poistaa, sillä sen saa tietoon muuta kautta, mutta minulla ei jäänyt aikaa sen aiheuttamien kyselyiden vaihtamiseen..Sain tykkäykset alkuun toimimaan myös herokussa laittamalla tavalliset yhdetä moneen liitokset, mutta kun aloin viimetingassa säätämään monestamoneen suhdetta ja liitostaulua runon ja tykkäyksen välille, en saanut sitä enää toimimaan kuin lokaalisti. Olisi kiva vielä saada tämä myöhemmin kuntoon...
+Sain alkuaan suunnittelemani toiminallisuudet toteutettua. Tykkäystoiminta oli ylimääräisenä listallani ja se jäikin harmillisesti kesken....Sain tykkäykset alkuun toimimaan myös herokussa laittamalla tavalliset yhdetä moneen liitokset, mutta kun aloin viimetingassa säätämään monestamoneen suhdetta ja liitostaulua runon ja tykkäyksen välille, en saanut sitä enää toimimaan kuin lokaalisti. Olisi kiva vielä saada tämä myöhemmin kuntoon...
 
 Alussa suunnittelin, että runojen uusien kategorioidenlisääminen ja julkaisun voisi hyväksyttää adminilla, tämän jätin kuitenkin kokonaan pois toteutuksesta.
 
