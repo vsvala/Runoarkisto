@@ -93,7 +93,7 @@ Runon muokkausnappi avaa lisäämislomakkeen kaltaisen, mutta esitäytetyn muokk
 <img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/modif.png" width="700">
 
 #### *Kategorian lisäys ja poisto* 
-Kategorian lisäysnappi avaa täytettävän lomakkeen kategorian lisäykseen. "Poista kategoria" napista voit poistaa kyseisen kategorianko runolta.
+Kategorian lisäysnappi avaa täytettävän lomakkeen kategorian lisäykseen. "Poista kategoria" napista voit poistaa kyseisen kategorianko runolta. Lisätä voit valmiita kategorioita ja syöttää myös oman.
 
 <img src="https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/kuvat/lisaa_kategoria.png" width="600">
 
