@@ -34,19 +34,17 @@ def create_like(runo_id):
 
     runo = Runo.query.get(runo_id)  
     user=current_user
-    
-    account_id=current_user.id
-    liked_list=[]
-    liked_list.append(1, account_id)
-
 
     #tarkastus onko nykyinen käyttäjä jo tykännyt runosta  jos ei liken talletus kantaan muutoin viesti
     likepoem=Liked.has_poem_liked_by_user(user, runo) #true tai false 
 
     if likepoem==False: 
         l=Liked(likes=1, account_id=current_user.id)
-        l.account_id=current_user.id 
-    
+        l.account_id=current_user.id
+        l.runo_id=runo.id 
+        #print("LLLLLLLLLLLLLLLLLLLL",l.id )
+        # print("LLLLLLLLLLLLLLLLLLLL", l.account_id)
+        # print("LLLLLLLLLLLLLLLLLLLL", l.likes)
         db.session().add(l)
         db.session().commit()
 
