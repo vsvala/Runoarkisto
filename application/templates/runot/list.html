@@ -58,7 +58,7 @@
 <nav aria-label="Page navigation">
     <ul class="pagination">
       {% if runot.has_prev %}
-      <li class="page-item"><a class="page-link" href="{{ url_for('runot_index', page=runot.prev_num) }}">Previous page</a></li>
+      <li class="page-item"><a class="page-link" href="{{ url_for('runot_index', page=runot.prev_num) }}">Edellinen sivu</a></li>
       {% else %}
       <li class="page-item-disabled"><a class="page-link">Edelliset 10</a></li>
       {% endif %} {% if runot.has_next %}
