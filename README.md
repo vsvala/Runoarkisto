@@ -71,7 +71,6 @@ Tykkäys
 
 
 ## Puutteet & jatkokehitysideat
-- Tykkäys toiminnan koodaus / selvittäminen jäi kesken. Toimii vasta lokaalisti, ei herokussa.
 - Ohjelmassa käyttäjän poisto poistaa tällä hetkellä kaikki runot. Tähän olisi hyvä miettiä sellainen ratkaisu, että runot jäisivät näkyviin, vaikka käyttäjää ei olisi. 
 - Salasanan voisi myös cryptata. 
 - Jos käyttäjiä tulee runsaasti olisi kiva jos käyttäjiäkin pystyisi hakemaan nimen perusteella.
