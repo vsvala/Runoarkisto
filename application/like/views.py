@@ -27,8 +27,6 @@ def delete_likes():
 
     return redirect(url_for("top_poems"))
 
-
-
 #luodaan tykkäyksiä   Metodi ei toimi herokussa... ei luo luodulle tykkäykselle id.tä????
 @app.route("/create/likes/<runo_id>/", methods=["GET", "POST"])
 @login_required()
@@ -36,25 +34,38 @@ def create_like(runo_id):
 
     runo = Runo.query.get(runo_id)  
     user=current_user
+    
+    account_id=current_user.id
+    liked_list=[]
+    liked_list.append(1)
+
 
     #tarkastus onko nykyinen käyttäjä jo tykännyt runosta  jos ei liken talletus kantaan muutoin viesti
     likepoem=Liked.has_poem_liked_by_user(user, runo) #true tai false 
     
-    if likepoem==False: 
-        l=Liked(likes=1, account_id=current_user.id)
-        l.account_id=current_user.id 
-        #print("LLLLLLLLLLLLLLLLLLLL",l.id )
-        # print("LLLLLLLLLLLLLLLLLLLL", l.account_id)
-        # print("LLLLLLLLLLLLLLLLLLLL", l.likes)
-        db.session().add(l)
+    for like in liked_list:
+        li=Liked(like, account_id)
+        db.session().add(li)             
         db.session().commit()
 
-        runo.runo_liked.append(l)
+        runo.runo_liked.append(li) 
         db.session().add(runo)
         db.session().commit()
 
-        return redirect(url_for('runot_one', runo_id=runo.id, like=l))
+    # if likepoem==False: 
+    #     l=Liked(likes=1, account_id=current_user.id)
+    #     l.account_id=current_user.id 
+    #     #print("LLLLLLLLLLLLLLLLLLLL",l.id )
+    #    # print("LLLLLLLLLLLLLLLLLLLL", l.account_id)
+    #    # print("LLLLLLLLLLLLLLLLLLLL", l.likes)
+    #     db.session().add(l)
+    #     db.session().commit()
+
+    #     runo.runo_liked.append(l)
+    #     db.session().add(runo)
+    #     db.session().commit()
+
+        return redirect(url_for('runot_one', runo_id=runo.id, like=li))
 
     else:
         return render_template("runot/one.html", runo=runo, liked_message="Olet jo tykännyt tästä runosta! Samasta runosta voi tykätä vain kerran!!")
-

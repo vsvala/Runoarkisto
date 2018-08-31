@@ -10,6 +10,7 @@ from application.like.models import Liked
 #from werkzeug import secure_filename
 from application.runot.forms import RunoForm, FindForm
 
+
 # kaikkien runojen  listaus aakkosittain ja sivuttaminen paginate 20 kerrallaan, ja käyttäjien lkm haku
 @app.route("/runot/", defaults={'page': 1})
 @app.route("/runot/page/<int:page>/")
