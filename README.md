@@ -63,14 +63,17 @@ Tykkäys
     - salasanan Bcryptaus
 
 ## Dokumentaatio
-- [Tietokantakaavio](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/Runo_db_kaavio%20(1).png)
+- [Tietokantakaavio](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/Runo_db_kaavio%20(2).png)
 - [User storyt ja SQL lauseet](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/userstory.md)
 - [Asennusohje](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/asennusohje.md)
 - [Käyttöohje](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/käyttöohje.md)
+- [Omat kokemukset](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/omat_kokemukset.md)
 
 
 ## Puutteet & jatkokehitysideat
-Mitä puutteita tai bugeja ohjelmassa on? Mitä lisäominaisuuksia ohjelmaan voisi lisätä?
+- Tykkäys toiminnan koodaus / selvittäminen jäi kesken. Toimii vasta lokaalisti, ei herokussa.
+- Ohjelmassa käyttäjän poisto poistaa tällä hetkellä kaikki runot. Tähän olisi hyvä miettiä sellainen ratkaisu, että runot jäisivät näkyviin, vaikka käyttäjää ei olisi. 
+- Salasanan voisi myös cryptata. 
+- Jos käyttäjiä tulee runsaasti olisi kiva jos käyttäjiäkin pystyisi hakemaan nimen perusteella.
 
-## Omat kokemukset
-Mikä oli tietokantasovelluksen teossa helppoa? Mikä vaikeaa? Mitä opit? Muu vapaa sana.
+

@@ -6,7 +6,7 @@ tiedon selaaminen
 - Kukatahansa käyttäjä voi  listata  runot akkosjärjestykseen ja lukea lisättyjä runoja (sivutus 10). ok
 - Kukatahansa käyttäjä voi hakea yksittäistä runoa sen nimen perusteella, jotta runo löytyisi nopeammin. ok
 - Kukatahana käyttäjä voi hakea runoja eri kategorioiden eli aihepiirien mukaan, jotta hän löytää tiettyyn tilanteeseen sopivan runon. ok
-- Kukatahansa käyttäjä voi lukea suosituimmat runot (top 10). ok
+- Kukatahansa käyttäjä voi lukea suosituimmat runot (top 10). ok (lokaalisti toimii, herokussa ei)
 - Kukatahansa käyttäjä voi rekisteröityä sivustolle, jotta hän voi kirjautua saadakseen lisää toiminnallisuuksia käyttöönsä. ok
 
 ```sql
@@ -66,24 +66,28 @@ Ylläpitäjä:
 	- Arkiston runojen määrä 
 	- Arkiston rekisteröityneiden käyttäjien lukumäärä
 	- Eniten runoja lisänneet käyttäjät (Top 10) 
-- Ylläpitäjä lisätä voi poistaa tykkäyksiä.ok
+- Ylläpitäjä lisätä voi poistaa tykkäyksiä. (lokaalisti toimii, herokussa ei)
 
 
 
 ```sql
-"SELECT account.id, account.username FROM account"
+
+hakee kaikki käyttäjät joilla on lisättyjä runoja
+SELECT account.id, account.username FROM account"
                     " LEFT JOIN runo ON runo.account_id = account.id"
                     " GROUP BY account.id"
                     " HAVING COUNT(runo.id) > 0")
-		    
- SELECT account.id, account.username, COUNT(runo.id) as runocount FROM account"
+
+Hakee top10 eniten runoja lisänneet käyttäjät
+SELECT account.id, account.username, COUNT(runo.id) as runocount FROM account"
                     " LEFT JOIN runo ON runo.account_id = account.id"
                     " WHERE (runo.id>0)"
                     " GROUP BY account.id"
                     " ORDER BY runocount DESC"
                     " LIMIT 10")
-		    
-"SELECT account.id, COUNT(*) AS howmany FROM account"
+
+Laskee arkiston käyttäjien määrän
+SELECT account.id, COUNT(*) AS howmany FROM account"
                     " LEFT JOIN runo ON runo.account_id = account.id"
                     " GROUP BY account.id")             
 
