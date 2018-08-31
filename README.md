@@ -67,10 +67,9 @@ Tykkäys
 - [User storyt ja SQL lauseet](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/userstory.md)
 - [Asennusohje](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/asennusohje.md)
 - [Käyttöohje](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/käyttöohje.md)
+- [Omat kokemukset](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/käyttöohje.md)
 
 
 ## Puutteet & jatkokehitysideat
 Mitä puutteita tai bugeja ohjelmassa on? Mitä lisäominaisuuksia ohjelmaan voisi lisätä?
 
-## Omat kokemukset
-Mikä oli tietokantasovelluksen teossa helppoa? Mikä vaikeaa? Mitä opit? Muu vapaa sana.
