@@ -33,15 +33,15 @@ def delete_likes():
 def create_like(runo_id):
 
     runo = Runo.query.get(runo_id)  
+    print("rrrrrrrrrrrrrrrrrrrrrrrrrrrrr", runo.id)
     user=current_user
 
     #tarkastus onko nykyinen käyttäjä jo tykännyt runosta  jos ei liken talletus kantaan muutoin viesti
     likepoem=Liked.has_poem_liked_by_user(user, runo) #true tai false 
 
     if likepoem==False: 
-        l=Liked(likes=1, account_id=current_user.id)
-        l.account_id=current_user.id
-        l.runo_id=runo.id 
+        l=Liked(likes=1, account_id=current_user.id, runo_ide=runo.id)
+        #l.account_id=current_user.id
         #print("LLLLLLLLLLLLLLLLLLLL",l.id )
         # print("LLLLLLLLLLLLLLLLLLLL", l.account_id)
         # print("LLLLLLLLLLLLLLLLLLLL", l.likes)
