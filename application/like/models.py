@@ -17,7 +17,7 @@ class Liked(db.Model):
     @staticmethod
     def find_poems_with_most_likes():
         stmt = text(" SELECT runo.id, runo.name, COUNT(likes) AS total FROM liked, runo, runo_liked"
-                    " WHERE runo.id=runo_liked.runo_id AND liked.id=runo_liked.liked_id" 
+                    " WHERE runo.id=runo_liked.runot_id AND liked.id=runo_liked.liked_id" 
                     " GROUP BY likes, runo.name, runo.id"
                     " ORDER BY total DESC"
                     " LIMIT 10")
