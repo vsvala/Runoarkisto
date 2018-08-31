@@ -15,7 +15,7 @@ from application.runot.forms import RunoForm, FindForm
 @app.route("/runot/page/<int:page>/")
 def runot_index(page):
     per_page = 10
-    runot=Runo.query.order_by(Runo.name).paginate(page, per_page, error_out=False)#Runo.query.all()
+    runot=Runo.query.order_by(Runo.name).paginate(page, per_page, error_out=False)
     lkm_runot= Runo.query.count()
     return render_template("runot/list.html", runot=runot, lkm_runot = lkm_runot) 
 
@@ -170,7 +170,6 @@ def runot_delete(runo_id):
         return redirect(url_for("runot_index"))
     if current_user.role=="USER":
         return redirect(url_for("loggedu_poems"))
-        #return render_template("runot/modifyOne.html", runo=runo, category_by=Category.find_categories_by(runo))
 
 
 #näyttää runon haku lomakkeen
@@ -185,7 +184,6 @@ def find_runo():
     runo_name=form.name.data
 
     runo_category=form.category.data
-    #runo = Runo.query.filter_by(name=find).first()
 
     if runo_name: 
         #validoidaan eka otsikon kirjain isoksi (aakkostamisen takia ja hakemisen,,,) 
@@ -227,7 +225,6 @@ def find_runot_by_category(runo_category):
 @app.route("/runot/category/<runo_id>/",methods=["GET"])
 def find_categories(runo_id):
     runo = Runo.query.get(runo_id)    
-    #return render_template("runot/list.html", runot=runot)
     category_by =Category.find_categories_by(runo)
     return redirect(url_for("runot_index_category",category_by=category_by))
 

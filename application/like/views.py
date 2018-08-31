@@ -13,34 +13,6 @@ def top_poems():
     top=Liked.find_poems_with_most_likes()
     return render_template("runot/top.html", top= top)
 
-#luodaan tykkäyksiä
-@app.route("/create/likes/<runo_id>/", methods=["GET", "POST"])
-@login_required()
-def create_like(runo_id):
-
-    runo = Runo.query.get(runo_id)  
-    user=current_user
-
-   #tarkastus onko nykyinen käyttäjä jo tykännyt runosta  jos ei liken talletus kantaan muutoin viesti
-    likepoem=Liked.has_poem_liked_by_user(user, runo) #true tai false 
-    
-    if likepoem==False: 
-        like=Liked(1)
-        like.account_id=current_user.id 
-        print(like)
-        print("LLLLLLLLLLLLLLLLLLLL", like.likes, like.account_id, like.id )
-    
-        db.session().add(like)
-        db.session().commit()
-
-        runo.runo_liked.append(like)
-        db.session().add(runo)
-        db.session().commit()
-
-        return redirect(url_for('runot_one', runo_id=runo.id, like=like))
-
-    else:
-        return render_template("runot/one.html", runo=runo, liked_message="Olet jo tykännyt tästä runosta! Samasta runosta voi tykätä vain kerran!!")
 
 
 #kaikkien tykkäysten poisto
@@ -54,4 +26,35 @@ def delete_likes():
     db.session().commit()
 
     return redirect(url_for("top_poems"))
+
+
+
+#luodaan tykkäyksiä   Metodi ei toimi herokussa... ei luo luodulle tykkäykselle id.tä????
+@app.route("/create/likes/<runo_id>/", methods=["GET", "POST"])
+@login_required()
+def create_like(runo_id):
+
+    runo = Runo.query.get(runo_id)  
+    user=current_user
+
+    #tarkastus onko nykyinen käyttäjä jo tykännyt runosta  jos ei liken talletus kantaan muutoin viesti
+    likepoem=Liked.has_poem_liked_by_user(user, runo) #true tai false 
+    
+    if likepoem==False: 
+        l=Liked(likes=1, account_id=current_user.id)
+        l.account_id=current_user.id 
+        #print("LLLLLLLLLLLLLLLLLLLL",l.id )
+        # print("LLLLLLLLLLLLLLLLLLLL", l.account_id)
+        # print("LLLLLLLLLLLLLLLLLLLL", l.likes)
+        db.session().add(l)
+        db.session().commit()
+
+        runo.runo_liked.append(l)
+        db.session().add(runo)
+        db.session().commit()
+
+        return redirect(url_for('runot_one', runo_id=runo.id, like=l))
+
+    else:
+        return render_template("runot/one.html", runo=runo, liked_message="Olet jo tykännyt tästä runosta! Samasta runosta voi tykätä vain kerran!!")
 

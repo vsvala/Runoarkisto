@@ -25,5 +25,6 @@ class RunoForm(FlaskForm):
     files = [(x, x) for x in list_of_files]
     aihe = MultiCheckboxField('Kategoriat:', choices=files)
 
+
     class Meta:
         csrf = False
