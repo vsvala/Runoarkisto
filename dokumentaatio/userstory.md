@@ -6,7 +6,7 @@ tiedon selaaminen
 - Kukatahansa käyttäjä voi  listata  runot akkosjärjestykseen ja lukea lisättyjä runoja (sivutus 10). ok
 - Kukatahansa käyttäjä voi hakea yksittäistä runoa sen nimen perusteella, jotta runo löytyisi nopeammin. ok
 - Kukatahana käyttäjä voi hakea runoja eri kategorioiden eli aihepiirien mukaan, jotta hän löytää tiettyyn tilanteeseen sopivan runon. ok
-- Kukatahansa käyttäjä voi lukea suosituimmat runot (top 10). ok
+- Kukatahansa käyttäjä voi lukea suosituimmat runot (top 10). ok (lokaalisti toimii, herokussa ei)
 - Kukatahansa käyttäjä voi rekisteröityä sivustolle, jotta hän voi kirjautua saadakseen lisää toiminnallisuuksia käyttöönsä. ok
 
 ```sql
@@ -66,7 +66,7 @@ Ylläpitäjä:
 	- Arkiston runojen määrä 
 	- Arkiston rekisteröityneiden käyttäjien lukumäärä
 	- Eniten runoja lisänneet käyttäjät (Top 10) 
-- Ylläpitäjä lisätä voi poistaa tykkäyksiä.ok
+- Ylläpitäjä lisätä voi poistaa tykkäyksiä. lokaalisti toimii herokussa ei..
 
 
 
