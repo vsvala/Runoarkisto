@@ -17,7 +17,7 @@ categories_c = db.Table('categories',
 
 # Liken ja runon liitostaulu many to many
 liked_l = db.Table('runo_liked',
-        db.Column('runo_id', db.Integer,
+        db.Column('runot_id', db.Integer,
         db.ForeignKey('runo.id'), primary_key=True ),
         db.Column('liked_id', 
         db.Integer, db.ForeignKey('liked.id'), primary_key=True))

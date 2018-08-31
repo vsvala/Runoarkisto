@@ -40,7 +40,7 @@ def create_like(runo_id):
     likepoem=Liked.has_poem_liked_by_user(user, runo) #true tai false 
 
     if likepoem==False: 
-        l=Liked(likes=1, account_id=current_user.id, runo_id=runo.id)
+        l=Liked(likes=1, account_id=current_user.id, runot_id=runo.id)
         #l.account_id=current_user.id
         #print("LLLLLLLLLLLLLLLLLLLL",l.id )
         # print("LLLLLLLLLLLLLLLLLLLL", l.account_id)
