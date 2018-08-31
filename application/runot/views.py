@@ -88,6 +88,7 @@ def runot_create():
     if r:
         return render_template("runot/new.html", form=form, name_error= "Samanniminen runo on jo arkistossa!")
    
+
    #lisää  kategoriat  tietokantaan checklistalta, luodaan monesta moneen liitokset runon ja kategorian välille ja talletetaan runo kantaan    
     runo.account_id = current_user.id  #liitetään tili nykyiseen käyttäjään
     

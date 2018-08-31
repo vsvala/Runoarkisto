@@ -13,6 +13,7 @@ categories_c = db.Table('categories',
         db.Column('category_id', 
         db.Integer, db.ForeignKey('category.id'), primary_key=True))
 
+
 # Liken ja runon liitostaulu many to many
 liked_l = db.Table('runo_liked',
         db.Column('runo_id', db.Integer,
@@ -28,12 +29,12 @@ class Runo(Base):
     runoilija = db.Column(db.String(100), nullable=False) 
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'),nullable=False)
 
-    # Määritellään many to many riippuvuussuhde  kategorioiden kanssa. 
-    categories = db.relationship('Category', secondary=categories_c, lazy='subquery', #cascade="all, delete-orphan", single_parent=True
+    # Määritellään many to many riippuvuussuhde  kategorioiden kanssa. #cascade="all, delete-orphan", single_parent=True
+    categories = db.relationship('Category', secondary=categories_c, lazy='subquery', 
         backref=db.backref('runot', lazy=True))   
 
        # Määritellään many to many riippuvuussuhde  likejen kanssa. 
-    runo_liked = db.relationship('Liked', secondary=liked_l, lazy='subquery',cascade="all, delete-orphan", single_parent=True, #cascade="all, delete-orphan", single_parent=True
+    runo_liked = db.relationship('Liked', secondary=liked_l, lazy='subquery',cascade="all, delete-orphan", single_parent=True,
         backref=db.backref('runot', lazy=True))   
 
 
