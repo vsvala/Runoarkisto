@@ -10,19 +10,22 @@ tiedon selaaminen
 - Kukatahansa käyttäjä voi rekisteröityä sivustolle, jotta hän voi kirjautua saadakseen lisää toiminnallisuuksia käyttöönsä. ok
 
 ```sql
-SELECT * FROM runo ORDER BY runo.name LIMIT 10;
+kaikki käyttäjät aakkostettuina ja sivutettuna
 SELECT * FROM runo ORDER BY runo.name LIMIT 10 OFFSET ?; (OFFSET= 10 * page, annetaan parametrina)
 
-SELECT * FROM runo WHERE (runo.name =:n).params(n='parametrina käyttäjän syöte'); 
-SELECT * FROM runo WHERE runo.name ='parametrina käyttäjän syöte';
+Runon hakeminen nimellä
+SELECT * FROM runo WHERE (runo.name = ? <parametrina käyttäjän syöte>); 
 
+Runon hakeminen kategorian mukaan 
 SELECT DISTINCT runo.id, runo.name, runo.sisalto, runo.runoilija FROM category, categories, runo WHERE runo.id=categories.runo_id AND categories.category_id=category.id AND category.aihe=:categ.params(categ='käyttäjän syöte')
 (parametrina käyttäjän syöttämä kategorian aihe)
 
-SELECT runo.id, runo.name COUNT(likes) AS total FROM liked, runo WHERE runo.id=liked.runo_id GROUP BY likes, runo.name, runo.id" ORDER BY total DESC LIMIT 10;
+Haetaan 10 tykätyintä runoa
+SELECT runo.id, runo.name COUNT(likes) AS total FROM liked, runo, runo_liked WHERE runo.id=liked.runo_id AND liked.id=runo_liked.liked_id"  GROUP BY likes, runo.name, runo.id" ORDER BY total DESC LIMIT 10;
 
-rekisteröityminen ja
-kirajutuminen...TODOO
+käyttäjän User lisäys:
+INSERT INTO account (name, username, password, role) VALUES ('nimi', 'tunnus', 'salasana', 'user');
+
 ```
 
 Kirjautunut käyttäjä:
@@ -36,13 +39,20 @@ Kirjautunut käyttäjä:
 
 ```sql
 
-SELECT DISTINCT runo.id, runo.name FROM runo, account WHERE (runo.account_id =:u)").params(u=user.id);
-SELECT * FROM runo WHERE runo.id = ? ; (klikatun runon runo.id)
+Haetaan kirjautuneen käyttäjän runo
+SELECT DISTINCT runo.id, runo.name FROM runo, account WHERE (runo.account_id =?<parametrinä kirjautunut käyttäjä>);
 
-SELECT SUM(likes) AS total FROM liked " WHERE liked.runo_id=:ri").params(ri=runo.id)     
+Haetaan tietyn runon kaikki tiedot
+SELECT * FROM runo WHERE runo.id = ? <parametrinä klikatun runon runo.i>);
 
-SELECT * FROM liked" WHERE liked.runo_id=:ri AND liked.account_id=:la").params(ri=runo.id, la=user.id)                
+Onko käyttäjä jo tykännyt runosta
+SELECT SUM(likes) AS total FROM liked, runo_liked WHERE liked.runo_id=? <parametrina valittu runon id> AND liked.account_id=? <parametrina annettu käyttäjän id)   
 
+Runon poisto
+DELETE FROM runo WHERE runo.id = ? <parametrinä annettu runo.id >);
+
+Runon muokkaus:
+UPDATE Runo SET name = '?', sisalto = '?'  runoilija = '?' WHERE runo.id = ?; (? = <parametrinä annettu erikseen otsikko, sisalto, runoilja ja runo.id >)
 ```
 Ylläpitäjä:
 
