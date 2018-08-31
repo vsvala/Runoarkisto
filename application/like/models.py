@@ -1,6 +1,5 @@
 from application import db
 from sqlalchemy.sql import text
-from flask_login import current_user
 
 
 class Liked(db.Model):
@@ -8,10 +7,9 @@ class Liked(db.Model):
     likes = db.Column(db.Integer, nullable=False) 
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'),nullable=False)
 
-    def __init__(self, likes):  #, account_id, runo_id
+    def __init__(self, likes, account_id): 
         self.likes = likes
-        #self.runo_id=runo_id
-   
+        self.account_id=account_id
 
 #haetaan tykätyimmät runot top 10 
     @staticmethod

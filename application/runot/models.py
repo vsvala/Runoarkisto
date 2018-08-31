@@ -42,6 +42,7 @@ class Runo(Base):
        self.sisalto= sisalto
        self.runoilija = runoilija
 
+
   #haetaan kirjautuneen käyttäjän runot
     @staticmethod
     def find_loggedUsers_poems():

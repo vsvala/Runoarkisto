@@ -48,7 +48,7 @@ def category_other(runo_id):
     
     for  cate in list:
         c = Category.query.filter_by(aihe=cate).first()
-        if c is  None:  
+        if c is  None:   #ei listalla/ei kategoriaa
             category = Category(cate)
             db.session().add(category)
             db.session().commit()
@@ -58,7 +58,7 @@ def category_other(runo_id):
             db.session().commit()
   
             #category = Category(aihe) #luodaan kategoria olio jokaisesta listan kategoriasta ja lisätään kantaan
-        else:  #jos ei ole kategoriaa
+        else:  #jos on kategoria
             runo.categories.append(c)
             db.session().commit() 
     
