@@ -67,9 +67,10 @@ Tykkäys
 - [User storyt ja SQL lauseet](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/userstory.md)
 - [Asennusohje](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/asennusohje.md)
 - [Käyttöohje](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/käyttöohje.md)
-- [Omat kokemukset](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/käyttöohje.md)
+- [Omat kokemukset](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/omat_kokemukset.md)
 
 
 ## Puutteet & jatkokehitysideat
-Mitä puutteita tai bugeja ohjelmassa on? Mitä lisäominaisuuksia ohjelmaan voisi lisätä?
+Tykkäys toiminnan selvittäminen jäi kesken. Toimii vasta lokaalisti, ei herokussa.
+Ohjelmassa käyttäjän poisto poistaa tällä hetkellä kaikki runot. Tähän olisi hyvä miettiä sellainen ratkaisu, että runot jäisivät näkyviin, vaikka käyttäjää ei olisi. Salasanan voisi myös cryptata. Jos käyttäjiä tulee runsaasti olisi kiva jos käyttäjiäkin pystyisi hakemaan nimen perusteella.
 
