@@ -63,7 +63,7 @@ Tykkäys
     - salasanan Bcryptaus
 
 ## Dokumentaatio
-- [Tietokantakaavio](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/Runo_db_kaavio%20(2).png)
+- [Tietokantakaavio](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/Runo_db_kaavio%20(3).png)
 - [User storyt ja SQL lauseet](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/userstory.md)
 - [Asennusohje](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/asennusohje.md)
 - [Käyttöohje](https://github.com/vsvala/Runoarkisto/blob/master/dokumentaatio/käyttöohje.md)
