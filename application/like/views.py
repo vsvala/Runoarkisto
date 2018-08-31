@@ -27,10 +27,11 @@ def create_like(runo_id):
   
     like=Liked(1) #liked olion luonti
     like.account_id=current_user.id #liitetään nykyiseen käyttäjän
-    
+    db.session().add(like)
+    db.session().commit()
    # if likepoem==False: 
     runo.runo_liked.append(like)
-    db.session().add(runo)
+    #db.session().add(runo)
     db.session().commit()
 
 
