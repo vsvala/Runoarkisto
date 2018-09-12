@@ -32,36 +32,28 @@
     <div class="form-group row">
         <label for="password" class="col-sm-2 col-form-label">salasana:</label>
         <div class="col-4">
-            <input type="text" class="form-control" id="password" name="password"value= {{ user.password }}>
+            <input type="password" class="form-control" id="password" name="password"value= {{ user.password }}>
         </div>
     </div>
     <ul>
         {% for error in form.password.errors %}
         <li>{{ error }}</li>
         {% endfor %}
-    <!-- </ul>
-    <div class="form-group row">
-        <label for="role" class="col-sm-2 col-form-label">rooli:</label>
-        <div class="col-4">
-            <input type="text" class="form-control" id="role" name="role" value= {{ user.role }}>
-        </div>
-    </div>
-    <ul> -->
-        </ul>
-        <ul class="list-unstyled">
-          <li> {{ form.role.label }}</li>
-          <li style="color:gray;"> {{ form.role }}</li>
         </ul>
 
+
+
+        <tr>
+          <td> {{ form.role.label }}</td>  
+          <td> {{ form.role }}</td>
+        </tr>
         <ul>
         {% for error in form.role.errors %}
         <li>{{ error }}</li>
         {% endfor %}
-    </ul>
-
+        </ul>
 
     <button type="submit" class="btn btn-success">muokkaa</button>
-
 </form>
 
 {% endblock %}
