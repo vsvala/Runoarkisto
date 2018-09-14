@@ -19,7 +19,7 @@ class RunoForm(FlaskForm):
     sisalto = TextAreaField("sisalto", [validators.Length(min=2, max=2000)]) 
     runoilija = StringField("runoilija", [validators.Length(min=2,max=144)])
     #aihe = StringField("kategoria", [validators.Length(max=144)]) #muokkauksessa tyhjä/ei käytössä
-    string_of_files = ['syntymäpäivä\r\ntuparit\r\nkaste\r\nhäät\r\nhautajaiset\r\nsuru\r\njoulu\r\nystävä\r\nonnittelu\r\nrakkaus\r\nelämänviisaus\r\nmuu']
+    string_of_files = ['syntymäpäivä\r\ntuparit\r\nkaste\r\nhäät\r\nhautajaiset\r\nsuru\r\njoulu\r\nystävä\r\nonnittelu\r\nrakkaus\r\ntaide\r\nelämänviisaus\r\nmuu']
     list_of_files = string_of_files[0].split()
      # create a list of value/description tuples
     files = [(x, x) for x in list_of_files]
