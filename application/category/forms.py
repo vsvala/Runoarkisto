@@ -12,9 +12,9 @@ class MultiCheckboxField(SelectMultipleField):
 class CategoryForm(FlaskForm):
 
    #aihe = StringField("kategoria", [validators.Length(max=144)]) #muokkauksessa tyhjä/ei käytössä
-    string_of_files = ['syntymäpäivä\r\ntuparit\r\nkaste\r\nhäät\r\nhautajaiset\r\suru\r\njoulu\r\nystävä\r\nonnittelu\r\nrakkaus\r\elämänviisaus\r\nmuu']
+    string_of_files = ['syntymäpäivä\r\ntuparit\r\nkaste\r\nhäät\r\nhautajaiset\r\nsuru\r\njoulu\r\nystävä\r\nonnittelu\r\nrakkaus\r\nelämänviisaus\r\nmuu']
     list_of_files = string_of_files[0].split()
-     # create a list of value/description tuples
+    # create a list of value/description tuples
     files = [(x, x) for x in list_of_files]
     tokaaihe = MultiCheckboxField('kategoriat:', choices=files)
 
