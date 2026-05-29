@@ -1,4 +1,4 @@
-# Runoarkisto -Tietokantasovellus harjoitustyö
+# Runoarkisto -Tietokantasovellus harjoitustyö (PostgreSQL,Python)
 
  Helsingin yliopiston Tietokantasovellus (4 op) kurssilla (kesä-2018) harjoitustyönä tehty tietokantaa käyttävä web-sovellus. 
  - Toteutus: Herokun PostgreSQL tietokanta , Python, venv-kirjasto, HTML, CSS, [ SQLAlchemy ](https://www.sqlalchemy.org), [Flask](http://flask.pocoo.org/)sovelluskehys, [WTForms](https://wtforms.readthedocs.io/en/stable/) kirjasto lomakkeiden luomisessa ja validoinnissa, [Bootstrap-kirjasto](https://getbootstrap.com/docs/4.0/getting-started/introduction/) ulkoasun tyylittelyssä.
